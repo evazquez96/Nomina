@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Nomina</title>
+    <script src="Dojo/dojo/dojo.js"
+            data-dojo-config="async:true,parseOnLoad:false"></script>
+
+    <link rel="stylesheet" href="Dojo/dijit/themes/claro/claro.css" />
+    <script src="myApp/JS/myJS.js"></script>
+    <script src="Helpers/ColumnSetHelper.js"></script>
+    <!--Cargar Style para CompoundColumns-->
+    <link rel="stylesheet" href="CSS/CompoundColumns.css" />
+    <link rel="stylesheet" href="myApp/widget/css/myColumnSets.css" />
+
+    <style>
+        #borderContainer {
+            width: 100%;
+            height: 100%;
+        }
+
+        #principal {
+            width: 100%;
+            height: 100%;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body class="claro">
+    <div id="principal"></div>
+    <script>
+        require(["dojo/dom",
+            "/myApp/widget/PrincipalWidget.js",
+            "dojo/domReady!"
+        ], function (dom,
+            Principal) {
+            var p = dom.byId("principal");
+            var widgetCarga = new Principal({name:"Jesus Eduardo"}).placeAt(p);
+            widgetCarga.startup();
+
+            /*
+            widgetCarga.deferred.then(function (text) {
+                console.log("Todo correcto");
+            })*/
+            //when(promise, function (abc) { console.log("Se completo la funcion"); }, function (err) {})
+            //console.log("Todo correcto");
+        })
+    </script>
+</body>
+</html>
