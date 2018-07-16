@@ -15,6 +15,7 @@
     "dgrid/OnDemandGrid",
     "dgrid/ColumnSet",
     "dgrid/extensions/CompoundColumns",
+    'dgrid/extensions/DijitRegistry',
 
      /**
      *Fin de modulos para ColumnSet
@@ -47,7 +48,7 @@
         OnDemandGrid,
         ColumnSet,
         CompoundColumns,
-
+        DijitRegistry,
         /**
         *Fin de modulos para ColumnSet
         **/
@@ -87,8 +88,9 @@
             },
             createTopPane: function () {
                 var cargaDeLink = new CargaLinkWidget();
+                //cargaDeLink.startup();
                 this.TopContentPane.addChild(cargaDeLink, 0);
-                cargaDeLink.startup();
+                
             },
             createGrid: function () {
 
@@ -101,11 +103,11 @@
                 });
                 */
 
-                var CustomGrid = declare([OnDemandGrid, ColumnSet]);
+                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
                 //var headers = getCompoundColumnsHeaders();
                 var nomina = [
                     { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
-                    { NoEmpleado: 2, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" }
+                    { NoEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" }
                 ];
                 var nominaStore = new Memory({ data: nomina, idProperty: 'NoEmpleado' });
                 
@@ -116,7 +118,7 @@
                         [
                             [
                                 [
-                                    { field: 'NoEmpleado', label: 'Clave' },
+                                    { field: 'NoEmpleado', label: 'Clave', sortable:true},
                                     { field: 'Nombre', label: 'Nombre' },
                                     { field: 'Antiguedad', label: 'Antigüedad' },
                                 ]
@@ -343,12 +345,14 @@
                         ]
 
 
-                });
+                },"grid");
                 //
-                
-                grid.renderArray(nomina);
+                //grid.renderArray(nomina);
+                //grid.renderArray(nomina);
                 this.CenterContentPane.addChild(grid);
+
                 //grid.startup();
+                //this.CenterContentPane.startup();
 
             },
             _getSpreadSheetId: function () {
