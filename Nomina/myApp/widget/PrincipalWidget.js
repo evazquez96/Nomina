@@ -19,6 +19,13 @@
      /**
      *Fin de modulos para ColumnSet
      **/
+    /**
+     Inicio de los Modulos requeridos para el uso de memoria
+    **/
+    "dstore/Memory",
+    /**
+    *Fin de los modulos para el uso de memoria
+    **/
     "dojo/parser",
     "dojo/dom-style",
 ],
@@ -44,6 +51,7 @@
         /**
         *Fin de modulos para ColumnSet
         **/
+        Memory,
         parser,
         domStyle,
     ) {
@@ -95,20 +103,27 @@
 
                 var CustomGrid = declare([OnDemandGrid, ColumnSet]);
                 //var headers = getCompoundColumnsHeaders();
+                var nomina = [
+                    { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
+                    { NoEmpleado: 2, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" }
+                ];
+                var nominaStore = new Memory({ data: nomina, idProperty: 'NoEmpleado' });
+                
                 var grid = new CustomGrid({
 
+                    collection: nominaStore,
                     columnSets: 
                         [
                             [
                                 [
-                                    { field: 'NoEmpleado', label: 'No. Empleado' },
+                                    { field: 'NoEmpleado', label: 'Clave' },
                                     { field: 'Nombre', label: 'Nombre' },
                                     { field: 'Antiguedad', label: 'Antigüedad' },
                                 ]
                             ],
                             [
                                 [
-                                    { label: 'Pago', colSpan: 7 },
+                                    { field:'Pago',label: 'Pago', colSpan: 7 },
                                     { label: 'Sueldo', colSpan: 2 },//01
                                     { label: 'Aguinaldo', colSpan: 2 },//02
                                     { label: 'PTU', colSpan: 2 },//03
@@ -329,8 +344,11 @@
 
 
                 });
-
+                //
+                
+                grid.renderArray(nomina);
                 this.CenterContentPane.addChild(grid);
+                //grid.startup();
 
             },
             _getSpreadSheetId: function () {
