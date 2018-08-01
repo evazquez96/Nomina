@@ -1,4 +1,5 @@
 ﻿define(["dojo/_base/declare",
+    "dojo/_base/lang",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
@@ -10,10 +11,12 @@
     "dojo/parser",
     "dojo/dom-style",
     "dojo/request",
+    "dojo/when",
     "dojo/Deferred",
     ],
     function (
         declare,
+        lang,
         _WidgetBase,
         _TemplatedMixin,
         _WidgetsInTemplateMixin,
@@ -25,11 +28,20 @@
         parser,
         domStyle,
         request,
+        when,
         Deferred,
     ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
-            deferred:null,
+            deferred: null,
+
+            constructor: function (arguments) {
+                lang.mixin(this, arguments);
+                /**
+                La línea anterior permite manipular los objetos que se
+                pasan como argumentos en el constructo.
+                */
+            },
 
             getNomina: function () {
                 return this.deferred.promise
@@ -80,7 +92,10 @@
                 var deferred=request.get(url, {
                     handleAs: "json"
                 });
-                this.deferred=deferred.promise;
+
+                when(deferred, function (value) {
+                    console.log(value);
+                });
                 /*
                 request(url, {
                     handleAs: "json"

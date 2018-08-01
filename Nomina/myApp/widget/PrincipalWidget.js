@@ -28,6 +28,7 @@
     *Fin de los modulos para el uso de memoria
     **/
     "dojo/parser",
+
     "dojo/dom-style",
 ],
     function (
@@ -60,61 +61,40 @@
 
             templateString: template,
             name: "",
+            store: null,
+            grid:null,
             constructor: function (arguments) {
                 lang.mixin(this, arguments);
                 console.log("name:" + this.name);
             },
+
             postCreate: function () {
                 var domNode = this.domNode;
                 this.inherited(arguments);
-                this.createTopPane();
-                this.createGrid();
-                /*
-                 * LLamar siempre en el postCreate 
-                 */
+                //this.createTopPane();
+                //this.createGrid();
 
-                //this._setWidgetCSS();
-                //var context = this;
-                /*
-                on(this.btnCargaWidget, 'click', function (evt) {
-
-                    when(context.cargarNomina(evt), function (data) {
-                        grid.set('collection', collection);
-                        grid.refresh();
-
-                    }, function (error) { });
-
-                });*/
             },
             createTopPane: function () {
-                var cargaDeLink = new CargaLinkWidget();
-                //cargaDeLink.startup();
+                var context = this;
+                var cargaDeLink = new CargaLinkWidget({store:context.store});
                 this.TopContentPane.addChild(cargaDeLink, 0);
                 
             },
             createGrid: function () {
 
-                /*
-                var CustomGrid = declare([OnDemandGrid, CompoundColumns]);
-                var grid = new CustomGrid({
-                    
-                    columns: getCompoundColumnsHeaders() 
-
-                });
-                */
-
                 var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
-                //var headers = getCompoundColumnsHeaders();
+                /*
                 var nomina = [
                     { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
                     { NoEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
                     { NoEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23"}
-                ];
-                var nominaStore = new Memory({ data: nomina, idProperty: 'NoEmpleado' });
+                ];*/
+                //var nominaStore = new Memory({ data: nomina, idProperty: 'NoEmpleado' });
                 
                 var grid = new CustomGrid({
 
-                    collection: nominaStore,
+                    //collection: nominaStore,
                     columnSets: 
                         [
                             [
@@ -346,15 +326,12 @@
                         ]
 
 
-                },"grid");
+                });
                 //
                 //grid.renderArray(nomina);
                 //grid.renderArray(nomina);
                 this.CenterContentPane.addChild(grid);
-
-                //grid.startup();
-                //this.CenterContentPane.startup();
-
+                return grid;
             },
             _getSpreadSheetId: function () {
                 /*
