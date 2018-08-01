@@ -60,8 +60,9 @@
             Principal) {
             var p = dom.byId("principal");
             var widgetCarga = new Principal({ name: "Jesus Eduardo" }).placeAt(p);
+            widgetCarga.createTopPane();
             widgetCarga.startup();
-
+            widgetCarga.createGrid();
             console.log("Todo correcto");
             console.log("Todo correcto");
 
