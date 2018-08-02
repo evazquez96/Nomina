@@ -265,7 +265,6 @@ C:\Users\HP\Documents\Proyectos\Nomina\Nomina\obj\Debug\Nomina.csproj.CopyComple
 C:\Users\HP\Documents\Proyectos\Nomina\Nomina\obj\Debug\Nomina.dll
 C:\Users\HP\Documents\Proyectos\Nomina\Nomina\obj\Debug\Nomina.pdb
 C:\Users\HP\Documents\Repositorios\Proyectos\Nomina\Nomina\bin\Helpers\client_secret.json
-C:\Users\HP\Documents\Repositorios\Proyectos\Nomina\Nomina\bin\client_secret.js
 C:\Users\HP\Documents\Repositorios\Proyectos\Nomina\Nomina\bin\client_secret.json
 C:\Users\HP\Documents\Repositorios\Proyectos\Nomina\Nomina\bin\Nomina.dll.config
 C:\Users\HP\Documents\Repositorios\Proyectos\Nomina\Nomina\bin\Nomina.dll
