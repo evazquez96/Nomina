@@ -33,8 +33,6 @@
     ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
-            deferred: null,
-
             constructor: function (arguments) {
                 lang.mixin(this, arguments);
                 /**
