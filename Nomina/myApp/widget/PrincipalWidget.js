@@ -77,24 +77,24 @@
             },
             createTopPane: function () {
                 var context = this;
-                var cargaDeLink = new CargaLinkWidget({store:context.store});
+                var cargaDeLink = new CargaLinkWidget({ grid: context.grid });//Se pasara el grid 
                 this.TopContentPane.addChild(cargaDeLink, 0);
                 
             },
             createGrid: function () {
 
                 var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
-                
+                /*
                 var nomina = [
                     { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
                     { NoEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
                     { NoEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23"}
                 ];
                 var nominaStore = new Memory({ data: nomina, idProperty: 'NoEmpleado' });
-                
-                var grid = new CustomGrid({
+                */
+                this.grid = new CustomGrid({
 
-                    collection: nominaStore,
+                    //collection: nominaStore,
                     columnSets: 
                         [
                             [
@@ -330,8 +330,7 @@
                 //
                 //grid.renderArray(nomina);
                 //grid.renderArray(nomina);
-                this.CenterContentPane.addChild(grid);
-                return grid;
+                this.CenterContentPane.addChild(this.grid);
             },
             _getSpreadSheetId: function () {
                 /*
