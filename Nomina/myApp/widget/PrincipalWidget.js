@@ -99,7 +99,7 @@
                         [
                             [
                                 [
-                                    { field: 'NoEmpleado', label: 'Clave', sortable:true},
+                                    { field: 'NumEmpleado', label: 'Clave', sortable:true},
                                     { field: 'Nombre', label: 'Nombre' },
                                     { field: 'Antiguedad', label: 'Antigüedad' },
                                 ]
@@ -330,6 +330,8 @@
                 //
                 //grid.renderArray(nomina);
                 //grid.renderArray(nomina);
+                this.grid.startup();
+
                 this.CenterContentPane.addChild(this.grid);
             },
             _getSpreadSheetId: function () {
