@@ -67,8 +67,27 @@ namespace Nomina.Controllers
                          */
                         unaNomina.TipoNomina = WebConfigurationManager.AppSettings["tipo_Nomina"];//Obtiene el tipo de nomina.
                         unaNomina.Version = WebConfigurationManager.AppSettings["version"];//Obtiene la versión de nomina.
-                        unaNomina.Receptor = receptor;//Obtiene la instancia que corresponde al nodo receptor.
+                        //unaNomina.Receptor = receptor;//Obtiene la instancia que corresponde al nodo receptor.
+                        unaNomina.getAtributosReceptor(receptor);
                         unaNomina.FechaPago = Convert.ToString(row[3]);//Obtiene la fecha de pago.
+                        unaNomina.NumDiasPagados = Convert.ToString(row[6]);//Obtiene el numero de dias pagados
+                        unaNomina.Monto = Convert.ToString(row[9]);//Obtiene el Monto
+                        unaNomina.Sueldo_Gravado = Convert.ToString(row[10]);//Obtiene el sueldo Gravado
+                        unaNomina.Sueldo_Exento = filtrarCampo2(row[11]);//Obtiene el sueldo Exento.
+                        unaNomina.Aguinaldo_Gravado = filtrarCampo2(row[12]);
+                        unaNomina.Aguinaldo_Exento = filtrarCampo2(row[13]);
+                        unaNomina.PTU_Gravado = filtrarCampo2(row[14]);
+                        unaNomina.PTU_Exento = filtrarCampo(row[15]);
+                        unaNomina.RGMDyH_Gravado = filtrarCampo2(row[16]);
+                        unaNomina.RGMDyH_Exento = filtrarCampo2(row[17]);
+                        unaNomina.FDA_Gravado = filtrarCampo2(row[18]);
+                        unaNomina.FDA_Exento = filtrarCampo2(row[19]);
+                        unaNomina.CDA_Gravado = filtrarCampo2(row[20]);
+                        unaNomina.CDA_Exento = filtrarCampo2(row[21]);
+                        unaNomina.CCTPP_Gravado = filtrarCampo2(row[22]);
+                        unaNomina.CCTPP_Exento = filtrarCampo2(row[23]);
+                        unaNomina.PP_Gravado = filtrarCampo2(row[24]);
+                        unaNomina.PP_Exento = filtrarCampo2(row[25]);
                         unaNomina.FechaInicialPago = Convert.ToString(row[4]);//Obtiene la fecha inicial de pago.
                         unaNomina.FechaFinalPago = Convert.ToString(row[5]);//Obtiene la fecha final de pago.
                         nominaL.Add(unaNomina);
@@ -133,6 +152,7 @@ namespace Nomina.Controllers
                     /*
                      * Se crea una nueva instancia de tipo Receptor
                      */
+                    receptor.Nombre = filtrarCampo(r[1]);
                     receptor.NumEmpleado = filtrarCampo(r[0]);
                     receptor.Curp = filtrarCampo(r[3]);
                     receptor.NumSeguridadSocial =filtrarCampo(r[6]);
@@ -179,10 +199,13 @@ namespace Nomina.Controllers
             return unReceptor;
 
         }
+        private String filtrarCampo2(Object obj) {
+            return (Convert.ToString(obj).Equals("")) ? "0.0" : Convert.ToString(obj);
 
+        }
         private String filtrarCampo(Object obj)
         {
-            return (obj == null) ? "" : Convert.ToString(obj);
+            return (obj == null ) ? "" : Convert.ToString(obj);
          
         }
 

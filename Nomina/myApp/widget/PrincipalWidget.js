@@ -198,7 +198,7 @@
                                     { field: 'FechaPago', label: "Fecha" },
                                     { field: 'FechaInicialPago', label: "Fecha Inicio" },
                                     { field: 'FechaFinalPago', label: "Fecha Fin" },
-                                    { field: 'DiasP', label: "Dias Pagados" },
+                                    { field: 'NumDiasPagados', label: "Dias Pagados" },
                                     { field: 'Banco', label: "Banco" },
                                     { field: 'Clabe', label: "Clabe" },
                                     { field: 'Monto', label: "Monto" },

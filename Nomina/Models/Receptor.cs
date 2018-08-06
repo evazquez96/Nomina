@@ -30,6 +30,7 @@ namespace Nomina.Models
             this.ClaveEntFed = ClaveEntFed;
 
         }
+        public String Nombre { get; set; }
         public String Curp { get; set; }//requerido
         public String NumSeguridadSocial { get; set; }//condicional
         public String FechaInicioRelLaboral { get; set; }//condicional
