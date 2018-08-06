@@ -81,6 +81,12 @@
                 this.TopContentPane.addChild(cargaDeLink, 0);
                 
             },
+            createGrid2: function () {
+                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
+                this.grid = new CustomGrid();
+                this.CenterContentPane.addChild(this.grid);
+            }
+            ,
             createGrid: function () {
 
                 var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
@@ -189,9 +195,9 @@
                                 [
                                    
 
-                                    { field: 'Fecha', label: "Fecha" },
-                                    { field: 'FechaI', label: "Fecha Inicio" },
-                                    { field: 'FechaF', label: "Fecha Fin" },
+                                    { field: 'FechaPago', label: "Fecha" },
+                                    { field: 'FechaInicialPago', label: "Fecha Inicio" },
+                                    { field: 'FechaFinalPago', label: "Fecha Fin" },
                                     { field: 'DiasP', label: "Dias Pagados" },
                                     { field: 'Banco', label: "Banco" },
                                     { field: 'Clabe', label: "Clabe" },

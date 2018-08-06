@@ -14,6 +14,9 @@
     "dojo/when",
     "dojo/Deferred",
     "dstore/Memory",
+    "dgrid/OnDemandGrid",
+    "dgrid/ColumnSet",
+    "dgrid/extensions/DijitRegistry"
     ],
     function (
         declare,
@@ -32,6 +35,9 @@
         when,
         Deferred,
         Memory,
+        OnDemandGrid,
+        ColumnSet,
+        DijitRegistry
     ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
@@ -59,21 +65,24 @@
                 on(this.btnCargaWidget, 'click', function () {
                     context.cargarNomina();
                 });
-                /*
-                on(this.btnCargaWidget, 'click', function (evt) {
-
-                    when(context.cargarNomina(evt), function (data) {
-                        grid.set('collection', collection);
-                        grid.refresh();
-
-                    }, function (error) { });
-
-                });
-
-                */
 
             },
+            createGrid: function (value) {
 
+                var nomina = [
+                    { NumEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
+                    { NumEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
+                    { NumEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" }
+                ];
+                var nominaStore = new Memory({ data: value, idProperty: 'NumEmpleado' });
+                /**
+                 * Función que se encargara de crear el Grid.
+                 **/
+                this.grid.set('collection', nominaStore);
+                this.grid.renderArray(value);
+
+            }
+            ,
             _getSpreadSheetId: function () {
                 /*
                  * Obtiene el SpreadSheetId que corresponde
@@ -94,28 +103,18 @@
                 });
                 var context = this;
                 when(deferred, function (value) {
+                    /*
                     var nomina = [
                         { NumEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
                         { NumEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
                         { NumEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" }
                     ];
                     var nominaStore = new Memory({ data: nomina, idProperty: 'NumEmpleado' });
-                    context.grid.renderArray(nomina);
+                    context.grid.renderArray(nomina);*/
+                    context.createGrid(value);
                     
                     console.log(value);
                 });
-                /*
-                request(url, {
-                    handleAs: "json"
-                }
-                ).then(
-                    function (text) {
-                        console.log(text);
-                    }, function (error) {
-                        console.log(error);
-                    }
-                );
-                */
                 console.log("Se enviara el link: "+url);
             },
             _setWidgetCSS: function () {
