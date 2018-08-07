@@ -17,7 +17,8 @@
     "dgrid/extensions/CompoundColumns",
     'dgrid/extensions/DijitRegistry',
     "dgrid/Selection",
-
+    "dgrid/Editor",
+    "dgrid/Keyboard",
      /**
      *Fin de modulos para ColumnSet
      **/
@@ -52,6 +53,8 @@
         CompoundColumns,
         DijitRegistry,
         Selection,
+        Editor,
+        Keyboard,
         /**
         *Fin de modulos para ColumnSet
         **/
@@ -84,14 +87,14 @@
                 
             },
             createGrid2: function () {
-                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
+                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry,Editor]);
                 this.grid = new CustomGrid();
                 this.CenterContentPane.addChild(this.grid);
             }
             ,
             createGrid: function () {
 
-                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry,Selection]);
+                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard]);
                 /*
                 var nomina = [
                     { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
@@ -108,7 +111,7 @@
                             [
                                 [
                                     { field: 'NumEmpleado', label: 'Clave', sortable:true},
-                                    { field: 'Nombre', label: 'Nombre' },
+                                    { field: 'Nombre', label: 'Nombre',editor: 'text', editOn: 'dblclick'},
                                     { field: 'Antiguedad', label: 'Antigüedad' },
                                 ]
                             ],
