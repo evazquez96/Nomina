@@ -221,7 +221,7 @@
                                     { field: 'PSV_Gravado', label: "Gravado" },//Prima de Seguro de vida
                                     { field: 'PSV_Exento', label: "Exento" },//Prima de Seguro de vida
                                     { field: 'SGMM_Gravado', label: "Gravado" },//Seguro de Gastos Médicos Mayores
-                                    { field: 'CCTPP_Exento', label: "Exento" },//Seguro de Gastos Médicos Mayores
+                                    { field: 'SGMM_Exento', label: "Exento" },//Seguro de Gastos Médicos Mayores
                                     { field: 'CSPPP_Gravado', label: "Gravado" },//Cuotas Sindicales Pagadas por el patron
                                     { field: 'CSPPP_Exento', label: "Exento" },//Cuotas Sindicales Pagadas por el patron
                                     { field: 'SPI_Gravado', label: "Gravado" },//Subsidios por incapacidad
@@ -282,7 +282,9 @@
                                     { field: 'Habitacion_Exento', label: "Exento" },//Habitacion
                                     { field: 'PAsistecia_Gravado', label: "Gravado" },//Premios por asistencia
                                     { field: 'PAsistencia_Exento', label: "Exento" },//Premios por asistencia
-                                    { field: 'TotalPercepciones', label: "", colSpan: 2 },//Total
+                                    { field: 'TotalPercepcionesGravado', label: "Gravado" },//Total
+                                    { field: 'TotalPercepcionesExento', label: "Exento" },//Total
+
 
                                     { field: 'ImporteSeguridadSocial', label: 'importe' },//ImporteSeguridadSocial
                                     { field: 'ImporteISR', label: 'importe' },//ImporteISR
