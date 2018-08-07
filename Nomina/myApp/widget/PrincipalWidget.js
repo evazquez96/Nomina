@@ -16,6 +16,7 @@
     "dgrid/ColumnSet",
     "dgrid/extensions/CompoundColumns",
     'dgrid/extensions/DijitRegistry',
+    "dgrid/Selection",
 
      /**
      *Fin de modulos para ColumnSet
@@ -50,6 +51,7 @@
         ColumnSet,
         CompoundColumns,
         DijitRegistry,
+        Selection,
         /**
         *Fin de modulos para ColumnSet
         **/
@@ -89,7 +91,7 @@
             ,
             createGrid: function () {
 
-                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry]);
+                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry,Selection]);
                 /*
                 var nomina = [
                     { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
