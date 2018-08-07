@@ -9,6 +9,7 @@
     "dojo/text!/myApp/widget/templates/PrincipalWidget.html",
     "dijit/form/Button",
     "dijit/form/ValidationTextBox",
+    "dojo/dom-style",
     /**
     *Inicio de modulos para ColumnSet
     **/
@@ -45,6 +46,7 @@
         template,
         Button,
         ValidationTextBox,
+        domStyle,
         /**
         *Inicio de modulos para ColumnSet
         **/
@@ -111,15 +113,31 @@
                             [
                                 [
                                     { field: 'NumEmpleado', label: 'Clave', sortable:true},
-                                    { field: 'Nombre', label: 'Nombre',editor: 'text', editOn: 'dblclick'},
+                                    {
+                                        field: 'Nombre',
+                                        label: 'Nombre',
+                                        editor: 'text',
+                                        editOn: 'dblclick',
+                                        renderCell: function (object, data, td, options) {
+                                            var div = document.createElement('div');
+                                            td.style.setProperty("background-color", "Yellow", "important");
+                                            //console.log(domStyle.get(td,"height"));
+                                            //div.style.setProperty("text-overflow", "ellipsis", "important");
+                                            //centerText(div);
+                                            div.className = "renderedCell";
+                                            //div.style.setProperty("height","80px");
+                                            div.innerHTML = data;
+                                            return div;
+                                        }
+                                    },
                                     { field: 'Antiguedad', label: 'Antigüedad' },
                                 ]
                             ],
                             [
                                 [
-                                    { field:'Pago',label: 'Pago', colSpan: 7 },
-                                    { label: 'Sueldo', colSpan: 2 },//01
-                                    { label: 'Aguinaldo', colSpan: 2 },//02
+                                    { field:'Pago',label: 'Pago', colSpan: 7 ,value:''},
+                                    { field:'Sueldo' ,label: 'Sueldo', colSpan: 2},//01
+                                    { field:'Aguinaldo',label: 'Aguinaldo', colSpan: 2 },//02
                                     { label: 'PTU', colSpan: 2 },//03
                                     { label: 'Reembolso de Gastos Médicos Dentales y Hospitalarios', colSpan: 2 },//04
                                     { label: 'Fondo de Ahorro', colSpan: 2 },//05
@@ -207,7 +225,17 @@
                                     { field: 'Banco', label: "Banco" },
                                     { field: 'Clabe', label: "Clabe" },
                                     { field: 'Monto', label: "Monto" },
-                                    { field: 'Sueldo_Gravado', label: "Gravado" },
+                                    {
+                                        field: 'Sueldo_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            var div = document.createElement('div');
+                                            td.style.setProperty("background-color", "#9ACD32", "important");
+                                            div.className = "renderedCell";
+                                            div.innerHTML = data;
+                                            return div;
+                                        }
+                                    },
                                     { field: 'Sueldo_Exento', label: "Exento" },
                                     { field: 'Aguinaldo_Gravado', label: "Gravado" },
                                     { field: 'Aguinaldo_Exento', label: "Exento" },
