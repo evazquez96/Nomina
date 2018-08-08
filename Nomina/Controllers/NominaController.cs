@@ -77,7 +77,7 @@ namespace Nomina.Controllers
                         unaNomina.Aguinaldo_Gravado = filtrarCampo2(row[12]);
                         unaNomina.Aguinaldo_Exento = filtrarCampo2(row[13]);
                         unaNomina.PTU_Gravado = filtrarCampo2(row[14]);
-                        unaNomina.PTU_Exento = filtrarCampo(row[15]);
+                        unaNomina.PTU_Exento = filtrarCampo2(row[15]);
                         unaNomina.RGMDyH_Gravado = filtrarCampo2(row[16]);
                         unaNomina.RGMDyH_Exento = filtrarCampo2(row[17]);
                         unaNomina.FDA_Gravado = filtrarCampo2(row[18]);
@@ -87,7 +87,22 @@ namespace Nomina.Controllers
                         unaNomina.CCTPP_Gravado = filtrarCampo2(row[22]);
                         unaNomina.CCTPP_Exento = filtrarCampo2(row[23]);
                         unaNomina.PP_Gravado = filtrarCampo2(row[24]);
-                        unaNomina.PP_Exento = filtrarCampo2(row[25]);
+                        unaNomina.PP_Exento = filtrarCampo2(row[25]);//Premio puntualidad
+                        unaNomina.PSV_Gravado= filtrarCampo2(row[26]);//Prima de seguro de vida.
+                        unaNomina.PSV_Exento = filtrarCampo2(row[27]);//Prima de seguro de vida.
+                        unaNomina.SGMM_Gravado= filtrarCampo2(row[28]);//Seguro de gastos medicos mayores.
+                        unaNomina.SGMM_Exento = filtrarCampo2(row[29]);//Seguro de gastos medicos mayores.
+                        unaNomina.CSPPP_Gravado = filtrarCampo2(row[30]);//Cuotas sindicales pagadas por el patron
+                        unaNomina.CSPPP_Exento = filtrarCampo2(row[31]);//Cuotas sindicales pagadas por el patron
+                        unaNomina.SPI_Gravado = filtrarCampo2(row[32]);//Subsidios por incapacidad.
+                        unaNomina.SPI_Exento = filtrarCampo2(row[33]);//Subsidios por incapacidad.
+                        unaNomina.Becas_Gravado = filtrarCampo2(row[34]);//Becas
+                        unaNomina.Becas_Exento = filtrarCampo2(row[35]);//Becas
+                        unaNomina.HE_Gravado = filtrarCampo2(row[36]);//Horas Extra
+                        unaNomina.HE_Exento = filtrarCampo2(row[37]);//Horas Extra.
+                        unaNomina.PrimaD_Gravado = filtrarCampo2(row[38]);//Prima Dominical
+                        unaNomina.PrimaD_Exento = filtrarCampo2(row[39]);//Prima Dominical
+
                         unaNomina.FechaInicialPago = Convert.ToString(row[4]);//Obtiene la fecha inicial de pago.
                         unaNomina.FechaFinalPago = Convert.ToString(row[5]);//Obtiene la fecha final de pago.
                         nominaL.Add(unaNomina);

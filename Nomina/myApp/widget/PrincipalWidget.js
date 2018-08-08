@@ -117,18 +117,7 @@
                                         field: 'Nombre',
                                         label: 'Nombre',
                                         editor: 'text',
-                                        editOn: 'dblclick',
-                                        renderCell: function (object, data, td, options) {
-                                            var div = document.createElement('div');
-                                            td.style.setProperty("background-color", "Yellow", "important");
-                                            //console.log(domStyle.get(td,"height"));
-                                            //div.style.setProperty("text-overflow", "ellipsis", "important");
-                                            //centerText(div);
-                                            div.className = "renderedCell";
-                                            //div.style.setProperty("height","80px");
-                                            div.innerHTML = data;
-                                            return div;
-                                        }
+                                        editOn: 'dblclick'
                                     },
                                     { field: 'Antiguedad', label: 'Antigüedad' },
                                 ]
@@ -136,47 +125,334 @@
                             [
                                 [
                                     { field:'Pago',label: 'Pago', colSpan: 7 ,value:''},
-                                    { field:'Sueldo' ,label: 'Sueldo', colSpan: 2},//01
-                                    { field:'Aguinaldo',label: 'Aguinaldo', colSpan: 2 },//02
-                                    { label: 'PTU', colSpan: 2 },//03
-                                    { label: 'Reembolso de Gastos Médicos Dentales y Hospitalarios', colSpan: 2 },//04
-                                    { label: 'Fondo de Ahorro', colSpan: 2 },//05
-                                    { label: 'Caja de Ahorro', colSpan: 2 },//06
-                                    { label: 'Contribuciones a Cargo del Trabajador Pagadas por el Patrón', colSpan: 2 },//09
-                                    {label:'Premio de Puntualidad', colSpan:2},//10
-                                    { label: 'Prima de Seguro de vida', colSpan: 2 },//11
-                                    { label: 'Seguro de gastos médicos mayores', colSpan: 2 },//12
-                                    { label: 'Cuotas Sindicales Pagadas por el Patrón', colSpan: 2 },//13
-                                    { label: 'Subsidios por incapacidad', colSpan: 2 },//14
-                                    { label: 'Becas', colSpan: 2 },//15
-                                    { label: 'Horas Extra', colSpan: 2 },//19
-                                    { label: 'Prima Dominical', colSpan: 2 },//20
-                                    { label: 'Prima Vacacional', colSpan: 2 },//21
-                                    { label: 'Prima por Antigüedad', colSpan: 2 },//22
-                                    { label: 'Pagos por Separación', colSpan: 2 },//23
-                                    { label: 'Seguro de Retiro', colSpan: 2 },//24
-                                    { label: 'Indeminizaciones', colSpan: 2 },//25
-                                    { label: 'Reembolso por funeral', colSpan: 2 },//26
-                                    { label:'Cuotas de seguridad social pagadas por el patrón', colSpan:2},//27
-                                    { label: 'Comisiones', colSpan: 2 },//28
-                                    { label: 'Vales de despensa', colSpan: 2 },//29
-                                    { label: 'Vales de restaurante', colSpan: 2 },//30
-                                    { label: 'Vales de gasolina', colSpan: 2 },//31
-                                    { label: 'Vales de ropa', colSpan: 2 },//32
-                                    { label: 'Ayuda para renta', colSpan: 2 },//33
-                                    { label: 'Ayuda para artículos escolares', colSpan: 2 },//34
-                                    { label: 'Ayuda para anteojos', colSpan: 2 },//35
-                                    { label: 'Ayuda para transporte', colSpan: 2 },//36
-                                    { label: 'Ayuda para gastos de funeral', colSpan: 2 },//37
-                                    { label: 'Otros ingresos por salario', colSpan: 2 },//38
-                                    { label: 'Jubilaciones, pensiones o haberes de retiro', colSpan: 2 },//39
-                                    { label: 'Jubilaciones, pensiones o haberes de retiro en parcialidades', colSpan: 2 },//44
-                                    { label:'Ingresos en acciones o títulos valor que representan bienes', colSpan:2},//45
-                                    { label: 'Ingresos asimilados a salarios', colSpan: 2 },//46
-                                    { label: 'Alimentación', colSpan: 2 },//47
-                                    { label: 'Habitación', colSpan: 2 },//48
-                                    { label: 'Premios por asistencia', colSpan: 2 },//49
-                                    { label: 'Total', colSpan: 2 },//50
+                                    {
+                                        field: 'Sueldo',
+                                        label: 'Sueldo',
+                                        colSpan: 2,
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//01
+                                    {
+                                        field: 'Aguinaldo',
+                                        label: 'Aguinaldo',
+                                        colSpan: 2,
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//02
+                                    {
+                                        label: 'PTU',
+                                        colSpan: 2,
+                                        field: 'PTU',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//03
+                                    {
+                                        label: 'Reembolso de Gastos Médicos Dentales y Hospitalarios',
+                                        colSpan: 2,
+                                        field: 'Reembolso de Gastos Médicos Dentales y Hospitalarios',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//04
+                                    {
+                                        label: 'Fondo de Ahorro',
+                                        colSpan: 2,
+                                        field: 'Fondo de ahorro',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//05
+                                    {
+                                        label: 'Caja de Ahorro',
+                                        colSpan: 2,
+                                        field: 'Caja de ahorro',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//06
+                                    {
+                                        label: 'Contribuciones a Cargo del Trabajador Pagadas por el Patrón',
+                                        colSpan: 2,
+                                        field: 'Contribuciones a Cargo del Trabajador Pagadas por el Patrón',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//09
+                                    {
+                                        label: 'Premio de Puntualidad',
+                                        colSpan: 2,
+                                        field: 'Premio de puntualidad',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//10
+                                    {
+                                        label: 'Prima de Seguro de vida',
+                                        colSpan: 2,
+                                        field: 'Prima de Seguro de vida',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//11
+                                    {
+                                        label: 'Seguro de gastos médicos mayores',
+                                        colSpan: 2,
+                                        field: 'Seguro de gastos medicos',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//12
+                                    {
+                                        label: 'Cuotas Sindicales Pagadas por el Patrón',
+                                        colSpan: 2,
+                                        field: 'Cuotas sindicales pagadas por el patron',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//13
+                                    {
+                                        label: 'Subsidios por incapacidad',
+                                        colSpan: 2,
+                                        field: 'subsidios por incapacidad',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//14
+                                    {
+                                        label: 'Becas',
+                                        colSpan: 2,
+                                        field: 'Becas',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//15
+                                    {
+                                        label: 'Horas Extra',
+                                        colSpan: 2,
+                                        field: 'Horas Extra',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//19
+                                    {
+                                        label: 'Prima Dominical',
+                                        colSpan: 2,
+                                        field: 'Prima Dominical',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//20
+                                    {
+                                        label: 'Prima Vacacional',
+                                        colSpan: 2,
+                                        field: 'Prima Vacacional',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//21
+                                    {
+                                        label: 'Prima por Antigüedad',
+                                        colSpan: 2,
+                                        field: 'Prima por antiguedad',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//22
+                                    {
+                                        label: 'Pagos por Separación',
+                                        colSpan: 2,
+                                        field: 'Pagos por separacion',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//23
+                                    {
+                                        label: 'Seguro de Retiro',
+                                        colSpan: 2,
+                                        field: 'Seguro de retiro',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//24
+                                    {
+                                        label: 'Indeminizaciones',
+                                        colSpan: 2,
+                                        field: 'Indeminizaciones',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//25
+                                    {
+                                        label: 'Reembolso por funeral',
+                                        colSpan: 2,
+                                        field: 'Reembolso por funeral',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//26
+                                    {
+                                        label: 'Cuotas de seguridad social pagadas por el patrón',
+                                        colSpan: 2,
+                                        field: 'Cuotas de seguridad social pagadas por el patron',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//27
+                                    {
+                                        label: 'Comisiones',
+                                        colSpan: 2,
+                                        field: 'Comisiones',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//28
+                                    {
+                                        label: 'Vales de despensa',
+                                        colSpan: 2,
+                                        field: 'Vales de despensa',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//29
+                                    {
+                                        label: 'Vales de restaurante',
+                                        colSpan: 2,
+                                        field: 'Vales de restaurante',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//30
+                                    {
+                                        label: 'Vales de gasolina',
+                                        colSpan: 2,
+                                        field: 'Vales de gasolina',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//31
+                                    {
+                                        label: 'Vales de ropa',
+                                        colSpan: 2,
+                                        field: 'Vales de ropa',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//32
+                                    {
+                                        label: 'Ayuda para renta',
+                                        colSpan: 2,
+                                        field: 'Ayuda para renta',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//33
+                                    {
+                                        label: 'Ayuda para artículos escolares',
+                                        colSpan: 2,
+                                        field: 'Ayuda para articulos escolares',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//34
+                                    {
+                                        label: 'Ayuda para anteojos',
+                                        colSpan: 2,
+                                        field: 'Ayuda para anteojos',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//35
+                                    {
+                                        label: 'Ayuda para transporte',
+                                        colSpan: 2,
+                                        field: 'Ayuda para transporte',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//36
+                                    {
+                                        label: 'Ayuda para gastos de funeral',
+                                        colSpan: 2,
+                                        field: 'Ayuda para gastos de funeral',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//37
+                                    {
+                                        label: 'Otros ingresos por salario',
+                                        colSpan: 2,
+                                        field: 'Otros ingresas por salario',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//38
+                                    {
+                                        label: 'Jubilaciones, pensiones o haberes de retiro',
+                                        colSpan: 2,
+                                        field: 'Jubilaciones, pensiones o haberes de retiro',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//39
+                                    {
+                                        label: 'Jubilaciones, pensiones o haberes de retiro en parcialidades',
+                                        colSpan: 2,
+                                        field: 'Jubilaciones, pensiones o haberes de retiro en parcialidades',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//44
+                                    {
+                                        label: 'Ingresos en acciones o títulos valor que representan bienes',
+                                        colSpan: 2,
+                                        field: 'Ingresos en acciones o titulos valor que representan bienes',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//45
+                                    {
+                                        label: 'Ingresos asimilados a salarios',
+                                        colSpan: 2,
+                                        field: 'Ingresos asimilados a salarios',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//46
+                                    {
+                                        label: 'Alimentación',
+                                        colSpan: 2,
+                                        field: 'Alimentacion',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//47
+                                    {
+                                        label: 'Habitación',
+                                        colSpan: 2,
+                                        field: 'Habitacion',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//48
+                                    {
+                                        label: 'Premios por asistencia',
+                                        colSpan: 2,
+                                        field: 'Premios por asistencia',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//49
+                                    {
+                                        label: 'Total',
+                                        colSpan: 2,
+                                        field: 'Total',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCeldasVacias(td);
+                                        }
+                                    },//50
 
 
                                     /**Deducciones**/
