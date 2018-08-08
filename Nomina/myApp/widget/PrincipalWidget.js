@@ -118,13 +118,22 @@
                                         sortable: true,
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            var div = document.createElement('div');
+                                            div.innerHTML = "Clave";
+                                            domStyle.set(div, "text-align", "center");
+                                            //domStyle.set(div, "background-color", "#ffffab");
+                                            //domStyle.set(node, "background-color", "#ffff12");
+                                            return div;
                                         }
                                     },
                                     {
                                         field: 'Nombre',
                                         label: 'Nombre',
-                                        editor: 'text',
-                                        editOn: 'dblclick'
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
                                     },
                                     {
                                         field: 'Antiguedad',
@@ -137,7 +146,15 @@
                             ],
                             [
                                 [
-                                    { field:'Pago',label: 'Pago', colSpan: 7 ,value:''},
+                                    {
+                                        field: 'Pago',
+                                        label: 'Pago',
+                                        colSpan: 7,
+                                        value: '',
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Pago", domStyle);
+                                        }
+                                    },
                                     {
                                         field: 'Sueldo',
                                         label: 'Sueldo',
@@ -512,6 +529,9 @@
                                         label: "Fecha",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Fecha", domStyle);
                                         }
                                     },
                                     {
@@ -519,6 +539,9 @@
                                         label: "Fecha Inicio",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Fecha Inicio", domStyle);
                                         }
                                     },
                                     {
@@ -526,6 +549,9 @@
                                         label: "Fecha Fin",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Fecha Fin", domStyle);
                                         }
                                     },
                                     {
@@ -533,6 +559,9 @@
                                         label: "Dias Pagados",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Dias Pagados", domStyle);
                                         }
                                     },
                                     {
@@ -540,6 +569,9 @@
                                         label: "Banco",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Banco", domStyle);
                                         }
                                     },
                                     {
@@ -547,13 +579,20 @@
                                         label: "Clabe",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Clabe", domStyle);
                                         }
+                                        
                                     },
                                     {
                                         field: 'Monto',
                                         label: "Monto",
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 1, "Monto", domStyle);
                                         }
                                     },
                                     {
@@ -561,6 +600,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data,td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -568,6 +610,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data,td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -575,6 +620,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -582,6 +630,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -589,6 +640,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -596,6 +650,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -603,6 +660,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -610,6 +670,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -617,6 +680,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -624,6 +690,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -631,6 +700,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -638,6 +710,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -645,6 +720,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -652,6 +730,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -659,6 +740,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premio de Puntualidad
                                     {
@@ -666,6 +750,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premio de Puntualidad
                                     {
@@ -673,6 +760,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima de Seguro de vida
                                     {
@@ -680,6 +770,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima de Seguro de vida
                                     {
@@ -687,6 +780,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de Gastos Médicos Mayores
                                     {
@@ -694,6 +790,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de Gastos Médicos Mayores
                                     {
@@ -701,6 +800,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas Sindicales Pagadas por el patron
                                     {
@@ -708,6 +810,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas Sindicales Pagadas por el patron
                                     {
@@ -715,6 +820,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Subsidios por incapacidad
                                     {
@@ -722,6 +830,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Subsidios por incapacidad
                                     {
@@ -729,6 +840,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Becas
                                     {
@@ -736,6 +850,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Becas
                                     {
@@ -743,6 +860,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Horas Extra
                                     {
@@ -750,6 +870,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Horas Extra
                                     {
@@ -757,6 +880,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Dominical
                                     {
@@ -764,6 +890,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Dominical
                                     {
@@ -771,6 +900,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Vacacional
                                     {
@@ -778,6 +910,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Vacacional
                                     {
@@ -785,6 +920,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Antigüead
                                     {
@@ -792,6 +930,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Antigüedad
                                     {
@@ -799,6 +940,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Pagos por Separación
                                     {
@@ -806,6 +950,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Pagos por Separación
                                     {
@@ -813,6 +960,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de retiro
                                     {
@@ -820,6 +970,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de retiro
                                     {
@@ -827,6 +980,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Indeminizaciones
                                     {
@@ -834,6 +990,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Indeminizaciones
                                     {
@@ -841,6 +1000,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Reembolso por funeral
                                     {
@@ -848,6 +1010,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Reembolso por funeral
                                     {
@@ -855,6 +1020,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas de seguridad social pagadas por el patrón
                                     {
@@ -862,6 +1030,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas de seguridad social pagadas por el patrón
                                     {
@@ -869,6 +1040,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Comisiones
                                     {
@@ -876,6 +1050,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Comisiones
                                     {
@@ -883,6 +1060,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de Despensa
                                     {
@@ -890,6 +1070,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de Despensa
                                     {
@@ -897,6 +1080,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de restaurante
                                     {
@@ -904,6 +1090,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de restaurante
                                     {
@@ -911,6 +1100,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de gasolina
                                     {
@@ -918,6 +1110,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de gasolina
                                     {
@@ -925,6 +1120,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de ropa
                                     {
@@ -932,6 +1130,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de ropa
                                     {
@@ -939,6 +1140,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para renta
                                     {
@@ -946,6 +1150,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para renta
                                     {
@@ -953,6 +1160,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Articulos escolares
                                     {
@@ -960,6 +1170,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Articulos escolares
                                     {
@@ -967,6 +1180,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Anteojos
                                     {
@@ -974,6 +1190,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Anteojos
                                     {
@@ -981,6 +1200,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Transporte
                                     {
@@ -988,6 +1210,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Transporte
                                     {
@@ -995,6 +1220,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Gastos de funeral
                                     {
@@ -1002,6 +1230,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Gasto de funeral
                                     {
@@ -1009,6 +1240,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Otros ingresos por salario
                                     {
@@ -1016,6 +1250,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Otros ingresos por salario 
                                     {
@@ -1023,6 +1260,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro
                                     {
@@ -1030,6 +1270,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro
                                     {
@@ -1037,6 +1280,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro parciales
                                     {
@@ -1044,6 +1290,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro parciales
                                     {
@@ -1051,6 +1300,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos en acciones o títulos valor que representan bienes
                                     {
@@ -1058,6 +1310,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos en acciones o títulos valor que representan bienes
                                     {
@@ -1065,6 +1320,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos asimilados a salarios
                                     {
@@ -1072,6 +1330,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos asimilados a salarios
                                     {
@@ -1079,6 +1340,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Alimentacion
                                     {
@@ -1086,6 +1350,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Alimentacion
                                     {
@@ -1093,6 +1360,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Habitacion
                                     {
@@ -1100,6 +1370,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Habitacion
                                     {
@@ -1114,6 +1387,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premios por asistencia
                                     {
@@ -1121,6 +1397,9 @@
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Total
                                     {
@@ -1128,6 +1407,9 @@
                                         label: "Exento",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Total
 

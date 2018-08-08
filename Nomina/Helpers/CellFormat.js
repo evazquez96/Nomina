@@ -30,6 +30,17 @@ function formatoDivTotal(data,td, bandera) {
     return div;
 }
 
-function calcularAntiguedad(inicio, actual) {
-
+function formatoHeader(node, bandera,text,domStyle) {
+    var div = document.createElement("div");
+    div.innerHTML = text;
+    domStyle.set(div, "text-align", "center");
+    switch (bandera) {
+        case 1://Headers para Pago
+            break;
+        case 2:
+            break;
+        default:
+            break;
+    }
+    return div;
 }
