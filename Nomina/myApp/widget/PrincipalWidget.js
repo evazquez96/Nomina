@@ -229,94 +229,576 @@
                                         field: 'Sueldo_Gravado',
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
-                                            var div = document.createElement('div');
-                                            td.style.setProperty("background-color", "#9ACD32", "important");
-                                            div.className = "renderedCell";
-                                            div.innerHTML = data;
-                                            return div;
+                                            return formatoDivTotal(data,td, true);
                                         }
                                     },
-                                    { field: 'Sueldo_Exento', label: "Exento" },
-                                    { field: 'Aguinaldo_Gravado', label: "Gravado" },
-                                    { field: 'Aguinaldo_Exento', label: "Exento" },
-                                    { field: 'PTU_Gravado', label: "Gravado" },
-                                    { field: 'PTU_Exento', label: "Exento" },
-                                    { field: 'RGMDyH_Gravado', label: "Gravado" },
-                                    { field: 'RGMDyH_Exento', label: "Exento" },
-                                    { field: 'FDA_Gravado', label: "Gravado" },
-                                    { field: 'FDA_Exento', label: "Exento" },
-                                    { field: 'CDA_Gravado', label: "Gravado" },
-                                    { field: 'CDA_Exento', label: "Exento" },
-                                    { field: 'CCTPP_Gravado', label: "Gravado" },
-                                    { field: 'CCTPP_Exento', label: "Exento" },
-                                    { field: 'PP_Gravado', label: "Gravado" },//Premio de Puntualidad
-                                    { field: 'PP_Exento', label: "Exento" },//Premio de Puntualidad
-                                    { field: 'PSV_Gravado', label: "Gravado" },//Prima de Seguro de vida
-                                    { field: 'PSV_Exento', label: "Exento" },//Prima de Seguro de vida
-                                    { field: 'SGMM_Gravado', label: "Gravado" },//Seguro de Gastos Médicos Mayores
-                                    { field: 'SGMM_Exento', label: "Exento" },//Seguro de Gastos Médicos Mayores
-                                    { field: 'CSPPP_Gravado', label: "Gravado" },//Cuotas Sindicales Pagadas por el patron
-                                    { field: 'CSPPP_Exento', label: "Exento" },//Cuotas Sindicales Pagadas por el patron
-                                    { field: 'SPI_Gravado', label: "Gravado" },//Subsidios por incapacidad
-                                    { field: 'SPI_Exento', label: "Exento" },//Subsidios por incapacidad
-                                    { field: 'Becas_Gravado', label: "Gravado" },//Becas
-                                    { field: 'Becas_Exento', label: "Exento" },//Becas
-                                    { field: 'HE_Gravado', label: "Gravado" },//Horas Extra
-                                    { field: 'HE_Exento', label: "Exento" },//Horas Extra
-                                    { field: 'PrimaD_Gravado', label: "Gravado" },//Prima Dominical
-                                    { field: 'PrimaD_Exento', label: "Exento" },//Prima Dominical
-                                    { field: 'PrimaV_Gravado', label: "Gravado" },//Prima Vacacional
-                                    { field: 'PrimaV_Exento', label: "Exento" },//Prima Vacacional
-                                    { field: 'PrimaA_Gravado', label: "Gravado" },//Prima Antigüead
-                                    { field: 'PrimaA_Exento', label: "Exento" },//Prima Antigüedad
-                                    { field: 'PPS_Gravado', label: "Gravado" },//Pagos por Separación
-                                    { field: 'PPS_Exento', label: "Exento" },//Pagos por Separación
-                                    { field: 'SDR_Gravado', label: "Gravado" },//Seguro de retiro
-                                    { field: 'SDR_Exento', label: "Exento" },//Seguro de retiro
-                                    { field: 'Indeminizaciones_Gravado', label: "Gravado" },//Indeminizaciones
-                                    { field: 'Indeminizaciones_Exento', label: "Exento" },//Indeminizaciones
-                                    { field: 'RPF_Gravado', label: "Gravado" },//Reembolso por funeral
-                                    { field: 'RPF_Exento', label: "Exento" },//Reembolso por funeral
-                                    { field: 'CDSSPPP_Gravado', label: "Gravado" },//Cuotas de seguridad social pagadas por el patrón
-                                    { field: 'CDSSPPP_Exento', label: "Exento" },//Cuotas de seguridad social pagadas por el patrón
-                                    { field: 'Comisiones_Gravado', label: "Gravado" },//Comisiones
-                                    { field: 'Comisiones_Exento', label: "Exento" },//Comisiones
-                                    { field: 'ValesD_Gravado', label: "Gravado" },//Vales de Despensa
-                                    { field: 'ValesD_Exento', label: "Exento" },//Vales de Despensa
-                                    { field: 'ValesR_Gravado', label: "Gravado" },//Vales de restaurante
-                                    { field: 'ValesR_Exento', label: "Exento" },//Vales de restaurante
-                                    { field: 'ValesG_Gravado', label: "Gravado" },//Vales de gasolina
-                                    { field: 'ValesG_Exento', label: "Exento" },//Vales de gasolina
-                                    { field: 'ValesRopa_Gravado', label: "Gravado" },//Vales de ropa
-                                    { field: 'ValesRopa_Exento', label: "Exento" },//Vales de ropa
-                                    { field: 'AyudaRenta_Gravado', label: "Gravado" },//Ayuda para renta
-                                    { field: 'AyudaRenta_Exento', label: "Exento" },//Ayuda para renta
-                                    { field: 'AyudaEscolar_Gravado', label: "Gravado" },//Ayuda para Articulos escolares
-                                    { field: 'AyudaEscolar_Exento', label: "Exento" },//Ayuda para Articulos escolares
-                                    { field: 'AyudaAnteojos_Gravado', label: "Gravado" },//Ayuda para Anteojos
-                                    { field: 'AyudaAnteojos_Exento', label: "Exento" },//Ayuda para Anteojos
-                                    { field: 'AyudaTransporte_Gravado', label: "Gravado" },//Ayuda para Transporte
-                                    { field: 'AyudaTransporte_Exento', label: "Exento" },//Ayuda para Transporte
-                                    { field: 'AyudaGF_Gravado', label: "Gravado" },//Ayuda para Gastos de funeral
-                                    { field: 'AyudaGF_Exento', label: "Exento" },//Ayuda para Gasto de funeral
-                                    { field: 'OIPS_Gravado', label: "Gravado" },//Otros ingresos por salario
-                                    { field: 'OIPS_Exento', label: "Exento" },//Otros ingresos por salario 
-                                    { field: 'JPHDR_Gravado', label: "Gravado" },//Jubilaciones, pensiones o haberes de retiro
-                                    { field: 'JPHDR_Exento', label: "Exento" },//Jubilaciones, pensiones o haberes de retiro
-                                    { field: 'JPHDRParciales_Gravado', label: "Gravado" },//Jubilaciones, pensiones o haberes de retiro parciales
-                                    { field: 'JPHDRParciales_Exento', label: "Exento" },//Jubilaciones, pensiones o haberes de retiro parciales
-                                    { field: 'IEAOTV_Gravado', label: "Gravado" },//Ingresos en acciones o títulos valor que representan bienes
-                                    { field: 'IEAOTV_Exento', label: "Exento" },//Ingresos en acciones o títulos valor que representan bienes
-                                    { field: 'IAAS_Gravado', label: "Gravado" },//Ingresos asimilados a salarios
-                                    { field: 'IAAS_Exento', label: "Exento" },//Ingresos asimilados a salarios
-                                    { field: 'Alimentacion_Gravado', label: "Gravado" },//Alimentacion
-                                    { field: 'Alimentacion_Exento', label: "Exento" },//Alimentacion
-                                    { field: 'Habitacion_Gravado', label: "Gravado" },//Habitacion
-                                    { field: 'Habitacion_Exento', label: "Exento" },//Habitacion
-                                    { field: 'PAsistecia_Gravado', label: "Gravado" },//Premios por asistencia
-                                    { field: 'PAsistencia_Exento', label: "Exento" },//Premios por asistencia
-                                    { field: 'TotalPercepcionesGravado', label: "Gravado" },//Total
-                                    { field: 'TotalPercepcionesExento', label: "Exento" },//Total
+                                    {
+                                        field: 'Sueldo_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data,td, false);
+                                        }
+                                    },
+                                    {
+                                        field: 'Aguinaldo_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },
+                                    {
+                                        field: 'Aguinaldo_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },
+                                    {
+                                        field: 'PTU_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },
+                                    {
+                                        field: 'PTU_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },
+                                    {
+                                        field: 'RGMDyH_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },
+                                    {
+                                        field: 'RGMDyH_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },
+                                    {
+                                        field: 'FDA_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },
+                                    {
+                                        field: 'FDA_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },
+                                    {
+                                        field: 'CDA_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },
+                                    {
+                                        field: 'CDA_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },
+                                    {
+                                        field: 'CCTPP_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },
+                                    {
+                                        field: 'CCTPP_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td,false);
+                                        }
+                                    },
+                                    {
+                                        field: 'PP_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Premio de Puntualidad
+                                    {
+                                        field: 'PP_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Premio de Puntualidad
+                                    {
+                                        field: 'PSV_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Prima de Seguro de vida
+                                    {
+                                        field: 'PSV_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Prima de Seguro de vida
+                                    {
+                                        field: 'SGMM_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Seguro de Gastos Médicos Mayores
+                                    {
+                                        field: 'SGMM_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td,false);
+                                        }
+                                    },//Seguro de Gastos Médicos Mayores
+                                    {
+                                        field: 'CSPPP_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Cuotas Sindicales Pagadas por el patron
+                                    {
+                                        field: 'CSPPP_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Cuotas Sindicales Pagadas por el patron
+                                    {
+                                        field: 'SPI_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Subsidios por incapacidad
+                                    {
+                                        field: 'SPI_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Subsidios por incapacidad
+                                    {
+                                        field: 'Becas_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Becas
+                                    {
+                                        field: 'Becas_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Becas
+                                    {
+                                        field: 'HE_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Horas Extra
+                                    {
+                                        field: 'HE_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Horas Extra
+                                    {
+                                        field: 'PrimaD_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Prima Dominical
+                                    {
+                                        field: 'PrimaD_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Prima Dominical
+                                    {
+                                        field: 'PrimaV_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Prima Vacacional
+                                    {
+                                        field: 'PrimaV_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Prima Vacacional
+                                    {
+                                        field: 'PrimaA_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Prima Antigüead
+                                    {
+                                        field: 'PrimaA_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Prima Antigüedad
+                                    {
+                                        field: 'PPS_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Pagos por Separación
+                                    {
+                                        field: 'PPS_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Pagos por Separación
+                                    {
+                                        field: 'SDR_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Seguro de retiro
+                                    {
+                                        field: 'SDR_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td,false);
+                                        }
+                                    },//Seguro de retiro
+                                    {
+                                        field: 'Indeminizaciones_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Indeminizaciones
+                                    {
+                                        field: 'Indeminizaciones_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Indeminizaciones
+                                    {
+                                        field: 'RPF_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Reembolso por funeral
+                                    {
+                                        field: 'RPF_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td,false);
+                                        }
+                                    },//Reembolso por funeral
+                                    {
+                                        field: 'CDSSPPP_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Cuotas de seguridad social pagadas por el patrón
+                                    {
+                                        field: 'CDSSPPP_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td,false);
+                                        }
+                                    },//Cuotas de seguridad social pagadas por el patrón
+                                    {
+                                        field: 'Comisiones_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Comisiones
+                                    {
+                                        field: 'Comisiones_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Comisiones
+                                    {
+                                        field: 'ValesD_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Vales de Despensa
+                                    {
+                                        field: 'ValesD_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Vales de Despensa
+                                    {
+                                        field: 'ValesR_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Vales de restaurante
+                                    {
+                                        field: 'ValesR_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Vales de restaurante
+                                    {
+                                        field: 'ValesG_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Vales de gasolina
+                                    {
+                                        field: 'ValesG_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Vales de gasolina
+                                    {
+                                        field: 'ValesRopa_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Vales de ropa
+                                    {
+                                        field: 'ValesRopa_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Vales de ropa
+                                    {
+                                        field: 'AyudaRenta_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ayuda para renta
+                                    {
+                                        field: 'AyudaRenta_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ayuda para renta
+                                    {
+                                        field: 'AyudaEscolar_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ayuda para Articulos escolares
+                                    {
+                                        field: 'AyudaEscolar_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ayuda para Articulos escolares
+                                    {
+                                        field: 'AyudaAnteojos_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ayuda para Anteojos
+                                    {
+                                        field: 'AyudaAnteojos_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ayuda para Anteojos
+                                    {
+                                        field: 'AyudaTransporte_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ayuda para Transporte
+                                    {
+                                        field: 'AyudaTransporte_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ayuda para Transporte
+                                    {
+                                        field: 'AyudaGF_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ayuda para Gastos de funeral
+                                    {
+                                        field: 'AyudaGF_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ayuda para Gasto de funeral
+                                    {
+                                        field: 'OIPS_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Otros ingresos por salario
+                                    {
+                                        field: 'OIPS_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Otros ingresos por salario 
+                                    {
+                                        field: 'JPHDR_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Jubilaciones, pensiones o haberes de retiro
+                                    {
+                                        field: 'JPHDR_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Jubilaciones, pensiones o haberes de retiro
+                                    {
+                                        field: 'JPHDRParciales_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Jubilaciones, pensiones o haberes de retiro parciales
+                                    {
+                                        field: 'JPHDRParciales_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Jubilaciones, pensiones o haberes de retiro parciales
+                                    {
+                                        field: 'IEAOTV_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ingresos en acciones o títulos valor que representan bienes
+                                    {
+                                        field: 'IEAOTV_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ingresos en acciones o títulos valor que representan bienes
+                                    {
+                                        field: 'IAAS_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Ingresos asimilados a salarios
+                                    {
+                                        field: 'IAAS_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Ingresos asimilados a salarios
+                                    {
+                                        field: 'Alimentacion_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Alimentacion
+                                    {
+                                        field: 'Alimentacion_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Alimentacion
+                                    {
+                                        field: 'Habitacion_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Habitacion
+                                    {
+                                        field: 'Habitacion_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Habitacion
+                                    {
+                                        field: 'PAsistecia_Gravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Premios por asistencia
+                                    {
+                                        field: 'PAsistencia_Exento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Premios por asistencia
+                                    {
+                                        field: 'TotalPercepcionesGravado',
+                                        label: "Gravado",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, true);
+                                        }
+                                    },//Total
+                                    {
+                                        field: 'TotalPercepcionesExento',
+                                        label: "Exento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        }
+                                    },//Total
 
 
                                     { field: 'ImporteSeguridadSocial', label: 'importe' },//ImporteSeguridadSocial
