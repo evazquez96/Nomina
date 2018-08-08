@@ -116,6 +116,7 @@
     </Content>
     <Content Include="CSS\CompoundColumns.css" />
     <Content Include="Global.asax" />
+    <Content Include="Helpers\CellFormat.js" />
     <Content Include="Helpers\ColumnSetHelper.js" />
     <Content Include="Helpers\CompoundColumHelper.js" />
     <Content Include="index.html" />
