@@ -102,9 +102,67 @@ namespace Nomina.Controllers
                         unaNomina.HE_Exento = filtrarCampo2(row[37]);//Horas Extra.
                         unaNomina.PrimaD_Gravado = filtrarCampo2(row[38]);//Prima Dominical
                         unaNomina.PrimaD_Exento = filtrarCampo2(row[39]);//Prima Dominical
+                        unaNomina.PrimaV_Gravado = filtrarCampo2(row[40]);//Prima vacacional.
+                        unaNomina.PrimaV_Exento = filtrarCampo2(row[41]);//Prima vacacional.
+                        unaNomina.PrimaA_Gravado = filtrarCampo2(row[42]);//Prima por antiguedad
+                        unaNomina.PrimaA_Exento = filtrarCampo2(row[43]);//Prima por antiguedad
+                        unaNomina.PPS_Gravado = filtrarCampo2(row[44]);//Pagos por separacion
+                        unaNomina.PPS_Exento = filtrarCampo2(row[45]);//Pagos por separacion
+                        unaNomina.SDR_Gravado = filtrarCampo2(row[46]);//Seguro de retiro
+                        unaNomina.SDR_Exento = filtrarCampo2(row[47]);//Seguro de retiro
+                        unaNomina.Indeminizaciones_Gravado = filtrarCampo2(row[48]);//Indeminizaciones
+                        unaNomina.Indeminizaciones_Exento = filtrarCampo2(row[49]);//Indeminizaciones
+                        unaNomina.RPF_Gravado = filtrarCampo2(row[50]);//Reembolso por funeral
+                        unaNomina.RPF_Exento = filtrarCampo2(row[51]);//Reembolso por funeral
+                        unaNomina.CDSSPPP_Gravado = filtrarCampo2(row[52]);//Cuotas de seguridad social pagadas por el patron.
+                        unaNomina.CDSSPPP_Exento = filtrarCampo2(row[53]);//Cuotas de seguridad social pagadas por el patron.
+                        unaNomina.Comisiones_Gravado = filtrarCampo2(row[54]);//Comisiones
+                        unaNomina.Comisiones_Exento = filtrarCampo2(row[55]);//Comisiones
+                        unaNomina.ValesD_Gravado = filtrarCampo2(row[56]);//Vales de despensa
+                        unaNomina.ValesD_Exento = filtrarCampo2(row[57]);//Vales de despensa
+                        unaNomina.ValesR_Gravado = filtrarCampo2(row[58]);//Vales de restaurant
+                        unaNomina.ValesR_Exento = filtrarCampo2(row[59]);//Vales de restaurant
+                        unaNomina.ValesG_Gravado = filtrarCampo2(row[60]);//Vales de gasolina
+                        unaNomina.ValesG_Exento = filtrarCampo2(row[61]);//Vales de gasolina
+                        unaNomina.ValesRopa_Gravado = filtrarCampo2(row[62]);//Vales de ropa.
+                        unaNomina.ValesRopa_Exento = filtrarCampo2(row[63]);//Vales de ropa.
+                        unaNomina.AyudaRenta_Gravado = filtrarCampo2(row[64]);//Ayuda para renta
+                        unaNomina.AyudaRenta_Exento = filtrarCampo2(row[65]);//Ayuda para renta
+                        unaNomina.AyudaEscolar_Gravado = filtrarCampo2(row[66]);//Ayuda para articulos escolares
+                        unaNomina.AyudaEscolar_Exento = filtrarCampo2(row[67]);//Ayuda para articulos escolares
+                        unaNomina.AyudaAnteojos_Gravado = filtrarCampo2(row[68]);//Ayuda para anteojos
+                        unaNomina.AyudaAnteojos_Exento = filtrarCampo2(row[69]);//Ayuda para anteojos
+                        unaNomina.AyudaTransporte_Gravado = filtrarCampo2(row[70]);//Ayuda para transporte
+                        unaNomina.AyudaTransporte_Exento = filtrarCampo2(row[71]);//Ayuda para transporte
+                        unaNomina.AyudaGF_Gravado = filtrarCampo2(row[72]);//Ayuda para gastos de funeral.
+                        unaNomina.AyudaGF_Exento = filtrarCampo2(row[73]);//Ayuda para gastos de funeral.
+                        unaNomina.OIPS_Gravado = filtrarCampo2(row[74]);//Otros ingresos por salarios.
+                        unaNomina.OIPS_Exento = filtrarCampo2(row[75]);//Otros ingresos por salarios.
+                        unaNomina.JPHDR_Gravado = filtrarCampo2(row[76]);//Jubilaciones, pensiones o haberes de retiro
+                        unaNomina.JPHDR_Exento = filtrarCampo2(row[77]);//Jubilaciones, pensiones o haberes de retiro
+                        unaNomina.JPHDRParciales_Gravado = filtrarCampo2(row[78]);//Jubilaciones, pensiones o haberes de retiro parciales
+                        unaNomina.JPHDRParciales_Exento = filtrarCampo2(row[79]);//Jubilaciones, pensiones o haberes de retiro parciales
+                        unaNomina.IEAOTV_Gravado = filtrarCampo2(row[80]);//Ingresos en acciones o titulo valor que representan bienes
+                        unaNomina.IEAOTV_Exento = filtrarCampo2(row[81]);//Ingresos en acciones o titulo valor que representan bienes
+                        unaNomina.IAAS_Gravado = filtrarCampo2(row[82]);//Ingresos asimilados a salarios
+                        unaNomina.IAAS_Exento = filtrarCampo2(row[83]);//Ingresos asimilados a salarios
+                        unaNomina.Alimentacion_Gravado = filtrarCampo2(row[84]);//Alimentacion
+                        unaNomina.Alimentacion_Exento = filtrarCampo2(row[85]);//Alimentacion
+                        unaNomina.Habitacion_Gravado = filtrarCampo2(row[86]);//Habitación
+                        unaNomina.Habitacion_Exento = filtrarCampo2(row[87]);//Habitación
+                        unaNomina.PAsistecia_Gravado = filtrarCampo2(row[88]);//Premios por asistencia
+                        unaNomina.PAsistecia_Exento = filtrarCampo2(row[89]);//Premios por asistencia
+                        unaNomina.TotalPercepcionesGravado = filtrarCampo2(row[90]);//Total de percepciones
+                        unaNomina.TotalPercepcionesExento = filtrarCampo2(row[91]);//Total de percepciones
+                        /*
+                         * FIN DE LA LECTURA DE LOS CAMPOS PARA LAS PERCEPCIONES.
+                         */
+
+
 
                         unaNomina.FechaInicialPago = Convert.ToString(row[4]);//Obtiene la fecha inicial de pago.
                         unaNomina.FechaFinalPago = Convert.ToString(row[5]);//Obtiene la fecha final de pago.
+                        unaNomina.getAntiguedad(unaNomina.FechaInicioRelLaboral, unaNomina.FechaPago);
                         nominaL.Add(unaNomina);
                     }
 
@@ -215,8 +273,7 @@ namespace Nomina.Controllers
 
         }
         private String filtrarCampo2(Object obj) {
-            return (Convert.ToString(obj).Equals("")) ? "0.0" : Convert.ToString(obj);
-
+            return (Convert.ToString(obj).Length==0) ? "0.0" : Convert.ToString(obj);
         }
         private String filtrarCampo(Object obj)
         {

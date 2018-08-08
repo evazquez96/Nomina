@@ -11,6 +11,13 @@ function formatoCeldasVacias(td) {
     return div;
 }
 
+function formatoCentrarContenido(data) {
+    var div = document.createElement("div");
+    div.innerHTML = data;
+    div.style.setProperty("text-align", "center", "important");
+    return div;
+}
+
 function formatoDivTotal(data,td, bandera) {
     var div = document.createElement('div');
     div.className = "renderedCell";
@@ -21,4 +28,8 @@ function formatoDivTotal(data,td, bandera) {
     else
         td.style.setProperty("background-color", "YELLOW", "important");//Color para los Exentos
     return div;
+}
+
+function calcularAntiguedad(inicio, actual) {
+
 }

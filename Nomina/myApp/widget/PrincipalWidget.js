@@ -112,14 +112,27 @@
                         [
                             [
                                 [
-                                    { field: 'NumEmpleado', label: 'Clave', sortable:true},
+                                    {
+                                        field: 'NumEmpleado',
+                                        label: 'Clave',
+                                        sortable: true,
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
                                     {
                                         field: 'Nombre',
                                         label: 'Nombre',
                                         editor: 'text',
                                         editOn: 'dblclick'
                                     },
-                                    { field: 'Antiguedad', label: 'Antigüedad' },
+                                    {
+                                        field: 'Antiguedad',
+                                        label: 'Antigüedad',
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
                                 ]
                             ],
                             [
@@ -494,13 +507,55 @@
                                 [
                                    
 
-                                    { field: 'FechaPago', label: "Fecha" },
-                                    { field: 'FechaInicialPago', label: "Fecha Inicio" },
-                                    { field: 'FechaFinalPago', label: "Fecha Fin" },
-                                    { field: 'NumDiasPagados', label: "Dias Pagados" },
-                                    { field: 'Banco', label: "Banco" },
-                                    { field: 'Clabe', label: "Clabe" },
-                                    { field: 'Monto', label: "Monto" },
+                                    {
+                                        field: 'FechaPago',
+                                        label: "Fecha",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
+                                    {
+                                        field: 'FechaInicialPago',
+                                        label: "Fecha Inicio",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
+                                    {
+                                        field: 'FechaFinalPago',
+                                        label: "Fecha Fin",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
+                                    {
+                                        field: 'NumDiasPagados',
+                                        label: "Dias Pagados",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
+                                    {
+                                        field: 'Banco',
+                                        label: "Banco",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
+                                    {
+                                        field: 'Clabe',
+                                        label: "Clabe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
+                                    {
+                                        field: 'Monto',
+                                        label: "Monto",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoCentrarContenido(data);
+                                        }
+                                    },
                                     {
                                         field: 'Sueldo_Gravado',
                                         label: "Gravado",
