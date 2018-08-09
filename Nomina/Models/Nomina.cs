@@ -139,6 +139,17 @@ namespace Nomina.Models
 
         //public Receptor Receptor { get; set; }
 
+        public void getAntiguedad(String fecha_inicio,String actual)
+        {
+            DateTime i=Convert.ToDateTime(fecha_inicio);
+            DateTime a=Convert.ToDateTime(actual);
+            TimeSpan ts=a-i;//Diferencia entre la fecha en que se manda a emitir la nomina y la fecha de relacion laboral
+            Antiguedad= Convert.ToString(ts.TotalDays/7);//Diferencia de fechas en semanas.
+            //Antiguedad = String.Format("{0:#.##}", Antiguedad.ToString());
+
+
+        }
+
         public void getAtributosReceptor(Receptor r)
         {
             Nombre = r.Nombre;   
@@ -160,6 +171,7 @@ namespace Nomina.Models
             SalarioBaseCotApor = r.SalarioBaseCotApor;
             SalarioDiarioIntegrado = r.SalarioDiarioIntegrado;
             ClaveEntFed = r.ClaveEntFed;
+            //Antiguedad=getAntiguedad()
         }
 
 

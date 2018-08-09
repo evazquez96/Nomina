@@ -1,8 +1,8 @@
 ﻿.dgrid-cell {
-    width: 180px;
+    width: 250px;
 }
-.field-NoEmpleado {
-    width: 50px;
+.field-NumEmpleado {
+    width: 80px;
 }
 .field-Nombre{
     width: 220px;
@@ -11,11 +11,11 @@
     width: 80px;
 }
 .field-Pago{
-    width: 600px;
+    width: 700px;
 }
 
 .dgrid-column-set-0 {
-    width: 30%;
+    width: 18%;
 }
 
 .dgrid-column-set-1 {
