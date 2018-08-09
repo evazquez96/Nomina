@@ -130,15 +130,8 @@
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
                                         },
-                                        editor: NumberTextBox,
-                                        editOn: 'dblclick',
-                                        editorArgs: {
-                                            //placeHolder: '#####.##',
-                                            constraints: { pattern: "0.######"}
-                                            
-                                            //value:"3000"
-
-                                        }
+                                        editor: 'text',
+                                        editOn:'dblclick'
                                     },
                                 ]
                             ],
@@ -1461,7 +1454,20 @@
 
 
                 });
+                var context = this;
+                /*
+                this.grid.on('.dgrid-cell:click', function (event) {
+                    var cell = context.grid.cell(event);
+                    console.log(cell.element);
+                    console.log(cell.column);
+                    console.log(cell.row);
 
+                });*/
+                this.grid.on('dgrid-datachange', function (event) {
+                    var cell = event.cell;
+                    console.log(cell);
+                });
+                
                 this.grid.startup();
 
                 this.CenterContentPane.addChild(this.grid);
