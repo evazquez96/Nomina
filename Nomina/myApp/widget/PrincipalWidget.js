@@ -21,6 +21,7 @@
     "dgrid/Selection",
     "dgrid/Editor",
     "dgrid/Keyboard",
+    "dojo/regexp",
      /**
      *Fin de modulos para ColumnSet
      **/
@@ -59,6 +60,7 @@
         Selection,
         Editor,
         Keyboard,
+        regex,
         /**
         *Fin de modulos para ColumnSet
         **/
@@ -1465,7 +1467,10 @@
                 });*/
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
-                    console.log(cell);
+                    var test = cell.column.renderCell;
+                    context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    //cell.style.setProperty("background-color", "red", "important");
+                    console.log(context.grid.cell(event).element);
                 });
                 
                 this.grid.startup();
