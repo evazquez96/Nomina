@@ -9,6 +9,7 @@
     "dojo/text!/myApp/widget/templates/PrincipalWidget.html",
     "dijit/form/Button",
     "dijit/form/ValidationTextBox",
+    "dijit/form/NumberTextBox",
     "dojo/dom-style",
     /**
     *Inicio de modulos para ColumnSet
@@ -46,6 +47,7 @@
         template,
         Button,
         ValidationTextBox,
+        NumberTextBox,
         domStyle,
         /**
         *Inicio de modulos para ColumnSet
@@ -88,23 +90,10 @@
                 this.TopContentPane.addChild(cargaDeLink, 0);
                 
             },
-            createGrid2: function () {
-                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry,Editor]);
-                this.grid = new CustomGrid();
-                this.CenterContentPane.addChild(this.grid);
-            }
-            ,
             createGrid: function () {
 
                 var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard]);
-                /*
-                var nomina = [
-                    { NoEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
-                    { NoEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
-                    { NoEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23"}
-                ];
-                var nominaStore = new Memory({ data: nomina, idProperty: 'NoEmpleado' });
-                */
+
                 this.grid = new CustomGrid({
 
                     //collection: nominaStore,
@@ -140,6 +129,15 @@
                                         label: 'Antigüedad',
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
+                                        },
+                                        editor: NumberTextBox,
+                                        editOn: 'dblclick',
+                                        editorArgs: {
+                                            //placeHolder: '#####.##',
+                                            constraints: { pattern: "0.######"}
+                                            
+                                            //value:"3000"
+
                                         }
                                     },
                                 ]
@@ -1463,9 +1461,7 @@
 
 
                 });
-                //
-                //grid.renderArray(nomina);
-                //grid.renderArray(nomina);
+
                 this.grid.startup();
 
                 this.CenterContentPane.addChild(this.grid);
@@ -1485,24 +1481,6 @@
 
                 var SpreadSheetId = this._getSpreadSheetId();
                 var url = "nomina/" + SpreadSheetId;
-                /*
-                var deferred = request.get(url, {
-                    handleAs: "json"
-                });
-                this.deferred = deferred.promise;
-                */
-                /*
-                request(url, {
-                    handleAs: "json"
-                }
-                ).then(
-                    function (text) {
-                        console.log(text);
-                    }, function (error) {
-                        console.log(error);
-                    }
-                );
-                */
                 console.log("Se enviara el link: " + url);
             },
             _setWidgetCSS: function () {
