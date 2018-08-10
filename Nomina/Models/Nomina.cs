@@ -145,9 +145,8 @@ namespace Nomina.Models
             DateTime a=Convert.ToDateTime(actual);
             TimeSpan ts=a-i;//Diferencia entre la fecha en que se manda a emitir la nomina y la fecha de relacion laboral
             Antiguedad= Convert.ToString(ts.TotalDays/7);//Diferencia de fechas en semanas.
+            //Antiguedad = String.Format("{0:0.000}", Antiguedad);
             //Antiguedad = String.Format("{0:#.##}", Antiguedad.ToString());
-
-
         }
 
         public void getAtributosReceptor(Receptor r)

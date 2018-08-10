@@ -18,6 +18,10 @@ function formatoCentrarContenido(data) {
     return div;
 }
 
+function getTotalPercepcionesGravado() {
+
+}
+
 function formatoDivTotal(data,td, bandera) {
     var div = document.createElement('div');
     div.className = "renderedCell";

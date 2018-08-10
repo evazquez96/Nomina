@@ -119,6 +119,8 @@
     <Content Include="Helpers\CellFormat.js" />
     <Content Include="Helpers\ColumnSetHelper.js" />
     <Content Include="Helpers\CompoundColumHelper.js" />
+    <Content Include="Helpers\EditorWidgetHelper.js" />
+    <Content Include="Helpers\ValidatorHelper.js" />
     <Content Include="index.html" />
     <Content Include="myApp\JS\myJS.js" />
     <Content Include="myApp\widget\CargaLinkWidget.js" />

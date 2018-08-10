@@ -103,17 +103,7 @@
                 });
                 var context = this;
                 when(deferred, function (value) {
-                    /*
-                    var nomina = [
-                        { NumEmpleado: 1, Nombre: " Jesus Eduardo Vazquez Martinez", Antiguedad: 22, Fecha: "2018/03/09", FechaI: "2018/02/23" },
-                        { NumEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
-                        { NumEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" }
-                    ];
-                    var nominaStore = new Memory({ data: nomina, idProperty: 'NumEmpleado' });
-                    context.grid.renderArray(nomina);*/
-                    context.createGrid(value);
-                    
-                    console.log(value);
+                    context.createGrid(value);  
                 });
                 console.log("Se enviara el link: "+url);
             },

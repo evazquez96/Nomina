@@ -10,6 +10,7 @@
     "dijit/form/Button",
     "dijit/form/ValidationTextBox",
     "dijit/form/NumberTextBox",
+    "dijit/form/DateTextBox",
     "dojo/dom-style",
     /**
     *Inicio de modulos para ColumnSet
@@ -49,6 +50,7 @@
         Button,
         ValidationTextBox,
         NumberTextBox,
+        DateTextBox,
         domStyle,
         /**
         *Inicio de modulos para ColumnSet
@@ -95,7 +97,7 @@
             createGrid: function () {
 
                 var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard]);
-
+                //var d = editorDate(DateTextBox);
                 this.grid = new CustomGrid({
 
                     //collection: nominaStore,
@@ -520,6 +522,11 @@
                                     {
                                         field: 'FechaPago',
                                         label: "Fecha",
+                                        /*editor: DateTextBox,
+                                        editOn: 'dgrid-cellfocusin',
+                                        editorArgs: {
+                                            style: "width:100px;"
+                                        },*/
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
                                         },
@@ -582,6 +589,7 @@
                                         field: 'Monto',
                                         label: "Monto",
                                         renderCell: function (object, data, td, options) {
+                                            validarCampo(9, td, data);
                                             return formatoCentrarContenido(data);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1388,9 +1396,12 @@
                                     {
                                         field: 'TotalPercepcionesGravado',
                                         label: "Gravado",
+                                        autoSave:true,
                                         renderCell: function (object, data, td, options) {
+                                            
                                             return formatoDivTotal(data, td, true);
-                                        },
+                                        }
+                                        ,
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
