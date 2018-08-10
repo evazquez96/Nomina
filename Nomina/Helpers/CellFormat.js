@@ -18,8 +18,10 @@ function formatoCentrarContenido(data) {
     return div;
 }
 
-function getTotalPercepcionesGravado() {
-
+function getTotalPercepcionesGravado(object) {
+    var total = 0.0;
+    total += parseFloat(object.Sueldo_Gravado);
+    return total;
 }
 
 function formatoDivTotal(data,td, bandera) {

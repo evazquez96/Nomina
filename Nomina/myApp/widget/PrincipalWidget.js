@@ -600,6 +600,7 @@
                                         field: 'Sueldo_Gravado',
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
+                                            //data=getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data,td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1398,7 +1399,8 @@
                                         label: "Gravado",
                                         autoSave:true,
                                         renderCell: function (object, data, td, options) {
-                                            
+                                            data = getTotalPercepcionesGravado(object);
+                                            console.log(object);
                                             return formatoDivTotal(data, td, true);
                                         }
                                         ,
@@ -1481,6 +1483,7 @@
                     var test = cell.column.renderCell;
                     context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
+                    //Investigar el metodo refresh(cell).
                     console.log(context.grid.cell(event).element);
                 });
                 
