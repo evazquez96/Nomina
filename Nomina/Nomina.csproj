@@ -113,8 +113,11 @@
   <ItemGroup>
     <Content Include="CSS\CompoundColumns.css" />
     <Content Include="Global.asax" />
+    <Content Include="Helpers\CellFormat.js" />
     <Content Include="Helpers\ColumnSetHelper.js" />
     <Content Include="Helpers\CompoundColumHelper.js" />
+    <Content Include="Helpers\EditorWidgetHelper.js" />
+    <Content Include="Helpers\ValidatorHelper.js" />
     <Content Include="index.html" />
     <Content Include="myApp\JS\myJS.js" />
     <Content Include="myApp\widget\CargaLinkWidget.js" />
@@ -146,7 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="client_secret.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Helpers\client_secret.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

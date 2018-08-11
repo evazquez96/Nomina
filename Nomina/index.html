@@ -8,13 +8,16 @@
 
     <link rel="stylesheet" href="Dojo/dijit/themes/claro/claro.css" />
     <script src="myApp/JS/myJS.js"></script>
+    <script src="Helpers/CellFormat.js"></script>
     <script src="Helpers/ColumnSetHelper.js"></script>
+    <script src="Helpers/ValidatorHelper.js"></script>
+
     <!--Cargar Style para CompoundColumns-->
     <link rel="stylesheet" href="CSS/CompoundColumns.css" />
     <link rel="stylesheet" href="myApp/widget/css/myColumnSets.css" />
 
     <style>
-       
+
         #borderContainer {
             width: 100%;
             height: 100%;
@@ -31,7 +34,7 @@
             margin: 0;
             overflow: hidden;
         }
-  
+
         /*
         .claro .dgrid-row-even {
             background: green;
@@ -39,13 +42,6 @@
         .claro .dgrid-row-odd {
             background: red;
         }*/
-
-        .claro .dgrid-column-Nombre {
-            background-color: blue;
-            color: red;
-            font-weight: bold;
-        }
-
 
     </style>
 
@@ -60,12 +56,10 @@
             Principal) {
             var p = dom.byId("principal");
             var widgetCarga = new Principal({ name: "Jesus Eduardo" }).placeAt(p);
+            widgetCarga.createGrid();
             widgetCarga.createTopPane();
             widgetCarga.startup();
-            widgetCarga.createGrid();
             console.log("Todo correcto");
-            console.log("Todo correcto");
-
             /*
             widgetCarga.deferred.then(function (text) {
                 console.log("Todo correcto");
