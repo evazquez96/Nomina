@@ -101,6 +101,8 @@
                 this.grid = new CustomGrid({
 
                     //collection: nominaStore,
+                    loadingMessage: 'Loading data...',
+                    noDataMessage: 'No results found.',
                     columnSets: 
                         [
                             [
@@ -1400,7 +1402,6 @@
                                         autoSave:true,
                                         renderCell: function (object, data, td, options) {
                                             data = getTotalPercepcionesGravado(object);
-                                            console.log(object);
                                             return formatoDivTotal(data, td, true);
                                         }
                                         ,
@@ -1484,7 +1485,14 @@
                     context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
-                    console.log(context.grid.cell(event).element);
+                    var z = context.grid.cell(event).row;
+                    console.log(cell.column.grid.collection.data[1]);
+                });
+
+                this.grid.on('dgrid-error', function (event) {
+                    // Display an error message above the grid when an error occurs.
+                    messageNode.className = 'errorMessage';
+                    messageNode.innerHTML = event.error.message;
                 });
                 
                 this.grid.startup();
