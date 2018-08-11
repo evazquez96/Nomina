@@ -19,6 +19,7 @@
     "dgrid/ColumnSet",
     "dgrid/extensions/CompoundColumns",
     'dgrid/extensions/DijitRegistry',
+    "dgrid/extensions/Pagination",
     "dgrid/Selection",
     "dgrid/Editor",
     "dgrid/Keyboard",
@@ -59,6 +60,7 @@
         ColumnSet,
         CompoundColumns,
         DijitRegistry,
+        Pagination,
         Selection,
         Editor,
         Keyboard,
@@ -101,8 +103,6 @@
                 this.grid = new CustomGrid({
 
                     //collection: nominaStore,
-                    loadingMessage: 'Loading data...',
-                    noDataMessage: 'No results found.',
                     columnSets: 
                         [
                             [
@@ -598,8 +598,14 @@
                                             return formatoHeader(node, 1, "Monto", domStyle);
                                         }
                                     },
-                                    {
+                                    {//Inicio de los Gravados
                                         field: 'Sueldo_Gravado',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             //data=getTotalPercepcionesGravado(object);
@@ -1482,18 +1488,14 @@
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
                     var test = cell.column.renderCell;
-                    context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(event).row;
-                    console.log(cell.column.grid.collection.data[1]);
+
+                    console.log(cell.column.editor);
                 });
 
-                this.grid.on('dgrid-error', function (event) {
-                    // Display an error message above the grid when an error occurs.
-                    messageNode.className = 'errorMessage';
-                    messageNode.innerHTML = event.error.message;
-                });
                 
                 this.grid.startup();
 
