@@ -602,13 +602,14 @@
                                         field: 'Sueldo_Gravado',
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave:true,
                                         editorArgs: {
                                             style: "width:110px",
                                             regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
-                                            //data=getTotalPercepcionesGravado(object);
+                                            data=getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data,td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1881,7 +1882,7 @@
                                         label: "Gravado",
                                         autoSave:true,
                                         renderCell: function (object, data, td, options) {
-                                            data = getTotalPercepcionesGravado(object);
+                                            //data = getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data, td, true);
                                         }
                                         ,
@@ -1966,7 +1967,12 @@
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(cell);
-                    console.log(event);
+                    //console.log(event);
+                    var row = context.grid.row(event);
+                    var grid = context.grid;
+                    //console.log(row.element);
+                    //console.log(z);
+                    actualizarValoresDgrid(event,grid);
                 });
 
                 

@@ -18,51 +18,7 @@ function formatoCentrarContenido(data) {
     return div;
 }
 
-function getTotalPercepcionesGravado(object) {
-    var total = 0.0;
-    total += parseFloat(object.Sueldo_Gravado);
-    total += parseFloat(object.Aguinaldo_Gravado);
-    total += parseFloat(object.Alimentacion_Gravado);
-    total += parseFloat(object.AyudaAnteojos_Gravado);
-    total += parseFloat(object.AyudaEscolar_Gravado);
-    total += parseFloat(object.AyudaGF_Gravado);
-    total += parseFloat(object.AyudaRenta_Gravado);
-    total += parseFloat(object.AyudaTransporte_Gravado);
-    total += parseFloat(object.Becas_Gravado);
-    total += parseFloat(object.CCTPP_Gravado);
-    total += parseFloat(object.CDA_Gravado);
-    total += parseFloat(object.CDSSPPP_Gravado);
-    total += parseFloat(object.CSPPP_Gravado);
-    total += parseFloat(object.Comisiones_Gravado);
-    total += parseFloat(object.FDA_Gravado);
-    total += parseFloat(object.HE_Gravado);
-    total += parseFloat(object.Habitacion_Gravado);
-    total += parseFloat(object.IAAS_Gravado);
-    total += parseFloat(object.IEAOTV_Gravado);
-    total += parseFloat(object.Indeminizaciones_Gravado);
-    total += parseFloat(object.JPHDRParciales_Gravado);
-    total += parseFloat(object.JPHDR_Gravado);
-    total += parseFloat(object.OIPS_Gravado);
-    total += parseFloat(object.PAsistecia_Gravado);
-    total += parseFloat(object.PPS_Gravado);
-    total += parseFloat(object.PP_Gravado);
-    total += parseFloat(object.PSV_Gravado);
-    total += parseFloat(object.PTU_Gravado);
-    total += parseFloat(object.PrimaA_Gravado);
-    total += parseFloat(object.PrimaD_Gravado);
-    total += parseFloat(object.PrimaV_Gravado);
-    total += parseFloat(object.RGMDyH_Gravado);
-    total += parseFloat(object.RPF_Gravado);
-    total += parseFloat(object.SDR_Gravado);
-    total += parseFloat(object.SGMM_Gravado);
-    total += parseFloat(object.SPI_Gravado);
-    total += parseFloat(object.ValesD_Gravado);
-    total += parseFloat(object.ValesG_Gravado);
-    total += parseFloat(object.ValesR_Gravado);
-    total += parseFloat(object.ValesRopa_Gravado);
 
-    return total;
-}
 
 function getTotalPercepcionesExento(object) {
     var total = 0.0;
