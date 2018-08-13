@@ -1965,9 +1965,8 @@
                     //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
-                    var z = context.grid.cell(event).row;
-
-                    console.log(cell.column.editor);
+                    var z = context.grid.cell(cell);
+                    console.log(event);
                 });
 
                 

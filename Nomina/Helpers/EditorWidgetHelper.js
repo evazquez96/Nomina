@@ -1,4 +1,5 @@
-﻿function editorDate(DateTextBox) {
-    var date = new DateTextBox();
-    return date;
+﻿function actualizarValoresDgrid(event) {
+    var evento = event;//Se obtiene el evento que se ejecuto al editar un valor del grid
+    switch (label) {
+    }
 }
