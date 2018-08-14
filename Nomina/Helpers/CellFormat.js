@@ -20,7 +20,7 @@ function formatoCentrarContenido(data) {
 
 
 
-function getTotalPercepcionesExento(object) {
+function getTotalPercepcionesExento(object,old,actual) {
     var total = 0.0;
     total += parseFloat(object.Sueldo_Exento);
     total += parseFloat(object.Aguinaldo_Exento);
@@ -62,7 +62,8 @@ function getTotalPercepcionesExento(object) {
     total += parseFloat(object.ValesG_Exento);
     total += parseFloat(object.ValesR_Exento);
     total += parseFloat(object.ValesRopa_Exento);
-
+    total -= parseFloat(old);
+    total += parseFloat(actual);
     return total;
 }
 

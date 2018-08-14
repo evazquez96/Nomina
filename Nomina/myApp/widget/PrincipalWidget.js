@@ -609,7 +609,7 @@
                                         },
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
-                                            data=getTotalPercepcionesGravado(object);
+                                            //data=getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data,td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1880,7 +1880,7 @@
                                     {
                                         field: 'TotalPercepcionesGravado',
                                         label: "Gravado",
-                                        autoSave:true,
+                                        //autoSave:true,
                                         renderCell: function (object, data, td, options) {
                                             //data = getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data, td, true);
@@ -1888,6 +1888,15 @@
                                         ,
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                        }
+                                        ,
+                                        get: function (object) {
+                                            //console.log(object);
+                                            return a(object);
+                                        },
+                                        set: function (object) {
+                                            //console.log(object);
+                                            return a(object);
                                         }
                                     },//Total
                                     {
@@ -1960,6 +1969,7 @@
                     console.log(cell.row);
 
                 });*/
+                /*
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
                     var test = cell.column.renderCell;
@@ -1973,8 +1983,21 @@
                     //console.log(row.element);
                     //console.log(z);
                     actualizarValoresDgrid(event,grid);
+                });*/
+                this.grid.on('dgrid-editor-hide', function (event) {
+                    var cell = event.cell;
+                    var test = cell.column.renderCell;
+                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    //cell.style.setProperty("background-color", "red", "important");
+                    //Investigar el metodo refresh(cell).
+                    var z = context.grid.cell(cell);
+                    //console.log(event);
+                    var row = context.grid.row(event);
+                    var grid = context.grid;
+                    //console.log(row.element);
+                    //console.log(z);
+                    actualizarValoresDgrid(event, grid);
                 });
-
                 
                 this.grid.startup();
 
