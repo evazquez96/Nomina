@@ -484,7 +484,11 @@
 
 
                                     /**Deducciones**/
-                                    { label: 'Seguridad Social', colSpan: 1 },//1
+                                    {
+                                        label: 'Seguridad Social',
+                                        field: 'Seguridad_Social',
+                                        colSpan: 1
+                                    },//1
                                     { label: 'ISR', colSpan: 1 },//2
                                     { label:'Aportaciones a retiro, cesantía en edad avanzada y vejez', colSpan:1},//3
                                     { label: 'Otros', colSpan: 1 },//4
