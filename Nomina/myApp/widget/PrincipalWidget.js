@@ -605,7 +605,7 @@
                                         autoSave:true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
@@ -621,9 +621,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data,td, false);
@@ -637,9 +638,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -653,9 +655,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -669,9 +672,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -685,9 +689,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -701,9 +706,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -717,9 +723,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -733,9 +740,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -749,9 +757,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -765,9 +774,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -781,9 +791,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -797,9 +808,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -813,9 +825,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -829,9 +842,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -845,9 +859,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -861,9 +876,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -877,9 +893,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -893,9 +910,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -909,9 +927,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -925,9 +944,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -941,9 +961,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -957,9 +978,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -973,9 +995,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -989,9 +1012,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1005,9 +1029,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1021,9 +1046,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1037,9 +1063,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1053,9 +1080,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1069,9 +1097,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1085,9 +1114,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1101,9 +1131,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1117,9 +1148,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1133,9 +1165,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1149,9 +1182,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1165,9 +1199,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1181,9 +1216,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1197,9 +1233,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -1213,9 +1250,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1229,9 +1267,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1245,9 +1284,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1261,9 +1301,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -1277,9 +1318,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1293,9 +1335,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -1309,9 +1352,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1325,9 +1369,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1341,9 +1386,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1357,9 +1403,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1373,9 +1420,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1389,9 +1437,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1405,9 +1454,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1421,9 +1471,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1437,9 +1488,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1453,9 +1505,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1469,9 +1522,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1485,9 +1539,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1501,9 +1556,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1517,9 +1573,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1533,9 +1590,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1549,9 +1607,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1565,9 +1624,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1581,9 +1641,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1597,9 +1658,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1613,9 +1675,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1629,9 +1692,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1645,9 +1709,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1661,9 +1726,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1677,9 +1743,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1693,9 +1760,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1709,9 +1777,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1725,9 +1794,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1741,9 +1811,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1757,9 +1828,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1773,9 +1845,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1789,9 +1862,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1805,9 +1879,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1821,9 +1896,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1837,9 +1913,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1853,9 +1930,10 @@
                                         label: "Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1866,9 +1944,10 @@
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
+                                        autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9])|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1889,11 +1968,11 @@
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                                         }
-                                        ,
+                                        ,/*
                                         get: function (object) {
                                             //console.log(object);
                                             return a(object);
-                                        },
+                                        },*/
                                         set: function (object) {
                                             //console.log(object);
                                             return a(object);
@@ -1907,6 +1986,9 @@
                                         },
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                        },
+                                        set: function (object) {
+                                            return getTotalPercepcionesExento(object);
                                         }
                                     },//Total
 
@@ -1984,19 +2066,20 @@
                     //console.log(z);
                     actualizarValoresDgrid(event,grid);
                 });*/
+                
                 this.grid.on('dgrid-editor-hide', function (event) {
+                    /*
                     var cell = event.cell;
                     var test = cell.column.renderCell;
                     //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(cell);
-                    //console.log(event);
-                    var row = context.grid.row(event);
+                    var row = context.grid.row(event);*/
                     var grid = context.grid;
-                    //console.log(row.element);
-                    //console.log(z);
-                    actualizarValoresDgrid(event, grid);
+                    grid.save();
+                    grid.refresh();
+                    //actualizarValoresDgrid(event, grid);
                 });
                 
                 this.grid.startup();

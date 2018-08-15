@@ -19,54 +19,6 @@ function formatoCentrarContenido(data) {
 }
 
 
-
-function getTotalPercepcionesExento(object,old,actual) {
-    var total = 0.0;
-    total += parseFloat(object.Sueldo_Exento);
-    total += parseFloat(object.Aguinaldo_Exento);
-    total += parseFloat(object.Alimentacion_Exento);
-    total += parseFloat(object.AyudaAnteojos_Exento);
-    total += parseFloat(object.AyudaEscolar_Exento);
-    total += parseFloat(object.AyudaGF_Exento);
-    total += parseFloat(object.AyudaRenta_Exento);
-    total += parseFloat(object.AyudaTransporte_Exento);
-    total += parseFloat(object.Becas_Exento);
-    total += parseFloat(object.CCTPP_Exento);
-    total += parseFloat(object.CDA_Exento);
-    total += parseFloat(object.CDSSPPP_Exento);
-    total += parseFloat(object.CSPPP_Exento);
-    total += parseFloat(object.Comisiones_Exento);
-    total += parseFloat(object.FDA_Exento);
-    total += parseFloat(object.HE_Exento);
-    total += parseFloat(object.Habitacion_Exento);
-    total += parseFloat(object.IAAS_Exento);
-    total += parseFloat(object.IEAOTV_Exento);
-    total += parseFloat(object.Indeminizaciones_Exento);
-    total += parseFloat(object.JPHDRParciales_Exento);
-    total += parseFloat(object.JPHDR_Exento);
-    total += parseFloat(object.OIPS_Exento);
-    total += parseFloat(object.PAsistecia_Exento);
-    total += parseFloat(object.PPS_Exento);
-    total += parseFloat(object.PP_Exento);
-    total += parseFloat(object.PSV_Exento);
-    total += parseFloat(object.PTU_Exento);
-    total += parseFloat(object.PrimaA_Exento);
-    total += parseFloat(object.PrimaD_Exento);
-    total += parseFloat(object.PrimaV_Exento);
-    total += parseFloat(object.RGMDyH_Exento);
-    total += parseFloat(object.RPF_Exento);
-    total += parseFloat(object.SDR_Exento);
-    total += parseFloat(object.SGMM_Exento);
-    total += parseFloat(object.SPI_Exento);
-    total += parseFloat(object.ValesD_Exento);
-    total += parseFloat(object.ValesG_Exento);
-    total += parseFloat(object.ValesR_Exento);
-    total += parseFloat(object.ValesRopa_Exento);
-    total -= parseFloat(old);
-    total += parseFloat(actual);
-    return total;
-}
-
 function formatoDivTotal(data,td, bandera) {
     var div = document.createElement('div');
     div.className = "renderedCell";
