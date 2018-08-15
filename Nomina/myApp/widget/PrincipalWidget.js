@@ -103,6 +103,7 @@
                 this.grid = new CustomGrid({
 
                     //collection: nominaStore,
+                    cellNavigation: false,
                     columnSets: 
                         [
                             [
@@ -525,16 +526,23 @@
                                         field: 'FechaPago',
                                         label: "Fecha",
                                         /*editor: DateTextBox,
-                                        editOn: 'dgrid-cellfocusin',
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        */
                                         editorArgs: {
-                                            style: "width:100px;"
-                                        },*/
+                                            style: "width:100px;",
+                                            constraints: { datePattern: 'yyyy/MM/dd' }
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
                                         },
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 1, "Fecha", domStyle);
-                                        }
+                                        }/*,
+                                        set: function (object) {
+                                            console.log(Date.parse(object.FechaPago));
+                                            return moment((Date.parse(object.FechaPago)));
+                                        }*/
                                     },
                                     {
                                         field: 'FechaInicialPago',
@@ -1940,7 +1948,7 @@
                                         }
                                     },//Premios por asistencia
                                     {
-                                        field: 'PAsistencia_Exento',
+                                        field: 'PAsistecia_Exento',
                                         label: "Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
