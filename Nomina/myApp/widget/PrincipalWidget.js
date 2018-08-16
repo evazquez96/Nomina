@@ -520,7 +520,8 @@
                                     { label: 'Horas Extras: Dobles', colSpan: 3 },
                                     { label: 'Horas Extras: Triples', colSpan: 3 },
                                     { label: 'Horas Extras: Simples', colSpan: 3 },
-                                    { label: 'Total'}
+                                    { label: 'Total' },
+                                    {label:'isValid'}//Fin
 
                                 ],
                                 [
@@ -2047,7 +2048,9 @@
                                     { field: 'HorasExS_Dias', label: "Dias" },//Horas Extra Simples dias.
                                     { field: 'HorasExS_Horas', label: "Horas" },//Horas Extra Simples horas.
                                     { field: 'HorasExS_Importe', label: "Importe" },//Horas Extras Simples importe
-                                    { field: 'TotalHE', label: "Importe" }//Total Horas Extra
+                                    { field: 'TotalHE', label: "Importe" },//Total Horas Extra
+
+                                    { field:'checkRegistro', label: 'isValid' }
                                 ]
                             ]
                         ]
@@ -2078,7 +2081,8 @@
                     //console.log(z);
                     actualizarValoresDgrid(event,grid);
                 });*/
-                
+                //this.grid.styleColumn("Nombre", "display: none;");
+
                 this.grid.on('dgrid-editor-hide', function (event) {
                     /*
                     var cell = event.cell;

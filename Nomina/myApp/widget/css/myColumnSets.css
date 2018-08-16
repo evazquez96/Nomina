@@ -4,8 +4,14 @@
 .field-NumEmpleado {
     width: 80px;
 }
-.field-Nombre{
+.field-Nombre {
     width: 220px;
+    /*
+        Con la siguiente propiedad: display:none;
+        se oculta la celda, se ocupara esta propiedad
+        para ocultar la celda que verificara si el 
+        registro es valido.
+    */
 }
 .field-Antiguedad{
     width: 80px;
