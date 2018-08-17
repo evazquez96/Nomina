@@ -35,6 +35,8 @@ function formatoHeader(node, bandera,text,domStyle) {
     var div = document.createElement("div");
     div.innerHTML = text;
     domStyle.set(div, "text-align", "center");
+    domStyle.set(div, "font-size", "70%");
+
     switch (bandera) {
         case 1://Headers para Pago
             break;
