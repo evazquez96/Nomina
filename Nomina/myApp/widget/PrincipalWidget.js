@@ -489,16 +489,56 @@
                                         field: 'Seguridad_Social',
                                         colSpan: 1
                                     },//1
-                                    { label: 'ISR', colSpan: 1 },//2
-                                    { label:'Aportaciones a retiro, cesantía en edad avanzada y vejez', colSpan:1},//3
-                                    { label: 'Otros', colSpan: 1 },//4
-                                    { label: 'Descuento por incapacidad', colSpan: 1 },//6
-                                    { label: 'Pensión alimenticia', colSpan: 1 },//7
-                                    { label: 'Pago por crédito de vivienda', colSpan: 1 },//10
-                                    { label: 'Pago de abonos INFONACOT', colSpan: 1 },//11
-                                    { label: 'Anticipo de salarios', colSpan: 1 },//12
-                                    { label: 'Errores', colSpan: 1 },//14
-                                    { label: 'Pérdidas', colSpan: 1 },//15
+                                    {
+                                        label: 'ISR',
+                                        field: 'ISR',
+                                        colSpan: 1
+                                    },//2
+                                    {
+                                        label: 'Aportaciones a retiro, cesantía en edad avanzada y vejez',
+                                        colSpan: 1,
+                                        field: 'ARCEAV'
+                                    },//3
+                                    {
+                                        label: 'Otros',
+                                        colSpan: 1,
+                                        field:'otros'
+                                    },//4
+                                    {
+                                        label: 'Descuento por incapacidad',
+                                        colSpan: 1,
+                                        field:'Descuento por incapacidad'
+                                    },//6
+                                    {
+                                        label: 'Pensión alimenticia',
+                                        colSpan: 1,
+                                        field: 'Pension alimenticia'
+                                    },//7
+                                    {
+                                        label: 'Pago por crédito de vivienda',
+                                        colSpan: 1,
+                                        field:'Pago credito vivienda'
+                                    },//10
+                                    {
+                                        label: 'Pago de abonos INFONACOT',
+                                        colSpan: 1,
+                                        field: 'Abono INFONACOT'
+                                    },//11
+                                    {
+                                        label: 'Anticipo de salarios',
+                                        colSpan: 1,
+                                        field:  'Anticipo de salarios'
+                                    },//12
+                                    {
+                                        label: 'Errores',
+                                        colSpan: 1,
+                                        field: 'Errores'
+                                    },//14
+                                    {
+                                        label: 'Pérdidas',
+                                        colSpan: 1,
+                                        field: 'Perdidas'
+                                    },//15
                                     { label: 'Averías', colSpan: 1 },//16
                                     { label: 'Adquisición de artículos producidos por la empresa o establecimiento', colSpan: 1 },//17
                                     { label: 'Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro', colSpan: 1 },//18
@@ -2006,26 +2046,86 @@
                                     },//Total
 
 
-                                    { field: 'ImporteSeguridadSocial', label: 'importe' },//ImporteSeguridadSocial
-                                    { field: 'ImporteISR', label: 'importe' },//ImporteISR
-                                    { field: 'ImporteARCEAV', label: 'importe' },//Aportaciones a retiro, cesantía en edad avanzada y vejez
-                                    { field: 'ImporteOtros', label: 'importe' },//Otros
-                                    { field: 'ImporteDPI', label: 'importe' },//Importe Descuento por incapacidad
-                                    { field: 'ImportePA', label: 'importe' },//Importe pensión alimenticia
-                                    { field: 'ImportePPCDV', label: 'importe' },//Importe Pago Por Credito De Vivienda
-                                    { field: 'ImporteINFONACOT', label: 'importe' },//Importe de Pago de abonos INFONACOT
-                                    { field: 'ImporteADS', label: 'importe' },//Importe anticipo de Salarios
-                                    { field: 'ImporteErrores', label: 'importe' },//Importe Errores
-                                    { field: 'ImportePerdidas', label: 'importe' },//Importe Perdidas
-                                    { field: 'ImporteAverias', label: 'importe' },//Importe Averías
-                                    { field: 'ImporteAdquisicionArticulos', label: 'importe' },//Importe Adquisición de articulos
-                                    { field: 'ImporteCuotasConstitucion', label: 'importe' },//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
-                                    { field: 'ImporteCuotasSindicales', label: 'importe' },//Importe Cuotas Sindicales
-                                    { field: 'ImporteAusencia', label: 'importe' },//Importe Ausencia
-                                    { field: 'ImporteObreroP', label: 'importe' },//Importe cutoas obrero patronales
-                                    { field: 'ImporteImpuestosL', label: 'importe' },//Importe impuestos locales
-                                    { field: 'ImporteAportacionesV', label: 'importe' },//Importe aportaciones voluntarias
-                                    { field: 'TotalDeducciones', label: "", colSpan: 2 },//Total
+                                    {
+                                        field: 'ImporteSeguridadSocial',
+                                        label: 'importe'
+                                    },//ImporteSeguridadSocial
+                                    {
+                                        field: 'ImporteISR',
+                                        label: 'importe'
+                                    },//ImporteISR
+                                    {
+                                        field: 'ImporteARCEAV',
+                                        label: 'importe'
+                                    },//Aportaciones a retiro, cesantía en edad avanzada y vejez
+                                    {
+                                        field: 'ImporteOtros',
+                                        label: 'importe'
+                                    },//Otros
+                                    {
+                                        field: 'ImporteDPI',
+                                        label: 'importe'
+                                    },//Importe Descuento por incapacidad
+                                    {
+                                        field: 'ImportePA',
+                                        label: 'importe'
+                                    },//Importe pensión alimenticia
+                                    {
+                                        field: 'ImportePPCDV',
+                                        label: 'importe'
+                                    },//Importe Pago Por Credito De Vivienda
+                                    {
+                                        field: 'ImporteINFONACOT',
+                                        label: 'importe'
+                                    },//Importe de Pago de abonos INFONACOT
+                                    {
+                                        field: 'ImporteADS',
+                                        label: 'importe'
+                                    },//Importe anticipo de Salarios
+                                    {
+                                        field: 'ImporteErrores',
+                                        label: 'importe'
+                                    },//Importe Errores
+                                    {
+                                        field: 'ImportePerdidas',
+                                        label: 'importe'
+                                    },//Importe Perdidas
+                                    {
+                                        field: 'ImporteAverias',
+                                        label: 'importe'
+                                    },//Importe Averías
+                                    {
+                                        field: 'ImporteAdquisicionArticulos',
+                                        label: 'importe'
+                                    },//Importe Adquisición de articulos
+                                    {
+                                        field: 'ImporteCuotasConstitucion',
+                                        label: 'importe'
+                                    },//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
+                                    {
+                                        field: 'ImporteCuotasSindicales',
+                                        label: 'importe'
+                                    },//Importe Cuotas Sindicales
+                                    {
+                                        field: 'ImporteAusencia',
+                                        label: 'importe'
+                                    },//Importe Ausencia
+                                    {
+                                        field: 'ImporteObreroP',
+                                        label: 'importe'
+                                    },//Importe cutoas obrero patronales
+                                    {
+                                        field: 'ImporteImpuestosL',
+                                        label: 'importe'
+                                    },//Importe impuestos locales
+                                    {
+                                        field: 'ImporteAportacionesV',
+                                        label: 'importe'
+                                    },//Importe aportaciones voluntarias
+                                    {
+                                        field: 'TotalDeducciones',
+                                        label: "", colSpan: 2
+                                    },//Total
 
                                     /**Incapacidades**/
                                     { field: 'RiesgoTrabajoDias', label: "Dias" },//Riesgo de trabajo dias

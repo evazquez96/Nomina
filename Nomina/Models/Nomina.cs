@@ -161,8 +161,6 @@ namespace Nomina.Models
         public String ImporteImpuestosL { get; set; }
         public String ImporteAportacionesV { get; set; }
         public String TotalDeducciones { get; set; }
-
-
         /**
          *  Fin de los atributos de deducciones
          **/
