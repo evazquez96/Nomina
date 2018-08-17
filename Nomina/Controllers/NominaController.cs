@@ -154,10 +154,41 @@ namespace Nomina.Controllers
                         unaNomina.PAsistecia_Exento = limpiarMontos(filtrarCampo2(row[89]));//Premios por asistencia
                         unaNomina.TotalPercepcionesGravado = limpiarMontos(filtrarCampo2(row[90]));//Total de percepciones
                         unaNomina.TotalPercepcionesExento = limpiarMontos(filtrarCampo2(row[91]));//Total de percepciones
+                                                                                                  /*
+                                                                                                   * FIN DE LA LECTURA DE LOS CAMPOS PARA LAS PERCEPCIONES.
+                                                                                                   */
+                        unaNomina.ImporteSeguridadSocial = limpiarMontos(filtrarCampo2(row[92]));
+                        /**Apartir de este campo, ya cuando se tenga en producción, solo se tendra el importe,
+                         * se omitira el gravado y exento, por lo tanto se tendra que modificar la estructura
+                         * de la hoja de Google Sheets. Revisar el documento de observacines Nomina que esta en
+                         * drive.**/
+                        unaNomina.ImporteISR = limpiarMontos(filtrarCampo2(row[94]));
+                        unaNomina.ImporteARCEAV= limpiarMontos(filtrarCampo2(row[96]));
+                        unaNomina.ImporteOtros= limpiarMontos(filtrarCampo2(row[98]));//Verificar desde aqui
+                        //Revisar columnas CV a CY
+                        unaNomina.ImporteDPI= limpiarMontos(filtrarCampo2(row[102]));
+                        unaNomina.ImportePA= limpiarMontos(filtrarCampo2(row[105]));//Importe pensión alimenticia.
                         /*
-                         * FIN DE LA LECTURA DE LOS CAMPOS PARA LAS PERCEPCIONES.
-                         */
+       public String ImportePA { get; set; }
+       public String ImportePPCDV { get; set; }
+       public String ImporteINFONACOT { get; set; }
+       public String ImporteADS { get; set; }
+       public String ImporteErrores { get; set; }
+       public String ImportePerdidas { get; set; }
+       public String ImporteAverias { get; set; }
+       public String ImporteAdquisicionArticulos { get; set; }
+       public String ImporteCuotasConstitucion { get; set; }
+       public String ImporteCuotasSindicales { get; set; }
+       public String ImporteAusencia { get; set; }
+       public String ImporteObreroP { get; set; }
+       public String ImporteImpuestosL { get; set; }
+       public String ImporteAportacionesV { get; set; }
+       public String TotalDeducciones { get; set; }
+       */
 
+                        /**
+                         * Inicio de los campos para las deducciones
+                         * **/
 
 
                         unaNomina.FechaInicialPago = Convert.ToString(row[4]);//Obtiene la fecha inicial de pago.

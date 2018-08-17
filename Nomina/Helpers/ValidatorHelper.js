@@ -12,6 +12,7 @@ function limpiarCadenaMontos(monto) {
     return d;
 }
 
+
 function validarMontos(monto) {
     //var d = limpiarCadenaMontos(monto);
     /**Las líneas anteriores limpian la cadena de espacios en blanco y ,**/

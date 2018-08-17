@@ -11,6 +11,8 @@
     <script src="Helpers/CellFormat.js"></script>
     <script src="Helpers/ColumnSetHelper.js"></script>
     <script src="Helpers/ValidatorHelper.js"></script>
+    <script src="Helpers/EditorWidgetHelper.js"></script>
+    <script src="Helpers/ValidadorDeContenidoDeCeldasParaEmitir.js"></script>
 
     <!--Cargar Style para CompoundColumns-->
     <link rel="stylesheet" href="CSS/CompoundColumns.css" />
@@ -42,7 +44,13 @@
         .claro .dgrid-row-odd {
             background: red;
         }*/
-
+        .dgrid-no-data,
+        .dgrid-loading {
+            color: #aaa;
+            font-size: 3em;
+            padding: 3em;
+            text-align: center;
+        }
     </style>
 
 </head>

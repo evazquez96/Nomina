@@ -15,7 +15,7 @@ namespace Nomina.Models
         public String FechaFinalPago { get; set; }//requerido
         public String NumDiasPagados { get; set; }//requerido
         public String TotalPercepciones { get; set; }//condicional
-        public String TotalDeducciones { get; set; }//condicional
+        //public String TotalDeducciones { get; set; }//condicional
         public String TotalOtrosPagos { get; set; }//condicional
         public String Monto { get; set; }
         //public decimal NumDiasPagados { get; set; }
@@ -136,6 +136,35 @@ namespace Nomina.Models
         /**
          **Fin de los atributos para las Percepciones
         **/
+
+
+        /**
+         * Inicio de los atributos de  deducciones
+         **/
+        public String ImporteSeguridadSocial { get; set; }
+        public String ImporteISR { get; set; }
+        public String ImporteARCEAV { get; set; }
+        public String ImporteOtros { get; set; }
+        public String ImporteDPI { get; set; }
+        public String ImportePA { get; set; }
+        public String ImportePPCDV { get; set; }
+        public String ImporteINFONACOT { get; set; }
+        public String ImporteADS { get; set; }
+        public String ImporteErrores { get; set; }
+        public String ImportePerdidas { get; set; }
+        public String ImporteAverias { get; set; }
+        public String ImporteAdquisicionArticulos { get; set; }
+        public String ImporteCuotasConstitucion { get; set; }
+        public String ImporteCuotasSindicales { get; set; }
+        public String ImporteAusencia { get; set; }
+        public String ImporteObreroP { get; set; }
+        public String ImporteImpuestosL { get; set; }
+        public String ImporteAportacionesV { get; set; }
+        public String TotalDeducciones { get; set; }
+        /**
+         *  Fin de los atributos de deducciones
+         **/
+
 
         //public Receptor Receptor { get; set; }
 

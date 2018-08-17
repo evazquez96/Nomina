@@ -19,6 +19,7 @@
     "dgrid/ColumnSet",
     "dgrid/extensions/CompoundColumns",
     'dgrid/extensions/DijitRegistry',
+    "dgrid/extensions/Pagination",
     "dgrid/Selection",
     "dgrid/Editor",
     "dgrid/Keyboard",
@@ -59,6 +60,7 @@
         ColumnSet,
         CompoundColumns,
         DijitRegistry,
+        Pagination,
         Selection,
         Editor,
         Keyboard,
@@ -101,8 +103,7 @@
                 this.grid = new CustomGrid({
 
                     //collection: nominaStore,
-                    loadingMessage: 'Loading data...',
-                    noDataMessage: 'No results found.',
+                    cellNavigation: false,
                     columnSets: 
                         [
                             [
@@ -483,17 +484,61 @@
 
 
                                     /**Deducciones**/
-                                    { label: 'Seguridad Social', colSpan: 1 },//1
-                                    { label: 'ISR', colSpan: 1 },//2
-                                    { label:'Aportaciones a retiro, cesantía en edad avanzada y vejez', colSpan:1},//3
-                                    { label: 'Otros', colSpan: 1 },//4
-                                    { label: 'Descuento por incapacidad', colSpan: 1 },//6
-                                    { label: 'Pensión alimenticia', colSpan: 1 },//7
-                                    { label: 'Pago por crédito de vivienda', colSpan: 1 },//10
-                                    { label: 'Pago de abonos INFONACOT', colSpan: 1 },//11
-                                    { label: 'Anticipo de salarios', colSpan: 1 },//12
-                                    { label: 'Errores', colSpan: 1 },//14
-                                    { label: 'Pérdidas', colSpan: 1 },//15
+                                    {
+                                        label: 'Seguridad Social',
+                                        field: 'Seguridad_Social',
+                                        colSpan: 1
+                                    },//1
+                                    {
+                                        label: 'ISR',
+                                        field: 'ISR',
+                                        colSpan: 1
+                                    },//2
+                                    {
+                                        label: 'Aportaciones a retiro, cesantía en edad avanzada y vejez',
+                                        colSpan: 1,
+                                        field: 'ARCEAV'
+                                    },//3
+                                    {
+                                        label: 'Otros',
+                                        colSpan: 1,
+                                        field:'otros'
+                                    },//4
+                                    {
+                                        label: 'Descuento por incapacidad',
+                                        colSpan: 1,
+                                        field:'Descuento por incapacidad'
+                                    },//6
+                                    {
+                                        label: 'Pensión alimenticia',
+                                        colSpan: 1,
+                                        field: 'Pension alimenticia'
+                                    },//7
+                                    {
+                                        label: 'Pago por crédito de vivienda',
+                                        colSpan: 1,
+                                        field:'Pago credito vivienda'
+                                    },//10
+                                    {
+                                        label: 'Pago de abonos INFONACOT',
+                                        colSpan: 1,
+                                        field: 'Abono INFONACOT'
+                                    },//11
+                                    {
+                                        label: 'Anticipo de salarios',
+                                        colSpan: 1,
+                                        field:  'Anticipo de salarios'
+                                    },//12
+                                    {
+                                        label: 'Errores',
+                                        colSpan: 1,
+                                        field: 'Errores'
+                                    },//14
+                                    {
+                                        label: 'Pérdidas',
+                                        colSpan: 1,
+                                        field: 'Perdidas'
+                                    },//15
                                     { label: 'Averías', colSpan: 1 },//16
                                     { label: 'Adquisición de artículos producidos por la empresa o establecimiento', colSpan: 1 },//17
                                     { label: 'Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro', colSpan: 1 },//18
@@ -515,7 +560,8 @@
                                     { label: 'Horas Extras: Dobles', colSpan: 3 },
                                     { label: 'Horas Extras: Triples', colSpan: 3 },
                                     { label: 'Horas Extras: Simples', colSpan: 3 },
-                                    { label: 'Total'}
+                                    { label: 'Total' },
+                                    {label:'isValid'}//Fin
 
                                 ],
                                 [
@@ -525,16 +571,23 @@
                                         field: 'FechaPago',
                                         label: "Fecha",
                                         /*editor: DateTextBox,
-                                        editOn: 'dgrid-cellfocusin',
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        */
                                         editorArgs: {
-                                            style: "width:100px;"
-                                        },*/
+                                            style: "width:100px;",
+                                            constraints: { datePattern: 'yyyy/MM/dd' }
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoCentrarContenido(data);
                                         },
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 1, "Fecha", domStyle);
-                                        }
+                                        }/*,
+                                        set: function (object) {
+                                            console.log(Date.parse(object.FechaPago));
+                                            return moment((Date.parse(object.FechaPago)));
+                                        }*/
                                     },
                                     {
                                         field: 'FechaInicialPago',
@@ -598,8 +651,15 @@
                                             return formatoHeader(node, 1, "Monto", domStyle);
                                         }
                                     },
-                                    {
+                                    {//Inicio de los Gravados
                                         field: 'Sueldo_Gravado',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave:true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         label: "Gravado",
                                         renderCell: function (object, data, td, options) {
                                             //data=getTotalPercepcionesGravado(object);
@@ -612,6 +672,13 @@
                                     {
                                         field: 'Sueldo_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data,td, false);
                                         },
@@ -622,6 +689,13 @@
                                     {
                                         field: 'Aguinaldo_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -632,6 +706,13 @@
                                     {
                                         field: 'Aguinaldo_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -642,6 +723,13 @@
                                     {
                                         field: 'PTU_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -652,6 +740,13 @@
                                     {
                                         field: 'PTU_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -662,6 +757,13 @@
                                     {
                                         field: 'RGMDyH_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -672,6 +774,13 @@
                                     {
                                         field: 'RGMDyH_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -682,6 +791,13 @@
                                     {
                                         field: 'FDA_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -692,6 +808,13 @@
                                     {
                                         field: 'FDA_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -702,6 +825,13 @@
                                     {
                                         field: 'CDA_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -712,6 +842,13 @@
                                     {
                                         field: 'CDA_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -722,6 +859,13 @@
                                     {
                                         field: 'CCTPP_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -732,6 +876,13 @@
                                     {
                                         field: 'CCTPP_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
                                         },
@@ -742,6 +893,13 @@
                                     {
                                         field: 'PP_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -752,6 +910,13 @@
                                     {
                                         field: 'PP_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -762,6 +927,13 @@
                                     {
                                         field: 'PSV_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -772,6 +944,13 @@
                                     {
                                         field: 'PSV_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -782,6 +961,13 @@
                                     {
                                         field: 'SGMM_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -792,6 +978,13 @@
                                     {
                                         field: 'SGMM_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
                                         },
@@ -802,6 +995,13 @@
                                     {
                                         field: 'CSPPP_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -812,6 +1012,13 @@
                                     {
                                         field: 'CSPPP_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -822,6 +1029,13 @@
                                     {
                                         field: 'SPI_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -832,6 +1046,13 @@
                                     {
                                         field: 'SPI_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -842,6 +1063,13 @@
                                     {
                                         field: 'Becas_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -852,6 +1080,13 @@
                                     {
                                         field: 'Becas_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -862,6 +1097,13 @@
                                     {
                                         field: 'HE_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -872,6 +1114,13 @@
                                     {
                                         field: 'HE_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -882,6 +1131,13 @@
                                     {
                                         field: 'PrimaD_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -892,6 +1148,13 @@
                                     {
                                         field: 'PrimaD_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -902,6 +1165,13 @@
                                     {
                                         field: 'PrimaV_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -912,6 +1182,13 @@
                                     {
                                         field: 'PrimaV_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -922,6 +1199,13 @@
                                     {
                                         field: 'PrimaA_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -932,6 +1216,13 @@
                                     {
                                         field: 'PrimaA_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -942,6 +1233,13 @@
                                     {
                                         field: 'PPS_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -952,6 +1250,13 @@
                                     {
                                         field: 'PPS_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -962,6 +1267,13 @@
                                     {
                                         field: 'SDR_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -972,6 +1284,13 @@
                                     {
                                         field: 'SDR_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
                                         },
@@ -982,6 +1301,13 @@
                                     {
                                         field: 'Indeminizaciones_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -992,6 +1318,13 @@
                                     {
                                         field: 'Indeminizaciones_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1002,6 +1335,13 @@
                                     {
                                         field: 'RPF_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1012,6 +1352,13 @@
                                     {
                                         field: 'RPF_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
                                         },
@@ -1022,6 +1369,13 @@
                                     {
                                         field: 'CDSSPPP_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1032,6 +1386,13 @@
                                     {
                                         field: 'CDSSPPP_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
                                         },
@@ -1042,6 +1403,13 @@
                                     {
                                         field: 'Comisiones_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1052,6 +1420,13 @@
                                     {
                                         field: 'Comisiones_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1062,6 +1437,13 @@
                                     {
                                         field: 'ValesD_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1072,6 +1454,13 @@
                                     {
                                         field: 'ValesD_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1082,6 +1471,13 @@
                                     {
                                         field: 'ValesR_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1092,6 +1488,13 @@
                                     {
                                         field: 'ValesR_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1102,6 +1505,13 @@
                                     {
                                         field: 'ValesG_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1112,6 +1522,13 @@
                                     {
                                         field: 'ValesG_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1122,6 +1539,13 @@
                                     {
                                         field: 'ValesRopa_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1132,6 +1556,13 @@
                                     {
                                         field: 'ValesRopa_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1142,6 +1573,13 @@
                                     {
                                         field: 'AyudaRenta_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1152,6 +1590,13 @@
                                     {
                                         field: 'AyudaRenta_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1162,6 +1607,13 @@
                                     {
                                         field: 'AyudaEscolar_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1172,6 +1624,13 @@
                                     {
                                         field: 'AyudaEscolar_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1182,6 +1641,13 @@
                                     {
                                         field: 'AyudaAnteojos_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1192,6 +1658,13 @@
                                     {
                                         field: 'AyudaAnteojos_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1202,6 +1675,13 @@
                                     {
                                         field: 'AyudaTransporte_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1212,6 +1692,13 @@
                                     {
                                         field: 'AyudaTransporte_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1222,6 +1709,13 @@
                                     {
                                         field: 'AyudaGF_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1232,6 +1726,13 @@
                                     {
                                         field: 'AyudaGF_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1242,6 +1743,13 @@
                                     {
                                         field: 'OIPS_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1252,6 +1760,13 @@
                                     {
                                         field: 'OIPS_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1262,6 +1777,13 @@
                                     {
                                         field: 'JPHDR_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1272,6 +1794,13 @@
                                     {
                                         field: 'JPHDR_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1282,6 +1811,13 @@
                                     {
                                         field: 'JPHDRParciales_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1292,6 +1828,13 @@
                                     {
                                         field: 'JPHDRParciales_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1302,6 +1845,13 @@
                                     {
                                         field: 'IEAOTV_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1312,6 +1862,13 @@
                                     {
                                         field: 'IEAOTV_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1322,6 +1879,13 @@
                                     {
                                         field: 'IAAS_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1332,6 +1896,13 @@
                                     {
                                         field: 'IAAS_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1342,6 +1913,13 @@
                                     {
                                         field: 'Alimentacion_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1352,6 +1930,13 @@
                                     {
                                         field: 'Alimentacion_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1362,6 +1947,13 @@
                                     {
                                         field: 'Habitacion_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         },
@@ -1372,6 +1964,13 @@
                                     {
                                         field: 'Habitacion_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1382,13 +1981,27 @@
                                     {
                                         field: 'PAsistecia_Gravado',
                                         label: "Gravado",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
                                         }
                                     },//Premios por asistencia
                                     {
-                                        field: 'PAsistencia_Exento',
+                                        field: 'PAsistecia_Exento',
                                         label: "Exento",
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
@@ -1399,14 +2012,23 @@
                                     {
                                         field: 'TotalPercepcionesGravado',
                                         label: "Gravado",
-                                        autoSave:true,
+                                        //autoSave:true,
                                         renderCell: function (object, data, td, options) {
-                                            data = getTotalPercepcionesGravado(object);
+                                            //data = getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data, td, true);
                                         }
                                         ,
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                        }
+                                        ,/*
+                                        get: function (object) {
+                                            //console.log(object);
+                                            return a(object);
+                                        },*/
+                                        set: function (object) {
+                                            //console.log(object);
+                                            return a(object);
                                         }
                                     },//Total
                                     {
@@ -1417,30 +2039,93 @@
                                         },
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                        },
+                                        set: function (object) {
+                                            return getTotalPercepcionesExento(object);
                                         }
                                     },//Total
 
 
-                                    { field: 'ImporteSeguridadSocial', label: 'importe' },//ImporteSeguridadSocial
-                                    { field: 'ImporteISR', label: 'importe' },//ImporteISR
-                                    { field: 'ImporteARCEAV', label: 'importe' },//Aportaciones a retiro, cesantía en edad avanzada y vejez
-                                    { field: 'ImporteOtros', label: 'importe' },//Otros
-                                    { field: 'ImporteDPI', label: 'importe' },//Importe Descuento por incapacidad
-                                    { field: 'ImportePA', label: 'importe' },//Importe pensión alimenticia
-                                    { field: 'ImportePPCDV', label: 'importe' },//Importe Pago Por Credito De Vivienda
-                                    { field: 'ImporteINFONACOT', label: 'importe' },//Importe de Pago de abonos INFONACOT
-                                    { field: 'ImporteADS', label: 'importe' },//Importe anticipo de Salarios
-                                    { field: 'ImporteErrores', label: 'importe' },//Importe Errores
-                                    { field: 'ImportePerdidas', label: 'importe' },//Importe Perdidas
-                                    { field: 'ImporteAverias', label: 'importe' },//Importe Averías
-                                    { field: 'ImporteAdquisicionArticulos', label: 'importe' },//Importe Adquisición de articulos
-                                    { field: 'ImporteCuotasConstitucion', label: 'importe' },//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
-                                    { field: 'ImporteCuotasSindicales', label: 'importe' },//Importe Cuotas Sindicales
-                                    { field: 'ImporteAusencia', label: 'importe' },//Importe Ausencia
-                                    { field: 'ImporteObreroP', label: 'importe' },//Importe cutoas obrero patronales
-                                    { field: 'ImporteImpuestosL', label: 'importe' },//Importe impuestos locales
-                                    { field: 'ImporteAportacionesV', label: 'importe' },//Importe aportaciones voluntarias
-                                    { field: 'TotalDeducciones', label: "", colSpan: 2 },//Total
+                                    {
+                                        field: 'ImporteSeguridadSocial',
+                                        label: 'importe'
+                                    },//ImporteSeguridadSocial
+                                    {
+                                        field: 'ImporteISR',
+                                        label: 'importe'
+                                    },//ImporteISR
+                                    {
+                                        field: 'ImporteARCEAV',
+                                        label: 'importe'
+                                    },//Aportaciones a retiro, cesantía en edad avanzada y vejez
+                                    {
+                                        field: 'ImporteOtros',
+                                        label: 'importe'
+                                    },//Otros
+                                    {
+                                        field: 'ImporteDPI',
+                                        label: 'importe'
+                                    },//Importe Descuento por incapacidad
+                                    {
+                                        field: 'ImportePA',
+                                        label: 'importe'
+                                    },//Importe pensión alimenticia
+                                    {
+                                        field: 'ImportePPCDV',
+                                        label: 'importe'
+                                    },//Importe Pago Por Credito De Vivienda
+                                    {
+                                        field: 'ImporteINFONACOT',
+                                        label: 'importe'
+                                    },//Importe de Pago de abonos INFONACOT
+                                    {
+                                        field: 'ImporteADS',
+                                        label: 'importe'
+                                    },//Importe anticipo de Salarios
+                                    {
+                                        field: 'ImporteErrores',
+                                        label: 'importe'
+                                    },//Importe Errores
+                                    {
+                                        field: 'ImportePerdidas',
+                                        label: 'importe'
+                                    },//Importe Perdidas
+                                    {
+                                        field: 'ImporteAverias',
+                                        label: 'importe'
+                                    },//Importe Averías
+                                    {
+                                        field: 'ImporteAdquisicionArticulos',
+                                        label: 'importe'
+                                    },//Importe Adquisición de articulos
+                                    {
+                                        field: 'ImporteCuotasConstitucion',
+                                        label: 'importe'
+                                    },//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
+                                    {
+                                        field: 'ImporteCuotasSindicales',
+                                        label: 'importe'
+                                    },//Importe Cuotas Sindicales
+                                    {
+                                        field: 'ImporteAusencia',
+                                        label: 'importe'
+                                    },//Importe Ausencia
+                                    {
+                                        field: 'ImporteObreroP',
+                                        label: 'importe'
+                                    },//Importe cutoas obrero patronales
+                                    {
+                                        field: 'ImporteImpuestosL',
+                                        label: 'importe'
+                                    },//Importe impuestos locales
+                                    {
+                                        field: 'ImporteAportacionesV',
+                                        label: 'importe'
+                                    },//Importe aportaciones voluntarias
+                                    {
+                                        field: 'TotalDeducciones',
+                                        label: "", colSpan: 2
+                                    },//Total
 
                                     /**Incapacidades**/
                                     { field: 'RiesgoTrabajoDias', label: "Dias" },//Riesgo de trabajo dias
@@ -1463,7 +2148,9 @@
                                     { field: 'HorasExS_Dias', label: "Dias" },//Horas Extra Simples dias.
                                     { field: 'HorasExS_Horas', label: "Horas" },//Horas Extra Simples horas.
                                     { field: 'HorasExS_Importe', label: "Importe" },//Horas Extras Simples importe
-                                    { field: 'TotalHE', label: "Importe" }//Total Horas Extra
+                                    { field: 'TotalHE', label: "Importe" },//Total Horas Extra
+
+                                    { field:'checkRegistro', label: 'isValid' }
                                 ]
                             ]
                         ]
@@ -1479,20 +2166,36 @@
                     console.log(cell.row);
 
                 });*/
+                /*
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
                     var test = cell.column.renderCell;
-                    context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
-                    var z = context.grid.cell(event).row;
-                    console.log(cell.column.grid.collection.data[1]);
-                });
+                    var z = context.grid.cell(cell);
+                    //console.log(event);
+                    var row = context.grid.row(event);
+                    var grid = context.grid;
+                    //console.log(row.element);
+                    //console.log(z);
+                    actualizarValoresDgrid(event,grid);
+                });*/
+                //this.grid.styleColumn("Nombre", "display: none;");
 
-                this.grid.on('dgrid-error', function (event) {
-                    // Display an error message above the grid when an error occurs.
-                    messageNode.className = 'errorMessage';
-                    messageNode.innerHTML = event.error.message;
+                this.grid.on('dgrid-editor-hide', function (event) {
+                    /*
+                    var cell = event.cell;
+                    var test = cell.column.renderCell;
+                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    //cell.style.setProperty("background-color", "red", "important");
+                    //Investigar el metodo refresh(cell).
+                    var z = context.grid.cell(cell);
+                    var row = context.grid.row(event);*/
+                    var grid = context.grid;
+                    grid.save();
+                    grid.refresh();
+                    //actualizarValoresDgrid(event, grid);
                 });
                 
                 this.grid.startup();
