@@ -1968,72 +1968,177 @@
                                     /**Incapacidades**/
                                     {
                                         field: 'RiesgoTrabajoDias',
-                                        label: "Dias"
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Riesgo de trabajo dias
                                     {
                                         field: 'RiesgoTrabajoDescuento',
-                                        label: "Descuento"
+                                        label: "Descuento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Descuento", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Riesgo de trabajo Descuento
                                     {
                                         field: 'RiesgoEnfermedadDias',
-                                        label: "Dias"
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Enfermedad en general <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Riesgo Enfermedades en General dias.
                                     {
                                         field: 'RiesgoEnfermedadDescuento',
-                                        label: "Descuento"
+                                        label: "Descuento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Enfermedad en general <br/> Descuento", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Riesgo Enferemedades en General Descuento.
                                     {
                                         field: 'MaternidadDias',
-                                        label: "Dias"
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Maternidad <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Maternidad dias.
                                     {
                                         field: 'MaternidadDescuento',
-                                        label: "Descuento"
+                                        label: "Descuento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Maternidad <br/> Descuento", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Maternidad Descuento.
-                                    { field: 'TotalIncapacidades', label: "", colSpan: 2 },//Total de las incapacidades
+                                    {
+                                        field: 'TotalIncapacidades',
+                                        label: "", colSpan: 2,
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Incapacidades <br/> Total", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Total de las incapacidades
 
                                     /**Horas Extra**/
                                     {
                                         field: 'HorasExD_Dias',
-                                        label: "Dias"
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//HorasExtraDobles dias.
                                     {
                                         field: 'HorasExD_Horas',
-                                        label: "Horas"
+                                        label: "Horas",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extra Dobles horas.
                                     {
                                         field: 'HorasExD_Importe',
-                                        label: "Importe"
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extras Dobles importe
 
                                     {
                                         field: 'HorasExT_Dias',
-                                        abel: "Dias"
+                                        abel: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra triples <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//HorasExtra Triples dias.
                                     {
                                         field: 'HorasExT_Horas',
-                                        label: "Horas"
+                                        label: "Horas",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra triples <br/> Horas", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extra Triples horas.
                                     {
                                         field: 'HorasExT_Importe',
-                                        label: "Importe"
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra triples <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extras Triples importe
 
                                     {
                                         field: 'HorasExS_Dias',
-                                        label: "Dias"
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra simples <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extra Simples dias.
                                     {
                                         field: 'HorasExS_Horas',
-                                        label: "Horas"
+                                        label: "Horas",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extra Simples horas.
                                     {
                                         field: 'HorasExS_Importe',
-                                        label: "Importe"
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Horas Extras Simples importe
                                     {
                                         field: 'TotalHE',
-                                        label: "Importe"
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra <br/> Total", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Total Horas Extra
 
                                     {
