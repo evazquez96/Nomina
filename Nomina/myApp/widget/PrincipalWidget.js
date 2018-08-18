@@ -231,8 +231,8 @@
                                             return formatoHeader(node, 1, "Monto", domStyle);
                                         }
                                     },
-                                    {//Inicio de los Gravados
-                                        field: 'Sueldo_Gravado',
+                                    {//Inicio de los Gravado
+                                        field: 'Sueldo_Gravado', 
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave:true,
