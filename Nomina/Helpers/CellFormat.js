@@ -24,10 +24,6 @@ function formatoDivTotal(data,td, bandera) {
     div.className = "renderedCell";
     div.innerHTML = data;
     div.style.setProperty("text-align", "center", "important");
-    if (bandera == true)
-        td.style.setProperty("background-color", "#9ACD32", "important");//Color para los Gravados
-    else
-        td.style.setProperty("background-color", "YELLOW", "important");//Color para los Exentos
     return div;
 }
 

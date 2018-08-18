@@ -518,7 +518,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima de seguro de vida <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima de Seguro de vida
                                     {
@@ -535,7 +535,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima de seguro de vida <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima de Seguro de vida
                                     {
@@ -552,7 +552,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de Gastos Médicos Mayores
                                     {
@@ -569,7 +569,7 @@
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de Gastos Médicos Mayores
                                     {
@@ -586,7 +586,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas Sindicales Pagadas por el patron
                                     {
@@ -603,7 +603,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas Sindicales Pagadas por el patron
                                     {
