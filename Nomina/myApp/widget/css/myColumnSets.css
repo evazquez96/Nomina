@@ -3,10 +3,10 @@
     width:175px;
 }
 .field-NumEmpleado {
-    width: 80px;
+    width: 45px;
 }
 .field-Nombre {
-    width: 220px;
+    width: 200px;
     /*
         Con la siguiente propiedad: display:none;
         se oculta la celda, se ocupara esta propiedad

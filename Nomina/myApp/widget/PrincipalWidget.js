@@ -121,6 +121,9 @@
                         });
                         dialog.show();
                     } else {
+                        /**Aquí se realizaran todas las validaciones de las celdas
+                         * que se requieren para emitir la nomina.**/
+
                         console.log("todo bien");
                     }
                 })
