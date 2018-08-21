@@ -105,7 +105,7 @@
                 });
                 var context = this;
                 when(deferred, function (value) {
-                    
+                    context.createGrid(value);  
                     //console.log(context.grid);
                     dialog = new Dialog({
                         title: "Registros con errores",
