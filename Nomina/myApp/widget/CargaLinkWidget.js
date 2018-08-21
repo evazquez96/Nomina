@@ -105,9 +105,10 @@
                 });
                 var context = this;
                 when(deferred, function (value) {
-                    context.createGrid(value);  
+                    
+                    console.log(context.grid);
                     dialog = new Dialog({
-                        title: "My Dialog",
+                        title: "Registros con errores",
                         content: "Test content.",
                         style: "width: 300px"
                     });

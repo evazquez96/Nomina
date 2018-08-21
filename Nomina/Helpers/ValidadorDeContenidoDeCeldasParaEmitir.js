@@ -9,6 +9,5 @@
      * alguna en color rojo, se abrira una ventana 
      * emerjente donde se visualizaran los registros que
      * tienen campos invalidos.
-     * **/
-
+     ***/
 }
