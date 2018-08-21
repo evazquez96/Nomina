@@ -1,4 +1,4 @@
-﻿function validarContenidoDeCeldas(Object) {
+﻿function validarContenidoDeCeldas(grid) {
     /**
      * Se pasara como parametro el Object el cual 
      * contendra el valor de las celdas y el 

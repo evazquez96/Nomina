@@ -12,6 +12,8 @@
     "dijit/form/NumberTextBox",
     "dijit/form/DateTextBox",
     "dojo/dom-style",
+    "dojo/on",
+    "dijit/Dialog",
     /**
     *Inicio de modulos para ColumnSet
     **/
@@ -53,6 +55,8 @@
         NumberTextBox,
         DateTextBox,
         domStyle,
+        on,
+        Dialog,
         /**
         *Inicio de modulos para ColumnSet
         **/
@@ -96,6 +100,33 @@
                 this.TopContentPane.addChild(cargaDeLink, 0);
                 
             },
+            createBottomPane: function () {
+                var context = this;
+                btn = new Button({
+                    label:"Emitir"
+                });
+                domStyle.set(context.BottomContentPane, "text-align", "right");
+                on(btn, "click", function (event) {
+                    if (context.grid.get("collection") == null) {
+                        /**
+                         * En el evento se verificara que no el grid ya
+                         * se encuentre llenado cuando se de click en el 
+                         * boton, de lo contrario se mostrara un DijitDialog.
+                         * **/
+                        console.log("error");
+                        dialog = new Dialog({
+                            title: "No se a cargado el formato de Nomina.",
+                            content: "Cargar el link",
+                            style: "width: 300px"
+                        });
+                        dialog.show();
+                    } else {
+                        console.log("todo bien");
+                    }
+                })
+                context.BottomContentPane.addChild(btn);
+            }
+            ,
             createGrid: function () {
 
                 var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard]);
@@ -2202,7 +2233,7 @@
                     //actualizarValoresDgrid(event, grid);
                 });
 
-                this.grid.on('dgrid-refresh-complete', function (event) {
+                this.grid.on('dgrid-editor-show', function (event) {
                     /*
                     var cell = event.cell;
                     var test = cell.column.renderCell;
@@ -2211,7 +2242,8 @@
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(cell);
                     var row = context.grid.row(event);*/
-                    console.log("refresh");
+                    console.log(context.grid.row(event));
+                    //console.log(context.grid)
                     //actualizarValoresDgrid(event, grid);
                 });
                 

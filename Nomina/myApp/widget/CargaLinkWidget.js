@@ -107,12 +107,13 @@
                 when(deferred, function (value) {
                     context.createGrid(value);  
                     //console.log(context.grid);
+                    /*
                     dialog = new Dialog({
                         title: "Registros con errores",
                         content: "Test content.",
                         style: "width: 300px"
                     });
-                    dialog.show();
+                    dialog.show();*/
                 });
                 console.log("Se enviara el link: "+url);
             },
