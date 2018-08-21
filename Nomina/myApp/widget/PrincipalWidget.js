@@ -2201,6 +2201,19 @@
                     grid.refresh();
                     //actualizarValoresDgrid(event, grid);
                 });
+
+                this.grid.on('dgrid-refresh-complete', function (event) {
+                    /*
+                    var cell = event.cell;
+                    var test = cell.column.renderCell;
+                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    //cell.style.setProperty("background-color", "red", "important");
+                    //Investigar el metodo refresh(cell).
+                    var z = context.grid.cell(cell);
+                    var row = context.grid.row(event);*/
+                    console.log("refresh");
+                    //actualizarValoresDgrid(event, grid);
+                });
                 
                 this.grid.startup();
 
