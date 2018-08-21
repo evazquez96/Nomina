@@ -1,5 +1,6 @@
 ﻿.dgrid-cell {
-    width: 250px;
+    /*width: 175px;*/
+    width:175px;
 }
 .field-NumEmpleado {
     width: 80px;

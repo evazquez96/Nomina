@@ -24,10 +24,6 @@ function formatoDivTotal(data,td, bandera) {
     div.className = "renderedCell";
     div.innerHTML = data;
     div.style.setProperty("text-align", "center", "important");
-    if (bandera == true)
-        td.style.setProperty("background-color", "#9ACD32", "important");//Color para los Gravados
-    else
-        td.style.setProperty("background-color", "YELLOW", "important");//Color para los Exentos
     return div;
 }
 
@@ -35,6 +31,8 @@ function formatoHeader(node, bandera,text,domStyle) {
     var div = document.createElement("div");
     div.innerHTML = text;
     domStyle.set(div, "text-align", "center");
+    domStyle.set(div, "font-size", "70%");
+
     switch (bandera) {
         case 1://Headers para Pago
             break;

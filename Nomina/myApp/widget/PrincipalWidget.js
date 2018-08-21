@@ -143,427 +143,7 @@
                                 ]
                             ],
                             [
-                                [
-                                    {
-                                        field: 'Pago',
-                                        label: 'Pago',
-                                        colSpan: 7,
-                                        value: '',
-                                        renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 1, "Pago", domStyle);
-                                        }
-                                    },
-                                    {
-                                        field: 'Sueldo',
-                                        label: 'Sueldo',
-                                        colSpan: 2,
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//01
-                                    {
-                                        field: 'Aguinaldo',
-                                        label: 'Aguinaldo',
-                                        colSpan: 2,
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//02
-                                    {
-                                        label: 'PTU',
-                                        colSpan: 2,
-                                        field: 'PTU',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//03
-                                    {
-                                        label: 'Reembolso de Gastos Médicos Dentales y Hospitalarios',
-                                        colSpan: 2,
-                                        field: 'Reembolso de Gastos Médicos Dentales y Hospitalarios',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//04
-                                    {
-                                        label: 'Fondo de Ahorro',
-                                        colSpan: 2,
-                                        field: 'Fondo de ahorro',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//05
-                                    {
-                                        label: 'Caja de Ahorro',
-                                        colSpan: 2,
-                                        field: 'Caja de ahorro',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//06
-                                    {
-                                        label: 'Contribuciones a Cargo del Trabajador Pagadas por el Patrón',
-                                        colSpan: 2,
-                                        field: 'Contribuciones a Cargo del Trabajador Pagadas por el Patrón',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//09
-                                    {
-                                        label: 'Premio de Puntualidad',
-                                        colSpan: 2,
-                                        field: 'Premio de puntualidad',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//10
-                                    {
-                                        label: 'Prima de Seguro de vida',
-                                        colSpan: 2,
-                                        field: 'Prima de Seguro de vida',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//11
-                                    {
-                                        label: 'Seguro de gastos médicos mayores',
-                                        colSpan: 2,
-                                        field: 'Seguro de gastos medicos',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//12
-                                    {
-                                        label: 'Cuotas Sindicales Pagadas por el Patrón',
-                                        colSpan: 2,
-                                        field: 'Cuotas sindicales pagadas por el patron',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//13
-                                    {
-                                        label: 'Subsidios por incapacidad',
-                                        colSpan: 2,
-                                        field: 'subsidios por incapacidad',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//14
-                                    {
-                                        label: 'Becas',
-                                        colSpan: 2,
-                                        field: 'Becas',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//15
-                                    {
-                                        label: 'Horas Extra',
-                                        colSpan: 2,
-                                        field: 'Horas Extra',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//19
-                                    {
-                                        label: 'Prima Dominical',
-                                        colSpan: 2,
-                                        field: 'Prima Dominical',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//20
-                                    {
-                                        label: 'Prima Vacacional',
-                                        colSpan: 2,
-                                        field: 'Prima Vacacional',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//21
-                                    {
-                                        label: 'Prima por Antigüedad',
-                                        colSpan: 2,
-                                        field: 'Prima por antiguedad',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//22
-                                    {
-                                        label: 'Pagos por Separación',
-                                        colSpan: 2,
-                                        field: 'Pagos por separacion',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//23
-                                    {
-                                        label: 'Seguro de Retiro',
-                                        colSpan: 2,
-                                        field: 'Seguro de retiro',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//24
-                                    {
-                                        label: 'Indeminizaciones',
-                                        colSpan: 2,
-                                        field: 'Indeminizaciones',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//25
-                                    {
-                                        label: 'Reembolso por funeral',
-                                        colSpan: 2,
-                                        field: 'Reembolso por funeral',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//26
-                                    {
-                                        label: 'Cuotas de seguridad social pagadas por el patrón',
-                                        colSpan: 2,
-                                        field: 'Cuotas de seguridad social pagadas por el patron',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//27
-                                    {
-                                        label: 'Comisiones',
-                                        colSpan: 2,
-                                        field: 'Comisiones',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//28
-                                    {
-                                        label: 'Vales de despensa',
-                                        colSpan: 2,
-                                        field: 'Vales de despensa',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//29
-                                    {
-                                        label: 'Vales de restaurante',
-                                        colSpan: 2,
-                                        field: 'Vales de restaurante',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//30
-                                    {
-                                        label: 'Vales de gasolina',
-                                        colSpan: 2,
-                                        field: 'Vales de gasolina',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//31
-                                    {
-                                        label: 'Vales de ropa',
-                                        colSpan: 2,
-                                        field: 'Vales de ropa',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//32
-                                    {
-                                        label: 'Ayuda para renta',
-                                        colSpan: 2,
-                                        field: 'Ayuda para renta',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//33
-                                    {
-                                        label: 'Ayuda para artículos escolares',
-                                        colSpan: 2,
-                                        field: 'Ayuda para articulos escolares',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//34
-                                    {
-                                        label: 'Ayuda para anteojos',
-                                        colSpan: 2,
-                                        field: 'Ayuda para anteojos',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//35
-                                    {
-                                        label: 'Ayuda para transporte',
-                                        colSpan: 2,
-                                        field: 'Ayuda para transporte',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//36
-                                    {
-                                        label: 'Ayuda para gastos de funeral',
-                                        colSpan: 2,
-                                        field: 'Ayuda para gastos de funeral',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//37
-                                    {
-                                        label: 'Otros ingresos por salario',
-                                        colSpan: 2,
-                                        field: 'Otros ingresas por salario',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//38
-                                    {
-                                        label: 'Jubilaciones, pensiones o haberes de retiro',
-                                        colSpan: 2,
-                                        field: 'Jubilaciones, pensiones o haberes de retiro',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//39
-                                    {
-                                        label: 'Jubilaciones, pensiones o haberes de retiro en parcialidades',
-                                        colSpan: 2,
-                                        field: 'Jubilaciones, pensiones o haberes de retiro en parcialidades',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//44
-                                    {
-                                        label: 'Ingresos en acciones o títulos valor que representan bienes',
-                                        colSpan: 2,
-                                        field: 'Ingresos en acciones o titulos valor que representan bienes',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//45
-                                    {
-                                        label: 'Ingresos asimilados a salarios',
-                                        colSpan: 2,
-                                        field: 'Ingresos asimilados a salarios',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//46
-                                    {
-                                        label: 'Alimentación',
-                                        colSpan: 2,
-                                        field: 'Alimentacion',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//47
-                                    {
-                                        label: 'Habitación',
-                                        colSpan: 2,
-                                        field: 'Habitacion',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//48
-                                    {
-                                        label: 'Premios por asistencia',
-                                        colSpan: 2,
-                                        field: 'Premios por asistencia',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//49
-                                    {
-                                        label: 'Total',
-                                        colSpan: 2,
-                                        field: 'Total',
-                                        renderCell: function (object, data, td, options) {
-                                            return formatoCeldasVacias(td);
-                                        }
-                                    },//50
-
-
-                                    /**Deducciones**/
-                                    {
-                                        label: 'Seguridad Social',
-                                        field: 'Seguridad_Social',
-                                        colSpan: 1
-                                    },//1
-                                    {
-                                        label: 'ISR',
-                                        field: 'ISR',
-                                        colSpan: 1
-                                    },//2
-                                    {
-                                        label: 'Aportaciones a retiro, cesantía en edad avanzada y vejez',
-                                        colSpan: 1,
-                                        field: 'ARCEAV'
-                                    },//3
-                                    {
-                                        label: 'Otros',
-                                        colSpan: 1,
-                                        field:'otros'
-                                    },//4
-                                    {
-                                        label: 'Descuento por incapacidad',
-                                        colSpan: 1,
-                                        field:'Descuento por incapacidad'
-                                    },//6
-                                    {
-                                        label: 'Pensión alimenticia',
-                                        colSpan: 1,
-                                        field: 'Pension alimenticia'
-                                    },//7
-                                    {
-                                        label: 'Pago por crédito de vivienda',
-                                        colSpan: 1,
-                                        field:'Pago credito vivienda'
-                                    },//10
-                                    {
-                                        label: 'Pago de abonos INFONACOT',
-                                        colSpan: 1,
-                                        field: 'Abono INFONACOT'
-                                    },//11
-                                    {
-                                        label: 'Anticipo de salarios',
-                                        colSpan: 1,
-                                        field:  'Anticipo de salarios'
-                                    },//12
-                                    {
-                                        label: 'Errores',
-                                        colSpan: 1,
-                                        field: 'Errores'
-                                    },//14
-                                    {
-                                        label: 'Pérdidas',
-                                        colSpan: 1,
-                                        field: 'Perdidas'
-                                    },//15
-                                    { label: 'Averías', colSpan: 1 },//16
-                                    { label: 'Adquisición de artículos producidos por la empresa o establecimiento', colSpan: 1 },//17
-                                    { label: 'Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro', colSpan: 1 },//18
-                                    { label: 'Cuotas sindicales', colSpan: 1 },//19
-                                    { label: 'Ausencia (Ausentismo)', colSpan: 1 },//20
-                                    { label: 'Cuotas obrero patronales', colSpan: 1 },//21
-                                    { label: 'Impuestos Locales', colSpan: 1 },//22
-                                    { label: 'Aportaciones voluntarias', colSpan: 1 },//23
-                                    { label: 'Total', colSpan: 2 },//24
-
-
-                                    /**Incapacidades**/
-                                    { label: 'Riesgo de Trabajo', colSpan: 2 },
-                                    { label: 'Enfermedad en General', colSpan: 2 },
-                                    { label: 'Maternidad', colSpan: 2 },
-                                    { label: 'Total', colSpan: 2 },
-
-                                    /**Horas Extra**/
-                                    { label: 'Horas Extras: Dobles', colSpan: 3 },
-                                    { label: 'Horas Extras: Triples', colSpan: 3 },
-                                    { label: 'Horas Extras: Simples', colSpan: 3 },
-                                    { label: 'Total' },
-                                    {label:'isValid'}//Fin
-
-                                ],
+                               
                                 [
                                    
 
@@ -651,8 +231,8 @@
                                             return formatoHeader(node, 1, "Monto", domStyle);
                                         }
                                     },
-                                    {//Inicio de los Gravados
-                                        field: 'Sueldo_Gravado',
+                                    {//Inicio de los Gravado
+                                        field: 'Sueldo_Gravado', 
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave:true,
@@ -660,18 +240,18 @@
                                             style: "width:110px",
                                             regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
-                                        label: "Gravado",
+                                        label: "Sueldo Gravado",
                                         renderCell: function (object, data, td, options) {
                                             //data=getTotalPercepcionesGravado(object);
                                             return formatoDivTotal(data,td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Sueldo <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
                                         field: 'Sueldo_Exento',
-                                        label: "Exento",
+                                        label: "Sueldo Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave: true,
@@ -683,12 +263,12 @@
                                             return formatoDivTotal(data,td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Sueldo <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
                                         field: 'Aguinaldo_Gravado',
-                                        label: "Gravado",
+                                        label: " Aguinaldo Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave: true,
@@ -700,12 +280,12 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Aguinaldo <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
                                         field: 'Aguinaldo_Exento',
-                                        label: "Exento",
+                                        label: "Aguinaldo Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave: true,
@@ -717,12 +297,12 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Aguinaldo <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
                                         field: 'PTU_Gravado',
-                                        label: "Gravado",
+                                        label: "PTU Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave: true,
@@ -734,12 +314,12 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "PTU <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
                                         field: 'PTU_Exento',
-                                        label: "Exento",
+                                        label: "PTU Exento",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave: true,
@@ -751,12 +331,12 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "PTU <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
                                         field: 'RGMDyH_Gravado',
-                                        label: "Gravado",
+                                        label: "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado",
                                         editor: ValidationTextBox,
                                         editOn: 'dblclick',
                                         autoSave: true,
@@ -768,7 +348,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -785,7 +365,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -802,7 +382,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Fondo de ahorro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -819,7 +399,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Fondo de ahorro <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -836,7 +416,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Caja de ahorro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -853,7 +433,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Caja de ahorro <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -870,7 +450,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Contribuciones a Cargo del Trabajador Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -887,7 +467,7 @@
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Contribuciones a Cargo del Trabajador Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },
                                     {
@@ -904,7 +484,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Premio Puntualidad <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premio de Puntualidad
                                     {
@@ -921,7 +501,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Premio Puntualidad <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premio de Puntualidad
                                     {
@@ -938,7 +518,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima de seguro de vida <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima de Seguro de vida
                                     {
@@ -955,7 +535,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima de seguro de vida <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima de Seguro de vida
                                     {
@@ -972,7 +552,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de Gastos Médicos Mayores
                                     {
@@ -989,7 +569,7 @@
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de Gastos Médicos Mayores
                                     {
@@ -1006,7 +586,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas Sindicales Pagadas por el patron
                                     {
@@ -1023,7 +603,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas Sindicales Pagadas por el patron
                                     {
@@ -1040,7 +620,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Subsidios por incapacidad <br/>  Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Subsidios por incapacidad
                                     {
@@ -1057,7 +637,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Subsidios por incapacidad <br/>  Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Subsidios por incapacidad
                                     {
@@ -1074,7 +654,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Becas <br/>  Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Becas
                                     {
@@ -1091,7 +671,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Becas <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Becas
                                     {
@@ -1108,7 +688,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Horas Extra <br/>  Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Horas Extra
                                     {
@@ -1125,7 +705,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Horas Extra <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Horas Extra
                                     {
@@ -1142,7 +722,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima Dominical <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Dominical
                                     {
@@ -1159,7 +739,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima Dominical <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Dominical
                                     {
@@ -1176,7 +756,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima vacacional <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Vacacional
                                     {
@@ -1193,7 +773,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima vacacional <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Vacacional
                                     {
@@ -1210,7 +790,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima por Antigüedad <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Antigüead
                                     {
@@ -1227,7 +807,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Prima por Antigüedad <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Prima Antigüedad
                                     {
@@ -1244,7 +824,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Pagos por separación <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Pagos por Separación
                                     {
@@ -1261,7 +841,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Pagos por separación <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Pagos por Separación
                                     {
@@ -1278,7 +858,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Seguro de retiro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de retiro
                                     {
@@ -1295,7 +875,7 @@
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Seguro de retiro <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Seguro de retiro
                                     {
@@ -1312,7 +892,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Indeminizaciones <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Indeminizaciones
                                     {
@@ -1329,7 +909,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Indeminizaciones <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Indeminizaciones
                                     {
@@ -1346,7 +926,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Reembolso por funeral <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Reembolso por funeral
                                     {
@@ -1363,7 +943,7 @@
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Reembolso por funeral <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Reembolso por funeral
                                     {
@@ -1380,7 +960,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Cuotas de seguridad social pagadas por el patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas de seguridad social pagadas por el patrón
                                     {
@@ -1397,7 +977,7 @@
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Cuotas de seguridad social pagadas por el patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Cuotas de seguridad social pagadas por el patrón
                                     {
@@ -1414,7 +994,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Comisiones <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Comisiones
                                     {
@@ -1431,7 +1011,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Comisiones <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Comisiones
                                     {
@@ -1448,7 +1028,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de despensa <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de Despensa
                                     {
@@ -1465,7 +1045,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de despensa <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de Despensa
                                     {
@@ -1482,7 +1062,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de Restaurante <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de restaurante
                                     {
@@ -1499,7 +1079,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de restaurante <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de restaurante
                                     {
@@ -1516,7 +1096,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de gasolina <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de gasolina
                                     {
@@ -1533,7 +1113,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de gasolina <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de gasolina
                                     {
@@ -1550,7 +1130,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de ropa  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de ropa
                                     {
@@ -1567,7 +1147,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Vales de ropa  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Vales de ropa
                                     {
@@ -1584,7 +1164,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para renta  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para renta
                                     {
@@ -1601,7 +1181,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para renta  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para renta
                                     {
@@ -1618,7 +1198,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para artículos escolares  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Articulos escolares
                                     {
@@ -1635,7 +1215,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para artículos escolares  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Articulos escolares
                                     {
@@ -1652,7 +1232,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para anteojos  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Anteojos
                                     {
@@ -1669,7 +1249,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para anteojos  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Anteojos
                                     {
@@ -1686,7 +1266,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para transporte  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Transporte
                                     {
@@ -1703,7 +1283,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para transporte  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Transporte
                                     {
@@ -1720,7 +1300,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para gastos de funeral  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Gastos de funeral
                                     {
@@ -1737,7 +1317,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ayuda para gastos de funeral  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ayuda para Gasto de funeral
                                     {
@@ -1754,7 +1334,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Otros ingresos por salario  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Otros ingresos por salario
                                     {
@@ -1771,7 +1351,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Otros ingresos por salarios  <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Otros ingresos por salario 
                                     {
@@ -1788,7 +1368,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro
                                     {
@@ -1805,7 +1385,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro
                                     {
@@ -1822,7 +1402,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro en parcialidades <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro parciales
                                     {
@@ -1839,7 +1419,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro en parcialidades <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Jubilaciones, pensiones o haberes de retiro parciales
                                     {
@@ -1856,7 +1436,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ingresos en acciones o títulos valor que representan bienes <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos en acciones o títulos valor que representan bienes
                                     {
@@ -1873,7 +1453,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ingresos en acciones o títulos valor que representan bienes <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos en acciones o títulos valor que representan bienes
                                     {
@@ -1890,7 +1470,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ingresos asimilados a salarios <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos asimilados a salarios
                                     {
@@ -1907,7 +1487,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Ingresos asimilados a salarios <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Ingresos asimilados a salarios
                                     {
@@ -1924,7 +1504,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Alimentación <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Alimentacion
                                     {
@@ -1941,7 +1521,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Alimentación <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Alimentacion
                                     {
@@ -1958,7 +1538,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Habitación <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Habitacion
                                     {
@@ -1975,7 +1555,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Habitación <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Habitacion
                                     {
@@ -1990,6 +1570,9 @@
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Premios por asistencia <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premios por asistencia
                                     {
@@ -2006,7 +1589,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Premios por asistencia <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premios por asistencia
                                     {
@@ -2019,7 +1602,7 @@
                                         }
                                         ,
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Total <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                         ,/*
                                         get: function (object) {
@@ -2038,7 +1621,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Total <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         },
                                         set: function (object) {
                                             return getTotalPercepcionesExento(object);
@@ -2048,109 +1631,530 @@
 
                                     {
                                         field: 'ImporteSeguridadSocial',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Seguridad social <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//ImporteSeguridadSocial
                                     {
                                         field: 'ImporteISR',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "ISR <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//ImporteISR
                                     {
                                         field: 'ImporteARCEAV',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Aportaciones a retiro, cesantía en edad avanzada y vejez. <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Aportaciones a retiro, cesantía en edad avanzada y vejez
                                     {
                                         field: 'ImporteOtros',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Otros <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
+
                                     },//Otros
                                     {
                                         field: 'ImporteDPI',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Descuento por incapacidad <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Descuento por incapacidad
                                     {
                                         field: 'ImportePA',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Pensión alimenticia <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe pensión alimenticia
                                     {
                                         field: 'ImportePPCDV',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Pago por crédito de vivienda <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Pago Por Credito De Vivienda
                                     {
                                         field: 'ImporteINFONACOT',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Pago de abonos INFONACOT <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe de Pago de abonos INFONACOT
                                     {
                                         field: 'ImporteADS',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Anticipo de salarios <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe anticipo de Salarios
                                     {
                                         field: 'ImporteErrores',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Errores <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Errores
                                     {
                                         field: 'ImportePerdidas',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Pérdidas <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Perdidas
                                     {
                                         field: 'ImporteAverias',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Averías <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Averías
                                     {
                                         field: 'ImporteAdquisicionArticulos',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Adquisición de artículos producidos por la empresa o establecimiento <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Adquisición de articulos
                                     {
                                         field: 'ImporteCuotasConstitucion',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
                                     {
                                         field: 'ImporteCuotasSindicales',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Cuotas sindicales <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Cuotas Sindicales
                                     {
                                         field: 'ImporteAusencia',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Ausencia (Ausetismo) <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe Ausencia
                                     {
                                         field: 'ImporteObreroP',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Cuotas obrero patronales <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe cutoas obrero patronales
                                     {
                                         field: 'ImporteImpuestosL',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Impuestos locales <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe impuestos locales
                                     {
                                         field: 'ImporteAportacionesV',
-                                        label: 'importe'
+                                        label: 'importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Aportaciones voluntarias <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Importe aportaciones voluntarias
                                     {
                                         field: 'TotalDeducciones',
-                                        label: "", colSpan: 2
+                                        label: "", colSpan: 2,
+                                        autoSave: true,
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Total deducciones <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        }
                                     },//Total
 
                                     /**Incapacidades**/
-                                    { field: 'RiesgoTrabajoDias', label: "Dias" },//Riesgo de trabajo dias
-                                    { field: 'RiesgoTrabajoDescuento', label: "Descuento" },//Riesgo de trabajo Descuento
-                                    { field: 'RiesgoEnfermedadDias', label: "Dias" },//Riesgo Enfermedades en General dias.
-                                    { field: 'RiesgoEnfermedadDescuento', label: "Descuento" },//Riesgo Enferemedades en General Descuento.
-                                    { field: 'MaternidadDias', label: "Dias" },//Maternidad dias.
-                                    { field: 'MaternidadDescuento', label: "Descuento" },//Maternidad Descuento.
-                                    { field: 'TotalIncapacidades', label: "", colSpan: 2 },//Total de las incapacidades
+                                    {
+                                        field: 'RiesgoTrabajoDias',
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Riesgo de trabajo dias
+                                    {
+                                        field: 'RiesgoTrabajoDescuento',
+                                        label: "Descuento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Descuento", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Riesgo de trabajo Descuento
+                                    {
+                                        field: 'RiesgoEnfermedadDias',
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Enfermedad en general <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Riesgo Enfermedades en General dias.
+                                    {
+                                        field: 'RiesgoEnfermedadDescuento',
+                                        label: "Descuento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Enfermedad en general <br/> Descuento", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Riesgo Enferemedades en General Descuento.
+                                    {
+                                        field: 'MaternidadDias',
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Maternidad <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Maternidad dias.
+                                    {
+                                        field: 'MaternidadDescuento',
+                                        label: "Descuento",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Maternidad <br/> Descuento", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Maternidad Descuento.
+                                    {
+                                        field: 'TotalIncapacidadesDias',
+                                        label: "",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Incapacidades Dias <br/> Total", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Total de las incapacidades Dias
+                                    {
+                                        field: 'TotalIncapacidadesDescuento',
+                                        label: "",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Incapacidades Descuento <br/> Total", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Total de las incapacidades Descuento
 
                                     /**Horas Extra**/
-                                    { field: 'HorasExD_Dias', label: "Dias" },//HorasExtraDobles dias.
-                                    { field: 'HorasExD_Horas', label: "Horas" },//Horas Extra Dobles horas.
-                                    { field: 'HorasExD_Importe', label: "Importe" },//Horas Extras Dobles importe
+                                    {
+                                        field: 'HorasExD_Dias',
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//HorasExtraDobles dias.
+                                    {
+                                        field: 'HorasExD_Horas',
+                                        label: "Horas",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extra Dobles horas.
+                                    {
+                                        field: 'HorasExD_Importe',
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extras Dobles importe
 
-                                    { field: 'HorasExT_Dias', label: "Dias" },//HorasExtra Triples dias.
-                                    { field: 'HorasExT_Horas', label: "Horas" },//Horas Extra Triples horas.
-                                    { field: 'HorasExT_Importe', label: "Importe" },//Horas Extras Triples importe
+                                    {
+                                        field: 'HorasExT_Dias',
+                                        abel: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra triples <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//HorasExtra Triples dias.
+                                    {
+                                        field: 'HorasExT_Horas',
+                                        label: "Horas",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra triples <br/> Horas", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extra Triples horas.
+                                    {
+                                        field: 'HorasExT_Importe',
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra triples <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extras Triples importe
 
-                                    { field: 'HorasExS_Dias', label: "Dias" },//Horas Extra Simples dias.
-                                    { field: 'HorasExS_Horas', label: "Horas" },//Horas Extra Simples horas.
-                                    { field: 'HorasExS_Importe', label: "Importe" },//Horas Extras Simples importe
-                                    { field: 'TotalHE', label: "Importe" },//Total Horas Extra
+                                    {
+                                        field: 'HorasExS_Dias',
+                                        label: "Dias",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra simples <br/> Dias", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extra Simples dias.
+                                    {
+                                        field: 'HorasExS_Horas',
+                                        label: "Horas",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extra Simples horas.
+                                    {
+                                        field: 'HorasExS_Importe',
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Horas Extras Simples importe
+                                    {
+                                        field: 'TotalHE',
+                                        label: "Importe",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Horas extra <br/> Total", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Total Horas Extra
 
-                                    { field:'checkRegistro', label: 'isValid' }
+                                    {
+                                        field: 'checkRegistro',
+                                        label: 'isValid'
+                                    }
                                 ]
                             ]
                         ]

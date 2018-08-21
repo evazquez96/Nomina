@@ -165,7 +165,27 @@ namespace Nomina.Models
          *  Fin de los atributos de deducciones
          **/
 
+        public String RiesgoTrabajoDias { get; set; }
+        public String RiesgoTrabajoDescuento { get; set; }
+        public String RiesgoEnfermedadDias { get; set; }
+        public String RiesgoEnfermedadDescuento { get; set; }
+        public String MaternidadDias { get; set; }
+        public String MaternidadDescuento { get; set; }
+        public String TotalIncapacidadesDias { get;set; }
+        public String TotalIncapacidadesDescuento { get; set; }
 
+
+
+        public String HorasExD_Dias { get; set; }
+        public String HorasExD_Horas {get;set;}
+        public String HorasExD_Importe { get; set; }
+        public String HorasExT_Dias { get; set; }
+        public String HorasExT_Horas { get; set; }
+        public String HorasExT_Importe { get; set; }
+        public String HorasExS_Dias { get; set; }
+        public String HorasExS_Horas { get; set; }
+        public String HorasExS_Importe { get; set; }
+        public String TotalHE { get; set; }
         //public Receptor Receptor { get; set; }
 
         public void getAntiguedad(String fecha_inicio,String actual)
