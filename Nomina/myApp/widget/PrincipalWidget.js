@@ -2027,15 +2027,25 @@
                                         }
                                     },//Maternidad Descuento.
                                     {
-                                        field: 'TotalIncapacidades',
-                                        label: "", colSpan: 2,
+                                        field: 'TotalIncapacidadesDias',
+                                        label: "",
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Incapacidades <br/> Total", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Incapacidades Dias <br/> Total", domStyle);//Bandera 2 para deducciones
                                         }
-                                    },//Total de las incapacidades
+                                    },//Total de las incapacidades Dias
+                                    {
+                                        field: 'TotalIncapacidadesDescuento',
+                                        label: "",
+                                        renderCell: function (object, data, td, options) {
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "Incapacidades Descuento <br/> Total", domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },//Total de las incapacidades Descuento
 
                                     /**Horas Extra**/
                                     {

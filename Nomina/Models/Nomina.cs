@@ -171,7 +171,8 @@ namespace Nomina.Models
         public String RiesgoEnfermedadDescuento { get; set; }
         public String MaternidadDias { get; set; }
         public String MaternidadDescuento { get; set; }
-        public String TotalIncapacidades { get;set; }
+        public String TotalIncapacidadesDias { get;set; }
+        public String TotalIncapacidadesDescuento { get; set; }
 
 
 

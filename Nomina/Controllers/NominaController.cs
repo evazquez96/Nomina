@@ -190,8 +190,18 @@ namespace Nomina.Controllers
                         unaNomina.RiesgoEnfermedadDescuento= limpiarMontos(filtrarCampo2(row[141]));
                         unaNomina.MaternidadDias= limpiarMontos(filtrarCampo2(row[142]));
                         unaNomina.MaternidadDescuento= limpiarMontos(filtrarCampo2(row[143]));
-                        //unaNomina.TotalIncapacidades=
-
+                        unaNomina.TotalIncapacidadesDias= limpiarMontos(filtrarCampo2(row[144]));
+                        unaNomina.TotalIncapacidadesDescuento = limpiarMontos(filtrarCampo2(row[145]));
+                        unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[146]));
+                        unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[147]));
+                        unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[148]));
+                        unaNomina.HorasExT_Dias= limpiarMontos(filtrarCampo2(row[149]));
+                        unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[150]));
+                        unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[151]));
+                        unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[152]));
+                        unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[153]));
+                        unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[154]));
+                        unaNomina.TotalHE= limpiarMontos(filtrarCampo2(row[155]));
                         /*
        */
 
