@@ -6,6 +6,7 @@
     "dijit/layout/ContentPane",
     "dijit/form/TextBox",
     "dijit/form/Button",
+    "dijit/Dialog",//Dialog que mostrar los registros que tienen errores.
     "dojo/text!/myApp/widget/templates/CargaLinkWidget.html",
     "dojo/on",
     "dojo/parser",
@@ -27,6 +28,7 @@
         ContentPane,
         TextBox,
         Button,
+        Dialog,
         template,
         on,
         parser,
@@ -104,6 +106,12 @@
                 var context = this;
                 when(deferred, function (value) {
                     context.createGrid(value);  
+                    dialog = new Dialog({
+                        title: "My Dialog",
+                        content: "Test content.",
+                        style: "width: 300px"
+                    });
+                    dialog.show();
                 });
                 console.log("Se enviara el link: "+url);
             },
