@@ -106,7 +106,7 @@
                 var context = this;
                 when(deferred, function (value) {
                     
-                    console.log(context.grid);
+                    //console.log(context.grid);
                     dialog = new Dialog({
                         title: "Registros con errores",
                         content: "Test content.",
