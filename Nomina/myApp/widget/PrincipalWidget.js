@@ -11,6 +11,7 @@
     "dijit/form/ValidationTextBox",
     "dijit/form/NumberTextBox",
     "dijit/form/DateTextBox",
+    "dijit/form/CheckBox",
     "dojo/dom-style",
     "dojo/on",
     "dijit/Dialog",
@@ -54,6 +55,7 @@
         ValidationTextBox,
         NumberTextBox,
         DateTextBox,
+        CheckBox,
         domStyle,
         on,
         Dialog,
@@ -123,8 +125,8 @@
                     } else {
                         /**Aquí se realizaran todas las validaciones de las celdas
                          * que se requieren para emitir la nomina.**/
-
-                        console.log("todo bien");
+                        //var collection = context.grid.get("collection");
+                        validarContenidoDeCeldas(context.grid);
                     }
                 })
                 context.BottomContentPane.addChild(btn);
@@ -2187,7 +2189,14 @@
 
                                     {
                                         field: 'checkRegistro',
-                                        label: 'isValid'
+                                        label: 'isValid',
+                                        editor: CheckBox,
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2, "valido<br/>", domStyle);//Bandera 2 para deducciones
+                                        },
+                                        editorArgs: {
+                                            value: "checked"
+                                        }
                                     }
                                 ]
                             ]
