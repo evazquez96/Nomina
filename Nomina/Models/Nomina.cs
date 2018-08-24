@@ -13,6 +13,7 @@ namespace Nomina.Models
         public String FechaPago { get; set; }//requerido
         public String FechaInicialPago { get; set; } //requerido
         public String FechaFinalPago { get; set; }//requerido
+        public String Clabe { get; set; }
         public String NumDiasPagados { get; set; }//requerido
         public String TotalPercepciones { get; set; }//condicional
         //public String TotalDeducciones { get; set; }//condicional

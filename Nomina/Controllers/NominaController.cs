@@ -71,6 +71,7 @@ namespace Nomina.Controllers
                         unaNomina.getAtributosReceptor(receptor);
                         unaNomina.FechaPago = Convert.ToString(row[3]);//Obtiene la fecha de pago.
                         unaNomina.NumDiasPagados = Convert.ToString(row[6]);//Obtiene el numero de dias pagados
+                        unaNomina.Clabe = Convert.ToString(row[8]);
                         unaNomina.Monto = limpiarMontos(Convert.ToString(row[9]));//Obtiene el Monto
                         unaNomina.Sueldo_Gravado = limpiarMontos(Convert.ToString(row[10]));//Obtiene el sueldo Gravado
                         unaNomina.Sueldo_Exento = limpiarMontos(filtrarCampo2(row[11]));//Obtiene el sueldo Exento.
