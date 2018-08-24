@@ -195,6 +195,11 @@
                                             constraints: { datePattern: 'yyyy/MM/dd' }
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            /**
+                                             * Dentro del renderCell es donde se realizaran las validaciones
+                                             * al inicio, cuando se lee el archivo de GoogleSheets y se llena
+                                             * el grid.
+                                             ***/
                                             return formatoCentrarContenido(data);
                                         },
                                         renderHeaderCell: function (node) {
@@ -274,7 +279,7 @@
                                         autoSave:true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         label: "Sueldo Gravado",
                                         renderCell: function (object, data, td, options) {

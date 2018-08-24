@@ -1,17 +1,41 @@
-﻿function validarAntiguedad(text) {
-    return true;
+﻿function validarCelda(value, bandera) {
+
+    var pattern = null;
+    var match = null;
+    var regex = "";
+
+    switch (bandera)
+    {
+        /**
+         * La bandera que se pase como parametro sera la que
+         * indice que tipo de celda es, esto es para validarla
+         * con la expresión regular correspondiente.
+         ***/
+        case 0:
+            /**Entra para validar celdas que corresponden a montos.**/
+            regex = "(^[0-9]+(\.[0-9]{1,3}))?";
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+
+        default:
+            break;
+    }
+    pattern = new RegExp(regex);
+    match = pattern.exec(value);
+    var coincidencia = match[0];//La primer coincidencia, en teoría solo debe de haber una coincidencia y debe ser como tal el valor de la celda.
+
+    if (coincidencia.length == value.length)
+        return true;
+    else
+        return false;
 }
 
 function pintarError(td) {
     td.style.setProperty("background-color", "red", "important");
 };
-
-function limpiarCadenaMontos(monto) {
-    var d = monto.replace(",", "");
-    d = d.replace(" ", "");
-    return d;
-}
-
 
 function validarMontos(monto) {
     //var d = limpiarCadenaMontos(monto);
