@@ -1,5 +1,4 @@
 ﻿function validarCelda(value, bandera) {
-
     var pattern = null;
     var match = null;
     var regex = "";

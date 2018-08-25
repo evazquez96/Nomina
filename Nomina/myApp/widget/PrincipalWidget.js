@@ -284,6 +284,15 @@
                                         label: "Sueldo Gravado",
                                         renderCell: function (object, data, td, options) {
                                             //data=getTotalPercepcionesGravado(object);
+                                            if (!validarCelda(data, 0)) {
+                                                object.isValid.bandera = false;
+                                                var regex = new RegExp("Sueldo_Gravado");
+                                                if (!regex.test(object.isValid.codError))
+                                                    object.isValid.codError += "|Sueldo_Gravado"
+                                            } else {
+                                                object.isValid.codError += "valido"
+                                            }
+                                            //console.log(object)
                                             return formatoDivTotal(data,td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -298,7 +307,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data,td, false);
@@ -315,7 +324,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -332,7 +341,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -349,7 +358,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -366,7 +375,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -383,7 +392,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -400,7 +409,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -417,7 +426,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -434,7 +443,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -451,7 +460,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -468,7 +477,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -485,7 +494,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -502,7 +511,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -519,7 +528,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -536,7 +545,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -553,7 +562,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -570,7 +579,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -587,7 +596,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -604,7 +613,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -621,7 +630,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -638,7 +647,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -655,7 +664,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -672,7 +681,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -689,7 +698,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -706,7 +715,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -723,7 +732,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -740,7 +749,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -757,7 +766,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -774,7 +783,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -791,7 +800,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -808,7 +817,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -825,7 +834,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -842,7 +851,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -859,7 +868,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -876,7 +885,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -893,7 +902,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -910,7 +919,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -927,7 +936,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -944,7 +953,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -961,7 +970,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -978,7 +987,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -995,7 +1004,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1012,7 +1021,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td,false);
@@ -1029,7 +1038,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1046,7 +1055,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1063,7 +1072,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1080,7 +1089,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1097,7 +1106,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1114,7 +1123,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1131,7 +1140,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1148,7 +1157,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1165,7 +1174,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1182,7 +1191,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1199,7 +1208,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1216,7 +1225,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1233,7 +1242,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1250,7 +1259,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1267,7 +1276,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1284,7 +1293,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1301,7 +1310,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1318,7 +1327,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1335,7 +1344,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1352,7 +1361,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1369,7 +1378,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1386,7 +1395,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1403,7 +1412,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1420,7 +1429,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1437,7 +1446,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1454,7 +1463,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1471,7 +1480,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1488,7 +1497,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1505,7 +1514,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1522,7 +1531,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1539,7 +1548,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1556,7 +1565,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1573,7 +1582,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1590,7 +1599,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1607,7 +1616,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, true);
@@ -1624,7 +1633,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1678,7 +1687,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1695,7 +1704,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1712,7 +1721,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1729,7 +1738,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1747,7 +1756,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1764,7 +1773,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1781,7 +1790,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1798,7 +1807,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1815,7 +1824,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1832,7 +1841,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1849,7 +1858,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1866,7 +1875,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1883,7 +1892,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1900,7 +1909,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1917,7 +1926,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1934,7 +1943,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1951,7 +1960,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1968,7 +1977,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
@@ -1985,7 +1994,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             return formatoDivTotal(data, td, false);
