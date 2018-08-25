@@ -32,6 +32,15 @@
         return false;
 }
 
+function concatenarError(object, data, bandera,str) {
+    if (!validarCelda(data, bandera)) {
+        object.isValid.bandera = false;
+        var regex = new RegExp(str);
+        if (!regex.test(object.isValid.codError))
+            object.isValid.codError += "|" + str;
+    }
+}
+
 function pintarError(td) {
     td.style.setProperty("background-color", "red", "important");
 };

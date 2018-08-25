@@ -283,16 +283,7 @@
                                         },
                                         label: "Sueldo Gravado",
                                         renderCell: function (object, data, td, options) {
-                                            //data=getTotalPercepcionesGravado(object);
-                                            if (!validarCelda(data, 0)) {
-                                                object.isValid.bandera = false;
-                                                var regex = new RegExp("Sueldo_Gravado");
-                                                if (!regex.test(object.isValid.codError))
-                                                    object.isValid.codError += "|Sueldo_Gravado"
-                                            } else {
-                                                object.isValid.codError += "valido"
-                                            }
-                                            //console.log(object)
+                                            concatenarError(object, data, 0,"Sueldo_Gravado");
                                             return formatoDivTotal(data,td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -310,6 +301,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Sueldo_Exento");
                                             return formatoDivTotal(data,td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -327,6 +319,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Aguinaldo_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -344,6 +337,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Sueldo_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -361,6 +355,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PTU_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -378,6 +373,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PTU_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -395,6 +391,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "RGMDyH_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -412,6 +409,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "RGMDyH_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -429,6 +427,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "FDA_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -446,6 +445,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "FDA_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -463,6 +463,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CDA_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -480,6 +481,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CDA_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -497,6 +499,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CCTPP_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -514,6 +517,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CCTPP_Exento");
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -531,6 +535,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PP_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -548,6 +553,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PP_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -565,6 +571,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PSV_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -582,6 +589,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PSV_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -599,6 +607,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "SGMM_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -616,6 +625,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "SGMM_Exento");
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -633,6 +643,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CSPPP_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -650,6 +661,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CSPPP_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -667,6 +679,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "SPI_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -684,6 +697,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "SPI_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -701,6 +715,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Becas_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -718,6 +733,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Becas_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -735,6 +751,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "HE_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -752,6 +769,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "HE_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -769,6 +787,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PrimaD_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -786,6 +805,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PrimaD_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -803,6 +823,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PrimaV_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -820,6 +841,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PrimaV_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -837,6 +859,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PrimaA_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -854,6 +877,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PrimaA_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -871,6 +895,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PPS_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -888,6 +913,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "PPS_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -905,6 +931,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "SDR_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -922,6 +949,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "SDR_Exento");
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -939,6 +967,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Indeminizaciones_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -956,6 +985,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Indeminizaciones_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -973,6 +1003,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "RPF_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -990,6 +1021,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "RPF_Exento");
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1007,6 +1039,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CDSSPPP_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1024,6 +1057,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "CDSSPPP_Exento");
                                             return formatoDivTotal(data, td,false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1041,6 +1075,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Comisiones_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1058,6 +1093,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "Comisiones_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1075,6 +1111,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesD_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1092,6 +1129,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesD_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1109,6 +1147,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesR_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1126,6 +1165,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesR_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1143,6 +1183,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesG_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1160,6 +1201,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesG_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1177,6 +1219,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesRopa_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1194,6 +1237,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "ValesRopa_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1211,6 +1255,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "AyudaRenta_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1228,6 +1273,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "AyudaRenta_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1245,6 +1291,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "AyudaEscolar_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1262,6 +1309,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "AyudaEscolar_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1279,6 +1327,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "AyudaAnteojos_Gravado");
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
@@ -1296,6 +1345,7 @@
                                             regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
                                         },
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 0, "AyudaAnteojos_Exento");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
