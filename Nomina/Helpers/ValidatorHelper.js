@@ -15,6 +15,10 @@
             regex = "(^[0-9]+(\.[0-9]{1,3}))?";
             break;
         case 1:
+            /***
+             * Entra para las celdas de INCAPACIDADES DÍAS.
+             **/
+            regex = "[1-9]*";
             break;
         case 2:
             break;
@@ -24,11 +28,13 @@
     }
     pattern = new RegExp(regex);
     match = pattern.exec(value);
-    var coincidencia = match[0];//La primer coincidencia, en teoría solo debe de haber una coincidencia y debe ser como tal el valor de la celda.
-
-    if (coincidencia.length == value.length)
-        return true;
-    else
+    if (match != null) {
+        var coincidencia = match[0];//La primer coincidencia, en teoría solo debe de haber una coincidencia y debe ser como tal el valor de la celda.
+        if (coincidencia.length == value.length)
+            return true;
+        else
+            return false;
+    } else
         return false;
 }
 

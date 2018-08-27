@@ -2111,6 +2111,7 @@
                                         field: 'RiesgoTrabajoDias',
                                         label: "Dias",
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 1, "RiesgoTrabajoDias");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -2131,6 +2132,7 @@
                                         field: 'RiesgoEnfermedadDias',
                                         label: "Dias",
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 1, "RiesgoEnfermedadDias");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -2151,6 +2153,7 @@
                                         field: 'MaternidadDias',
                                         label: "Dias",
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 1, "MaternidadDias");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
@@ -2171,6 +2174,7 @@
                                         field: 'TotalIncapacidadesDias',
                                         label: "",
                                         renderCell: function (object, data, td, options) {
+                                            concatenarError(object, data, 1, "TotalIncapacidadesDias");
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
