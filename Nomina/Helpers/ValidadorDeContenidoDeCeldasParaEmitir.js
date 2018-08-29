@@ -12,3 +12,15 @@
     })
 
 }
+
+function crearObjeto(object) {
+    /**
+     * Por cada trabajador registrado en nomina se tendra un 
+     * objeto de tipo object con el cual construiremos el objeto
+     * que se manda en el servicio de la emisión de nomina.
+     * **/
+    var obj = {
+
+
+    }
+}

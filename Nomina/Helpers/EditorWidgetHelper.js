@@ -157,3 +157,34 @@ function getTotalPercepcionesExento(object) {
     total += parseFloat(object.ValesRopa_Exento);
     return total;
 }
+
+function getTotalDeducciones(object) {
+    /**
+     * Recibe como parametro el objecto que corresponde a la 
+     * fila de cada empleado registrado en nomina.
+     * **/
+    var total = 0.0;
+    total += parseFloat(object.ImporteSeguridadSocial);
+    total += parseFloat(object.ImporteISR);
+    total += parseFloat(object.ImporteARCEAV);
+    total += parseFloat(object.ImporteOtros);
+    total += parseFloat(object.ImporteDPI);
+    total += parseFloat(object.ImportePA);
+    total += parseFloat(object.ImportePPCDV);
+    total += parseFloat(object.ImporteINFONACOT);
+    total += parseFloat(object.ImporteADS);
+    total += parseFloat(object.ImporteErrores);
+    total += parseFloat(object.ImportePerdidas);
+    total += parseFloat(object.ImporteAverias);
+    total += parseFloat(object.ImporteAdquisicionArticulos);
+    total += parseFloat(object.ImporteCuotasConstitucion);
+    total += parseFloat(object.ImporteCuotasSindicales);
+    total += parseFloat(object.ImporteAusencia);
+    total += parseFloat(object.ImporteObreroP);
+    total += parseFloat(object.ImporteImpuestosL);
+    total += parseFloat(object.ImporteAportacionesV);
+    total += parseFloat(object.ImporteAportacionesV);
+
+    return total;
+}
+
