@@ -2103,6 +2103,12 @@
                                         },
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Total deducciones <br/> importe", domStyle);//Bandera 2 para deducciones
+                                        },
+                                        get: function (object) {
+                                            return getTotalDeducciones(object);
+                                        },
+                                        set: function (object) {
+                                            return getTotalDeducciones(object);
                                         }
                                     },//Total
 

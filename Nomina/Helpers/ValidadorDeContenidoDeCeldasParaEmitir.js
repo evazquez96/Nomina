@@ -19,8 +19,9 @@ function crearObjeto(object) {
      * objeto de tipo object con el cual construiremos el objeto
      * que se manda en el servicio de la emisión de nomina.
      * **/
-    var obj = {
-
-
+    var Nomina = {
+        Version: "1.2",
+        TipoNomina: "O",
+        FechaPago: object.FechaPago
     }
 }
