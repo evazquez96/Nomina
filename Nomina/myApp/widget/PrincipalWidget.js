@@ -25,7 +25,6 @@
     "dgrid/extensions/Pagination",
     "dgrid/Selection",
     "dgrid/Editor",
-    "dgrid/Keyboard",
     "dojo/regexp",
      /**
      *Fin de modulos para ColumnSet
@@ -69,7 +68,6 @@
         Pagination,
         Selection,
         Editor,
-        Keyboard,
         regex,
         /**
         *Fin de modulos para ColumnSet
@@ -134,7 +132,7 @@
             ,
             createGrid: function () {
 
-                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard]);
+                var CustomGrid = declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor]);
                 //var d = editorDate(DateTextBox);
                 this.grid = new CustomGrid({
 
@@ -1730,7 +1728,7 @@
                                             return a(object);
                                         },*/
                                         set: function (object) {
-                                            //console.log(object);
+                                            console.log(object);
                                             return a(object);
                                         }
                                     },//Total
@@ -2466,7 +2464,7 @@
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(cell);
                     var row = context.grid.row(event);*/
-                    console.log(context.grid.row(event));
+                    //console.log(context.grid.row(event));
                     //console.log(context.grid)
                     //actualizarValoresDgrid(event, grid);
                 });
