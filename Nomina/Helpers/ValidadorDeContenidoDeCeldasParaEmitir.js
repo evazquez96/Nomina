@@ -13,6 +13,9 @@
 
 }
 
+function getTotalOtrosPagos(Object) {
+    var total = 0.0;
+}
 function crearObjeto(object) {
     /**
      * Por cada trabajador registrado en nomina se tendra un 

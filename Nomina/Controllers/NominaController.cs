@@ -24,7 +24,7 @@ namespace Nomina.Controllers
              *Se obtiene la base de datos menfis_catalogo_empleados OK.xlsx
              */
             GoogleSheetsHelper gsh = new GoogleSheetsHelper(url);
-            gsh.createRequest("A5", "FG", WebConfigurationManager.AppSettings["GoogleSheetsName"]);
+            gsh.createRequest("A5", "FJ", WebConfigurationManager.AppSettings["GoogleSheetsName"]);
             gsh.executeRequest();
             /*
              *Se encarga de la lectura del archivo que esta en: formato nomina 2018 enero.xlsx
@@ -193,16 +193,24 @@ namespace Nomina.Controllers
                         unaNomina.MaternidadDescuento= limpiarMontos(filtrarCampo2(row[145]));
                         unaNomina.TotalIncapacidadesDias= limpiarMontos(filtrarCampo(row[146]));
                         unaNomina.TotalIncapacidadesDescuento = limpiarMontos(filtrarCampo2(row[147]));
-                        unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[146]));
-                        unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[147]));
-                        unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[148]));
-                        unaNomina.HorasExT_Dias= limpiarMontos(filtrarCampo2(row[149]));
-                        unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[150]));
-                        unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[151]));
-                        unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[152]));
-                        unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[153]));
-                        unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[154]));
-                        unaNomina.TotalHE= limpiarMontos(filtrarCampo2(row[155]));
+                        unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[148]));
+                        unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[149]));
+                        unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[150]));
+                        unaNomina.HorasExT_Dias= limpiarMontos(filtrarCampo2(row[151]));
+                        unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[152]));
+                        unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[153]));
+                        unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[154]));
+                        unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[155]));
+                        unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[156]));
+                        unaNomina.TotalHE= limpiarMontos(filtrarCampo2(row[157]));
+
+
+                        /***Otros pagos**/
+                        unaNomina.Reintegro_ISR = limpiarMontos(filtrarCampo2(row[158]));
+                        unaNomina.SubsidioEmpleoEfecEntregado= limpiarMontos(filtrarCampo2(row[159]));
+                        unaNomina.ViaticosEntregadosTrabajador= limpiarMontos(filtrarCampo2(row[160]));
+                        unaNomina.AplicacionSaldoAFavorCompensacionAnual= limpiarMontos(filtrarCampo2(row[161]));
+                        unaNomina.PagosDistintosALosListados= limpiarMontos(filtrarCampo2(row[162]));
                         /*
        */
 

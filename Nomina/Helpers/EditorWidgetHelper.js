@@ -1,4 +1,5 @@
-﻿
+﻿import { debug } from "util";
+
 function actualizarValoresDgrid(event, grid) {//Se pasa el evento y el grid.
     var cell = grid.cell(event);
     var row = grid.row(event);
@@ -182,9 +183,8 @@ function getTotalDeducciones(object) {
     total += parseFloat(object.ImporteAusencia);
     total += parseFloat(object.ImporteObreroP);
     total += parseFloat(object.ImporteImpuestosL);
-    total += parseFloat(object.ImporteAportacionesV);
-    total += parseFloat(object.ImporteAportacionesV);
-
+    total += parseFloat(object.ImporteAportacionesV); 
+    
     return total;
 }
 

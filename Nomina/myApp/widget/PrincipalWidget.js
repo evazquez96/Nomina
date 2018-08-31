@@ -279,7 +279,7 @@
                                         autoSave:true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         label: "Sueldo Gravado",
                                         renderCell: function (object, data, td, options) {
@@ -298,7 +298,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Sueldo_Exento");
@@ -316,7 +316,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'//'(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' --- (^[0-9]+)|(^[0-9]+\.[0-9]{1,3})
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Aguinaldo_Gravado");
@@ -334,7 +334,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Sueldo_Exento");
@@ -352,7 +352,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PTU_Gravado");
@@ -370,7 +370,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PTU_Exento");
@@ -388,7 +388,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "RGMDyH_Gravado");
@@ -406,7 +406,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "RGMDyH_Exento");
@@ -424,7 +424,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "FDA_Gravado");
@@ -442,7 +442,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "FDA_Exento");
@@ -460,7 +460,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CDA_Gravado");
@@ -478,7 +478,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CDA_Exento");
@@ -496,7 +496,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CCTPP_Gravado");
@@ -514,7 +514,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CCTPP_Exento");
@@ -532,7 +532,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PP_Gravado");
@@ -550,7 +550,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PP_Exento");
@@ -568,7 +568,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PSV_Gravado");
@@ -586,7 +586,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PSV_Exento");
@@ -604,7 +604,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "SGMM_Gravado");
@@ -622,7 +622,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "SGMM_Exento");
@@ -640,7 +640,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CSPPP_Gravado");
@@ -658,7 +658,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CSPPP_Exento");
@@ -676,7 +676,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "SPI_Gravado");
@@ -694,7 +694,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "SPI_Exento");
@@ -712,7 +712,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Becas_Gravado");
@@ -730,7 +730,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Becas_Exento");
@@ -748,7 +748,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "HE_Gravado");
@@ -766,7 +766,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "HE_Exento");
@@ -784,7 +784,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PrimaD_Gravado");
@@ -802,7 +802,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PrimaD_Exento");
@@ -820,7 +820,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PrimaV_Gravado");
@@ -838,7 +838,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PrimaV_Exento");
@@ -856,7 +856,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PrimaA_Gravado");
@@ -874,7 +874,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PrimaA_Exento");
@@ -892,7 +892,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PPS_Gravado");
@@ -910,7 +910,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PPS_Exento");
@@ -928,7 +928,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "SDR_Gravado");
@@ -946,7 +946,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "SDR_Exento");
@@ -964,7 +964,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Indeminizaciones_Gravado");
@@ -982,7 +982,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Indeminizaciones_Exento");
@@ -1000,7 +1000,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "RPF_Gravado");
@@ -1018,7 +1018,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "RPF_Exento");
@@ -1036,7 +1036,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CDSSPPP_Gravado");
@@ -1054,7 +1054,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "CDSSPPP_Exento");
@@ -1072,7 +1072,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Comisiones_Gravado");
@@ -1090,7 +1090,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Comisiones_Exento");
@@ -1108,7 +1108,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesD_Gravado");
@@ -1126,7 +1126,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesD_Exento");
@@ -1144,7 +1144,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesR_Gravado");
@@ -1162,7 +1162,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesR_Exento");
@@ -1180,7 +1180,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesG_Gravado");
@@ -1198,7 +1198,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesG_Exento");
@@ -1216,7 +1216,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesRopa_Gravado");
@@ -1234,7 +1234,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ValesRopa_Exento");
@@ -1252,7 +1252,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaRenta_Gravado");
@@ -1270,7 +1270,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaRenta_Exento");
@@ -1288,7 +1288,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaEscolar_Gravado");
@@ -1306,7 +1306,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaEscolar_Exento");
@@ -1324,7 +1324,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaAnteojos_Gravado");
@@ -1342,7 +1342,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaAnteojos_Exento");
@@ -1360,7 +1360,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaTransporte_Gravado");
@@ -1378,7 +1378,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaTransporte_Exento");
@@ -1396,7 +1396,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaGF_Gravado");
@@ -1414,7 +1414,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "AyudaGF_Exento");
@@ -1432,7 +1432,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "OIPS_Gravado");
@@ -1450,7 +1450,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "OIPS_Exento");
@@ -1468,7 +1468,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "JPHDR_Gravado");
@@ -1486,7 +1486,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "JPHDR_Exento");
@@ -1504,7 +1504,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "JPHDRParciales_Gravado");
@@ -1522,7 +1522,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "JPHDRParciales_Exento");
@@ -1540,7 +1540,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "IEAOTV_Gravado");
@@ -1558,7 +1558,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "IEAOTV_Exento");
@@ -1576,7 +1576,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "IAAS_Gravado");
@@ -1594,7 +1594,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "IAAS_Exento");
@@ -1612,7 +1612,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Alimentacion_Gravado");
@@ -1630,7 +1630,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Alimentacion_Exento");
@@ -1648,7 +1648,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Habitacion_Gravado");
@@ -1666,7 +1666,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "Habitacion_Exento");
@@ -1684,7 +1684,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PAsistecia_Gravado");
@@ -1702,7 +1702,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "PAsistecia_Exento");
@@ -1758,7 +1758,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteSeguridadSocial");
@@ -1776,7 +1776,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteISR");
@@ -1794,7 +1794,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteARCEAV");
@@ -1812,7 +1812,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteOtros");
@@ -1831,7 +1831,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteDPI");
@@ -1849,7 +1849,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImportePA");
@@ -1867,7 +1867,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImportePPCDV");
@@ -1885,7 +1885,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteINFONACOT");
@@ -1903,7 +1903,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteADS");
@@ -1921,7 +1921,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteErrores");
@@ -1939,7 +1939,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImportePerdidas");
@@ -1957,7 +1957,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteAverias");
@@ -1975,7 +1975,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteAdquisicionArticulos");
@@ -1993,7 +1993,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteCuotasConstitucion");
@@ -2011,7 +2011,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteCuotasSindicales");
@@ -2029,7 +2029,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteAusencia");
@@ -2047,7 +2047,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteObreroP");
@@ -2065,7 +2065,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteImpuestosL");
@@ -2083,7 +2083,7 @@
                                         autoSave: true,
                                         editorArgs: {
                                             style: "width:110px",
-                                            regExp: '(^[0-9]+(\.[0-9]{1,3}))?'
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                                         },
                                         renderCell: function (object, data, td, options) {
                                             concatenarError(object, data, 0, "ImporteAportacionesV");
@@ -2104,9 +2104,7 @@
                                         renderHeaderCell: function (node) {
                                             return formatoHeader(node, 2, "Total deducciones <br/> importe", domStyle);//Bandera 2 para deducciones
                                         },
-                                        get: function (object) {
-                                            return getTotalDeducciones(object);
-                                        },
+                                       
                                         set: function (object) {
                                             return getTotalDeducciones(object);
                                         }
@@ -2301,7 +2299,106 @@
                                             return formatoHeader(node, 2, "Horas extra <br/> Total", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Total Horas Extra
-
+                                    {//Reintegro de ISR pagado en exeso
+                                        field: 'Reintegro_ISR',
+                                        label: 'Reintegro de ISR pagado en exceso (siempre que no haya sido enterado al SAT).',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                           // concatenarError(object, data, 0, "Reintegro_ISR");
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2,
+                                                "Reintegro de ISR <br/> pagado en exceso <br/> (siempre que no haya <br/> sido enterado al SAT) <br/> importe"
+                                                , domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },
+                                    {//Subsidio para el empleo efectivamente entregado
+                                        field: 'SubsidioEmpleoEfecEntregado',
+                                        label: 'Subsidio para el empleo efectivamente entregado',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            //concatenarError(object, data, 0, "SubsidioEmpleoEfecEntregado");
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2,
+                                                "Subsidio para el empleo <br/> efectivamente entregado <br/> importe"
+                                                , domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },
+                                    {//Viáticos (entregados al trabajador).
+                                        field: 'ViaticosEntregadosTrabajador',
+                                        label: 'Viáticos (entregados al trabajador).',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                           // concatenarError(object, data, 0, "ViaticosEntregadosTrabajador");
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2,
+                                                "Viáticos <br/>  (entregados al trabajador) <br/> importe"
+                                                , domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },
+                                    {//Aplicación de saldo a favor por compensación anual.
+                                        field: 'AplicacionSaldoAFavorCompensacionAnual',
+                                        label: 'Aplicación de saldo a favor por compensación anual  importe',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            //concatenarError(object, data, 0, "AplicacionSaldoAFavorCompensacionAnual");
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2,
+                                                "Aplicación de <br/> saldo a favor <br/> por compensación anual <br/> importe"
+                                                , domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },
+                                    {//Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados..
+                                        field: 'PagosDistintosALosListados',
+                                        label: 'Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados.',
+                                        editor: ValidationTextBox,
+                                        editOn: 'dblclick',
+                                        autoSave: true,
+                                        editorArgs: {
+                                            style: "width:110px",
+                                            regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                                        },
+                                        renderCell: function (object, data, td, options) {
+                                            //concatenarError(object, data, 0, "PagosDistintosALosListados");
+                                            return formatoDivTotal(data, td, false);
+                                        },
+                                        renderHeaderCell: function (node) {
+                                            return formatoHeader(node, 2,
+                                                "Pagos distintos a los listados <br/>  y que no deben considerarse como <br/>  ingreso por sueldos, salarios <br/>  o ingresos asimilados. <br/> importe"
+                                                , domStyle);//Bandera 2 para deducciones
+                                        }
+                                    },
                                     {
                                         field: 'checkRegistro',
                                         label: 'isValid',

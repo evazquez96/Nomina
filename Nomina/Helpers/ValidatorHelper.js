@@ -12,7 +12,7 @@
          ***/
         case 0:
             /**Entra para validar celdas que corresponden a montos.**/
-            regex = "(^[0-9]+(\.[0-9]{1,3}))?";
+            regex = "(^[0-9]+(\.[0-9]{1,3})?)";
             break;
         case 1:
             /***
