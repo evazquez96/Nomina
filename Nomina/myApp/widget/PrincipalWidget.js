@@ -1689,7 +1689,7 @@
                                             return formatoDivTotal(data, td, true);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Premios por asistencia <br/> Exento", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Premios por asistencia <br/> Gravado", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premios por asistencia
                                     {
@@ -1707,7 +1707,7 @@
                                             return formatoDivTotal(data, td, false);
                                         },
                                         renderHeaderCell: function (node) {
-                                            return formatoHeader(node, 2, "Premios por asistencia <br/> Gravado", domStyle);//Bandera 2 para deducciones
+                                            return formatoHeader(node, 2, "Premios por asistencia <br/> Exento", domStyle);//Bandera 2 para deducciones
                                         }
                                     },//Premios por asistencia
                                     {
