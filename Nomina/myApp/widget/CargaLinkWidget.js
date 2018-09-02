@@ -80,6 +80,10 @@
                 /**
                  * Función que se encargara de crear el Grid.
                  **/
+                nominaStore.forEach(function (object) {
+                    object.isValid = { bandera: true, codError: "" };
+                    /**Se agrega el item que servira como bandera de errores.**/
+                })
                 this.grid.set('collection', nominaStore);
                 this.grid.renderArray(value);
 
@@ -107,12 +111,13 @@
                 when(deferred, function (value) {
                     context.createGrid(value);  
                     //console.log(context.grid);
+                    /*
                     dialog = new Dialog({
                         title: "Registros con errores",
                         content: "Test content.",
                         style: "width: 300px"
                     });
-                    dialog.show();
+                    dialog.show();*/
                 });
                 console.log("Se enviara el link: "+url);
             },

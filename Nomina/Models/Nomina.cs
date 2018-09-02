@@ -13,6 +13,7 @@ namespace Nomina.Models
         public String FechaPago { get; set; }//requerido
         public String FechaInicialPago { get; set; } //requerido
         public String FechaFinalPago { get; set; }//requerido
+        public String Clabe { get; set; }
         public String NumDiasPagados { get; set; }//requerido
         public String TotalPercepciones { get; set; }//condicional
         //public String TotalDeducciones { get; set; }//condicional
@@ -186,6 +187,15 @@ namespace Nomina.Models
         public String HorasExS_Horas { get; set; }
         public String HorasExS_Importe { get; set; }
         public String TotalHE { get; set; }
+
+
+        /**Otros pagos.**/
+        public String Reintegro_ISR { get; set; }
+        public String SubsidioEmpleoEfecEntregado { get; set; }
+        public String ViaticosEntregadosTrabajador { get; set; }
+        public String AplicacionSaldoAFavorCompensacionAnual { get; set; }
+        public String PagosDistintosALosListados { get; set; }
+
         //public Receptor Receptor { get; set; }
 
         public void getAntiguedad(String fecha_inicio,String actual)

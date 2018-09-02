@@ -24,7 +24,7 @@ namespace Nomina.Controllers
              *Se obtiene la base de datos menfis_catalogo_empleados OK.xlsx
              */
             GoogleSheetsHelper gsh = new GoogleSheetsHelper(url);
-            gsh.createRequest("A5", "FG", WebConfigurationManager.AppSettings["GoogleSheetsName"]);
+            gsh.createRequest("A5", "FJ", WebConfigurationManager.AppSettings["GoogleSheetsName"]);
             gsh.executeRequest();
             /*
              *Se encarga de la lectura del archivo que esta en: formato nomina 2018 enero.xlsx
@@ -71,6 +71,7 @@ namespace Nomina.Controllers
                         unaNomina.getAtributosReceptor(receptor);
                         unaNomina.FechaPago = Convert.ToString(row[3]);//Obtiene la fecha de pago.
                         unaNomina.NumDiasPagados = Convert.ToString(row[6]);//Obtiene el numero de dias pagados
+                        unaNomina.Clabe = Convert.ToString(row[8]);
                         unaNomina.Monto = limpiarMontos(Convert.ToString(row[9]));//Obtiene el Monto
                         unaNomina.Sueldo_Gravado = limpiarMontos(Convert.ToString(row[10]));//Obtiene el sueldo Gravado
                         unaNomina.Sueldo_Exento = limpiarMontos(filtrarCampo2(row[11]));//Obtiene el sueldo Exento.
@@ -173,35 +174,43 @@ namespace Nomina.Controllers
                         unaNomina.ImporteADS= limpiarMontos(filtrarCampo2(row[115]));//Anticipo de salarios
                         unaNomina.ImporteErrores= limpiarMontos(filtrarCampo2(row[116]));
                         unaNomina.ImportePerdidas=limpiarMontos(filtrarCampo2(row[118]));
-                        unaNomina.ImporteAverias=limpiarMontos(filtrarCampo2(row[120]));
-                        unaNomina.ImporteAdquisicionArticulos= limpiarMontos(filtrarCampo2(row[122]));
-                        unaNomina.ImporteCuotasConstitucion= limpiarMontos(filtrarCampo2(row[124]));
-                        unaNomina.ImporteCuotasSindicales= limpiarMontos(filtrarCampo2(row[126]));
-                        unaNomina.ImporteAusencia= limpiarMontos(filtrarCampo2(row[128]));
-                        unaNomina.ImporteObreroP= limpiarMontos(filtrarCampo2(row[130]));
-                        unaNomina.ImporteImpuestosL= limpiarMontos(filtrarCampo2(row[132]));
-                        unaNomina.ImporteAportacionesV= limpiarMontos(filtrarCampo2(row[134]));
-                        unaNomina.TotalDeducciones= limpiarMontos(filtrarCampo2(row[136]));
+                        unaNomina.ImporteAverias = limpiarMontos(filtrarCampo2(row[122]));//IMPORTE AVERÍAS
+                        unaNomina.ImporteAdquisicionArticulos= limpiarMontos(filtrarCampo2(row[124]));
+                        unaNomina.ImporteCuotasConstitucion= limpiarMontos(filtrarCampo2(row[126]));
+                        unaNomina.ImporteCuotasSindicales= limpiarMontos(filtrarCampo2(row[128]));//IMPORTE CUOTAS SINDICALES
+                        unaNomina.ImporteAusencia= limpiarMontos(filtrarCampo2(row[130]));
+                        unaNomina.ImporteObreroP= limpiarMontos(filtrarCampo2(row[132]));
+                        unaNomina.ImporteImpuestosL= limpiarMontos(filtrarCampo2(row[134]));
+                        unaNomina.ImporteAportacionesV= limpiarMontos(filtrarCampo2(row[136]));
+                        unaNomina.TotalDeducciones = limpiarMontos(filtrarCampo2(row[138]));//TOTAL DEDUCCIONES
 
                         /**Incapacidades**/
-                        unaNomina.RiesgoTrabajoDias = limpiarMontos(filtrarCampo2(row[138]));
-                        unaNomina.RiesgoTrabajoDescuento = limpiarMontos(filtrarCampo2(row[139]));
-                        unaNomina.RiesgoEnfermedadDias= limpiarMontos(filtrarCampo2(row[140]));
-                        unaNomina.RiesgoEnfermedadDescuento= limpiarMontos(filtrarCampo2(row[141]));
-                        unaNomina.MaternidadDias= limpiarMontos(filtrarCampo2(row[142]));
-                        unaNomina.MaternidadDescuento= limpiarMontos(filtrarCampo2(row[143]));
-                        unaNomina.TotalIncapacidadesDias= limpiarMontos(filtrarCampo2(row[144]));
-                        unaNomina.TotalIncapacidadesDescuento = limpiarMontos(filtrarCampo2(row[145]));
-                        unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[146]));
-                        unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[147]));
-                        unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[148]));
-                        unaNomina.HorasExT_Dias= limpiarMontos(filtrarCampo2(row[149]));
-                        unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[150]));
-                        unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[151]));
-                        unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[152]));
-                        unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[153]));
-                        unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[154]));
-                        unaNomina.TotalHE= limpiarMontos(filtrarCampo2(row[155]));
+                        unaNomina.RiesgoTrabajoDias = limpiarMontos(filtrarCampo(row[140]));
+                        unaNomina.RiesgoTrabajoDescuento = limpiarMontos(filtrarCampo2(row[141]));
+                        unaNomina.RiesgoEnfermedadDias= limpiarMontos(filtrarCampo(row[142]));
+                        unaNomina.RiesgoEnfermedadDescuento= limpiarMontos(filtrarCampo2(row[143]));
+                        unaNomina.MaternidadDias= limpiarMontos(filtrarCampo(row[144]));
+                        unaNomina.MaternidadDescuento= limpiarMontos(filtrarCampo2(row[145]));
+                        unaNomina.TotalIncapacidadesDias= limpiarMontos(filtrarCampo(row[146]));
+                        unaNomina.TotalIncapacidadesDescuento = limpiarMontos(filtrarCampo2(row[147]));
+                        unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[148]));
+                        unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[149]));
+                        unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[150]));
+                        unaNomina.HorasExT_Dias= limpiarMontos(filtrarCampo2(row[151]));
+                        unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[152]));
+                        unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[153]));
+                        unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[154]));
+                        unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[155]));
+                        unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[156]));
+                        unaNomina.TotalHE= limpiarMontos(filtrarCampo2(row[157]));
+
+
+                        /***Otros pagos**/
+                        unaNomina.Reintegro_ISR = limpiarMontos(filtrarCampo2(row[158]));
+                        unaNomina.SubsidioEmpleoEfecEntregado= limpiarMontos(filtrarCampo2(row[159]));
+                        unaNomina.ViaticosEntregadosTrabajador= limpiarMontos(filtrarCampo2(row[160]));
+                        unaNomina.AplicacionSaldoAFavorCompensacionAnual= limpiarMontos(filtrarCampo2(row[161]));
+                        unaNomina.PagosDistintosALosListados= limpiarMontos(filtrarCampo2(row[162]));
                         /*
        */
 
