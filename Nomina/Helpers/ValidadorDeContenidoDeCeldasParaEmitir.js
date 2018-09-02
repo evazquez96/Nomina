@@ -6,9 +6,15 @@
      **/
     var collection = grid.get("collection");
     /**El primer foreach lo que hace es ponerle la bandera isValid=true**/
-    collection.forEach(function (object) {
+    var store = grid.get("store");
+    var filter = new collection.Filter();//Se crea un filtro nuevo
+    var filtroValido = filter.eq('isValid', true);
+    var filtroInvalido = filter.eq('isValid.bandera', false);
+    var validos = collection.filter(filtroValido);
+    var invalidos = collection.filter(filtroInvalido);
+    invalidos.forEach(function (object) {
         //object.isValid = true;
-        console.log(crearPercepcionList(object))
+        console.log(object)
     })
 
 }
@@ -34,8 +40,8 @@ function crearPercepcionList(object) {
     PercepcionList.push(crearPercepcion("003", "003", "PTU", object.PTU_Exento, object.PTU_Exento));
     PercepcionList.push(crearPercepcion("004", "004", "Reembolso de Gastos Médicos Dentales y Hospitalarios", object.RGMDyH_Gravado_Exento, object.RGMDyH_Gravado_Exento));
     PercepcionList.push(crearPercepcion("005", "005", "Fondo de Ahorro", object.FDA_Exento, object.FDA_Exento));
-    PercepcionList.push(crearPercepcion("006", "006", "Caja de ahorro", object.CDA_Gravado, CDA.Sueldo_Exento));
-    PercepcionList.push(crearPercepcion("009", "009", "Contribuciones a Cargo del Trabajador Pagadas por el Patrón", object.CCTPP_Gravado, CDA.CCTPP_Exento));
+    PercepcionList.push(crearPercepcion("006", "006", "Caja de ahorro", object.CDA_Gravado, object.CDA_Exento));
+    PercepcionList.push(crearPercepcion("009", "009", "Contribuciones a Cargo del Trabajador Pagadas por el Patrón", object.CCTPP_Gravado, object.CCTPP_Exento));
     PercepcionList.push(crearPercepcion("010", "010", "Premios por puntualidad", object.PP_Exento, object.PP_Exento));
     PercepcionList.push(crearPercepcion("011", "011", "Prima de Seguro de vida", object.PSV_Exento, object.PSV_Exento));
     PercepcionList.push(crearPercepcion("012", "012", "Seguro de Gastos Médicos Mayores", object.SGMM_Exento, object.SGMM_Exento));

@@ -263,7 +263,7 @@
                                         field: 'Monto',
                                         label: "Monto",
                                         renderCell: function (object, data, td, options) {
-                                            validarCampo(9, td, data);
+                                            concatenarError(object, data, 0, "Monto");
                                             return formatoCentrarContenido(data);
                                         },
                                         renderHeaderCell: function (node) {
