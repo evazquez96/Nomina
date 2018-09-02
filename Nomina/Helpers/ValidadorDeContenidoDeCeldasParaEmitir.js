@@ -26,6 +26,7 @@ function crearPercepcion(TipoPercepcion,Clave,Concepto,ImporteGravado,ImporteExe
         ImporteExento: ImporteExento
     }
 }
+
 function crearPercepcionList(object) {
     var PercepcionList = [];
     PercepcionList.push(crearPercepcion("001", "001", "Sueldo", object.Sueldo_Gravado,object.Sueldo_Exento));
@@ -62,9 +63,12 @@ function crearPercepcionList(object) {
     PercepcionList.push(crearPercepcion("037", "037", "Ayuda para gastos de funeral", object.AyudaGF_Exento, object.AyudaGF_Exento));
     PercepcionList.push(crearPercepcion("038", "038", "Otros ingresos por salarios", object.OIPS__Exento, object.OIPS__Exento));
     PercepcionList.push(crearPercepcion("039", "039", "Jubilaciones, pensiones o haberes de retiro", object.JPHDR__Exento, object.JPHDR__Exento));
-    PercepcionList.push(crearPercepcion("044", "044", "Jubilaciones, pensiones o haberes de retiro en parcialidades", object.AyudaRenta_Exento, object.AyudaRenta_Exento));
-
-
+    PercepcionList.push(crearPercepcion("044", "044", "Jubilaciones, pensiones o haberes de retiro en parcialidades", object.JPHDRParciales_Exento, object.JPHDRParciales_Exento));
+    PercepcionList.push(crearPercepcion("045", "045", "Ingresos en acciones o títulos valor que representan bienes", object.IEAOTV_Gravado, object.IEAOTV_Exento));
+    PercepcionList.push(crearPercepcion("046", "046", "Ingresos asimilados a salarios", object.IAAS_Gravado, object.IAAS_Exento));
+    PercepcionList.push(crearPercepcion("047", "047", "Alimentación", object.Alimentacion_Gravado, object.Alimentacion_Exento));
+    PercepcionList.push(crearPercepcion("048", "048", "Habitación", object.Habitacion_Gravado, object.Habitacion_Exento));
+    PercepcionList.push(crearPercepcion("049", "049", "Premios por asistencia", object.PAsistecia_Gravado, object.PAsistecia_Exento));
 
     var nomina = {
         PercecpcionList: PercepcionList
@@ -72,7 +76,23 @@ function crearPercepcionList(object) {
     return nomina;
 
 }
-function crearDeduccionList(Object) {
+
+function crearDeduccion(TipoDeduccion, Clave, Concepto, Importe) {
+    return {
+        TipoPercepcion: TipoDeduccion,
+        Clave: Clave,
+        Concepto: Concepto,
+        Importe: Importe
+    }
+} 
+
+function crearDeduccionList(object) {
+    DeduccionList = [];
+    DeduccionList.push(crearDeduccion("001", "001", "Seguridad social", object.ImporteSeguridadSocial));
+    DeduccionList.push(crearDeduccion("002", "002", "ISR", object.ImporteISR));
+    DeduccionList.push(crearDeduccion("003", "003", "Aportaciones a retiro, cesantía en edad avanzada y vejez.", object.ImporteARCEAV));
+    DeduccionList.push(crearDeduccion("004", "004", "Otros", object.ImporteOtros));
+    DeduccionList.push(crearDeduccion("005", "005", "Otros", object.ImporteOtros));
 }
 
 function crearObjeto(object) {
