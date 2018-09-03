@@ -76,7 +76,11 @@
                     { NumEmpleado: 2, Nombre: " Cruz Mondragon Diego", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" },
                     { NumEmpleado: 3, Nombre: " Juan Orihuela", Antiguedad: 23, Fecha: "2018/04/09", FechaI: "2018/02/23" }
                 ];
-                var nominaStore = new Memory({ data: value, idProperty: 'NumEmpleado' });
+                var nominaStore = new Memory({
+                    data: value,
+                    id: ['NumEmpleado', 'Fecha'].join("#"),
+                   // idProperty: 'NumEmpleado'
+                });
                 /**
                  * Función que se encargara de crear el Grid.
                  **/
