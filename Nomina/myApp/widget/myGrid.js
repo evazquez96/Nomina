@@ -1742,6 +1742,42 @@
                             }
                         },//Importe pensión alimenticia
                         {
+                            field: 'ImporteRenta',
+                            label: 'importe',
+                            editor: ValidationTextBox,
+                            editOn: 'dblclick',
+                            autoSave: true,
+                            editorArgs: {
+                                style: "width:110px",
+                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                            },
+                            renderCell: function (object, data, td, options) {
+                                concatenarError(object, data, 0, "ImporteRenta");
+                                return formatoDivTotal(data, td, false);
+                            },
+                            renderHeaderCell: function (node) {
+                                return formatoHeader(node, 2, "Renta <br/> importe", domStyle);//Bandera 2 para deducciones
+                            }
+                        },//ImporteRenta
+                        {
+                            field: 'ImportePPFNDLVPLT',
+                            label: 'importe',
+                            editor: ValidationTextBox,
+                            editOn: 'dblclick',
+                            autoSave: true,
+                            editorArgs: {
+                                style: "width:110px",
+                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                            },
+                            renderCell: function (object, data, td, options) {
+                                concatenarError(object, data, 0, "ImportePPFNDLVPLT");
+                                return formatoDivTotal(data, td, false);
+                            },
+                            renderHeaderCell: function (node) {
+                                return formatoHeader(node, 2, "Préstamos provenientes del <br/> Fondo nacional de la <br/> vivienda para los trabajadores<br/> importe", domStyle);//Bandera 2 para deducciones
+                            }
+                        },//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores
+                        {
                             field: 'ImportePPCDV',
                             label: 'importe',
                             editor: ValidationTextBox,
@@ -1793,6 +1829,24 @@
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Anticipo de salarios <br/> importe", domStyle);//Bandera 2 para deducciones
+                            }
+                        },//Importe anticipo de Salarios
+                        {
+                            field: 'ImportePHCEAT',
+                            label: 'importe',
+                            editor: ValidationTextBox,
+                            editOn: 'dblclick',
+                            autoSave: true,
+                            editorArgs: {
+                                style: "width:110px",
+                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
+                            },
+                            renderCell: function (object, data, td, options) {
+                                concatenarError(object, data, 0, "ImportePHCEAT");
+                                return formatoDivTotal(data, td, false);
+                            },
+                            renderHeaderCell: function (node) {
+                                return formatoHeader(node, 2, "Pagos hechos con exceso <br/>  al trabajador. <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
                         },//Importe anticipo de Salarios
                         {

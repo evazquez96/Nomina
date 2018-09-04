@@ -13,10 +13,10 @@
     var validos = collection.filter(filtroValido);
     var invalidos = collection.filter(filtroInvalido);
     grid.set('collection', invalidos);
-    debugger;
     invalidos.forEach(function (object) {
         //object.isValid = true;
-        console.log(object)
+        //console.log(crearObjetoPeticion(object))
+        console.log(object);
     })
     
 
@@ -147,18 +147,63 @@ function crearDeduccionList(object) {
         DeduccionList.push(crearDeduccion("004", "004", "Otros", object.ImporteOtros));
     if (object.ImporteDPI != 0.0)
         DeduccionList.push(crearDeduccion("006", "006", "Descuento por incapacidad", object.ImporteOtros));
+    if (object.ImportePA != 0.0)
+        DeduccionList.push(crearDeduccion("007", "007", "Pensión alimenticia", object.ImportePA));
+    if (object.ImporteRenta != 0.0)
+        DeduccionList.push(crearDeduccion("008", "008", "Renta", object.ImporteRenta));
+    if (object.ImportePPFNDLVPLT != 0.0)
+        DeduccionList.push(crearDeduccion("009", "009", "Préstamos provenientes del Fondo Nacional de la Vivienda para los Trabajadores", object.ImportePPFNDLVPLT));
+    if (object.ImportePPCDV != 0.0)
+        DeduccionList.push(crearDeduccion("010", "010", "Pago por crédito de vivienda", object.ImportePPCDV));
+    if (object.ImporteINFONACOT!= 0.0)
+        DeduccionList.push(crearDeduccion("011", "011", "Pago de abonos INFONACOT", object.ImporteINFONACOT));
+    if (object.ImporteADS != 0.0)
+        DeduccionList.push(crearDeduccion("012", "012", "Anticipo de salarios", object.ImporteADS));
+    if (object.ImportePHCEAT != 0.0)
+        DeduccionList.push(crearDeduccion("013", "013", "Pagos hechos con exceso al trabajador", object.ImportePHCEAT));
+    if (object.ImporteErrores != 0.0)
+        DeduccionList.push(crearDeduccion("014", "014", "Errores", object.ImporteErrores));
+    if (object.ImportePerdidas != 0.0)
+        DeduccionList.push(crearDeduccion("015", "015", "Pérdidas", object.ImportePerdidas));
+    if (object.ImporteAverias != 0.0)
+        DeduccionList.push(crearDeduccion("016", "016", "Averias", object.ImporteAverias));
+    if (object.ImporteAdquisicionArticulos != 0.0)
+        DeduccionList.push(crearDeduccion("017", "017", "Adquisición de artículos producidos por la empresa o establecimiento", object.ImporteAdquisicionArticulos));
+    if (object.ImporteCuotasConstitucion != 0.0)
+        DeduccionList.push(crearDeduccion("018", "018", "Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro", object.ImporteCuotasConstitucion));
+    if (object.ImporteCuotasSindicales != 0.0)
+        DeduccionList.push(crearDeduccion("019", "019", "Cuotas sindicales", object.ImporteCuotasSindicales));
+    if (object.ImporteAusencia != 0.0)
+        DeduccionList.push(crearDeduccion("020", "020", "Ausencia (Ausentismo)", object.ImporteAusencia));
+    if (object.ImporteObreroP != 0.0)
+        DeduccionList.push(crearDeduccion("021", "021", "Cuotas obrero patronales", object.ImporteObreroP));
+    if (object.ImporteImpuestosL != 0.0)
+        DeduccionList.push(crearDeduccion("022", "022", "Impuestos locales", object.ImporteImpuestosL));
+    if (object.ImporteAportacionesV != 0.0)
+        DeduccionList.push(crearDeduccion("023", "023", "Aportaciones Voluntarias", object.ImporteAportacionesV));
 
 }
 
-function crearObjeto(object) {
+function crearObjetoPeticion(object) {
     /**
      * Por cada trabajador registrado en nomina se tendra un 
      * objeto de tipo object con el cual construiremos el objeto
      * que se manda en el servicio de la emisión de nomina.
      * **/
     var Nomina = {
-        Version: "1.2",
-        TipoNomina: "O",
-        FechaPago: object.FechaPago
+        Complemento: {
+            Nomina: {
+                Deducciones: {
+                    DeduccionList: crearDeduccionList(object)
+                },
+                Percepciones: {
+                    PercepcionList: crearPercepcionList(object)
+                }
+            },
+            Version: "1.2",
+            TipoNomina: "O" 
+        }
     }
+
+    return Nomina;
 }

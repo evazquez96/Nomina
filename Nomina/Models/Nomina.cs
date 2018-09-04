@@ -148,9 +148,12 @@ namespace Nomina.Models
         public String ImporteOtros { get; set; }
         public String ImporteDPI { get; set; }
         public String ImportePA { get; set; }
-        public String ImportePPCDV { get; set; }
+        public String ImporteRenta { get; set; }//Importe renta 008
+        public String ImportePPFNDLVPLT { get; set; }//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores.
+        public String ImportePPCDV { get; set; }//Importe Pago por crédito de vivienda.
         public String ImporteINFONACOT { get; set; }
-        public String ImporteADS { get; set; }
+        public String ImporteADS { get; set; }//Importe Anticipo de salarios
+        public String ImportePHCEAT { get; set; }//Importe: Pagos hechos con exceso al trabajador.
         public String ImporteErrores { get; set; }
         public String ImportePerdidas { get; set; }
         public String ImporteAverias { get; set; }
