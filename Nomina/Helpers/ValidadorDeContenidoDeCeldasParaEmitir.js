@@ -8,12 +8,12 @@
     /**El primer foreach lo que hace es ponerle la bandera isValid=true**/
     var store = grid.get("store");
     var filter = new collection.Filter();//Se crea un filtro nuevo
-    var filtroValido = filter.eq('isValid', true);
+    var filtroValido = filter.eq('isValid.bandera', true);
     var filtroInvalido = filter.eq('isValid.bandera', false);
     var validos = collection.filter(filtroValido);
     var invalidos = collection.filter(filtroInvalido);
     grid.set('collection', invalidos);
-    invalidos.forEach(function (object) {
+    validos.forEach(function (object) {
         //object.isValid = true;
         //console.log(crearObjetoPeticion(object))
         console.log(object);
