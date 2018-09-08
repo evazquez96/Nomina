@@ -21,7 +21,6 @@
     ValidationTextBox,
     CheckBox
 ) {
-
     return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
         cellNavigation: false,
         columnSets:
@@ -156,6 +155,7 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
+                               
                                 bandera=concatenarError(object, data, 0, "Monto");
                                 return formatoCentrarContenido(data,bandera);
                             },
