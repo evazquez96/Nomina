@@ -126,7 +126,7 @@
                         /**Aquí se realizaran todas las validaciones de las celdas
                          * que se requieren para emitir la nomina.**/
                         //var collection = context.grid.get("collection");
-                        validarContenidoDeCeldas(context.grid);
+                        //validarContenidoDeCeldas(context.grid);
                     }
                 })
                 context.BottomContentPane.addChild(btn);
@@ -134,9 +134,7 @@
             ,
             createGrid: function () {
 
-                this.grid = new CustomGrid({
-                    //collection: nominaStore,
-                });
+                this.grid = new CustomGrid();
                 var context = this;
                 /*
                 this.grid.on('.dgrid-cell:click', function (event) {
@@ -146,7 +144,7 @@
                     console.log(cell.row);
 
                 });*/
-                /*
+                
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
                     var test = cell.column.renderCell;
@@ -160,7 +158,7 @@
                     //console.log(row.element);
                     //console.log(z);
                     actualizarValoresDgrid(event,grid);
-                });*/
+                });
                 //this.grid.styleColumn("Nombre", "display: none;");
 
                 this.grid.on('dgrid-editor-hide', function (event) {

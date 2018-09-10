@@ -11,26 +11,19 @@ function formatoCeldasVacias(td) {
     return div;
 }
 
-function formatoCentrarContenido(data,bandera) {
+function formatoCentrarContenido(data) {
     var div = document.createElement("div");
     div.innerHTML = data;
     div.style.setProperty("text-align", "center", "important");
-    if (!bandera) {
-        div.style.setProperty("background-color", "red", "important");
-        //div.style.setProperty("height", "100%", "important");
-    }
     return div;
 }
 
 
-function formatoDivTotal(data,td, bandera) {
+function formatoDivTotal(data,td) {
     var div = document.createElement('div');
     div.className = "renderedCell";
     div.innerHTML = data;
     div.style.setProperty("text-align", "center", "important");
-    if (!bandera) {//Indica que hay un error
-        div.style.setProperty("background-color", "red", "important");
-    }
     return div;
 }
 

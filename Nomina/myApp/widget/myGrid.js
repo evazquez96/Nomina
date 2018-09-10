@@ -22,7 +22,6 @@
     CheckBox
 ) {
     return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
-        cellNavigation: false,
         columnSets:
             [
                 [
@@ -63,7 +62,7 @@
                 ],
                 [
 
-                    [
+                    [//Inicio del segundo ColumnSet
 
 
                         {
@@ -156,8 +155,8 @@
                             },
                             renderCell: function (object, data, td, options) {
                                
-                                bandera=concatenarError(object, data, 0, "Monto");
-                                return formatoCentrarContenido(data,bandera);
+                                concatenarError(object, data, 0, "Monto");
+                                return formatoCentrarContenido(data);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 1, "Monto", domStyle);
@@ -174,8 +173,8 @@
                             },
                             label: "Sueldo Gravado",
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Sueldo_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Sueldo_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Sueldo <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -192,13 +191,13 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Sueldo_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Sueldo_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Sueldo <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },
+                        },/*
                         {
                             field: 'Aguinaldo_Gravado',
                             label: " Aguinaldo Gravado",
@@ -210,8 +209,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'//'(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' --- (^[0-9]+)|(^[0-9]+\.[0-9]{1,3})
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Aguinaldo_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Aguinaldo_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Aguinaldo <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -228,8 +227,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Sueldo_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Sueldo_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Aguinaldo <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -246,8 +245,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PTU_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PTU_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "PTU <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -264,8 +263,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PTU_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PTU_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "PTU <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -282,8 +281,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "RGMDyH_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "RGMDyH_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -300,8 +299,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "RGMDyH_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "RGMDyH_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -318,8 +317,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "FDA_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "FDA_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Fondo de ahorro <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -336,8 +335,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "FDA_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "FDA_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Fondo de ahorro <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -354,8 +353,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CDA_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CDA_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Caja de ahorro <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -372,8 +371,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CDA_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CDA_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Caja de ahorro <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -390,8 +389,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CCTPP_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CCTPP_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Contribuciones a Cargo del Trabajador Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -408,8 +407,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CCTPP_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CCTPP_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Contribuciones a Cargo del Trabajador Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -426,8 +425,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PP_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PP_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Premio Puntualidad <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -444,8 +443,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PP_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PP_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Premio Puntualidad <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -462,8 +461,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PSV_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PSV_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima de seguro de vida <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -480,8 +479,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PSV_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PSV_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima de seguro de vida <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -498,8 +497,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "SGMM_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "SGMM_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -516,8 +515,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "SGMM_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "SGMM_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -534,8 +533,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CSPPP_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CSPPP_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -552,8 +551,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CSPPP_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CSPPP_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -570,8 +569,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "SPI_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "SPI_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Subsidios por incapacidad <br/>  Gravado", domStyle);//Bandera 2 para deducciones
@@ -588,8 +587,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "SPI_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "SPI_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Subsidios por incapacidad <br/>  Exento", domStyle);//Bandera 2 para deducciones
@@ -606,8 +605,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Becas_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Becas_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Becas <br/>  Gravado", domStyle);//Bandera 2 para deducciones
@@ -624,8 +623,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Becas_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Becas_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Becas <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -642,8 +641,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "HE_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "HE_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas Extra <br/>  Gravado", domStyle);//Bandera 2 para deducciones
@@ -660,8 +659,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "HE_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "HE_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas Extra <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -678,8 +677,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PrimaD_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PrimaD_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima Dominical <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -696,8 +695,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PrimaD_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PrimaD_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima Dominical <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -714,8 +713,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PrimaV_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PrimaV_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima vacacional <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -732,8 +731,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PrimaV_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PrimaV_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima vacacional <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -750,8 +749,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PrimaA_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PrimaA_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima por Antigüedad <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -768,8 +767,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PrimaA_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PrimaA_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Prima por Antigüedad <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -786,8 +785,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PPS_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PPS_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pagos por separación <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -804,8 +803,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PPS_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PPS_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pagos por separación <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -822,8 +821,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "SDR_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "SDR_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Seguro de retiro <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -840,8 +839,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "SDR_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "SDR_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Seguro de retiro <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -858,8 +857,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Indeminizaciones_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Indeminizaciones_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Indeminizaciones <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -876,8 +875,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Indeminizaciones_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Indeminizaciones_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Indeminizaciones <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -894,8 +893,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "RPF_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "RPF_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Reembolso por funeral <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -912,8 +911,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "RPF_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "RPF_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Reembolso por funeral <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -930,8 +929,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CDSSPPP_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CDSSPPP_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas de seguridad social pagadas por el patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -948,8 +947,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "CDSSPPP_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "CDSSPPP_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas de seguridad social pagadas por el patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -966,8 +965,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Comisiones_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Comisiones_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Comisiones <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -984,8 +983,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Comisiones_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Comisiones_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Comisiones <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1002,8 +1001,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesD_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesD_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de despensa <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1020,8 +1019,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesD_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesD_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de despensa <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1038,8 +1037,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesR_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesR_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de Restaurante <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1056,8 +1055,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesR_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesR_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de restaurante <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1074,8 +1073,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesG_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesG_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de gasolina <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1092,8 +1091,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesG_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesG_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de gasolina <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1110,8 +1109,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesRopa_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesRopa_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de ropa  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1128,8 +1127,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ValesRopa_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ValesRopa_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Vales de ropa  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1146,8 +1145,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaRenta_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaRenta_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para renta  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1164,8 +1163,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaRenta_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaRenta_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para renta  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1182,8 +1181,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaEscolar_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaEscolar_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para artículos escolares  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1200,8 +1199,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaEscolar_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaEscolar_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para artículos escolares  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1218,8 +1217,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaAnteojos_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaAnteojos_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para anteojos  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1236,8 +1235,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaAnteojos_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaAnteojos_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para anteojos  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1254,8 +1253,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaTransporte_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaTransporte_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para transporte  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1272,8 +1271,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaTransporte_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaTransporte_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para transporte  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1290,8 +1289,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaGF_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaGF_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para gastos de funeral  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1308,8 +1307,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "AyudaGF_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "AyudaGF_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ayuda para gastos de funeral  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1326,8 +1325,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "OIPS_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "OIPS_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Otros ingresos por salario  <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1344,8 +1343,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "OIPS_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "OIPS_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Otros ingresos por salarios  <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1362,8 +1361,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "JPHDR_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "JPHDR_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1380,8 +1379,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "JPHDR_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "JPHDR_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1398,8 +1397,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "JPHDRParciales_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "JPHDRParciales_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro en parcialidades <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1416,8 +1415,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "JPHDRParciales_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "JPHDRParciales_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro en parcialidades <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1434,8 +1433,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "IEAOTV_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "IEAOTV_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ingresos en acciones o títulos valor que representan bienes <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1452,8 +1451,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "IEAOTV_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "IEAOTV_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ingresos en acciones o títulos valor que representan bienes <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1470,8 +1469,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "IAAS_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "IAAS_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ingresos asimilados a salarios <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1488,8 +1487,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "IAAS_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "IAAS_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ingresos asimilados a salarios <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1506,8 +1505,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Alimentacion_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Alimentacion_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Alimentación <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1524,8 +1523,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Alimentacion_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Alimentacion_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Alimentación <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1542,8 +1541,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Habitacion_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Habitacion_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Habitación <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1560,8 +1559,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "Habitacion_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "Habitacion_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Habitación <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1578,8 +1577,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PAsistecia_Gravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PAsistecia_Gravado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Premios por asistencia <br/> Gravado", domStyle);//Bandera 2 para deducciones
@@ -1596,8 +1595,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "PAsistecia_Exento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "PAsistecia_Exento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Premios por asistencia <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1608,18 +1607,14 @@
                             label: "Gravado",
                             //autoSave:true,
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "TotalPercepcionesGravado");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "TotalPercepcionesGravado");
+                                return formatoDivTotal(data, td);
                             }
                             ,
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Total <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                            ,/*
-                                        get: function (object) {
-                                            //console.log(object);
-                                            return a(object);
-                                        },*/
+                            ,
                             set: function (object) {
                                 console.log(object);
                                 return a(object);
@@ -1629,8 +1624,8 @@
                             field: 'TotalPercepcionesExento',
                             label: "Exento",
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "TotalPercepcionesExento");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "TotalPercepcionesExento");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Total <br/> Exento", domStyle);//Bandera 2 para deducciones
@@ -1652,8 +1647,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteSeguridadSocial");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteSeguridadSocial");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Seguridad social <br/> Importe", domStyle);//Bandera 2 para deducciones
@@ -1670,8 +1665,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteISR");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteISR");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "ISR <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1688,8 +1683,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteARCEAV");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteARCEAV");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Aportaciones a retiro, cesantía en edad avanzada y vejez. <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1706,8 +1701,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteOtros");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteOtros");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Otros <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1725,8 +1720,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteDPI");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteDPI");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Descuento por incapacidad <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1743,8 +1738,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImportePA");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImportePA");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pensión alimenticia <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1761,8 +1756,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteRenta");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteRenta");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Renta <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1779,8 +1774,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImportePPFNDLVPLT");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImportePPFNDLVPLT");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Préstamos provenientes del <br/> Fondo nacional de la <br/> vivienda para los trabajadores<br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1797,8 +1792,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImportePPCDV");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImportePPCDV");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pago por crédito de vivienda <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1815,8 +1810,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteINFONACOT");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteINFONACOT");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pago de abonos INFONACOT <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1833,8 +1828,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteADS");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteADS");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Anticipo de salarios <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1851,8 +1846,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImportePHCEAT");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImportePHCEAT");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pagos hechos con exceso <br/>  al trabajador. <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1869,8 +1864,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteErrores");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteErrores");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Errores <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1887,8 +1882,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImportePerdidas");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImportePerdidas");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Pérdidas <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1905,8 +1900,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteAverias");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteAverias");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Averías <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1923,8 +1918,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteAdquisicionArticulos");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteAdquisicionArticulos");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Adquisición de artículos producidos por la empresa o establecimiento <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1941,8 +1936,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteCuotasConstitucion");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteCuotasConstitucion");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1959,8 +1954,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteCuotasSindicales");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteCuotasSindicales");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas sindicales <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1977,8 +1972,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteAusencia");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteAusencia");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Ausencia (Ausetismo) <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -1995,8 +1990,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteObreroP");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteObreroP");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Cuotas obrero patronales <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -2013,8 +2008,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteImpuestosL");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteImpuestosL");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Impuestos locales <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -2031,8 +2026,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "ImporteAportacionesV");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "ImporteAportacionesV");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Aportaciones voluntarias <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -2043,8 +2038,8 @@
                             label: "", colSpan: 2,
                             autoSave: true,
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 0, "TotalDeducciones");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 0, "TotalDeducciones");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Total deducciones <br/> importe", domStyle);//Bandera 2 para deducciones
@@ -2055,13 +2050,13 @@
                             }
                         },//Total
 
-                        /**Incapacidades**/
+                        
                         {
                             field: 'RiesgoTrabajoDias',
                             label: "Dias",
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 1, "RiesgoTrabajoDias");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 1, "RiesgoTrabajoDias");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Dias", domStyle);//Bandera 2 para deducciones
@@ -2071,7 +2066,7 @@
                             field: 'RiesgoTrabajoDescuento',
                             label: "Descuento",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Descuento", domStyle);//Bandera 2 para deducciones
@@ -2081,8 +2076,8 @@
                             field: 'RiesgoEnfermedadDias',
                             label: "Dias",
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 1, "RiesgoEnfermedadDias");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 1, "RiesgoEnfermedadDias");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Enfermedad en general <br/> Dias", domStyle);//Bandera 2 para deducciones
@@ -2092,7 +2087,7 @@
                             field: 'RiesgoEnfermedadDescuento',
                             label: "Descuento",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Enfermedad en general <br/> Descuento", domStyle);//Bandera 2 para deducciones
@@ -2102,8 +2097,8 @@
                             field: 'MaternidadDias',
                             label: "Dias",
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 1, "MaternidadDias");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 1, "MaternidadDias");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Maternidad <br/> Dias", domStyle);//Bandera 2 para deducciones
@@ -2113,7 +2108,7 @@
                             field: 'MaternidadDescuento',
                             label: "Descuento",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Maternidad <br/> Descuento", domStyle);//Bandera 2 para deducciones
@@ -2123,8 +2118,8 @@
                             field: 'TotalIncapacidadesDias',
                             label: "",
                             renderCell: function (object, data, td, options) {
-                                bandera=concatenarError(object, data, 1, "TotalIncapacidadesDias");
-                                return formatoDivTotal(data, td,bandera);
+                                concatenarError(object, data, 1, "TotalIncapacidadesDias");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Incapacidades Dias <br/> Total", domStyle);//Bandera 2 para deducciones
@@ -2134,19 +2129,19 @@
                             field: 'TotalIncapacidadesDescuento',
                             label: "",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Incapacidades Descuento <br/> Total", domStyle);//Bandera 2 para deducciones
                             }
                         },//Total de las incapacidades Descuento
 
-                        /**Horas Extra**/
+                        
                         {
                             field: 'HorasExD_Dias',
                             label: "Dias",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra dobles <br/> Dias", domStyle);//Bandera 2 para deducciones
@@ -2156,7 +2151,7 @@
                             field: 'HorasExD_Horas',
                             label: "Horas",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
@@ -2166,7 +2161,7 @@
                             field: 'HorasExD_Importe',
                             label: "Importe",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
@@ -2177,7 +2172,7 @@
                             field: 'HorasExT_Dias',
                             abel: "Dias",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra triples <br/> Dias", domStyle);//Bandera 2 para deducciones
@@ -2187,7 +2182,7 @@
                             field: 'HorasExT_Horas',
                             label: "Horas",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra triples <br/> Horas", domStyle);//Bandera 2 para deducciones
@@ -2197,7 +2192,7 @@
                             field: 'HorasExT_Importe',
                             label: "Importe",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra triples <br/> Importe", domStyle);//Bandera 2 para deducciones
@@ -2208,7 +2203,7 @@
                             field: 'HorasExS_Dias',
                             label: "Dias",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra simples <br/> Dias", domStyle);//Bandera 2 para deducciones
@@ -2218,7 +2213,7 @@
                             field: 'HorasExS_Horas',
                             label: "Horas",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
@@ -2228,7 +2223,7 @@
                             field: 'HorasExS_Importe',
                             label: "Importe",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
@@ -2238,7 +2233,7 @@
                             field: 'TotalHE',
                             label: "Importe",
                             renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td,bandera);
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas extra <br/> Total", domStyle);//Bandera 2 para deducciones
@@ -2255,8 +2250,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                // bandera=concatenarError(object, data, 0, "Reintegro_ISR");
-                                return formatoDivTotal(data, td,bandera);
+                                // concatenarError(object, data, 0, "Reintegro_ISR");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2,
@@ -2275,8 +2270,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                //bandera=concatenarError(object, data, 0, "SubsidioEmpleoEfecEntregado");
-                                return formatoDivTotal(data, td,bandera);
+                                //concatenarError(object, data, 0, "SubsidioEmpleoEfecEntregado");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2,
@@ -2295,8 +2290,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                // bandera=concatenarError(object, data, 0, "ViaticosEntregadosTrabajador");
-                                return formatoDivTotal(data, td,bandera);
+                                // concatenarError(object, data, 0, "ViaticosEntregadosTrabajador");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2,
@@ -2315,8 +2310,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                //bandera=concatenarError(object, data, 0, "AplicacionSaldoAFavorCompensacionAnual");
-                                return formatoDivTotal(data, td,bandera);
+                                //concatenarError(object, data, 0, "AplicacionSaldoAFavorCompensacionAnual");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2,
@@ -2335,8 +2330,8 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             },
                             renderCell: function (object, data, td, options) {
-                                //bandera=concatenarError(object, data, 0, "PagosDistintosALosListados");
-                                return formatoDivTotal(data, td,bandera);
+                                //concatenarError(object, data, 0, "PagosDistintosALosListados");
+                                return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2,
@@ -2354,8 +2349,8 @@
                             editorArgs: {
                                 value: "checked"
                             }
-                        }
-                    ]
+                        }*/
+                    ]//Fin del Segundo ColumnSet
                 ]
             ]
 
