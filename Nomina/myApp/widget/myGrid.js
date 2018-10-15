@@ -1,5 +1,6 @@
 ﻿define([
     "dojo/_base/declare",
+    "dojo/Stateful",
     "dgrid/OnDemandGrid",
     "dgrid/ColumnSet",
     'dgrid/extensions/DijitRegistry',
@@ -8,9 +9,12 @@
     "dgrid/Keyboard",
     "dojo/dom-style",
     "dijit/form/ValidationTextBox",
-    "dijit/form/CheckBox"
+    "dijit/form/CheckBox",
+    "dijit/form/DateTextBox",
+    "myApp/widget/helper/NominaGridHelper.js"
 ], function (
     declare,
+    Stateful,
     OnDemandGrid,
     ColumnSet,
     DijitRegistry,
@@ -19,620 +23,271 @@
     Keyboard,
     domStyle,
     ValidationTextBox,
-    CheckBox
+    CheckBox,
+    DateTextBox,
+    NominaGridHelper
 ) {
-    return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
+    return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard, Stateful], {
+
+        collectionValidos: null,
+        _collectionValidosGetter: function () { return this.collectionValidos },
+        _collectionValidosSetter: function (value) { this.collectionValidos=value },
+
+        collectionInvalidos: null,
+        _collectionInvalidosGetter: function () { return this.collectionInvalidos },
+        _collectionInvalidosSetter: function (value) { this.collectionInvalidos = value },
+
+        collectionOriginal: null,
+        _collectionOriginalGetter: function () { return this.collectionOriginal },
+        _collectionOriginalSetter: function (value) { this.collectionOriginal = value },
+
         columnSets:
             [
                 [
                     [
-                        {
-                            field: 'NumEmpleado',
-                            label: 'Clave',
-                            sortable: true,
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data,true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                var div = document.createElement('div');
-                                div.innerHTML = "Clave";
-                                domStyle.set(div, "text-align", "center");
-                                //domStyle.set(div, "background-color", "#ffffab");
-                                //domStyle.set(node, "background-color", "#ffff12");
-                                return div;
-                            }
-                        },
-                        {
-                            field: 'Nombre',
-                            label: 'Nombre',
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            }
-                        },
-                        {
-                            field: 'Antiguedad',
-                            label: 'Antigüedad',
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            editor: 'text',
-                            editOn: 'dblclick'
-                        },
+                        NominaGridHelper.formatoColumn({ field: 'NumEmpleado', label: 'Clave' }),
+                        NominaGridHelper.formatoColumn({ field: 'Nombre', label: 'Nombre' }),
+                        NominaGridHelper.formatoColumn({ field: 'Antiguedad', label: 'Antigüedad', editor: 'text', editOn: 'dblclick' }),
                     ]
                 ],
                 [
 
                     [//Inicio del segundo ColumnSet
+                        NominaGridHelper.formatoColumn({ field: 'FechaPago', label: "Fecha", editor: DateTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:100px;", constraints: { datePattern: 'yyyy/MM/dd' } } }),
 
+                        NominaGridHelper.formatoColumn({ field: 'FechaInicialPago', label: "Fecha Inicio" }),
 
-                        {
-                            field: 'FechaPago',
-                            label: "Fecha",
-                            /*editor: DateTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            */
-                            editorArgs: {
-                                style: "width:100px;",
-                                constraints: { datePattern: 'yyyy/MM/dd' }
-                            },
-                            renderCell: function (object, data, td, options) {
-                                /**
-                                 * Dentro del renderCell es donde se realizaran las validaciones
-                                 * al inicio, cuando se lee el archivo de GoogleSheets y se llena
-                                 * el grid.
-                                 ***/
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Fecha", domStyle);
-                            }/*,
-                                        set: function (object) {
-                                            console.log(Date.parse(object.FechaPago));
-                                            return moment((Date.parse(object.FechaPago)));
-                                        }*/
-                        },
-                        {
-                            field: 'FechaInicialPago',
-                            label: "Fecha Inicio",
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Fecha Inicio", domStyle);
-                            }
-                        },
-                        {
-                            field: 'FechaFinalPago',
-                            label: "Fecha Fin",
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Fecha Fin", domStyle);
-                            }
-                        },
-                        {
-                            field: 'NumDiasPagados',
-                            label: "Dias Pagados",
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Dias Pagados", domStyle);
-                            }
-                        },
-                        {
-                            field: 'Banco',
-                            label: "Banco",
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Banco", domStyle);
-                            }
-                        },
-                        {
-                            field: 'Clabe',
-                            label: "Clabe",
-                            renderCell: function (object, data, td, options) {
-                                return formatoCentrarContenido(data, true);//Corregir en validaciones
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Clabe", domStyle);
-                            }
+                        NominaGridHelper.formatoColumn({ field: 'FechaFinalPago', label: "Fecha Fin" }),
 
-                        },
-                        {
-                            field: 'Monto',
-                            label: "Monto",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                               
-                                concatenarError(object, data, 0, "Monto");
-                                return formatoCentrarContenido(data);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 1, "Monto", domStyle);
-                            }
-                        },
-                        {//Inicio de los Gravado
-                            field: 'Sueldo_Gravado',
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            label: "Sueldo Gravado",
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Sueldo_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Sueldo <br/> Gravado", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
-                            field: 'Sueldo_Exento',
-                            label: "Sueldo Exento",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Sueldo_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Sueldo <br/> Exento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },/*
-                        {
-                            field: 'Aguinaldo_Gravado',
-                            label: " Aguinaldo Gravado",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'//'(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' --- (^[0-9]+)|(^[0-9]+\.[0-9]{1,3})
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Aguinaldo_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Aguinaldo <br/> Gravado", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
-                            field: 'Aguinaldo_Exento',
-                            label: "Aguinaldo Exento",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Sueldo_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Aguinaldo <br/> Exento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
-                            field: 'PTU_Gravado',
-                            label: "PTU Gravado",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PTU_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "PTU <br/> Gravado", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
-                            field: 'PTU_Exento',
-                            label: "PTU Exento",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PTU_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "PTU <br/> Exento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
-                            field: 'RGMDyH_Gravado',
-                            label: "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "RGMDyH_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado <br/> Gravado", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
-                            field: 'RGMDyH_Exento',
-                            label: "Exento",
-                            editor: ValidationTextBox,
-                            editOn: 'dblclick',
-                            autoSave: true,
-                            editorArgs: {
-                                style: "width:110px",
-                                regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "RGMDyH_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado <br/> Exento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },
-                        {
+                        NominaGridHelper.formatoColumn({ field: 'NumDiasPagados', label: "Dias Pagados" }),
+
+                        NominaGridHelper.formatoColumn({ field: 'Banco', label: "Banco", }),
+
+                        NominaGridHelper.formatoColumn({ field: 'Clabe', label: "Clabe" }),
+
+                        NominaGridHelper.formatoColumn({ field: 'Monto', label: "Monto", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),
+
+                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Gravado', editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' }, label: "Sueldo Gravado" }),// Sueldo Gravado
+
+                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Exento', label: "Sueldo Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Sueldo Exento
+
+                        NominaGridHelper.formatoColumn({field: 'Aguinaldo_Gravado',label: " Aguinaldo Gravado",editor: ValidationTextBox,editOn: 'dblclick',autoSave: true,editorArgs: {style: "width:110px",regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'}}),//Aguinaldo_Gravado
+
+                        NominaGridHelper.formatoColumn({ field: 'Aguinaldo_Exento', label: "Aguinaldo Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Aguinaldo Exento
+
+                        NominaGridHelper.formatoColumn({ field: 'PTU_Gravado', label: "PTU Gravado", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//PTU Gravado
+
+                        NominaGridHelper.formatoColumn({ field: 'PTU_Exento', label: "PTU Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//PTU_Exento
+                        NominaGridHelper.formatoColumn({ field: 'RGMDyH_Gravado', label: "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Reembolso de Gastos Medicos dentales y hospitalarios Gravado.
+
+                        NominaGridHelper.formatoColumn({ field: 'RGMDyH_Exento', label: "Reembolso de Gastos Médicos Dentales y Hospitalarios Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),
+
+                        NominaGridHelper.formatoColumn({
                             field: 'FDA_Gravado',
-                            label: "Gravado",
+                            label: "Fondo de ahorro Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "FDA_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Fondo de ahorro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },
+                        }),
+                        NominaGridHelper.formatoColumn(
                         {
                             field: 'FDA_Exento',
-                            label: "Exento",
+                            label: "Fondo de ahorro Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "FDA_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Fondo de ahorro <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {
+                            }),
+
+                        NominaGridHelper.formatoColumn({
                             field: 'CDA_Gravado',
-                            label: "Gravado",
+                            label: "Caja de ahorro Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CDA_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Caja de ahorro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {
+                        }),
+
+                        NominaGridHelper.formatoColumn({
                             field: 'CDA_Exento',
-                            label: "Exento",
+                            label: "Caja de ahorro Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CDA_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Caja de ahorro <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {
+                        }),
+
+                        NominaGridHelper.formatoColumn({
                             field: 'CCTPP_Gravado',
-                            label: "Gravado",
+                            label: "Contribuciones a Cargo del Trabajador Pagadas por el Patrón  Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CCTPP_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Contribuciones a Cargo del Trabajador Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {
+                        }),
+                        NominaGridHelper.formatoColumn({
                             field: 'CCTPP_Exento',
-                            label: "Exento",
+                            label: "Contribuciones a Cargo del Trabajador Pagadas por el Patrón  Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CCTPP_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Contribuciones a Cargo del Trabajador Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {
+                        }),
+                        NominaGridHelper.formatoColumn({
                             field: 'PP_Gravado',
-                            label: "Gravado",
+                            label: "Premio Puntualidad Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PP_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Premio Puntualidad <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Premio de Puntualidad
-                        {
+                        }),//Premio de Puntualidad
+                        NominaGridHelper.formatoColumn({
                             field: 'PP_Exento',
-                            label: "Exento",
+                            label: "Premio Puntualidad Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PP_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Premio Puntualidad <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Premio de Puntualidad
-                        {
+                        }),//Premio de Puntualidad
+                        NominaGridHelper.formatoColumn({
                             field: 'PSV_Gravado',
-                            label: "Gravado",
+                            label: "Prima de Seguro de Vida Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PSV_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima de seguro de vida <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima de Seguro de vida
-                        {
+                        }),//Prima de Seguro de vida
+                        NominaGridHelper.formatoColumn({
                             field: 'PSV_Exento',
-                            label: "Exento",
+                            label: "Prima de Seguro de Vida Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PSV_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima de seguro de vida <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima de Seguro de vida
-                        {
+                        }),//Prima de Seguro de vida
+                        NominaGridHelper.formatoColumn({
                             field: 'SGMM_Gravado',
-                            label: "Gravado",
+                            label: "Seguro de Gastos Médicos Mayores Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "SGMM_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Seguro de Gastos Médicos Mayores
-                        {
+                        }),//Seguro de Gastos Médicos Mayores
+                        NominaGridHelper.formatoColumn({
                             field: 'SGMM_Exento',
-                            label: "Exento",
+                            label: "Seguro de Gastos Médicos Mayores Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "SGMM_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Seguro de gastos médicos mayores <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Seguro de Gastos Médicos Mayores
-                        {
+                        }),//Seguro de Gastos Médicos Mayores
+
+                        NominaGridHelper.formatoColumn({
                             field: 'CSPPP_Gravado',
-                            label: "Gravado",
+                            label: "Cuotas Sindicales Pagadas por el Patrón  Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CSPPP_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Cuotas Sindicales Pagadas por el patron
-                        {
+                        }),//Cuotas Sindicales Pagadas por el patron
+                        NominaGridHelper.formatoColumn({
                             field: 'CSPPP_Exento',
-                            label: "Exento",
+                            label: "Cuotas Sindicales Pagadas por el Patrón  Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CSPPP_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas Sindicales Pagadas por el Patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Cuotas Sindicales Pagadas por el patron
-                        {
+                        }),//Cuotas Sindicales Pagadas por el patron
+                        NominaGridHelper.formatoColumn({
                             field: 'SPI_Gravado',
-                            label: "Gravado",
+                            label: "Subsidios por Incapacidad Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "SPI_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Subsidios por incapacidad <br/>  Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Subsidios por incapacidad
-                        {
+                        }),//Subsidios por incapacidad
+                        NominaGridHelper.formatoColumn({
                             field: 'SPI_Exento',
-                            label: "Exento",
+                            label: "Subsidios por Incapacidad Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "SPI_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Subsidios por incapacidad <br/>  Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Subsidios por incapacidad
-                        {
+                        }),//Subsidios por incapacidad
+                        NominaGridHelper.formatoColumn({
                             field: 'Becas_Gravado',
-                            label: "Gravado",
+                            label: "Becas Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Becas_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Becas <br/>  Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Becas
-                        {
+                        }),//Becas
+                        NominaGridHelper.formatoColumn({
                             field: 'Becas_Exento',
-                            label: "Exento",
+                            label: "Becas Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Becas_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Becas <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Becas
-                        {
+                        }),//Becas
+                        NominaGridHelper.formatoColumn({
                             field: 'HE_Gravado',
-                            label: "Gravado",
+                            label: "Horas Extra Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -647,1599 +302,942 @@
                             renderHeaderCell: function (node) {
                                 return formatoHeader(node, 2, "Horas Extra <br/>  Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Horas Extra
-                        {
+                        }),//Horas Extra
+                        NominaGridHelper.formatoColumn({
                             field: 'HE_Exento',
-                            label: "Exento",
+                            label: "Horas Extra Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "HE_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas Extra <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Horas Extra
-                        {
+                        }),//Horas Extra
+                        NominaGridHelper.formatoColumn({
                             field: 'PrimaD_Gravado',
-                            label: "Gravado",
+                            label: "Prima Dominical Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PrimaD_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima Dominical <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima Dominical
-                        {
+                        }),//Prima Dominical
+                        NominaGridHelper.formatoColumn({
                             field: 'PrimaD_Exento',
-                            label: "Exento",
+                            label: "Prima Dominical Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PrimaD_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima Dominical <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima Dominical
-                        {
+                        }),//Prima Dominical
+                        NominaGridHelper.formatoColumn({
                             field: 'PrimaV_Gravado',
-                            label: "Gravado",
+                            label: "Prima Vacacional Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PrimaV_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima vacacional <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima Vacacional
-                        {
+                        }),//Prima Vacacional
+                        NominaGridHelper.formatoColumn({
                             field: 'PrimaV_Exento',
-                            label: "Exento",
+                            label: "Prima Vacacional Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PrimaV_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima vacacional <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima Vacacional
-                        {
+                        }),//Prima Vacacional
+                        NominaGridHelper.formatoColumn({
                             field: 'PrimaA_Gravado',
-                            label: "Gravado",
+                            label: "Prina Antigüedad Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PrimaA_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima por Antigüedad <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima Antigüead
-                        {
+                        }),//Prima Antigüead
+                        NominaGridHelper.formatoColumn({
                             field: 'PrimaA_Exento',
-                            label: "Exento",
+                            label: "Prima Antigüedad Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PrimaA_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Prima por Antigüedad <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Prima Antigüedad
-                        {
+                        }),//Prima Antigüedad
+                        NominaGridHelper.formatoColumn({
                             field: 'PPS_Gravado',
-                            label: "Gravado",
+                            label: "Pagos por Separación Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PPS_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pagos por separación <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Pagos por Separación
-                        {
+                        }),//Pagos por Separación
+                        NominaGridHelper.formatoColumn({
                             field: 'PPS_Exento',
-                            label: "Exento",
+                            label: "Pagos por Separación Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PPS_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pagos por separación <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Pagos por Separación
-                        {
+                        }),//Pagos por Separación
+                        NominaGridHelper.formatoColumn({
                             field: 'SDR_Gravado',
-                            label: "Gravado",
+                            label: "Seguro de Retiro Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "SDR_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Seguro de retiro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Seguro de retiro
-                        {
+                        }),//Seguro de retiro
+                        NominaGridHelper.formatoColumn({
                             field: 'SDR_Exento',
-                            label: "Exento",
+                            label: "Seguro de Retiro Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "SDR_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Seguro de retiro <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Seguro de retiro
-                        {
+                        }),//Seguro de retiro
+                        NominaGridHelper.formatoColumn({
                             field: 'Indeminizaciones_Gravado',
-                            label: "Gravado",
+                            label: "Indeminizaciones Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Indeminizaciones_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Indeminizaciones <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Indeminizaciones
-                        {
+                        }),//Indeminizaciones
+                        NominaGridHelper.formatoColumn({
                             field: 'Indeminizaciones_Exento',
-                            label: "Exento",
+                            label: "Indeminizaciones Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Indeminizaciones_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Indeminizaciones <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Indeminizaciones
-                        {
+                        }),//Indeminizaciones
+                        NominaGridHelper.formatoColumn({
                             field: 'RPF_Gravado',
-                            label: "Gravado",
+                            label: "Reembolso por Funeral Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "RPF_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Reembolso por funeral <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Reembolso por funeral
-                        {
+                        }),//Reembolso por funeral
+                        NominaGridHelper.formatoColumn({
                             field: 'RPF_Exento',
-                            label: "Exento",
+                            label: "Reembolso por Funeral Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "RPF_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Reembolso por funeral <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Reembolso por funeral
-                        {
+                        }),//Reembolso por funeral
+                        NominaGridHelper.formatoColumn({
                             field: 'CDSSPPP_Gravado',
-                            label: "Gravado",
+                            label: "Cuotas de seguridad social pagadas por el patrón Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CDSSPPP_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas de seguridad social pagadas por el patrón <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Cuotas de seguridad social pagadas por el patrón
-                        {
+                        }),//Cuotas de seguridad social pagadas por el patrón
+                        NominaGridHelper.formatoColumn({
                             field: 'CDSSPPP_Exento',
-                            label: "Exento",
+                            label: "Cuotas de seguridad social pagadas por el patrón Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "CDSSPPP_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas de seguridad social pagadas por el patrón <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Cuotas de seguridad social pagadas por el patrón
-                        {
+                        }),//Cuotas de seguridad social pagadas por el patrón
+                        NominaGridHelper.formatoColumn({
                             field: 'Comisiones_Gravado',
-                            label: "Gravado",
+                            label: "Comisiones Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Comisiones_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Comisiones <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Comisiones
-                        {
+                        }),//Comisiones
+                        NominaGridHelper.formatoColumn({
                             field: 'Comisiones_Exento',
-                            label: "Exento",
+                            label: "Comisiones Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Comisiones_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Comisiones <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Comisiones
-                        {
+                        }),//Comisiones
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesD_Gravado',
-                            label: "Gravado",
+                            label: "Vales de Despensa Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesD_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de despensa <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de Despensa
-                        {
+                        }),//Vales de Despensa
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesD_Exento',
-                            label: "Exento",
+                            label: "Vales de Despensa Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesD_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de despensa <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de Despensa
-                        {
+                        }),//Vales de Despensa
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesR_Gravado',
-                            label: "Gravado",
+                            label: "Vales de Restaurante Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesR_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de Restaurante <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de restaurante
-                        {
+                        }),//Vales de restaurante
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesR_Exento',
-                            label: "Exento",
+                            label: "Vales de Restaurante Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesR_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de restaurante <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de restaurante
-                        {
+                        }),//Vales de restaurante
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesG_Gravado',
-                            label: "Gravado",
+                            label: "Vales de Gasolina Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesG_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de gasolina <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de gasolina
-                        {
+                        }),//Vales de gasolina
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesG_Exento',
-                            label: "Exento",
+                            label: "Vales de Gasolina Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesG_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de gasolina <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de gasolina
-                        {
+                        }),//Vales de gasolina
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesRopa_Gravado',
-                            label: "Gravado",
+                            label: "Vales de Ropa Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesRopa_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de ropa  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de ropa
-                        {
+                        }),//Vales de ropa
+                        NominaGridHelper.formatoColumn({
                             field: 'ValesRopa_Exento',
-                            label: "Exento",
+                            label: "Vales de Ropa Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ValesRopa_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Vales de ropa  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Vales de ropa
-                        {
+                        }),//Vales de ropa
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaRenta_Gravado',
-                            label: "Gravado",
+                            label: "Ayuda para Renta Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaRenta_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para renta  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para renta
-                        {
+                        }),//Ayuda para renta
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaRenta_Exento',
-                            label: "Exento",
+                            label: "Ayuda para Renta Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaRenta_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para renta  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para renta
-                        {
+                        }),//Ayuda para renta
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaEscolar_Gravado',
-                            label: "Gravado",
+                            label: "Ayuda para Artículos Escolares Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaEscolar_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para artículos escolares  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Articulos escolares
-                        {
+                        }),//Ayuda para Articulos escolares
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaEscolar_Exento',
-                            label: "Exento",
+                            label: "Ayuda para Artículos Escolares Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaEscolar_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para artículos escolares  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Articulos escolares
-                        {
+                        }),//Ayuda para Articulos escolares
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaAnteojos_Gravado',
-                            label: "Gravado",
+                            label: "Ayuda para Anteojos Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaAnteojos_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para anteojos  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Anteojos
-                        {
+                        }),//Ayuda para Anteojos
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaAnteojos_Exento',
-                            label: "Exento",
+                            label: "Ayuda para Anteojos Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaAnteojos_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para anteojos  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Anteojos
-                        {
+                        }),//Ayuda para Anteojos
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaTransporte_Gravado',
-                            label: "Gravado",
+                            label: "Ayuda para Transporte Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaTransporte_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para transporte  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Transporte
-                        {
+                        }),//Ayuda para Transporte
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaTransporte_Exento',
-                            label: "Exento",
+                            label: "Ayuda para Transporte Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaTransporte_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para transporte  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Transporte
-                        {
+                        }),//Ayuda para Transporte
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaGF_Gravado',
-                            label: "Gravado",
+                            label: "Ayuda para Gastos de Funeral Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaGF_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para gastos de funeral  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Gastos de funeral
-                        {
+                        }),//Ayuda para Gastos de funeral
+                        NominaGridHelper.formatoColumn({
                             field: 'AyudaGF_Exento',
-                            label: "Exento",
+                            label: "Ayuda para Gastos de Funeral Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "AyudaGF_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ayuda para gastos de funeral  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ayuda para Gasto de funeral
-                        {
+                        }),//Ayuda para Gasto de funeral
+                        NominaGridHelper.formatoColumn({
                             field: 'OIPS_Gravado',
-                            label: "Gravado",
+                            label: "Otros Ingresos por Salario Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "OIPS_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Otros ingresos por salario  <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Otros ingresos por salario
-                        {
+                        }),//Otros ingresos por salario
+                        NominaGridHelper.formatoColumn({
                             field: 'OIPS_Exento',
-                            label: "Exento",
+                            label: "Otros Ingresos por Salario Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "OIPS_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Otros ingresos por salarios  <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Otros ingresos por salario 
-                        {
+                        }),//Otros ingresos por salario 
+                        NominaGridHelper.formatoColumn({
                             field: 'JPHDR_Gravado',
-                            label: "Gravado",
+                            label: "Jubilaciones, Pensiones o Haberes de Retiro Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "JPHDR_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Jubilaciones, pensiones o haberes de retiro
-                        {
+                        }),//Jubilaciones, pensiones o haberes de retiro
+                        NominaGridHelper.formatoColumn({
                             field: 'JPHDR_Exento',
-                            label: "Exento",
+                            label: "Jubilaciones, Pensiones o Haberes de Retiro Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "JPHDR_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Jubilaciones, pensiones o haberes de retiro
-                        {
+                        }),//Jubilaciones, pensiones o haberes de retiro
+                        NominaGridHelper.formatoColumn({
                             field: 'JPHDRParciales_Gravado',
-                            label: "Gravado",
+                            label: "Jubilaciones, Pensiones o Haberes de Retiro en Parcialidades Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "JPHDRParciales_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro en parcialidades <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Jubilaciones, pensiones o haberes de retiro parciales
-                        {
+                        }),//Jubilaciones, pensiones o haberes de retiro parciales
+                        NominaGridHelper.formatoColumn({
                             field: 'JPHDRParciales_Exento',
-                            label: "Exento",
+                            label: "Jubilaciones, Pensiones o Haberes de Retiro en Parcialidades Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "JPHDRParciales_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Jubilaciones, pensiones o haberes de retiro en parcialidades <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Jubilaciones, pensiones o haberes de retiro parciales
-                        {
+                        }),//Jubilaciones, pensiones o haberes de retiro parciales
+                        NominaGridHelper.formatoColumn({
                             field: 'IEAOTV_Gravado',
-                            label: "Gravado",
+                            label: "Ingresos en Acciones o Títulos Valor que Representen Bienes Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "IEAOTV_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ingresos en acciones o títulos valor que representan bienes <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ingresos en acciones o títulos valor que representan bienes
-                        {
+                        }),//Ingresos en acciones o títulos valor que representan bienes
+                        NominaGridHelper.formatoColumn({
                             field: 'IEAOTV_Exento',
-                            label: "Exento",
+                            label: "Ingresos en Acciones o Títulos Valor que Representen Bienes Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "IEAOTV_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ingresos en acciones o títulos valor que representan bienes <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ingresos en acciones o títulos valor que representan bienes
-                        {
+                        }),//Ingresos en acciones o títulos valor que representan bienes
+                        NominaGridHelper.formatoColumn({
                             field: 'IAAS_Gravado',
-                            label: "Gravado",
+                            label: "Ingresos Asimilados a Salarios Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "IAAS_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ingresos asimilados a salarios <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ingresos asimilados a salarios
-                        {
+                        }),//Ingresos asimilados a salarios
+                        NominaGridHelper.formatoColumn({
                             field: 'IAAS_Exento',
-                            label: "Exento",
+                            label: "Ingresos Asimilados a Salarios Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "IAAS_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ingresos asimilados a salarios <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Ingresos asimilados a salarios
-                        {
+                        }),//Ingresos asimilados a salarios
+                        NominaGridHelper.formatoColumn({
                             field: 'Alimentacion_Gravado',
-                            label: "Gravado",
+                            label: "Alimentación Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Alimentacion_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Alimentación <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Alimentacion
-                        {
+                        }),//Alimentacion
+                        NominaGridHelper.formatoColumn({
                             field: 'Alimentacion_Exento',
-                            label: "Exento",
+                            label: "Alimentación Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Alimentacion_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Alimentación <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Alimentacion
-                        {
+                        }),//Alimentacion
+                        NominaGridHelper.formatoColumn({
                             field: 'Habitacion_Gravado',
-                            label: "Gravado",
+                            label: "Habitación Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Habitacion_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Habitación <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Habitacion
-                        {
+                        }),//Habitacion
+                        NominaGridHelper.formatoColumn({
                             field: 'Habitacion_Exento',
-                            label: "Exento",
+                            label: "Habitación Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "Habitacion_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Habitación <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Habitacion
-                        {
+                        }),//Habitacion
+                        NominaGridHelper.formatoColumn({
                             field: 'PAsistecia_Gravado',
-                            label: "Gravado",
+                            label: "Premios por Asistencia Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PAsistecia_Gravado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Premios por asistencia <br/> Gravado", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Premios por asistencia
-                        {
+                        }),//Premios por asistencia
+                        NominaGridHelper.formatoColumn({
                             field: 'PAsistecia_Exento',
-                            label: "Exento",
+                            label: "Premios por Asistencia Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "PAsistecia_Exento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Premios por asistencia <br/> Exento", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Premios por asistencia
-                        {
+                        }),//Premios por asistencia
+                        NominaGridHelper.formatoColumn({
                             field: 'TotalPercepcionesGravado',
-                            label: "Gravado",
-                            //autoSave:true,
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "TotalPercepcionesGravado");
-                                return formatoDivTotal(data, td);
-                            }
-                            ,
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Total <br/> Gravado", domStyle);//Bandera 2 para deducciones
-                            }
-                            ,
+                            label: "Total Percepciones Gravado",
+                            autoSave:true,
                             set: function (object) {
                                 console.log(object);
                                 return a(object);
                             }
-                        },//Total
-                        {
+                        }),//Total
+                        NominaGridHelper.formatoColumn({
                             field: 'TotalPercepcionesExento',
                             label: "Exento",
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "TotalPercepcionesExento");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Total <br/> Exento", domStyle);//Bandera 2 para deducciones
-                            },
+                            autoSave: true,
                             set: function (object) {
                                 return getTotalPercepcionesExento(object);
                             }
-                        },//Total
+                        }),//Total
 
-
-                        {
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteSeguridadSocial',
-                            label: 'importe',
+                            label: 'Seguridad Social Importe ',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteSeguridadSocial");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Seguridad social <br/> Importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//ImporteSeguridadSocial
-                        {
+                        }),//ImporteSeguridadSocial
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteISR',
-                            label: 'importe',
+                            label: 'ISR Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteISR");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "ISR <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//ImporteISR
-                        {
+                        }),//ImporteISR
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteARCEAV',
-                            label: 'importe',
+                            label: 'Aportaciones a Retiro, Cesantía en Edad Avanzada y Vejez importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteARCEAV");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Aportaciones a retiro, cesantía en edad avanzada y vejez. <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Aportaciones a retiro, cesantía en edad avanzada y vejez
-                        {
+                        }),//Aportaciones a retiro, cesantía en edad avanzada y vejez
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteOtros',
-                            label: 'importe',
+                            label: 'Otros Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteOtros");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Otros <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-
-                        },//Otros
-                        {
+                        }),//Otros
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteDPI',
-                            label: 'importe',
+                            label: 'Descuento por Incapacidad Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteDPI");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Descuento por incapacidad <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Descuento por incapacidad
-                        {
+                        }),//Importe Descuento por incapacidad
+                        NominaGridHelper.formatoColumn({
                             field: 'ImportePA',
-                            label: 'importe',
+                            label: 'Pensión Alimenticia Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImportePA");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pensión alimenticia <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe pensión alimenticia
-                        {
+                        }),//Importe pensión alimenticia
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteRenta',
-                            label: 'importe',
+                            label: 'Renta Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteRenta");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Renta <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//ImporteRenta
-                        {
+                        }),//ImporteRenta
+                        NominaGridHelper.formatoColumn({
                             field: 'ImportePPFNDLVPLT',
-                            label: 'importe',
+                            label: 'Préstamos Provenientes del Fondo Nacional de la Vivienda para los Trabajadores Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImportePPFNDLVPLT");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Préstamos provenientes del <br/> Fondo nacional de la <br/> vivienda para los trabajadores<br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores
-                        {
+                        }),//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores
+                        NominaGridHelper.formatoColumn({
                             field: 'ImportePPCDV',
-                            label: 'importe',
+                            label: 'Pago por Crédito de Vivienda Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImportePPCDV");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pago por crédito de vivienda <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Pago Por Credito De Vivienda
-                        {
+                        }),//Importe Pago Por Credito De Vivienda
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteINFONACOT',
-                            label: 'importe',
+                            label: 'Pago de Abonos INFONACOT Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteINFONACOT");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pago de abonos INFONACOT <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe de Pago de abonos INFONACOT
-                        {
+                        }),//Importe de Pago de abonos INFONACOT
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteADS',
-                            label: 'importe',
+                            label: 'Anticipo de Salarios Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteADS");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Anticipo de salarios <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe anticipo de Salarios
-                        {
+                        }),//Importe anticipo de Salarios
+                        NominaGridHelper.formatoColumn({
                             field: 'ImportePHCEAT',
-                            label: 'importe',
+                            label: 'Pagos Hechos con Exceso al Trabajador importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImportePHCEAT");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pagos hechos con exceso <br/>  al trabajador. <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe anticipo de Salarios
-                        {
+                        }),//Pagos Hechos con Exceso al Trabajador importe
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteErrores',
-                            label: 'importe',
+                            label: 'ERRORES Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteErrores");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Errores <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Errores
-                        {
+                        }),//Importe Errores
+                        NominaGridHelper.formatoColumn({
                             field: 'ImportePerdidas',
-                            label: 'importe',
+                            label: 'Pérdidas Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImportePerdidas");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Pérdidas <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Perdidas
-                        {
+                        }),//Importe Perdidas
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteAverias',
-                            label: 'importe',
+                            label: 'Averías Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteAverias");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Averías <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Averías
-                        {
+                        }),//Importe Averías
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteAdquisicionArticulos',
-                            label: 'importe',
+                            label: 'Adquisición de Artículos Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteAdquisicionArticulos");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Adquisición de artículos producidos por la empresa o establecimiento <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Adquisición de articulos
-                        {
+                        }),//Importe Adquisición de articulos
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteCuotasConstitucion',
-                            label: 'importe',
+                            label: 'Cuotas para la Constitución y Fomento de Sociedades Cooperativas y de Cajas de Ahorro Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteCuotasConstitucion");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
-                        {
+                        }),//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteCuotasSindicales',
-                            label: 'importe',
+                            label: 'Cuotas Sindicales Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteCuotasSindicales");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas sindicales <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Cuotas Sindicales
-                        {
+                        }),//Importe Cuotas Sindicales
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteAusencia',
-                            label: 'importe',
+                            label: 'Ausencia Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteAusencia");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Ausencia (Ausetismo) <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe Ausencia
-                        {
+                        }),//Importe Ausencia
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteObreroP',
-                            label: 'importe',
+                            label: 'Cuotas Obrero Patronales Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteObreroP");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Cuotas obrero patronales <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe cutoas obrero patronales
-                        {
+                        }),//Importe cutoas obrero patronales
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteImpuestosL',
-                            label: 'importe',
+                            label: 'Impuestos Locales Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteImpuestosL");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Impuestos locales <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe impuestos locales
-                        {
+                        }),//Importe impuestos locales
+                        NominaGridHelper.formatoColumn({
                             field: 'ImporteAportacionesV',
-                            label: 'importe',
+                            label: 'Aportaciones Voluntarias Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "ImporteAportacionesV");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Aportaciones voluntarias <br/> importe", domStyle);//Bandera 2 para deducciones
                             }
-                        },//Importe aportaciones voluntarias
-                        {
+                        }),//Importe aportaciones voluntarias
+                        NominaGridHelper.formatoColumn({
                             field: 'TotalDeducciones',
-                            label: "", colSpan: 2,
+                            label: "Total Deducciones", colSpan: 2,
                             autoSave: true,
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 0, "TotalDeducciones");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Total deducciones <br/> importe", domStyle);//Bandera 2 para deducciones
-                            },
-
                             set: function (object) {
                                 return getTotalDeducciones(object);
                             }
-                        },//Total
-
+                        }),//Total Deducciones
                         
-                        {
+                        NominaGridHelper.formatoColumn({
                             field: 'RiesgoTrabajoDias',
-                            label: "Dias",
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 1, "RiesgoTrabajoDias");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Dias", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Riesgo de trabajo dias
-                        {
+                            label: "Riesgo de trabajo Dias"
+                        }),//Riesgo de trabajo dias
+
+                        NominaGridHelper.formatoColumn({
                             field: 'RiesgoTrabajoDescuento',
-                            label: "Descuento",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Riesgo de Trabajo <br/> Descuento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Riesgo de trabajo Descuento
-                        {
+                            label: "Riesgo de Trabajo Descuento"
+                        }),//Riesgo de trabajo Descuento
+
+                        NominaGridHelper.formatoColumn({
                             field: 'RiesgoEnfermedadDias',
-                            label: "Dias",
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 1, "RiesgoEnfermedadDias");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Enfermedad en general <br/> Dias", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Riesgo Enfermedades en General dias.
-                        {
+                            label: "Riesgo Enfermedades en General Dias"
+                        }),//Riesgo Enfermedades en General dias.
+                        NominaGridHelper.formatoColumn({
                             field: 'RiesgoEnfermedadDescuento',
-                            label: "Descuento",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Enfermedad en general <br/> Descuento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Riesgo Enferemedades en General Descuento.
-                        {
+                            label: "Riesgo Enfermedades en General Descuento"
+                        }),//Riesgo Enferemedades en General Descuento.
+                        NominaGridHelper.formatoColumn({
                             field: 'MaternidadDias',
-                            label: "Dias",
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 1, "MaternidadDias");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Maternidad <br/> Dias", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Maternidad dias.
-                        {
+                            label: "Maternidad Dias"
+                        }),//Maternidad dias.
+                        NominaGridHelper.formatoColumn({
                             field: 'MaternidadDescuento',
-                            label: "Descuento",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Maternidad <br/> Descuento", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Maternidad Descuento.
-                        {
+                            label: "Maternidad Descuento"
+                        }),//Maternidad Descuento.
+                        NominaGridHelper.formatoColumn({
                             field: 'TotalIncapacidadesDias',
-                            label: "",
-                            renderCell: function (object, data, td, options) {
-                                concatenarError(object, data, 1, "TotalIncapacidadesDias");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Incapacidades Dias <br/> Total", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Total de las incapacidades Dias
-                        {
+                            label: "Total Incapacidades Días"
+                        }),//Total de las incapacidades Dias
+                        NominaGridHelper.formatoColumn({
                             field: 'TotalIncapacidadesDescuento',
-                            label: "",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Incapacidades Descuento <br/> Total", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Total de las incapacidades Descuento
+                            label: "Total Incapacidades Descuento"
+                        }),//Total de las incapacidades Descuento
 
-                        
-                        {
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExD_Dias',
-                            label: "Dias",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra dobles <br/> Dias", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//HorasExtraDobles dias.
-                        {
+                            label: "Horas Extra Dobles Dias"
+                        }),//HorasExtraDobles dias.
+
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExD_Horas',
-                            label: "Horas",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extra Dobles horas.
-                        {
+                            label: "Horas Extras Dobles Horas"
+                        }),//Horas Extra Dobles horas.
+
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExD_Importe',
-                            label: "Importe",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extras Dobles importe
+                            label: "Horas Extras Dobles Importe"
+                        }),//Horas Extras Dobles importe
 
-                        {
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExT_Dias',
-                            abel: "Dias",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra triples <br/> Dias", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//HorasExtra Triples dias.
-                        {
+                            label: "Horas Extra Triples Dias"
+                        }),//HorasExtra Triples dias.
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExT_Horas',
-                            label: "Horas",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra triples <br/> Horas", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extra Triples horas.
-                        {
+                            label: "Horas Extra Triples Horas"
+                        }),//Horas Extra Triples horas.
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExT_Importe',
-                            label: "Importe",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra triples <br/> Importe", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extras Triples importe
+                            label: "Horas Extra Triples Importe"
+                        }),//Horas Extras Triples importe
 
-                        {
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExS_Dias',
-                            label: "Dias",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra simples <br/> Dias", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extra Simples dias.
-                        {
+                            label: "Horas Extra Simples Dias"
+                        }),//Horas Extra Simples dias.
+
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExS_Horas',
-                            label: "Horas",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra dobles <br/> Horas", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extra Simples horas.
-                        {
+                            label: "Horas Extra Simples Horas"
+                        }),//Horas Extra Simples horas.
+
+                        NominaGridHelper.formatoColumn({
                             field: 'HorasExS_Importe',
-                            label: "Importe",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra dobles <br/> Importe", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Horas Extras Simples importe
-                        {
+                            label: "Horas Extra Simples Importe"
+                        }),//Horas Extras Simples importe
+                        NominaGridHelper.formatoColumn({
                             field: 'TotalHE',
-                            label: "Importe",
-                            renderCell: function (object, data, td, options) {
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas extra <br/> Total", domStyle);//Bandera 2 para deducciones
-                            }
-                        },//Total Horas Extra
-                        {//Reintegro de ISR pagado en exeso
+                            label: "Total Horas Extra Importe"
+                        }),//Total Horas Extra
+
+                        NominaGridHelper.formatoColumn({//Reintegro de ISR pagado en exeso
                             field: 'Reintegro_ISR',
                             label: 'Reintegro de ISR pagado en exceso (siempre que no haya sido enterado al SAT).',
                             editor: ValidationTextBox,
@@ -2248,97 +1246,52 @@
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                // concatenarError(object, data, 0, "Reintegro_ISR");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2,
-                                    "Reintegro de ISR <br/> pagado en exceso <br/> (siempre que no haya <br/> sido enterado al SAT) <br/> importe"
-                                    , domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {//Subsidio para el empleo efectivamente entregado
+                        }),
+                        NominaGridHelper.formatoColumn({//Subsidio para el empleo efectivamente entregado
                             field: 'SubsidioEmpleoEfecEntregado',
-                            label: 'Subsidio para el empleo efectivamente entregado',
+                            label: 'Subsidio para el Empleo Efectivamente Entregado',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                //concatenarError(object, data, 0, "SubsidioEmpleoEfecEntregado");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2,
-                                    "Subsidio para el empleo <br/> efectivamente entregado <br/> importe"
-                                    , domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {//Viáticos (entregados al trabajador).
+                        }),
+                        NominaGridHelper.formatoColumn({//Viáticos (entregados al trabajador).
                             field: 'ViaticosEntregadosTrabajador',
-                            label: 'Viáticos (entregados al trabajador).',
+                            label: 'Viáticos (Entregados al trabajador).',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                // concatenarError(object, data, 0, "ViaticosEntregadosTrabajador");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2,
-                                    "Viáticos <br/>  (entregados al trabajador) <br/> importe"
-                                    , domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {//Aplicación de saldo a favor por compensación anual.
+                        }),
+                        NominaGridHelper.formatoColumn({//Aplicación de saldo a favor por compensación anual.
                             field: 'AplicacionSaldoAFavorCompensacionAnual',
-                            label: 'Aplicación de saldo a favor por compensación anual  importe',
+                            label: 'Aplicación de Saldo a Favor por Compensación Anual  Importe',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                //concatenarError(object, data, 0, "AplicacionSaldoAFavorCompensacionAnual");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2,
-                                    "Aplicación de <br/> saldo a favor <br/> por compensación anual <br/> importe"
-                                    , domStyle);//Bandera 2 para deducciones
                             }
-                        },
-                        {//Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados..
+                        }),
+                        NominaGridHelper.formatoColumn({//Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados..
                             field: 'PagosDistintosALosListados',
-                            label: 'Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados.',
+                            label: 'Pagos Distintos a los Listados y que no Deben Considerarse como Ingreso por Sueldos, Salarios o Ingresos Asimilados.',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
                             editorArgs: {
                                 style: "width:110px",
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
-                            },
-                            renderCell: function (object, data, td, options) {
-                                //concatenarError(object, data, 0, "PagosDistintosALosListados");
-                                return formatoDivTotal(data, td);
-                            },
-                            renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2,
-                                    "Pagos distintos a los listados <br/>  y que no deben considerarse como <br/>  ingreso por sueldos, salarios <br/>  o ingresos asimilados. <br/> importe"
-                                    , domStyle);//Bandera 2 para deducciones
                             }
-                        },
+                        })/*
                         {
                             field: 'checkRegistro',
                             label: 'isValid',

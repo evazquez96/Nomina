@@ -26,6 +26,7 @@
     "dgrid/Selection",
     "dgrid/Editor",
     "dojo/regexp",
+    "dojo/aspect",
      /**
      *Fin de modulos para ColumnSet
      **/
@@ -70,6 +71,7 @@
         Selection,
         Editor,
         regex,
+        aspect,
         /**
         *Fin de modulos para ColumnSet
         **/
@@ -126,7 +128,7 @@
                         /**Aquí se realizaran todas las validaciones de las celdas
                          * que se requieren para emitir la nomina.**/
                         //var collection = context.grid.get("collection");
-                        //validarContenidoDeCeldas(context.grid);
+                        validarContenidoDeCeldas(context.grid);
                     }
                 })
                 context.BottomContentPane.addChild(btn);
@@ -135,6 +137,13 @@
             createGrid: function () {
 
                 this.grid = new CustomGrid();
+                aspect.after(this.grid, 'renderRow', function (row, args) {
+                    var r = row;
+                    var ar = args;
+                    var ar0 = args[0];
+                    var sum = 1 + 2;
+                    return row;
+                });
                 var context = this;
                 /*
                 this.grid.on('.dgrid-cell:click', function (event) {
@@ -148,16 +157,19 @@
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
                     var test = cell.column.renderCell;
-                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
-                    //cell.style.setProperty("background-color", "red", "important");
+                    context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
+                    cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(cell);
                     //console.log(event);
                     var row = context.grid.row(event);
                     var grid = context.grid;
+                    console.log("Se hizo un cambio");
                     //console.log(row.element);
                     //console.log(z);
-                    actualizarValoresDgrid(event,grid);
+                    //actualizarValoresDgrid(event,grid);
+                    grid.save();
+                    //grid.refresh();
                 });
                 //this.grid.styleColumn("Nombre", "display: none;");
 
@@ -176,19 +188,20 @@
                     //actualizarValoresDgrid(event, grid);
                 });
 
+                /*
                 this.grid.on('dgrid-editor-show', function (event) {
-                    /*
+                    
                     var cell = event.cell;
                     var test = cell.column.renderCell;
                     //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
                     //cell.style.setProperty("background-color", "red", "important");
                     //Investigar el metodo refresh(cell).
                     var z = context.grid.cell(cell);
-                    var row = context.grid.row(event);*/
+                    var row = context.grid.row(event);
                     //console.log(context.grid.row(event));
                     //console.log(context.grid)
                     //actualizarValoresDgrid(event, grid);
-                });
+                });*/
                 
                 this.grid.startup();
 
