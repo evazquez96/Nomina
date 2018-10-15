@@ -44,6 +44,9 @@ function concatenarError(object, data, bandera,str) {
         var regex = new RegExp(str);
         if (!regex.test(object.isValid.codError))
             object.isValid.codError += "|" + str;
+        return false;
+    } else {
+        return true;
     }
 }
 

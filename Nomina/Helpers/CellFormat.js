@@ -18,8 +18,17 @@ function formatoCentrarContenido(data) {
     return div;
 }
 
+function validarCellFormat(object, value, cell, options, headers,column) {
+    var o = object;
+    var v = value;
+    var c = cell;
+    var op = options;
+    var col = column;
+    var h = headers;
+}
 
-function formatoDivTotal(data,td, bandera) {
+
+function formatoDivTotal(data,td) {
     var div = document.createElement('div');
     div.className = "renderedCell";
     div.innerHTML = data;

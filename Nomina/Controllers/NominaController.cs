@@ -167,11 +167,14 @@ namespace Nomina.Controllers
                         unaNomina.ImporteARCEAV= limpiarMontos(filtrarCampo2(row[96]));
                         unaNomina.ImporteOtros= limpiarMontos(filtrarCampo2(row[98]));//Verificar desde aqui
                         //Revisar columnas CV a CY
-                        unaNomina.ImporteDPI= limpiarMontos(filtrarCampo2(row[102]));
+                        unaNomina.ImporteDPI= limpiarMontos(filtrarCampo2(row[102]));//Importe Renta
                         unaNomina.ImportePA= limpiarMontos(filtrarCampo2(row[105]));//Importe pensión alimenticia.
+                        unaNomina.ImporteRenta = limpiarMontos(filtrarCampo2(row[107]));//Importe Renta
+                        unaNomina.ImportePPFNDLVPLT = limpiarMontos(filtrarCampo2(row[109]));//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores.
                         unaNomina.ImportePPCDV = limpiarMontos(filtrarCampo2(row[111]));//PAgo por crédito de vivienda.
                         unaNomina.ImporteINFONACOT= limpiarMontos(filtrarCampo2(row[113]));//Infonacot
                         unaNomina.ImporteADS= limpiarMontos(filtrarCampo2(row[115]));//Anticipo de salarios
+                        unaNomina.ImportePHCEAT= limpiarMontos(filtrarCampo2(row[117]));//Pagos hechos con exceso al trabajador
                         unaNomina.ImporteErrores= limpiarMontos(filtrarCampo2(row[116]));
                         unaNomina.ImportePerdidas=limpiarMontos(filtrarCampo2(row[118]));
                         unaNomina.ImporteAverias = limpiarMontos(filtrarCampo2(row[122]));//IMPORTE AVERÍAS
