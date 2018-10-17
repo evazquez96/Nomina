@@ -11,7 +11,8 @@
     "dijit/form/ValidationTextBox",
     "dijit/form/CheckBox",
     "dijit/form/DateTextBox",
-    "myApp/widget/helper/NominaGridHelper.js"
+    "myApp/widget/helper/NominaGridHelper.js",
+   "dojo/domReady!"
 ], function (
     declare,
     Stateful,
@@ -27,19 +28,7 @@
     DateTextBox,
     NominaGridHelper
 ) {
-    return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard, Stateful], {
-
-        collectionValidos: null,
-        _collectionValidosGetter: function () { return this.collectionValidos },
-        _collectionValidosSetter: function (value) { this.collectionValidos=value },
-
-        collectionInvalidos: null,
-        _collectionInvalidosGetter: function () { return this.collectionInvalidos },
-        _collectionInvalidosSetter: function (value) { this.collectionInvalidos = value },
-
-        collectionOriginal: null,
-        _collectionOriginalGetter: function () { return this.collectionOriginal },
-        _collectionOriginalSetter: function (value) { this.collectionOriginal = value },
+    return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
 
         columnSets:
             [

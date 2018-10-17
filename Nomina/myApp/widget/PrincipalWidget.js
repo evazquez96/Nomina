@@ -40,7 +40,8 @@
     "dojo/parser",
 
     "dojo/dom-style",
-    "myApp/widget/myGrid.js"
+    "myApp/widget/myGrid.js",
+    "dojo/domReady!"
 ],
     function (
         declare,
@@ -136,23 +137,9 @@
             ,
             createGrid: function () {
 
-                this.grid = new CustomGrid();
-                aspect.after(this.grid, 'renderRow', function (row, args) {
-                    var r = row;
-                    var ar = args;
-                    var ar0 = args[0];
-                    var sum = 1 + 2;
-                    return row;
-                });
+                this.grid = new CustomGrid({});
                 var context = this;
-                /*
-                this.grid.on('.dgrid-cell:click', function (event) {
-                    var cell = context.grid.cell(event);
-                    console.log(cell.element);
-                    console.log(cell.column);
-                    console.log(cell.row);
-
-                });*/
+                
                 
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
@@ -165,43 +152,18 @@
                     var row = context.grid.row(event);
                     var grid = context.grid;
                     console.log("Se hizo un cambio");
-                    //console.log(row.element);
-                    //console.log(z);
-                    //actualizarValoresDgrid(event,grid);
                     grid.save();
                     //grid.refresh();
                 });
                 //this.grid.styleColumn("Nombre", "display: none;");
 
                 this.grid.on('dgrid-editor-hide', function (event) {
-                    /*
-                    var cell = event.cell;
-                    var test = cell.column.renderCell;
-                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
-                    //cell.style.setProperty("background-color", "red", "important");
-                    //Investigar el metodo refresh(cell).
-                    var z = context.grid.cell(cell);
-                    var row = context.grid.row(event);*/
                     var grid = context.grid;
                     grid.save();
                     grid.refresh();
                     //actualizarValoresDgrid(event, grid);
                 });
 
-                /*
-                this.grid.on('dgrid-editor-show', function (event) {
-                    
-                    var cell = event.cell;
-                    var test = cell.column.renderCell;
-                    //context.grid.cell(event).element.style.setProperty("background-color", "red", "important");
-                    //cell.style.setProperty("background-color", "red", "important");
-                    //Investigar el metodo refresh(cell).
-                    var z = context.grid.cell(cell);
-                    var row = context.grid.row(event);
-                    //console.log(context.grid.row(event));
-                    //console.log(context.grid)
-                    //actualizarValoresDgrid(event, grid);
-                });*/
                 
                 this.grid.startup();
 
