@@ -15,7 +15,9 @@
     <script src="Helpers/ValidadorDeContenidoDeCeldasParaEmitir.js"></script>
 
     <!--Cargar Style para CompoundColumns-->
+
     <link rel="stylesheet" href="CSS/CompoundColumns.css" />
+
     <link rel="stylesheet" href="myApp/widget/css/myColumnSets.css" />
 
     <style>
@@ -38,7 +40,7 @@
         }
 
         .dgrid-row {
-            height: 10%;
+            height: 6%;
         }
 
         .claro .dgrid-row-odd {
@@ -58,6 +60,14 @@
             font-size: 3em;
             padding: 3em;
             text-align: center;
+        }
+        .dgrid-content.ui-widget-content tr:nth-child(even){
+            display:none!important;
+            /***
+                Esta regla css hace que en el column set se
+                omitan los valores de las columnas compuestas.
+                Las cuales tienen colspan.
+            */
         }
     </style>
 
