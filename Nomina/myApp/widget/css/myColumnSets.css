@@ -1,6 +1,8 @@
 ﻿.dgrid-cell {
     /*width: 175px;*/
     width:175px;
+    font-size:13px;
+    vertical-align:inherit;
 }
 .field-NumEmpleado {
     width: 45px;
@@ -21,6 +23,15 @@
     width: 900px;
 }
 
+.field-ImportePPFNDLVPLT{
+    width:220px;
+}
+.field-ImporteCuotasConstitucion {
+    width:250px;
+}
+.field-PagosDistintosALosListados{
+    width:260px;
+}
 .dgrid-column-set-0 {
     width: 18%;
 }
@@ -28,6 +39,8 @@
 .dgrid-column-set-1 {
     width: 50%;
 }
+
+
 
 .ERROR{
     background-color:red

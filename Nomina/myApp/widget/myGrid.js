@@ -30,6 +30,7 @@
 ) {
     return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
 
+        //.dgrid-content.ui-widget-content tr:nth-child(even)
         columnSets:
             [
                 [
@@ -54,26 +55,30 @@
 
                         NominaGridHelper.formatoColumn({ field: 'Clabe', label: "Clabe" }),
 
-                        NominaGridHelper.formatoColumn({ field: 'Monto', label: "Monto", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),
+                        NominaGridHelper.formatoColumn({ field: 'Monto', label: "Monto", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } })
 
-                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Gravado', editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' }, label: "Sueldo Gravado" }),// Sueldo Gravado
+                        ,
 
-                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Exento', label: "Sueldo Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Sueldo Exento
+                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Gravado', editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' }, label: "Gravado" }),// Sueldo Gravado
 
-                        NominaGridHelper.formatoColumn({field: 'Aguinaldo_Gravado',label: " Aguinaldo Gravado",editor: ValidationTextBox,editOn: 'dblclick',autoSave: true,editorArgs: {style: "width:110px",regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'}}),//Aguinaldo_Gravado
+                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Exento', label: "Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Sueldo Exento
 
-                        NominaGridHelper.formatoColumn({ field: 'Aguinaldo_Exento', label: "Aguinaldo Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Aguinaldo Exento
+                        NominaGridHelper.formatoColumn({field: 'Aguinaldo_Gravado',label: "Gravado",editor: ValidationTextBox,editOn: 'dblclick',autoSave: true,editorArgs: {style: "width:110px",regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'}}),//Aguinaldo_Gravado
 
-                        NominaGridHelper.formatoColumn({ field: 'PTU_Gravado', label: "PTU Gravado", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//PTU Gravado
+                        NominaGridHelper.formatoColumn({ field: 'Aguinaldo_Exento', label: "Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Aguinaldo Exento
 
-                        NominaGridHelper.formatoColumn({ field: 'PTU_Exento', label: "PTU Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//PTU_Exento
-                        NominaGridHelper.formatoColumn({ field: 'RGMDyH_Gravado', label: "Reembolso de Gastos Médicos Dentales y Hospitalarios Gravado", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Reembolso de Gastos Medicos dentales y hospitalarios Gravado.
+                        NominaGridHelper.formatoColumn({ field: 'PTU_Gravado', label: "Gravado", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//PTU Gravado
 
-                        NominaGridHelper.formatoColumn({ field: 'RGMDyH_Exento', label: "Reembolso de Gastos Médicos Dentales y Hospitalarios Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),
+                        NominaGridHelper.formatoColumn({ field: 'PTU_Exento', label: "Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//PTU_Exento
+
+
+                        NominaGridHelper.formatoColumn({ field: 'RGMDyH_Gravado', label: "Gravado", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Reembolso de Gastos Medicos dentales y hospitalarios Gravado.
+
+                        NominaGridHelper.formatoColumn({ field: 'RGMDyH_Exento', label: "Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),
 
                         NominaGridHelper.formatoColumn({
                             field: 'FDA_Gravado',
-                            label: "Fondo de ahorro Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -85,7 +90,7 @@
                         NominaGridHelper.formatoColumn(
                         {
                             field: 'FDA_Exento',
-                            label: "Fondo de ahorro Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -97,7 +102,7 @@
 
                         NominaGridHelper.formatoColumn({
                             field: 'CDA_Gravado',
-                            label: "Caja de ahorro Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -109,7 +114,7 @@
 
                         NominaGridHelper.formatoColumn({
                             field: 'CDA_Exento',
-                            label: "Caja de ahorro Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -121,7 +126,7 @@
 
                         NominaGridHelper.formatoColumn({
                             field: 'CCTPP_Gravado',
-                            label: "Contribuciones a Cargo del Trabajador Pagadas por el Patrón  Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -132,7 +137,7 @@
                         }),
                         NominaGridHelper.formatoColumn({
                             field: 'CCTPP_Exento',
-                            label: "Contribuciones a Cargo del Trabajador Pagadas por el Patrón  Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -143,7 +148,7 @@
                         }),
                         NominaGridHelper.formatoColumn({
                             field: 'PP_Gravado',
-                            label: "Premio Puntualidad Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -154,7 +159,7 @@
                         }),//Premio de Puntualidad
                         NominaGridHelper.formatoColumn({
                             field: 'PP_Exento',
-                            label: "Premio Puntualidad Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -165,7 +170,7 @@
                         }),//Premio de Puntualidad
                         NominaGridHelper.formatoColumn({
                             field: 'PSV_Gravado',
-                            label: "Prima de Seguro de Vida Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -176,7 +181,7 @@
                         }),//Prima de Seguro de vida
                         NominaGridHelper.formatoColumn({
                             field: 'PSV_Exento',
-                            label: "Prima de Seguro de Vida Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -187,7 +192,7 @@
                         }),//Prima de Seguro de vida
                         NominaGridHelper.formatoColumn({
                             field: 'SGMM_Gravado',
-                            label: "Seguro de Gastos Médicos Mayores Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -198,7 +203,7 @@
                         }),//Seguro de Gastos Médicos Mayores
                         NominaGridHelper.formatoColumn({
                             field: 'SGMM_Exento',
-                            label: "Seguro de Gastos Médicos Mayores Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -210,7 +215,7 @@
 
                         NominaGridHelper.formatoColumn({
                             field: 'CSPPP_Gravado',
-                            label: "Cuotas Sindicales Pagadas por el Patrón  Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -221,7 +226,7 @@
                         }),//Cuotas Sindicales Pagadas por el patron
                         NominaGridHelper.formatoColumn({
                             field: 'CSPPP_Exento',
-                            label: "Cuotas Sindicales Pagadas por el Patrón  Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -232,7 +237,7 @@
                         }),//Cuotas Sindicales Pagadas por el patron
                         NominaGridHelper.formatoColumn({
                             field: 'SPI_Gravado',
-                            label: "Subsidios por Incapacidad Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -243,7 +248,7 @@
                         }),//Subsidios por incapacidad
                         NominaGridHelper.formatoColumn({
                             field: 'SPI_Exento',
-                            label: "Subsidios por Incapacidad Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -254,7 +259,7 @@
                         }),//Subsidios por incapacidad
                         NominaGridHelper.formatoColumn({
                             field: 'Becas_Gravado',
-                            label: "Becas Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -265,7 +270,7 @@
                         }),//Becas
                         NominaGridHelper.formatoColumn({
                             field: 'Becas_Exento',
-                            label: "Becas Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -276,7 +281,7 @@
                         }),//Becas
                         NominaGridHelper.formatoColumn({
                             field: 'HE_Gravado',
-                            label: "Horas Extra Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -289,12 +294,12 @@
                                 return formatoDivTotal(data, td);
                             },
                             renderHeaderCell: function (node) {
-                                return formatoHeader(node, 2, "Horas Extra <br/>  Gravado", domStyle);//Bandera 2 para deducciones
+                                return formatoHeader(node, 2, "Gravado", domStyle);//Bandera 2 para deducciones
                             }
                         }),//Horas Extra
                         NominaGridHelper.formatoColumn({
                             field: 'HE_Exento',
-                            label: "Horas Extra Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -305,7 +310,7 @@
                         }),//Horas Extra
                         NominaGridHelper.formatoColumn({
                             field: 'PrimaD_Gravado',
-                            label: "Prima Dominical Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -316,7 +321,7 @@
                         }),//Prima Dominical
                         NominaGridHelper.formatoColumn({
                             field: 'PrimaD_Exento',
-                            label: "Prima Dominical Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -327,7 +332,7 @@
                         }),//Prima Dominical
                         NominaGridHelper.formatoColumn({
                             field: 'PrimaV_Gravado',
-                            label: "Prima Vacacional Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -338,7 +343,7 @@
                         }),//Prima Vacacional
                         NominaGridHelper.formatoColumn({
                             field: 'PrimaV_Exento',
-                            label: "Prima Vacacional Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -349,7 +354,7 @@
                         }),//Prima Vacacional
                         NominaGridHelper.formatoColumn({
                             field: 'PrimaA_Gravado',
-                            label: "Prina Antigüedad Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -360,7 +365,7 @@
                         }),//Prima Antigüead
                         NominaGridHelper.formatoColumn({
                             field: 'PrimaA_Exento',
-                            label: "Prima Antigüedad Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -371,7 +376,7 @@
                         }),//Prima Antigüedad
                         NominaGridHelper.formatoColumn({
                             field: 'PPS_Gravado',
-                            label: "Pagos por Separación Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -382,7 +387,7 @@
                         }),//Pagos por Separación
                         NominaGridHelper.formatoColumn({
                             field: 'PPS_Exento',
-                            label: "Pagos por Separación Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -393,7 +398,7 @@
                         }),//Pagos por Separación
                         NominaGridHelper.formatoColumn({
                             field: 'SDR_Gravado',
-                            label: "Seguro de Retiro Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -404,7 +409,7 @@
                         }),//Seguro de retiro
                         NominaGridHelper.formatoColumn({
                             field: 'SDR_Exento',
-                            label: "Seguro de Retiro Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -415,7 +420,7 @@
                         }),//Seguro de retiro
                         NominaGridHelper.formatoColumn({
                             field: 'Indeminizaciones_Gravado',
-                            label: "Indeminizaciones Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -426,7 +431,7 @@
                         }),//Indeminizaciones
                         NominaGridHelper.formatoColumn({
                             field: 'Indeminizaciones_Exento',
-                            label: "Indeminizaciones Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -437,7 +442,7 @@
                         }),//Indeminizaciones
                         NominaGridHelper.formatoColumn({
                             field: 'RPF_Gravado',
-                            label: "Reembolso por Funeral Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -448,7 +453,7 @@
                         }),//Reembolso por funeral
                         NominaGridHelper.formatoColumn({
                             field: 'RPF_Exento',
-                            label: "Reembolso por Funeral Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -459,7 +464,7 @@
                         }),//Reembolso por funeral
                         NominaGridHelper.formatoColumn({
                             field: 'CDSSPPP_Gravado',
-                            label: "Cuotas de seguridad social pagadas por el patrón Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -470,7 +475,7 @@
                         }),//Cuotas de seguridad social pagadas por el patrón
                         NominaGridHelper.formatoColumn({
                             field: 'CDSSPPP_Exento',
-                            label: "Cuotas de seguridad social pagadas por el patrón Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -481,7 +486,7 @@
                         }),//Cuotas de seguridad social pagadas por el patrón
                         NominaGridHelper.formatoColumn({
                             field: 'Comisiones_Gravado',
-                            label: "Comisiones Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -492,7 +497,7 @@
                         }),//Comisiones
                         NominaGridHelper.formatoColumn({
                             field: 'Comisiones_Exento',
-                            label: "Comisiones Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -503,7 +508,7 @@
                         }),//Comisiones
                         NominaGridHelper.formatoColumn({
                             field: 'ValesD_Gravado',
-                            label: "Vales de Despensa Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -514,7 +519,7 @@
                         }),//Vales de Despensa
                         NominaGridHelper.formatoColumn({
                             field: 'ValesD_Exento',
-                            label: "Vales de Despensa Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -525,7 +530,7 @@
                         }),//Vales de Despensa
                         NominaGridHelper.formatoColumn({
                             field: 'ValesR_Gravado',
-                            label: "Vales de Restaurante Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -536,7 +541,7 @@
                         }),//Vales de restaurante
                         NominaGridHelper.formatoColumn({
                             field: 'ValesR_Exento',
-                            label: "Vales de Restaurante Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -547,7 +552,7 @@
                         }),//Vales de restaurante
                         NominaGridHelper.formatoColumn({
                             field: 'ValesG_Gravado',
-                            label: "Vales de Gasolina Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -558,7 +563,7 @@
                         }),//Vales de gasolina
                         NominaGridHelper.formatoColumn({
                             field: 'ValesG_Exento',
-                            label: "Vales de Gasolina Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -569,7 +574,7 @@
                         }),//Vales de gasolina
                         NominaGridHelper.formatoColumn({
                             field: 'ValesRopa_Gravado',
-                            label: "Vales de Ropa Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -580,7 +585,7 @@
                         }),//Vales de ropa
                         NominaGridHelper.formatoColumn({
                             field: 'ValesRopa_Exento',
-                            label: "Vales de Ropa Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -591,7 +596,7 @@
                         }),//Vales de ropa
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaRenta_Gravado',
-                            label: "Ayuda para Renta Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -602,7 +607,7 @@
                         }),//Ayuda para renta
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaRenta_Exento',
-                            label: "Ayuda para Renta Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -613,7 +618,7 @@
                         }),//Ayuda para renta
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaEscolar_Gravado',
-                            label: "Ayuda para Artículos Escolares Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -624,7 +629,7 @@
                         }),//Ayuda para Articulos escolares
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaEscolar_Exento',
-                            label: "Ayuda para Artículos Escolares Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -635,7 +640,7 @@
                         }),//Ayuda para Articulos escolares
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaAnteojos_Gravado',
-                            label: "Ayuda para Anteojos Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -646,7 +651,7 @@
                         }),//Ayuda para Anteojos
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaAnteojos_Exento',
-                            label: "Ayuda para Anteojos Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -657,7 +662,7 @@
                         }),//Ayuda para Anteojos
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaTransporte_Gravado',
-                            label: "Ayuda para Transporte Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -668,7 +673,7 @@
                         }),//Ayuda para Transporte
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaTransporte_Exento',
-                            label: "Ayuda para Transporte Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -679,7 +684,7 @@
                         }),//Ayuda para Transporte
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaGF_Gravado',
-                            label: "Ayuda para Gastos de Funeral Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -690,7 +695,7 @@
                         }),//Ayuda para Gastos de funeral
                         NominaGridHelper.formatoColumn({
                             field: 'AyudaGF_Exento',
-                            label: "Ayuda para Gastos de Funeral Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -701,7 +706,7 @@
                         }),//Ayuda para Gasto de funeral
                         NominaGridHelper.formatoColumn({
                             field: 'OIPS_Gravado',
-                            label: "Otros Ingresos por Salario Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -712,7 +717,7 @@
                         }),//Otros ingresos por salario
                         NominaGridHelper.formatoColumn({
                             field: 'OIPS_Exento',
-                            label: "Otros Ingresos por Salario Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -723,7 +728,7 @@
                         }),//Otros ingresos por salario 
                         NominaGridHelper.formatoColumn({
                             field: 'JPHDR_Gravado',
-                            label: "Jubilaciones, Pensiones o Haberes de Retiro Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -734,7 +739,7 @@
                         }),//Jubilaciones, pensiones o haberes de retiro
                         NominaGridHelper.formatoColumn({
                             field: 'JPHDR_Exento',
-                            label: "Jubilaciones, Pensiones o Haberes de Retiro Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -745,7 +750,7 @@
                         }),//Jubilaciones, pensiones o haberes de retiro
                         NominaGridHelper.formatoColumn({
                             field: 'JPHDRParciales_Gravado',
-                            label: "Jubilaciones, Pensiones o Haberes de Retiro en Parcialidades Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -756,7 +761,7 @@
                         }),//Jubilaciones, pensiones o haberes de retiro parciales
                         NominaGridHelper.formatoColumn({
                             field: 'JPHDRParciales_Exento',
-                            label: "Jubilaciones, Pensiones o Haberes de Retiro en Parcialidades Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -767,7 +772,7 @@
                         }),//Jubilaciones, pensiones o haberes de retiro parciales
                         NominaGridHelper.formatoColumn({
                             field: 'IEAOTV_Gravado',
-                            label: "Ingresos en Acciones o Títulos Valor que Representen Bienes Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -778,7 +783,7 @@
                         }),//Ingresos en acciones o títulos valor que representan bienes
                         NominaGridHelper.formatoColumn({
                             field: 'IEAOTV_Exento',
-                            label: "Ingresos en Acciones o Títulos Valor que Representen Bienes Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -789,7 +794,7 @@
                         }),//Ingresos en acciones o títulos valor que representan bienes
                         NominaGridHelper.formatoColumn({
                             field: 'IAAS_Gravado',
-                            label: "Ingresos Asimilados a Salarios Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -800,7 +805,7 @@
                         }),//Ingresos asimilados a salarios
                         NominaGridHelper.formatoColumn({
                             field: 'IAAS_Exento',
-                            label: "Ingresos Asimilados a Salarios Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -811,7 +816,7 @@
                         }),//Ingresos asimilados a salarios
                         NominaGridHelper.formatoColumn({
                             field: 'Alimentacion_Gravado',
-                            label: "Alimentación Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -822,7 +827,7 @@
                         }),//Alimentacion
                         NominaGridHelper.formatoColumn({
                             field: 'Alimentacion_Exento',
-                            label: "Alimentación Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -833,7 +838,7 @@
                         }),//Alimentacion
                         NominaGridHelper.formatoColumn({
                             field: 'Habitacion_Gravado',
-                            label: "Habitación Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -844,7 +849,7 @@
                         }),//Habitacion
                         NominaGridHelper.formatoColumn({
                             field: 'Habitacion_Exento',
-                            label: "Habitación Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -855,7 +860,7 @@
                         }),//Habitacion
                         NominaGridHelper.formatoColumn({
                             field: 'PAsistecia_Gravado',
-                            label: "Premios por Asistencia Gravado",
+                            label: "Gravado",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -866,7 +871,7 @@
                         }),//Premios por asistencia
                         NominaGridHelper.formatoColumn({
                             field: 'PAsistecia_Exento',
-                            label: "Premios por Asistencia Exento",
+                            label: "Exento",
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -877,7 +882,7 @@
                         }),//Premios por asistencia
                         NominaGridHelper.formatoColumn({
                             field: 'TotalPercepcionesGravado',
-                            label: "Total Percepciones Gravado",
+                            label: "Gravado",
                             autoSave:true,
                             set: function (object) {
                                 console.log(object);
@@ -895,7 +900,7 @@
 
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteSeguridadSocial',
-                            label: 'Seguridad Social Importe ',
+                            label: 'Seguridad Social',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -906,7 +911,7 @@
                         }),//ImporteSeguridadSocial
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteISR',
-                            label: 'ISR Importe',
+                            label: 'ISR',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -917,7 +922,7 @@
                         }),//ImporteISR
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteARCEAV',
-                            label: 'Aportaciones a Retiro, Cesantía en Edad Avanzada y Vejez importe',
+                            label: 'Aportaciones a Retiro, Cesantía en Edad Avanzada y Vejez',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -928,7 +933,7 @@
                         }),//Aportaciones a retiro, cesantía en edad avanzada y vejez
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteOtros',
-                            label: 'Otros Importe',
+                            label: 'Otros',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -939,7 +944,7 @@
                         }),//Otros
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteDPI',
-                            label: 'Descuento por Incapacidad Importe',
+                            label: 'Descuento por Incapacidad',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -950,7 +955,7 @@
                         }),//Importe Descuento por incapacidad
                         NominaGridHelper.formatoColumn({
                             field: 'ImportePA',
-                            label: 'Pensión Alimenticia Importe',
+                            label: 'Pensión Alimenticia',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -961,7 +966,7 @@
                         }),//Importe pensión alimenticia
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteRenta',
-                            label: 'Renta Importe',
+                            label: 'Renta',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -972,7 +977,7 @@
                         }),//ImporteRenta
                         NominaGridHelper.formatoColumn({
                             field: 'ImportePPFNDLVPLT',
-                            label: 'Préstamos Provenientes del Fondo Nacional de la Vivienda para los Trabajadores Importe',
+                            label: 'Préstamos Provenientes del Fondo Nacional de la Vivienda para los Trabajadores',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -983,7 +988,7 @@
                         }),//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores
                         NominaGridHelper.formatoColumn({
                             field: 'ImportePPCDV',
-                            label: 'Pago por Crédito de Vivienda Importe',
+                            label: 'Pago por Crédito de Vivienda',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -994,7 +999,7 @@
                         }),//Importe Pago Por Credito De Vivienda
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteINFONACOT',
-                            label: 'Pago de Abonos INFONACOT Importe',
+                            label: 'Pago de Abonos INFONACOT',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1005,7 +1010,7 @@
                         }),//Importe de Pago de abonos INFONACOT
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteADS',
-                            label: 'Anticipo de Salarios Importe',
+                            label: 'Anticipo de Salarios',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1016,7 +1021,7 @@
                         }),//Importe anticipo de Salarios
                         NominaGridHelper.formatoColumn({
                             field: 'ImportePHCEAT',
-                            label: 'Pagos Hechos con Exceso al Trabajador importe',
+                            label: 'Pagos Hechos con Exceso al Trabajador',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1027,7 +1032,7 @@
                         }),//Pagos Hechos con Exceso al Trabajador importe
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteErrores',
-                            label: 'ERRORES Importe',
+                            label: 'ERRORES',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1038,7 +1043,7 @@
                         }),//Importe Errores
                         NominaGridHelper.formatoColumn({
                             field: 'ImportePerdidas',
-                            label: 'Pérdidas Importe',
+                            label: 'Pérdidas',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1049,7 +1054,7 @@
                         }),//Importe Perdidas
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteAverias',
-                            label: 'Averías Importe',
+                            label: 'Averías',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1060,7 +1065,7 @@
                         }),//Importe Averías
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteAdquisicionArticulos',
-                            label: 'Adquisición de Artículos Importe',
+                            label: 'Adquisición de Artículos',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1071,7 +1076,7 @@
                         }),//Importe Adquisición de articulos
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteCuotasConstitucion',
-                            label: 'Cuotas para la Constitución y Fomento de Sociedades Cooperativas y de Cajas de Ahorro Importe',
+                            label: 'Cuotas para la Constitución y Fomento de Sociedades Cooperativas y de Cajas de Ahorro',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1082,7 +1087,7 @@
                         }),//Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteCuotasSindicales',
-                            label: 'Cuotas Sindicales Importe',
+                            label: 'Cuotas Sindicales',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1093,7 +1098,7 @@
                         }),//Importe Cuotas Sindicales
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteAusencia',
-                            label: 'Ausencia Importe',
+                            label: 'Ausencia',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1104,7 +1109,7 @@
                         }),//Importe Ausencia
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteObreroP',
-                            label: 'Cuotas Obrero Patronales Importe',
+                            label: 'Cuotas Obrero Patronales',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1115,7 +1120,7 @@
                         }),//Importe cutoas obrero patronales
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteImpuestosL',
-                            label: 'Impuestos Locales Importe',
+                            label: 'Impuestos Locales',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1126,7 +1131,7 @@
                         }),//Importe impuestos locales
                         NominaGridHelper.formatoColumn({
                             field: 'ImporteAportacionesV',
-                            label: 'Aportaciones Voluntarias Importe',
+                            label: 'Aportaciones Voluntarias',
                             editor: ValidationTextBox,
                             editOn: 'dblclick',
                             autoSave: true,
@@ -1137,7 +1142,7 @@
                         }),//Importe aportaciones voluntarias
                         NominaGridHelper.formatoColumn({
                             field: 'TotalDeducciones',
-                            label: "Total Deducciones", colSpan: 2,
+                            label: "Deducciones", colSpan: 2,
                             autoSave: true,
                             set: function (object) {
                                 return getTotalDeducciones(object);
@@ -1146,80 +1151,80 @@
                         
                         NominaGridHelper.formatoColumn({
                             field: 'RiesgoTrabajoDias',
-                            label: "Riesgo de trabajo Dias"
+                            label: "Dias"
                         }),//Riesgo de trabajo dias
 
                         NominaGridHelper.formatoColumn({
                             field: 'RiesgoTrabajoDescuento',
-                            label: "Riesgo de Trabajo Descuento"
+                            label: "Descuento"
                         }),//Riesgo de trabajo Descuento
 
                         NominaGridHelper.formatoColumn({
                             field: 'RiesgoEnfermedadDias',
-                            label: "Riesgo Enfermedades en General Dias"
+                            label: "Dias"
                         }),//Riesgo Enfermedades en General dias.
                         NominaGridHelper.formatoColumn({
                             field: 'RiesgoEnfermedadDescuento',
-                            label: "Riesgo Enfermedades en General Descuento"
+                            label: "Descuento"
                         }),//Riesgo Enferemedades en General Descuento.
                         NominaGridHelper.formatoColumn({
                             field: 'MaternidadDias',
-                            label: "Maternidad Dias"
+                            label: "Dias"
                         }),//Maternidad dias.
                         NominaGridHelper.formatoColumn({
                             field: 'MaternidadDescuento',
-                            label: "Maternidad Descuento"
+                            label: "Descuento"
                         }),//Maternidad Descuento.
                         NominaGridHelper.formatoColumn({
                             field: 'TotalIncapacidadesDias',
-                            label: "Total Incapacidades Días"
+                            label: "Días"
                         }),//Total de las incapacidades Dias
                         NominaGridHelper.formatoColumn({
                             field: 'TotalIncapacidadesDescuento',
-                            label: "Total Incapacidades Descuento"
+                            label: "Descuento"
                         }),//Total de las incapacidades Descuento
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExD_Dias',
-                            label: "Horas Extra Dobles Dias"
+                            label: "Dias"
                         }),//HorasExtraDobles dias.
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExD_Horas',
-                            label: "Horas Extras Dobles Horas"
+                            label: "Horas"
                         }),//Horas Extra Dobles horas.
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExD_Importe',
-                            label: "Horas Extras Dobles Importe"
+                            label: "Importe"
                         }),//Horas Extras Dobles importe
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExT_Dias',
-                            label: "Horas Extra Triples Dias"
+                            label: "Dias"
                         }),//HorasExtra Triples dias.
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExT_Horas',
-                            label: "Horas Extra Triples Horas"
+                            label: "Horas"
                         }),//Horas Extra Triples horas.
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExT_Importe',
-                            label: "Horas Extra Triples Importe"
+                            label: "Importe"
                         }),//Horas Extras Triples importe
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExS_Dias',
-                            label: "Horas Extra Simples Dias"
+                            label: "Dias"
                         }),//Horas Extra Simples dias.
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExS_Horas',
-                            label: "Horas Extra Simples Horas"
+                            label: "Horas"
                         }),//Horas Extra Simples horas.
 
                         NominaGridHelper.formatoColumn({
                             field: 'HorasExS_Importe',
-                            label: "Horas Extra Simples Importe"
+                            label: "Importe"
                         }),//Horas Extras Simples importe
                         NominaGridHelper.formatoColumn({
                             field: 'TotalHE',
@@ -1292,8 +1297,86 @@
                                 value: "checked"
                             }
                         }*/
-                    ]//Fin del Segundo ColumnSet
-                ]
+                    ],
+                    [
+                        NominaGridHelper.formatoColumn({ field: 'totalGAB', label: 'Total', colSpan: 7 }),
+                        NominaGridHelper.formatoColumn({ field: 'sueldoH', label: 'Sueldo', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'aguinaldoH', label: 'Aguinaldo', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PTUH', label: 'PTU', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'RDGMDYHH', label: 'Reembolso de Gastos Médicos Dentales y Hospitalarios', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'FONDODEAHORROH', label: 'Fondo de ahorro', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'CAJADEAHORROH', label: 'Caja de ahorro', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'CONTRIBUCIONESACARGODELTRABAJADORPAGADASPORELPATRON', label: 'Contribuciones a cargo del trabajador pagadas por el patrón', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PREMIOPUNTURALIDADH', label: 'Premio puntualidad', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PRIMADESEGURODEVIDAH', label: 'Prima de seguro de vida', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'SEGURODEGASTOSMEDICOSMAYORESH', label: 'Seguro de gastos médicos mayores', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'CUOTASSINDICALESPAGADASPORELPATRONH', label: 'Cuotas sindicales pagadas por el patrón', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'SUBSIDIOSPORINCAPACIDADH', label: 'Subsidios por incapacidad', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'BECASH', label: 'Becas', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'HORASEXTRAH', label: 'Horas extra', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PRIMADOMINICALH', label: 'Prima dominical', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PRIMAVACACIONALH', label: 'Prima vacacional', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PRIMAANTIGUEDADH', label: 'Prima antigüedad', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PAGOSPORSEPARACIONH', label: 'Pagos por separación', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'SEGURODERETIROH', label: 'Seguro de retiro', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'INDEMINIZACIONESH', label: 'Indeminizaciones', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'REEMBOLSOPORFUNERALH', label: 'Reembolso por funeral', colSpan: 2 }), 
+                        NominaGridHelper.formatoColumn({ field: 'CUOTASDESEGURIDADSOCIALPAGADDASPORELPATRONH', label: 'Cuotas de seguridad social pagadas por el patrón', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'ComisioenesH', label: 'Comisiones', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'VALESDEDESPENSAH', label: 'Vales de despensa', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'VALESDERESTAURANTEH', label: 'Vales de restaurante', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'VALESDEGASOLINAH', label: 'Vales de gasolina', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'VALESROPAH', label: 'Vales de ropa', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'AYUDAPARARENTAH', label: 'Ayuda para renta', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'AYUDAPARAARTICULOSESCOLARESH', label: 'Ayuda para artículos escolares', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'ANTEOJOSH', label: 'Ayuda para anteojos', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'TRANSPORTEH', label: 'Ayuda para transporte', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'AYUDAPARAGASTOSDEFUNERALH', label: 'Ayuda para gastos de funeral', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'OTROSINGRESOSPORSALARIOSH', label: 'Otros ingresos por salarios', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'JUBILACIONESPENSIONESOHABERESDERETIROH', label: 'Jubilaciones, pensiones o haberes de retiro', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'JUBILACIONESPENSIONESOHABERESDERETIROENPARCIALIDADESH', label: 'Jubilaciones, pensiones o haberes de retiro en parcialidades', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'INGRESOSENACCIONESOTITULOSH', label: 'Ingresos en Acciones o Títulos Valor que Representen Bienes', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'INGRESOSASIMILADOSASALARIOSH', label: 'Ingresos Asimilados a Salarios', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'ALIMENTACIONH', label: 'Alimentación', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'HABITACIONH', label: 'Habitación', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'PREMIOSPORASISTENCIAH', label: 'Premios por asistencia', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'TOTALPERCEPCIONESH', label: 'Total Percepciones', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'ImporteSeguridadSocialH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ImporteSeguridadSocialH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Total', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'RIESGODETRABAJOH', label: 'Riesgo de trabajo', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'RIESGOENFERMEDADESENGENERALH', label: 'Riesgo enfermedades en general', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'MATERNIDADH', label: 'Maternidad', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'TOTALINCAPACIDADESH', label: 'Total incapacidades', colSpan: 2 }),
+                        NominaGridHelper.formatoColumn({ field: 'HORASEXTRADOBLESH', label: 'Horas extra dobles', colSpan: 3 }),
+                        NominaGridHelper.formatoColumn({ field: 'HORASEXTRATRIPLESH', label: 'Horas extra triples', colSpan: 3 }),
+                        NominaGridHelper.formatoColumn({ field: 'HORASEXTRASIMPLESH', label: 'Horas extra simples', colSpan: 3 })
+
+
+
+                         
+                    ]
+                ]//Fin del Segundo ColumnSet
             ]
 
 
