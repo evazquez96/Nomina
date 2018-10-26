@@ -62,14 +62,16 @@
                 this.inherited(arguments);
                 this._setWidgetCSS();
 
-                var context = this;
 
-                on(this.btnCargaWidget, 'click', function () {
+                on(this.btnCargaWidget, 'click', lang.hitch(this, function () {
+                    this.cargarNomina();
+                }));
+                    /* function () {
                     context.cargarNomina();
-                });
+                }*/
 
             },
-            createGrid: function (value) {
+            fillGrid: function (value) {
 
                 var nominaStore = new Memory({
                     data: value,
@@ -106,18 +108,18 @@
                 var deferred=request.get(url, {
                     handleAs: "json"
                 });
-                var context = this;
-                when(deferred, function (value) {
-                    context.createGrid(value);  
-                    //console.log(context.grid);
-                    /*
-                    dialog = new Dialog({
-                        title: "Registros con errores",
-                        content: "Test content.",
-                        style: "width: 300px"
-                    });
-                    dialog.show();*/
-                });
+
+                when(deferred, lang.hitch(this, function (value) {
+                    /**
+                     * La promesa se cumplira hasta que se tenga la
+                     * respuesta de consumir la hoja de GOOGLE SHEETS.
+                     * **/
+                    this.fillGrid(value);  
+                    /**
+                     * La función createGrid sera la encargada de llenar el grid
+                     * de acuerdo al JSON 
+                     */
+                }));
                 console.log("Se enviara el link: "+url);
             },
             _setWidgetCSS: function () {

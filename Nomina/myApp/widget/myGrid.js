@@ -30,14 +30,16 @@
 ) {
     return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
 
-        //.dgrid-content.ui-widget-content tr:nth-child(even)
-        columnSets:
+        collection: null,//Al inicio la collection sera null.
+        invalidCollection: null,//Contendra los registros que sean invalidos
+        auxCollection:null,//Colección que utilizare posteriormente si es necesario.
+        columnSets://Esta propiedad se encarga de crear las columnSets dentro del grid.
             [
                 [
                     [
                         NominaGridHelper.formatoColumn({ field: 'NumEmpleado', label: 'Clave' }),
                         NominaGridHelper.formatoColumn({ field: 'Nombre', label: 'Nombre' }),
-                        NominaGridHelper.formatoColumn({ field: 'Antiguedad', label: 'Antigüedad', editor: 'text', editOn: 'dblclick' }),
+                        NominaGridHelper.formatoMontoColumn({ field: 'Antiguedad', label: 'Antigüedad', editor: 'text', editOn: 'dblclick' }),
                     ]
                 ],
                 [
@@ -59,7 +61,7 @@
 
                         ,
 
-                        NominaGridHelper.formatoColumn({ field: 'Sueldo_Gravado', editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' }, label: "Gravado" }),// Sueldo Gravado
+                        NominaGridHelper.formatoMontoColumn({ field: 'Sueldo_Gravado', editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' }, label: "Gravado" }),// Sueldo Gravado
 
                         NominaGridHelper.formatoColumn({ field: 'Sueldo_Exento', label: "Exento", editor: ValidationTextBox, editOn: 'dblclick', autoSave: true, editorArgs: { style: "width:110px", regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})' } }),//Sueldo Exento
 
@@ -1228,7 +1230,7 @@
                         }),//Horas Extras Simples importe
                         NominaGridHelper.formatoColumn({
                             field: 'TotalHE',
-                            label: "Total Horas Extra Importe"
+                            label: "Total Horas Extra"
                         }),//Total Horas Extra
 
                         NominaGridHelper.formatoColumn({//Reintegro de ISR pagado en exeso
@@ -1370,11 +1372,13 @@
                         NominaGridHelper.formatoColumn({ field: 'TOTALINCAPACIDADESH', label: 'Total incapacidades', colSpan: 2 }),
                         NominaGridHelper.formatoColumn({ field: 'HORASEXTRADOBLESH', label: 'Horas extra dobles', colSpan: 3 }),
                         NominaGridHelper.formatoColumn({ field: 'HORASEXTRATRIPLESH', label: 'Horas extra triples', colSpan: 3 }),
-                        NominaGridHelper.formatoColumn({ field: 'HORASEXTRASIMPLESH', label: 'Horas extra simples', colSpan: 3 })
-
-
-
-                         
+                        NominaGridHelper.formatoColumn({ field: 'HORASEXTRASIMPLESH', label: 'Horas extra simples', colSpan: 3 }),
+                        NominaGridHelper.formatoColumn({ field: 'IMPORTEHHH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'IMPORTEHHH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'IMPORTEHHH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'IMPORTEHHH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'IMPORTEHHH', label: 'Importe', colSpan: 1 }),
+                        NominaGridHelper.formatoColumn({ field: 'IMPORTEHHH', label: 'Importe', colSpan: 1 })
                     ]
                 ]//Fin del Segundo ColumnSet
             ]

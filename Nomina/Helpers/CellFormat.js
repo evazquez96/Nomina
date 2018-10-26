@@ -15,6 +15,7 @@ function formatoCentrarContenido(data) {
     var div = document.createElement("div");
     div.innerHTML = data;
     div.style.setProperty("text-align", "center", "important");
+    div.style.setProperty("height", "100%", "important");
     return div;
 }
 

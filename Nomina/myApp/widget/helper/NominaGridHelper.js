@@ -21,9 +21,20 @@
         formatoMontoColumn: function (column) {
 
             column.renderCell = function (object, value, cell, options, headers) {
-                console.log("Column field:" + column.field)
-                concatenarError(object, value, 0, column.field);//Se manda un 0 que corresponde a una celda de monto.
-                return formatoCentrarContenido(value);
+                console.log("Column field:" + column.field)//Utilizar el Column.field para hacer las validaciones y limpiar la cadena que verifica si es válida.
+                isValid = concatenarError(object, value, 0, column.field);//Se manda un 0 que corresponde a una celda de monto.
+                div = formatoCentrarContenido(value)
+
+                if (isValid) {
+                    /**
+                     * Se tiene que limpiar el valor. Y actualizar la cadena para quitar
+                     * el valor invalido.
+                     * */
+                }
+                else {
+                    domStyle.set(div, "background-color", "red");
+                }
+                return div;
             }
             column.renderHeaderCell = function (node) {
                 var div = document.createElement('div');

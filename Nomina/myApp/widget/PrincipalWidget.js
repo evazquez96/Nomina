@@ -15,6 +15,7 @@
     "dojo/dom-style",
     "dojo/on",
     "dijit/Dialog",
+    "myApp/widget/helper/NominaGridHelper.js",
     /**
     *Inicio de modulos para ColumnSet
     **/
@@ -61,6 +62,7 @@
         domStyle,
         on,
         Dialog,
+        NominaGridHelper,
         /**
         *Inicio de modulos para ColumnSet
         **/
@@ -83,7 +85,7 @@
     ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
-            templateString: template,
+            templateString: template,//Indica el template de este Widget.
             name: "",
             store: null,
             grid:null,
@@ -159,6 +161,8 @@
 
                 this.grid.on('dgrid-editor-hide', function (event) {
                     var grid = context.grid;
+                    var cell = context.grid.row(event)
+                    NominaGridHelper.formatoColumn(cell);
                     grid.save();
                     grid.refresh();
                     //actualizarValoresDgrid(event, grid);
