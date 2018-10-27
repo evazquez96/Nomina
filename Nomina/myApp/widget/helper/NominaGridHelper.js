@@ -21,7 +21,7 @@
         formatoMontoColumn: function (column) {
 
             column.renderCell = function (object, value, cell, options, headers) {
-                console.log("Column field:" + column.field)//Utilizar el Column.field para hacer las validaciones y limpiar la cadena que verifica si es válida.
+                //console.log("Column field:" + column.field)//Utilizar el Column.field para hacer las validaciones y limpiar la cadena que verifica si es válida.
                 isValid = concatenarError(object, value, 0, column.field);//Se manda un 0 que corresponde a una celda de monto.
                 div = formatoCentrarContenido(value)
 
