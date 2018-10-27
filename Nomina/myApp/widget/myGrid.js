@@ -882,7 +882,7 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             }
                         }),//Premios por asistencia
-                        NominaGridHelper.formatoMontoColumn({
+                        {
                             field: 'TotalPercepcionesGravado',
                             label: "Gravado",
                             autoSave:true,
@@ -890,15 +890,15 @@
                                 console.log(object);
                                 return a(object);
                             }
-                        }),//Total
-                        NominaGridHelper.formatoMontoColumn({
+                        },//Total
+                        {
                             field: 'TotalPercepcionesExento',
                             label: "Exento",
                             autoSave: true,
                             set: function (object) {
                                 return getTotalPercepcionesExento(object);
                             }
-                        }),//Total
+                        },//Total
 
                         NominaGridHelper.formatoMontoColumn({
                             field: 'ImporteSeguridadSocial',
@@ -1142,14 +1142,14 @@
                                 regExp: '(^[0-9]+)|(^[0-9]+\.[0-9]{1,3})'
                             }
                         }),//Importe aportaciones voluntarias
-                        NominaGridHelper.formatoMontoColumn({
+                        {
                             field: 'TotalDeducciones',
                             label: "Deducciones", colSpan: 2,
                             autoSave: true,
                             set: function (object) {
                                 return getTotalDeducciones(object);
                             }
-                        }),//Total Deducciones
+                        },//Total Deducciones
                         
                         NominaGridHelper.formatoColumn({
                             field: 'RiesgoTrabajoDias',
@@ -1342,7 +1342,9 @@
                         NominaGridHelper.formatoColumn({ field: 'ALIMENTACIONH', label: 'Alimentación', colSpan: 2 }),
                         NominaGridHelper.formatoColumn({ field: 'HABITACIONH', label: 'Habitación', colSpan: 2 }),
                         NominaGridHelper.formatoColumn({ field: 'PREMIOSPORASISTENCIAH', label: 'Premios por asistencia', colSpan: 2 }),
+
                         NominaGridHelper.formatoColumn({ field: 'TOTALPERCEPCIONESH', label: 'Total Percepciones', colSpan: 2 }),
+
                         NominaGridHelper.formatoColumn({ field: 'ImporteSeguridadSocialH', label: 'Importe', colSpan: 1 }),
                         NominaGridHelper.formatoColumn({ field: 'ISRH', label: 'Importe', colSpan: 1 }),
                         NominaGridHelper.formatoColumn({ field: 'APORTACIONESARETIROEDADAVANZADA', label: 'Importe', colSpan: 1 }),
