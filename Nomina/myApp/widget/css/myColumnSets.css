@@ -1,8 +1,9 @@
 ﻿.dgrid-cell {
     /*width: 175px;*/
     width:175px;
-    font-size:13px;
+    font-size:11px;
     vertical-align:inherit;
+    padding:0px;
 }
 .field-NumEmpleado {
     width: 45px;

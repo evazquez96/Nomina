@@ -123,6 +123,7 @@
     <Content Include="myApp\JS\myJS.js" />
     <Content Include="myApp\widget\CargaLinkWidget.js" />
     <Content Include="myApp\widget\css\myColumnSets.css" />
+    <Content Include="myApp\widget\css\myCSS.css" />
     <Content Include="myApp\widget\helper\NominaGridHelper.js" />
     <Content Include="myApp\widget\myGrid.js" />
     <Content Include="myApp\widget\PrincipalWidget.js" />

@@ -31,8 +31,14 @@
     return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
 
         collection: null,//Al inicio la collection sera null.
+        _collectionSetter: function (value) { this.collection = value },
+        _collectionGetter: function () { return this.collection },
         invalidCollection: null,//Contendra los registros que sean invalidos
-        auxCollection:null,//Colección que utilizare posteriormente si es necesario.
+        _invalidCollectionSetter: function (value) { this.invalidCollection = value },
+        _invalidCollectionGetter: function () { return this.invalidCollection },
+        auxCollection: null,//Colección que utilizare posteriormente si es necesario.
+        _auxCollectionSetter: function (value) { this.auxCollection = value },
+        _auxCollectionGetter: function () { return this.auxCollection },
         columnSets://Esta propiedad se encarga de crear las columnSets dentro del grid.
             [
                 [
@@ -889,6 +895,20 @@
                             set: function (object) {
                                 console.log(object);
                                 return a(object);
+                            },
+                            renderHeaderCell : function (node) {
+                                var div = document.createElement('div');
+                                div.innerHTML = "Gravado";
+                                domStyle.set(div, "text-align", "center");
+                                domStyle.set(div, "background-color", "#5A748F");
+                                domStyle.set(div, "width", "100%");
+                                domStyle.set(div, "height", "100%");
+                                domStyle.set(div, "color", "white");
+                                domStyle.set(div, "font-weight", "bold");
+                                domStyle.set(div, "font-family", "Geneva, Arial, Helvetica, sans-serif");
+                                domStyle.set(div, "padding-top", "20px");
+
+                                return div;
                             }
                         },//Total
                         {
@@ -897,6 +917,20 @@
                             autoSave: true,
                             set: function (object) {
                                 return getTotalPercepcionesExento(object);
+                            },
+                            renderHeaderCell : function (node) {
+                                var div = document.createElement('div');
+                                div.innerHTML = "Exento";
+                                domStyle.set(div, "text-align", "center");
+                                domStyle.set(div, "background-color", "#5A748F");
+                                domStyle.set(div, "width", "100%");
+                                domStyle.set(div, "height", "100%");
+                                domStyle.set(div, "color", "white");
+                                domStyle.set(div, "font-weight", "bold");
+                                domStyle.set(div, "font-family", "Geneva, Arial, Helvetica, sans-serif");
+                                domStyle.set(div, "padding-top", "20px");
+
+                                return div;
                             }
                         },//Total
 

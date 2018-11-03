@@ -13,7 +13,7 @@
     var validos = collection.filter(filtroValido);
     var invalidos = collection.filter(filtroInvalido);
     grid.set('collection', invalidos);
-    validos.forEach(function (object) {
+    invalidos.forEach(function (object) {
         //object.isValid = true;
         //console.log(crearObjetoPeticion(object))
         console.log(object);

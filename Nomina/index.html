@@ -6,7 +6,7 @@
     <script src="Dojo/dojo/dojo.js"
             data-dojo-config="async:true,parseOnLoad:false"></script>
 
-    <link rel="stylesheet" href="Dojo/dijit/themes/claro/claro.css" />
+    
     <script src="myApp/JS/myJS.js"></script>
     <script src="Helpers/CellFormat.js"></script>
     <script src="Helpers/ColumnSetHelper.js"></script>
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="CSS/CompoundColumns.css" />
 
     <link rel="stylesheet" href="myApp/widget/css/myColumnSets.css" />
+    <link rel="stylesheet" href="myApp/widget/css/myCSS.css" />
 
     <style>
 
@@ -40,11 +41,21 @@
         }
 
         .dgrid-row {
-            height: 6%;
+            border-top-color: rgb(235, 234, 219);
+            border-right-color: #D5CDB5;
+            border-bottom-color: rgb(235, 234, 219);
+            border-left-color: rgb(235, 234, 219);
+            border: 1px solid;
+            border-color: #EBEADB;
+            text-align: left;
+            overflow: hidden;
+            word-wrap: break-word;
+            height: 35px;
+            border-right-color: #D5CDB5;
         }
 
         .claro .dgrid-row-odd {
-            background: #F2F5F9;
+            background: #E0E0E0;
         }
 
         /*
@@ -61,8 +72,9 @@
             padding: 3em;
             text-align: center;
         }
-        .dgrid-content.ui-widget-content tr:nth-child(even){
-            display:none!important;
+
+        .dgrid-content.ui-widget-content tr:nth-child(even) {
+            display: none !important;
             /***
                 Esta regla css hace que en el column set se
                 omitan los valores de las columnas compuestas.
@@ -80,20 +92,20 @@
             "dojo/domReady!"
         ], function (dom,
             Principal) {
-            var p = dom.byId("principal");
-            var widgetCarga = new Principal({ name: "Jesus Eduardo" }).placeAt(p);
-            widgetCarga.createGrid();
-            widgetCarga.createTopPane();
-            widgetCarga.createBottomPane();
-            widgetCarga.startup();
-            console.log("Todo correcto");
-            /*
-            widgetCarga.deferred.then(function (text) {
+                var p = dom.byId("principal");
+                var widgetCarga = new Principal({ name: "Jesus Eduardo" }).placeAt(p);
+                widgetCarga.createGrid();
+                widgetCarga.createTopPane();
+                widgetCarga.createBottomPane();
+                widgetCarga.startup();
                 console.log("Todo correcto");
-            })*/
-            //when(promise, function (abc) { console.log("Se completo la funcion"); }, function (err) {})
-            //console.log("Todo correcto");
-        })
+                /*
+                widgetCarga.deferred.then(function (text) {
+                    console.log("Todo correcto");
+                })*/
+                //when(promise, function (abc) { console.log("Se completo la funcion"); }, function (err) {})
+                //console.log("Todo correcto");
+            });
     </script>
 </body>
 </html>

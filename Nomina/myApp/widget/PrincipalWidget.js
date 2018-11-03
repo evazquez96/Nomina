@@ -1,5 +1,7 @@
 ﻿define(["dojo/_base/declare",
     "dojo/_base/lang",
+    "dojo/Stateful",
+    "dojox/widget/Standby",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
@@ -47,6 +49,8 @@
     function (
         declare,
         lang,
+        Stateful,
+        Standby,
         _WidgetBase,
         _TemplatedMixin,
         _WidgetsInTemplateMixin,
@@ -88,7 +92,9 @@
             templateString: template,//Indica el template de este Widget.
             name: "",
             store: null,
-            grid:null,
+            grid: null,
+            standby: null,
+            _standbyGetter: function () { return this.standby },
             constructor: function (arguments) {
                 lang.mixin(this, arguments);
                 console.log("name:" + this.name);
@@ -103,16 +109,27 @@
             },
             createTopPane: function () {
                 var context = this;
-                var cargaDeLink = new CargaLinkWidget({ grid: context.grid });//Se pasara el grid 
+                var cargaDeLink = new CargaLinkWidget({
+                    grid: context.grid,
+                    standby: context.standby
+                });//Se pasara el grid 
                 this.TopContentPane.addChild(cargaDeLink, 0);
                 
             },
             createBottomPane: function () {
                 var context = this;
                 btn = new Button({
-                    label:"Emitir"
+                    label:"Validar"
                 });
+                /**
+                 * El boton anterior sera el encargado de realizar el check al grid
+                 * para validar que todos los campos dentro sean validos, de acuerdo a las
+                 * expresiones regulares puestas en el data-dojo-props.
+                 * **/
                 domStyle.set(context.BottomContentPane, "text-align", "right");
+                /**
+                 * Alínea el boton a la derecha del panel de abajo.
+                 * **/
                 on(btn, "click", function (event) {
                     if (context.grid.get("collection") == null) {
                         /**
@@ -139,6 +156,13 @@
             ,
             createGrid: function () {
 
+                this.standby = new Standby({
+                    target: "borderContainer",
+                    text:"Cargando ..."
+                });
+                document.body.appendChild(this.standby.domNode);
+                //document.body.appendChild(standby.domNode);
+                //standby.show();
                 this.grid = new CustomGrid({});
                 var context = this;
                 
@@ -161,8 +185,15 @@
 
                 this.grid.on('dgrid-editor-hide', function (event) {
                     var grid = context.grid;
-                    var cell = context.grid.row(event)
-                    NominaGridHelper.formatoColumn(cell);
+                    var cell = context.grid.row(event);
+                    var aux = context.grid.cell(event);
+                    switch (aux.column.field) {
+                        case "abc":
+                            break;
+                        default:
+                            cell=NominaGridHelper.formatoMontoColumn(cell);
+                            break;
+                    }
                     grid.save();
                     grid.refresh();
                     //actualizarValoresDgrid(event, grid);
