@@ -43,6 +43,8 @@
     ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
+            //standby:null,
+
             constructor: function (arguments) {
                 lang.mixin(this, arguments);
                 /**
@@ -87,6 +89,7 @@
                 })
                 this.grid.set('collection', nominaStore);
                 this.grid.renderArray(value);
+                this.grid.refresh();
 
             }
             ,
@@ -108,7 +111,7 @@
                 var deferred=request.get(url, {
                     handleAs: "json"
                 });
-
+                this.standby.show();
                 when(deferred, lang.hitch(this, function (value) {
                     /**
                      * La promesa se cumplira hasta que se tenga la
@@ -119,6 +122,8 @@
                      * La función createGrid sera la encargada de llenar el grid
                      * de acuerdo al JSON 
                      */
+                    this.standby.hide();
+
                 }));
                 console.log("Se enviara el link: "+url);
             },

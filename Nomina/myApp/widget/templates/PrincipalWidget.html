@@ -4,7 +4,26 @@
          id="borderContainer">
         <div data-dojo-type="dijit/layout/ContentPane"
              data-dojo-attach-point="TopContentPane"
-             data-dojo-props="region:'top'">
+             data-dojo-props="region:'top'"
+             style="border-radius:25px">
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane"
+             data-dojo-attach-point="RightPane"
+             data-dojo-props="region:'right'"
+             id="rightPanelId"
+             style="width:15%!important">
+            <div data-dojo-type="dijit/layout/AccordionContainer"
+                 data-dojo-attach-point="accordionContainerWidget">
+                <div data-dojo-type="dijit/layout/ContentPane"
+                     data-dojo-attach-point="contentPaneValidos"
+                     data-dojo-props="title:'Procesados válidos',iconClass:'validosIcon'"
+                     >
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane"
+                     data-dojo-attach-point="contentPaneInvalidos"
+                     data-dojo-props="title:'Procesados inválidos',iconClass:'warningIcon'">
+                </div>
+            </div>
         </div>
         <div data-dojo-type="dijit/layout/ContentPane"
              data-dojo-attach-point="CenterContentPane"

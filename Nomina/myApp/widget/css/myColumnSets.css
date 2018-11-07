@@ -1,8 +1,9 @@
 ﻿.dgrid-cell {
     /*width: 175px;*/
     width:175px;
-    font-size:13px;
+    font-size:11px;
     vertical-align:inherit;
+    padding:0px;
 }
 .field-NumEmpleado {
     width: 45px;
@@ -40,8 +41,23 @@
     width: 50%;
 }
 
-
-
 .ERROR{
     background-color:red
+}
+
+
+/***Iconos que se utilizan en el proyecto***/
+
+.validosIcon {
+    background: url("./iconos/validos.png") !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-repeat: round;
+}
+
+.warningIcon {
+    background: url("./iconos/warning.png") !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-repeat: round;
 }

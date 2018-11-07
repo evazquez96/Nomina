@@ -12,11 +12,12 @@ function formatoCeldasVacias(td) {
 }
 
 function formatoCentrarContenido(data) {
-    var div = document.createElement("div");
-    div.innerHTML = data;
-    div.style.setProperty("text-align", "center", "important");
-    div.style.setProperty("height", "100%", "important");
-    return div;
+    var div = document.createElement("div");//Crea un nuevo div donde se insertara el valor leído.
+    div.innerHTML = data;//Inserta el valor de la celda dentro del div.
+    div.style.setProperty("text-align", "center", "important");//Centra el contendio del div.
+    div.style.setProperty("height", "100%", "important");//Cambia la altura del div al 100%.
+    div.style.setProperty("width", "106%", "important");//Cambia el ancho del div a 106% para que sea más grande el relleno.
+    return div;//Regresa el div creado anteriormente.
 }
 
 function validarCellFormat(object, value, cell, options, headers,column) {
