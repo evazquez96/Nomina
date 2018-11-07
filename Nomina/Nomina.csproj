@@ -124,10 +124,12 @@
     <Content Include="myApp\widget\CargaLinkWidget.js" />
     <Content Include="myApp\widget\css\myColumnSets.css" />
     <Content Include="myApp\widget\css\myCSS.css" />
+    <Content Include="myApp\widget\EmpleadoValidoWidget.js" />
     <Content Include="myApp\widget\helper\NominaGridHelper.js" />
     <Content Include="myApp\widget\myGrid.js" />
     <Content Include="myApp\widget\PrincipalWidget.js" />
     <Content Include="myApp\widget\templates\CargaLinkWidget.html" />
+    <Content Include="myApp\widget\templates\EmpleadoValidoWidget.html" />
     <Content Include="myApp\widget\templates\PrincipalWidget.html" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -173,6 +175,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DGrid\" />
+    <Folder Include="myApp\widget\css\iconos\" />
     <Folder Include="myApp\widget\images\" />
   </ItemGroup>
   <PropertyGroup>

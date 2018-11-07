@@ -7,6 +7,7 @@
     "dijit/_WidgetsInTemplateMixin",
     "dijit/layout/ContentPane",
     "dijit/layout/BorderContainer",
+    "dijit/layout/AccordionContainer",
     "myApp/widget/CargaLinkWidget.js",
     "dojo/text!/myApp/widget/templates/PrincipalWidget.html",
     "dijit/form/Button",
@@ -56,6 +57,7 @@
         _WidgetsInTemplateMixin,
         ContentPane,
         BorderContainer,
+        AccordionContainer,
         CargaLinkWidget,
         template,
         Button,
@@ -107,6 +109,12 @@
                 //this.createGrid();
 
             },
+            _createRightPane: function () {
+                /***
+                 * Esa función sera la encargada de crear e inicilizar los objetos
+                 * del panel derecho, que corresponden a Validos y no validos.
+                 * **/
+            },
             createTopPane: function () {
                 var context = this;
                 var cargaDeLink = new CargaLinkWidget({
@@ -141,7 +149,10 @@
                         dialog = new Dialog({
                             title: "No se a cargado el formato de Nomina.",
                             content: "Cargar el link",
-                            style: "width: 300px"
+                            style: {
+                                width: "300px"
+                                
+                            }
                         });
                         dialog.show();
                     } else {
