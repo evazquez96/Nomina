@@ -61,3 +61,17 @@
     height: 20px !important;
     background-repeat: round;
 }
+
+.rechazadosIcon {
+    background: url("./iconos/Rechazados.png") !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-repeat: round;
+}
+
+.emitidosIcon {
+    background: url("./iconos/emitidos.png") !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-repeat: round;
+}

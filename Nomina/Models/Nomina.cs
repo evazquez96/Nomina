@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Nomina.Models
 {
+
+    
+
     public class Nomina
     {
         public Nomina() { }
@@ -51,7 +54,6 @@ namespace Nomina.Models
         /**
          * Inicio de los atributos para las Percepciones
          **/
-
         public String Sueldo_Gravado { get; set; }
         public String Sueldo_Exento { get; set; }
         public String Aguinaldo_Gravado { get; set; }
@@ -238,5 +240,6 @@ namespace Nomina.Models
 
     }
 
+    
 
 }

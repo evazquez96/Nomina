@@ -83,6 +83,7 @@
                 /**
                  * Función que se encargara de crear el Grid.
                  **/
+                
                 nominaStore.forEach(function (object) {
                     object.isValid = { bandera: true, codError: "" };
                     /**Se agrega el item que servira como bandera de errores.**/

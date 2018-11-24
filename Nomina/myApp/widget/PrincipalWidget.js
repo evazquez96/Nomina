@@ -45,6 +45,7 @@
 
     "dojo/dom-style",
     "myApp/widget/myGrid.js",
+    "myApp/widget/EmpleadoValidoWidget.js",
     "dojo/domReady!"
 ],
     function (
@@ -87,7 +88,8 @@
         Memory,
         parser,
         domStyle,
-        CustomGrid
+        CustomGrid,
+        EmpleadoValidoWidget
     ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
@@ -109,7 +111,13 @@
                 //this.createGrid();
 
             },
-            _createRightPane: function () {
+            _displayRightPaneValidos: function () {
+                /***
+                 * Esa función sera la encargada de crear e inicilizar los objetos
+                 * del panel derecho, que corresponden a Validos y no validos.
+                 * **/
+            },
+            _displayRightPaneValidos: function () {
                 /***
                  * Esa función sera la encargada de crear e inicilizar los objetos
                  * del panel derecho, que corresponden a Validos y no validos.
@@ -159,7 +167,13 @@
                         /**Aquí se realizaran todas las validaciones de las celdas
                          * que se requieren para emitir la nomina.**/
                         //var collection = context.grid.get("collection");
-                        validarContenidoDeCeldas(context.grid);
+                        context.grid.validarContenidoDeCeldas();
+
+                        /***
+                         * En esta función se mandara a llenar los Paneles de la derecha.
+                         * ***/
+                        
+                        context.contentPaneValidos.resize();
                     }
                 })
                 context.BottomContentPane.addChild(btn);
@@ -174,9 +188,12 @@
                 document.body.appendChild(this.standby.domNode);
                 //document.body.appendChild(standby.domNode);
                 //standby.show();
-                this.grid = new CustomGrid({});
                 var context = this;
-                
+                this.grid = new CustomGrid({
+                    principal: this
+                    /**Le pasamos como argumento todo el contexto actual i.e el objeto***/
+                });
+
                 
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;

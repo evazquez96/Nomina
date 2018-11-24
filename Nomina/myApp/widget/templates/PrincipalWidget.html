@@ -16,12 +16,23 @@
                  data-dojo-attach-point="accordionContainerWidget">
                 <div data-dojo-type="dijit/layout/ContentPane"
                      data-dojo-attach-point="contentPaneValidos"
-                     data-dojo-props="title:'Procesados válidos',iconClass:'validosIcon'"
-                     >
+                     data-dojo-props="title:'Listos para emitir',iconClass:'validosIcon'"
+                     id="panelValidosId">
                 </div>
                 <div data-dojo-type="dijit/layout/ContentPane"
                      data-dojo-attach-point="contentPaneInvalidos"
-                     data-dojo-props="title:'Procesados inválidos',iconClass:'warningIcon'">
+                     data-dojo-props="title:'En proceso',iconClass:'warningIcon'"
+                     id="panelNoValidosId">
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane"
+                     data-dojo-attach-point="contentPaneEmitidos"
+                     data-dojo-props="title:'Emitidos',iconClass:'emitidosIcon'"
+                     id="panelEmitidosId">
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane"
+                     data-dojo-attach-point="contentPaneRechazados"
+                     data-dojo-props="title:'Rechazados',iconClass:'rechazadosIcon'"
+                     id="panelRechazadosId">
                 </div>
             </div>
         </div>
