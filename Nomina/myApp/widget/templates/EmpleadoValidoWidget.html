@@ -1,8 +1,15 @@
-﻿<div style="height:100%;width:100%">
+﻿<div style="height:30px;width:100%">
     <label for="clave">
+        <span>
+            Empleado:
+        </span>
         <input data-dojo-type="dijit/form/ValidationTextBox"
+               data-dojo-attach-point="numEmpleadoWidget"
              name="clave"
-             value="${clave}"
+             value="${NumEmpleado}"
+             disabled
+             style="width:70px"
+             
         />
     </label>
 </div>

@@ -1,6 +1,9 @@
 ﻿define([
     "dojo/_base/declare",
+    "dojo/_base/lang",
+    "dojo/dom-construct",
     "dojo/Stateful",
+    "dstore/Memory",
     "dgrid/OnDemandGrid",
     "dgrid/ColumnSet",
     'dgrid/extensions/DijitRegistry',
@@ -12,10 +15,14 @@
     "dijit/form/CheckBox",
     "dijit/form/DateTextBox",
     "myApp/widget/helper/NominaGridHelper.js",
+    "myApp/widget/EmpleadoValidoWidget.js",
    "dojo/domReady!"
 ], function (
     declare,
+    lang,
+    domConstruct,
     Stateful,
+    Memory,
     OnDemandGrid,
     ColumnSet,
     DijitRegistry,
@@ -26,7 +33,8 @@
     ValidationTextBox,
     CheckBox,
     DateTextBox,
-    NominaGridHelper
+    NominaGridHelper,
+    EmpleadoValidoWidget
 ) {
     return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
 
@@ -39,6 +47,58 @@
         auxCollection: null,//Colección que utilizare posteriormente si es necesario.
         _auxCollectionSetter: function (value) { this.auxCollection = value },
         _auxCollectionGetter: function () { return this.auxCollection },
+
+        validarContenidoDeCeldas: function () {
+            /***Se ejecutara este método cuando se de click al boton de emitir***/
+
+                    /**
+             * Se enviara todo el grid para poder realizar las
+             * validaciones de cada celda.
+             * 
+             **/
+            var collection = this.get("collection");
+            /**El primer foreach lo que hace es ponerle la bandera isValid=true**/
+            var store = this.get("store");
+            var filter = new collection.Filter();//Se crea un filtro nuevo
+            var filtroValido = filter.eq('isValid.bandera', true);
+            var filtroInvalido = filter.eq('isValid.bandera', false);
+            var validos = collection.filter(filtroValido);
+            var invalidos = collection.filter(filtroInvalido);
+            //this.set("collection", collection.filter({ NumEmpleado: 1222 }))
+            //collection.filter({NumEmpleado:1222})
+            this.set('collection', invalidos);
+            var context = this;
+
+            domConstruct.empty("panelValidosId");
+            domConstruct.empty("panelNoValidosId");
+            /**
+             * Limpia los hijos de los paneles que corresponden a los
+             * valios y a los invalidos.
+             * **/
+            var context = this;
+            validos.forEach(lang.hitch(this,function (object) {
+                var valido = new EmpleadoValidoWidget({
+                    grid:context,
+                    id: "id" + object.NumEmpleado,
+                    NumEmpleado: object.NumEmpleado,
+                    isValid:object.isValid.bandera
+                });
+                this.principal.contentPaneValidos.addChild(valido)
+                
+            }));
+            invalidos.forEach(lang.hitch(this, function (object) {
+                var noValido = new EmpleadoValidoWidget({
+                    NumEmpleado: object.NumEmpleado,
+                    error: object.isValid.codError,
+                    grid: this
+                });
+                this.principal.contentPaneInvalidos.addChild(noValido)
+                
+                
+            }));
+            
+
+        },
         columnSets://Esta propiedad se encarga de crear las columnSets dentro del grid.
             [
                 [

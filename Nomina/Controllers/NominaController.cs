@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web.Services;
+using System.Web.Script.Services;
+using System.Web.Script.Serialization;
 using System.Web.Configuration;
 using System.Web.Http;
 using Nomina.Helpers;
@@ -65,6 +65,7 @@ namespace Nomina.Controllers
                          *Se crea una instancia de tipo nomina la cual sera 
                          *exclusiva de cada empleado.
                          */
+                        
                         unaNomina.TipoNomina = WebConfigurationManager.AppSettings["tipo_Nomina"];//Obtiene el tipo de nomina.
                         unaNomina.Version = WebConfigurationManager.AppSettings["version"];//Obtiene la versión de nomina.
                         //unaNomina.Receptor = receptor;//Obtiene la instancia que corresponde al nodo receptor.
@@ -231,8 +232,6 @@ namespace Nomina.Controllers
 
                 }
             }
-
-
             return nominaL;
 
         }
