@@ -11,6 +11,11 @@ namespace Nomina.Models
     public class Nomina
     {
         public Nomina() { }
+        public int identifier { get; set; }
+        /**
+         * Servira para identificar a los operadores
+         * en el grid que se creara.
+         * **/
         public String Version { get; set; } //requerido
         public String TipoNomina { get; set; }//requerido
         public String FechaPago { get; set; }//requerido

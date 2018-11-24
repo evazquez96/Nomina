@@ -78,7 +78,7 @@
                 var nominaStore = new Memory({
                     data: value,
                     //id: ['NumEmpleado', 'Fecha'].join("#")
-                    idProperty: 'NumEmpleado'
+                    idProperty: 'identifier'
                 });
                 /**
                  * Función que se encargara de crear el Grid.
@@ -112,20 +112,49 @@
                 var deferred=request.get(url, {
                     handleAs: "json"
                 });
+                this.standby.set("color", "#5A748F");
+                
                 this.standby.show();
-                when(deferred, lang.hitch(this, function (value) {
-                    /**
-                     * La promesa se cumplira hasta que se tenga la
-                     * respuesta de consumir la hoja de GOOGLE SHEETS.
-                     * **/
-                    this.fillGrid(value);  
-                    /**
-                     * La función createGrid sera la encargada de llenar el grid
-                     * de acuerdo al JSON 
-                     */
-                    this.standby.hide();
+                when(deferred,
+                    lang.hitch(this, function (value) {
+                        //debugger;
+                        if (value == null) {
+                            //debugger
+                            this.standby.set("color", "red");
+                            this.standby.set("text", "Error al cargar ...");
+                            setTimeout( lang.hitch(this,function () {
+                                
+                                this.standby.hide();
+                                // Call it
+                                //context.isStateChanged();
+                                alert("Error al cargar ...");
+                            }), 5000);
+                            /**
+                             * Indica que hubo un error al leer la hoja de sheets.
+                             * **/
+                            
+                            //alert("La Hoja de sheets no es válida");
+                        }
+                        else {
+                            //debugger;
+                           
+                            /**
+                             * La promesa se cumplira hasta que se tenga la
+                             * respuesta de consumir la hoja de GOOGLE SHEETS.
+                             * **/
+                            this.fillGrid(value);  
+                            /**
+                             * La función createGrid sera la encargada de llenar el grid
+                             * de acuerdo al JSON 
+                             */
+                             this.standby.hide();
+                        }
 
-                }));
+                    }),
+                    lang.hitch(this, function (error) {
+                        this.standby.hide();
+                        alert("Error en el formato");
+                    }));
                 console.log("Se enviara el link: "+url);
             },
             _setWidgetCSS: function () {

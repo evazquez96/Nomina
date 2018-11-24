@@ -18,220 +18,232 @@ namespace Nomina.Controllers
         [HttpGet]
         public List<Nomina.Models.Nomina> getNomina(String url)
         {
-            List<Nomina.Models.Nomina> nominaL=new List<Nomina.Models.Nomina>();//Corresponde a la lista de la nomina a emitir.
-            List<Receptor> DBempleados= getEmpleadosRegistradosEnMenfisCatalogo();
-            /*
-             *Se obtiene la base de datos menfis_catalogo_empleados OK.xlsx
-             */
-            GoogleSheetsHelper gsh = new GoogleSheetsHelper(url);
-            gsh.createRequest("A5", "FJ", WebConfigurationManager.AppSettings["GoogleSheetsName"]);
-            gsh.executeRequest();
-            /*
-             *Se encarga de la lectura del archivo que esta en: formato nomina 2018 enero.xlsx
-             *Que corresponde al archivo donde se encuentra la nomina a emitir.
-             */
-            var values = gsh.values;
-            /*
-             *Esta variable contiene los valores de las columnas
-             *que corresponden al archivo de formato de nomina.
-             */
-            
-            Nomina.Models.Nomina unaNomina;
-
-            foreach (var row in values)
+            List<Nomina.Models.Nomina> nominaL;
+            try
             {
-                if (!isNull(row[0]))
-                {
-                    /*
-                     * Entra al if si el NoEmpleado no es
-                     * nula.
-                     */
-                    String noEmpleado= filtrarCampo(row[0]);//Obtiene la clave del emmpleado
-                    Receptor receptor = getEmpleadoEnNomina(DBempleados,noEmpleado);
-                    /*
-                     * Si la clave de empleado existe en menfis_catalogo_empleados OK.xlsx
-                     * entonces regresa una instancia de tipo Receptor que corresponde a un
-                     * Nodo del elemento Nomina.
-                     */
+                nominaL = new List<Nomina.Models.Nomina>();//Corresponde a la lista de la nomina a emitir.
+                List<Receptor> DBempleados = getEmpleadosRegistradosEnMenfisCatalogo();
+                /*
+                 *Se obtiene la base de datos menfis_catalogo_empleados OK.xlsx
+                 */
+                GoogleSheetsHelper gsh = new GoogleSheetsHelper(url);
+                gsh.createRequest("A5", "FJ", WebConfigurationManager.AppSettings["GoogleSheetsName"]);
+                gsh.executeRequest();
+                /*
+                 *Se encarga de la lectura del archivo que esta en: formato nomina 2018 enero.xlsx
+                 *Que corresponde al archivo donde se encuentra la nomina a emitir.
+                 */
+                var values = gsh.values;
+                /*
+                 *Esta variable contiene los valores de las columnas
+                 *que corresponden al archivo de formato de nomina.
+                 */
 
-                    if (!isNull(receptor))
+                Nomina.Models.Nomina unaNomina;
+                var cont = 0;
+                foreach (var row in values)
+                {
+                    if (!isNull(row[0]))
                     {
                         /*
-                         * Si entra al if indica que el empleado si se encuentra
-                         * registrado en el catalogo de menfis_catalogo_empleados OK.xlsx
+                         * Entra al if si el NoEmpleado no es
+                         * nula.
                          */
-                        unaNomina = new Models.Nomina();
+                        String noEmpleado = filtrarCampo(row[0]);//Obtiene la clave del emmpleado
+                        Receptor receptor = getEmpleadoEnNomina(DBempleados, noEmpleado);
                         /*
-                         *Se crea una instancia de tipo nomina la cual sera 
-                         *exclusiva de cada empleado.
+                         * Si la clave de empleado existe en menfis_catalogo_empleados OK.xlsx
+                         * entonces regresa una instancia de tipo Receptor que corresponde a un
+                         * Nodo del elemento Nomina.
                          */
-                        
-                        unaNomina.TipoNomina = WebConfigurationManager.AppSettings["tipo_Nomina"];//Obtiene el tipo de nomina.
-                        unaNomina.Version = WebConfigurationManager.AppSettings["version"];//Obtiene la versión de nomina.
-                        //unaNomina.Receptor = receptor;//Obtiene la instancia que corresponde al nodo receptor.
-                        unaNomina.getAtributosReceptor(receptor);
-                        unaNomina.FechaPago = Convert.ToString(row[3]);//Obtiene la fecha de pago.
-                        unaNomina.NumDiasPagados = Convert.ToString(row[6]);//Obtiene el numero de dias pagados
-                        unaNomina.Clabe = Convert.ToString(row[8]);
-                        unaNomina.Monto = limpiarMontos(Convert.ToString(row[9]));//Obtiene el Monto
-                        unaNomina.Sueldo_Gravado = limpiarMontos(Convert.ToString(row[10]));//Obtiene el sueldo Gravado
-                        unaNomina.Sueldo_Exento = limpiarMontos(filtrarCampo2(row[11]));//Obtiene el sueldo Exento.
-                        unaNomina.Aguinaldo_Gravado = limpiarMontos(filtrarCampo2(row[12]));
-                        unaNomina.Aguinaldo_Exento = limpiarMontos(filtrarCampo2(row[13]));
-                        unaNomina.PTU_Gravado = limpiarMontos(filtrarCampo2(row[14]));
-                        unaNomina.PTU_Exento = limpiarMontos(filtrarCampo2(row[15]));
-                        unaNomina.RGMDyH_Gravado = limpiarMontos(filtrarCampo2(row[16]));
-                        unaNomina.RGMDyH_Exento = limpiarMontos(filtrarCampo2(row[17]));
-                        unaNomina.FDA_Gravado = limpiarMontos(filtrarCampo2(row[18]));
-                        unaNomina.FDA_Exento = limpiarMontos(filtrarCampo2(row[19]));
-                        unaNomina.CDA_Gravado = limpiarMontos(filtrarCampo2(row[20]));
-                        unaNomina.CDA_Exento = limpiarMontos(filtrarCampo2(row[21]));
-                        unaNomina.CCTPP_Gravado = limpiarMontos(filtrarCampo2(row[22]));
-                        unaNomina.CCTPP_Exento = limpiarMontos(filtrarCampo2(row[23]));
-                        unaNomina.PP_Gravado = limpiarMontos(filtrarCampo2(row[24]));
-                        unaNomina.PP_Exento = limpiarMontos(filtrarCampo2(row[25]));//Premio puntualidad
-                        unaNomina.PSV_Gravado= limpiarMontos(filtrarCampo2(row[26]));//Prima de seguro de vida.
-                        unaNomina.PSV_Exento = limpiarMontos(filtrarCampo2(row[27]));//Prima de seguro de vida.
-                        unaNomina.SGMM_Gravado= limpiarMontos(filtrarCampo2(row[28]));//Seguro de gastos medicos mayores.
-                        unaNomina.SGMM_Exento = limpiarMontos(filtrarCampo2(row[29]));//Seguro de gastos medicos mayores.
-                        unaNomina.CSPPP_Gravado = limpiarMontos(filtrarCampo2(row[30]));//Cuotas sindicales pagadas por el patron
-                        unaNomina.CSPPP_Exento = limpiarMontos(filtrarCampo2(row[31]));//Cuotas sindicales pagadas por el patron
-                        unaNomina.SPI_Gravado = limpiarMontos(filtrarCampo2(row[32]));//Subsidios por incapacidad.
-                        unaNomina.SPI_Exento = limpiarMontos(filtrarCampo2(row[33]));//Subsidios por incapacidad.
-                        unaNomina.Becas_Gravado = limpiarMontos(filtrarCampo2(row[34]));//Becas
-                        unaNomina.Becas_Exento = limpiarMontos(filtrarCampo2(row[35]));//Becas
-                        unaNomina.HE_Gravado = limpiarMontos(filtrarCampo2(row[36]));//Horas Extra
-                        unaNomina.HE_Exento = limpiarMontos(filtrarCampo2(row[37]));//Horas Extra.
-                        unaNomina.PrimaD_Gravado = limpiarMontos(filtrarCampo2(row[38]));//Prima Dominical
-                        unaNomina.PrimaD_Exento = limpiarMontos(filtrarCampo2(row[39]));//Prima Dominical
-                        unaNomina.PrimaV_Gravado = limpiarMontos(filtrarCampo2(row[40]));//Prima vacacional.
-                        unaNomina.PrimaV_Exento = limpiarMontos(filtrarCampo2(row[41]));//Prima vacacional.
-                        unaNomina.PrimaA_Gravado = limpiarMontos(filtrarCampo2(row[42]));//Prima por antiguedad
-                        unaNomina.PrimaA_Exento = limpiarMontos(filtrarCampo2(row[43]));//Prima por antiguedad
-                        unaNomina.PPS_Gravado = limpiarMontos(filtrarCampo2(row[44]));//Pagos por separacion
-                        unaNomina.PPS_Exento = limpiarMontos(filtrarCampo2(row[45]));//Pagos por separacion
-                        unaNomina.SDR_Gravado = limpiarMontos(filtrarCampo2(row[46]));//Seguro de retiro
-                        unaNomina.SDR_Exento = limpiarMontos(filtrarCampo2(row[47]));//Seguro de retiro
-                        unaNomina.Indeminizaciones_Gravado = limpiarMontos(filtrarCampo2(row[48]));//Indeminizaciones
-                        unaNomina.Indeminizaciones_Exento = limpiarMontos(filtrarCampo2(row[49]));//Indeminizaciones
-                        unaNomina.RPF_Gravado = limpiarMontos(filtrarCampo2(row[50]));//Reembolso por funeral
-                        unaNomina.RPF_Exento = limpiarMontos(filtrarCampo2(row[51]));//Reembolso por funeral
-                        unaNomina.CDSSPPP_Gravado = limpiarMontos(filtrarCampo2(row[52]));//Cuotas de seguridad social pagadas por el patron.
-                        unaNomina.CDSSPPP_Exento = limpiarMontos(filtrarCampo2(row[53]));//Cuotas de seguridad social pagadas por el patron.
-                        unaNomina.Comisiones_Gravado = limpiarMontos(filtrarCampo2(row[54]));//Comisiones
-                        unaNomina.Comisiones_Exento = limpiarMontos(filtrarCampo2(row[55]));//Comisiones
-                        unaNomina.ValesD_Gravado = limpiarMontos(filtrarCampo2(row[56]));//Vales de despensa
-                        unaNomina.ValesD_Exento = limpiarMontos(filtrarCampo2(row[57]));//Vales de despensa
-                        unaNomina.ValesR_Gravado = limpiarMontos(filtrarCampo2(row[58]));//Vales de restaurant
-                        unaNomina.ValesR_Exento = limpiarMontos(filtrarCampo2(row[59]));//Vales de restaurant
-                        unaNomina.ValesG_Gravado = limpiarMontos(filtrarCampo2(row[60]));//Vales de gasolina
-                        unaNomina.ValesG_Exento = limpiarMontos(filtrarCampo2(row[61]));//Vales de gasolina
-                        unaNomina.ValesRopa_Gravado = limpiarMontos(filtrarCampo2(row[62]));//Vales de ropa.
-                        unaNomina.ValesRopa_Exento = limpiarMontos(filtrarCampo2(row[63]));//Vales de ropa.
-                        unaNomina.AyudaRenta_Gravado = limpiarMontos(filtrarCampo2(row[64]));//Ayuda para renta
-                        unaNomina.AyudaRenta_Exento = limpiarMontos(filtrarCampo2(row[65]));//Ayuda para renta
-                        unaNomina.AyudaEscolar_Gravado = limpiarMontos(filtrarCampo2(row[66]));//Ayuda para articulos escolares
-                        unaNomina.AyudaEscolar_Exento = limpiarMontos(filtrarCampo2(row[67]));//Ayuda para articulos escolares
-                        unaNomina.AyudaAnteojos_Gravado = limpiarMontos(filtrarCampo2(row[68]));//Ayuda para anteojos
-                        unaNomina.AyudaAnteojos_Exento = limpiarMontos(filtrarCampo2(row[69]));//Ayuda para anteojos
-                        unaNomina.AyudaTransporte_Gravado = limpiarMontos(filtrarCampo2(row[70]));//Ayuda para transporte
-                        unaNomina.AyudaTransporte_Exento = limpiarMontos(filtrarCampo2(row[71]));//Ayuda para transporte
-                        unaNomina.AyudaGF_Gravado = limpiarMontos(filtrarCampo2(row[72]));//Ayuda para gastos de funeral.
-                        unaNomina.AyudaGF_Exento = limpiarMontos(filtrarCampo2(row[73]));//Ayuda para gastos de funeral.
-                        unaNomina.OIPS_Gravado = limpiarMontos(filtrarCampo2(row[74]));//Otros ingresos por salarios.
-                        unaNomina.OIPS_Exento = limpiarMontos(filtrarCampo2(row[75]));//Otros ingresos por salarios.
-                        unaNomina.JPHDR_Gravado = limpiarMontos(filtrarCampo2(row[76]));//Jubilaciones, pensiones o haberes de retiro
-                        unaNomina.JPHDR_Exento = limpiarMontos(filtrarCampo2(row[77]));//Jubilaciones, pensiones o haberes de retiro
-                        unaNomina.JPHDRParciales_Gravado = limpiarMontos(filtrarCampo2(row[78]));//Jubilaciones, pensiones o haberes de retiro parciales
-                        unaNomina.JPHDRParciales_Exento = limpiarMontos(filtrarCampo2(row[79]));//Jubilaciones, pensiones o haberes de retiro parciales
-                        unaNomina.IEAOTV_Gravado = limpiarMontos(filtrarCampo2(row[80]));//Ingresos en acciones o titulo valor que representan bienes
-                        unaNomina.IEAOTV_Exento = limpiarMontos(filtrarCampo2(row[81]));//Ingresos en acciones o titulo valor que representan bienes
-                        unaNomina.IAAS_Gravado = limpiarMontos(filtrarCampo2(row[82]));//Ingresos asimilados a salarios
-                        unaNomina.IAAS_Exento = limpiarMontos(filtrarCampo2(row[83]));//Ingresos asimilados a salarios
-                        unaNomina.Alimentacion_Gravado = limpiarMontos(filtrarCampo2(row[84]));//Alimentacion
-                        unaNomina.Alimentacion_Exento = limpiarMontos(filtrarCampo2(row[85]));//Alimentacion
-                        unaNomina.Habitacion_Gravado = limpiarMontos(filtrarCampo2(row[86]));//Habitación
-                        unaNomina.Habitacion_Exento = limpiarMontos(filtrarCampo2(row[87]));//Habitación
-                        unaNomina.PAsistecia_Gravado = limpiarMontos(filtrarCampo2(row[88]));//Premios por asistencia
-                        unaNomina.PAsistecia_Exento = limpiarMontos(filtrarCampo2(row[89]));//Premios por asistencia
-                        unaNomina.TotalPercepcionesGravado = limpiarMontos(filtrarCampo2(row[90]));//Total de percepciones
-                        unaNomina.TotalPercepcionesExento = limpiarMontos(filtrarCampo2(row[91]));//Total de percepciones
-                                                                                                  /*
-                                                                                                   * FIN DE LA LECTURA DE LOS CAMPOS PARA LAS PERCEPCIONES.
-                                                                                                   */
-                        unaNomina.ImporteSeguridadSocial = limpiarMontos(filtrarCampo2(row[92]));
-                        /**Apartir de este campo, ya cuando se tenga en producción, solo se tendra el importe,
-                         * se omitira el gravado y exento, por lo tanto se tendra que modificar la estructura
-                         * de la hoja de Google Sheets. Revisar el documento de observacines Nomina que esta en
-                         * drive.**/
-                        unaNomina.ImporteISR = limpiarMontos(filtrarCampo2(row[94]));
-                        unaNomina.ImporteARCEAV= limpiarMontos(filtrarCampo2(row[96]));
-                        unaNomina.ImporteOtros= limpiarMontos(filtrarCampo2(row[98]));//Verificar desde aqui
-                        //Revisar columnas CV a CY
-                        unaNomina.ImporteDPI= limpiarMontos(filtrarCampo2(row[102]));//Importe Renta
-                        unaNomina.ImportePA= limpiarMontos(filtrarCampo2(row[105]));//Importe pensión alimenticia.
-                        unaNomina.ImporteRenta = limpiarMontos(filtrarCampo2(row[107]));//Importe Renta
-                        unaNomina.ImportePPFNDLVPLT = limpiarMontos(filtrarCampo2(row[109]));//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores.
-                        unaNomina.ImportePPCDV = limpiarMontos(filtrarCampo2(row[111]));//PAgo por crédito de vivienda.
-                        unaNomina.ImporteINFONACOT= limpiarMontos(filtrarCampo2(row[113]));//Infonacot
-                        unaNomina.ImporteADS= limpiarMontos(filtrarCampo2(row[115]));//Anticipo de salarios
-                        unaNomina.ImportePHCEAT= limpiarMontos(filtrarCampo2(row[117]));//Pagos hechos con exceso al trabajador
-                        unaNomina.ImporteErrores= limpiarMontos(filtrarCampo2(row[116]));
-                        unaNomina.ImportePerdidas=limpiarMontos(filtrarCampo2(row[118]));
-                        unaNomina.ImporteAverias = limpiarMontos(filtrarCampo2(row[122]));//IMPORTE AVERÍAS
-                        unaNomina.ImporteAdquisicionArticulos= limpiarMontos(filtrarCampo2(row[124]));
-                        unaNomina.ImporteCuotasConstitucion= limpiarMontos(filtrarCampo2(row[126]));
-                        unaNomina.ImporteCuotasSindicales= limpiarMontos(filtrarCampo2(row[128]));//IMPORTE CUOTAS SINDICALES
-                        unaNomina.ImporteAusencia= limpiarMontos(filtrarCampo2(row[130]));
-                        unaNomina.ImporteObreroP= limpiarMontos(filtrarCampo2(row[132]));
-                        unaNomina.ImporteImpuestosL= limpiarMontos(filtrarCampo2(row[134]));
-                        unaNomina.ImporteAportacionesV= limpiarMontos(filtrarCampo2(row[136]));
-                        unaNomina.TotalDeducciones = limpiarMontos(filtrarCampo2(row[138]));//TOTAL DEDUCCIONES
 
-                        /**Incapacidades**/
-                        unaNomina.RiesgoTrabajoDias = limpiarMontos(filtrarCampo(row[140]));
-                        unaNomina.RiesgoTrabajoDescuento = limpiarMontos(filtrarCampo2(row[141]));
-                        unaNomina.RiesgoEnfermedadDias= limpiarMontos(filtrarCampo(row[142]));
-                        unaNomina.RiesgoEnfermedadDescuento= limpiarMontos(filtrarCampo2(row[143]));
-                        unaNomina.MaternidadDias= limpiarMontos(filtrarCampo(row[144]));
-                        unaNomina.MaternidadDescuento= limpiarMontos(filtrarCampo2(row[145]));
-                        unaNomina.TotalIncapacidadesDias= limpiarMontos(filtrarCampo(row[146]));
-                        unaNomina.TotalIncapacidadesDescuento = limpiarMontos(filtrarCampo2(row[147]));
-                        unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[148]));
-                        unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[149]));
-                        unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[150]));
-                        unaNomina.HorasExT_Dias= limpiarMontos(filtrarCampo2(row[151]));
-                        unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[152]));
-                        unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[153]));
-                        unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[154]));
-                        unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[155]));
-                        unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[156]));
-                        unaNomina.TotalHE= limpiarMontos(filtrarCampo2(row[157]));
+                        if (!isNull(receptor))
+                        {
+                            /*
+                             * Si entra al if indica que el empleado si se encuentra
+                             * registrado en el catalogo de menfis_catalogo_empleados OK.xlsx
+                             */
+                            unaNomina = new Models.Nomina();
+                            /*
+                             *Se crea una instancia de tipo nomina la cual sera 
+                             *exclusiva de cada empleado.
+                             */
+                            unaNomina.identifier = cont;
+                            unaNomina.TipoNomina = WebConfigurationManager.AppSettings["tipo_Nomina"];//Obtiene el tipo de nomina.
+                            unaNomina.Version = WebConfigurationManager.AppSettings["version"];//Obtiene la versión de nomina.
+                                                                                               //unaNomina.Receptor = receptor;//Obtiene la instancia que corresponde al nodo receptor.
+                            unaNomina.getAtributosReceptor(receptor);
+                            unaNomina.FechaPago = Convert.ToString(row[3]);//Obtiene la fecha de pago.
+                            unaNomina.NumDiasPagados = Convert.ToString(row[6]);//Obtiene el numero de dias pagados
+                            unaNomina.Clabe = Convert.ToString(row[8]);
+                            unaNomina.Monto = limpiarMontos(Convert.ToString(row[9]));//Obtiene el Monto
+                            unaNomina.Sueldo_Gravado = limpiarMontos(Convert.ToString(row[10]));//Obtiene el sueldo Gravado
+                            unaNomina.Sueldo_Exento = limpiarMontos(filtrarCampo2(row[11]));//Obtiene el sueldo Exento.
+                            unaNomina.Aguinaldo_Gravado = limpiarMontos(filtrarCampo2(row[12]));
+                            unaNomina.Aguinaldo_Exento = limpiarMontos(filtrarCampo2(row[13]));
+                            unaNomina.PTU_Gravado = limpiarMontos(filtrarCampo2(row[14]));
+                            unaNomina.PTU_Exento = limpiarMontos(filtrarCampo2(row[15]));
+                            unaNomina.RGMDyH_Gravado = limpiarMontos(filtrarCampo2(row[16]));
+                            unaNomina.RGMDyH_Exento = limpiarMontos(filtrarCampo2(row[17]));
+                            unaNomina.FDA_Gravado = limpiarMontos(filtrarCampo2(row[18]));
+                            unaNomina.FDA_Exento = limpiarMontos(filtrarCampo2(row[19]));
+                            unaNomina.CDA_Gravado = limpiarMontos(filtrarCampo2(row[20]));
+                            unaNomina.CDA_Exento = limpiarMontos(filtrarCampo2(row[21]));
+                            unaNomina.CCTPP_Gravado = limpiarMontos(filtrarCampo2(row[22]));
+                            unaNomina.CCTPP_Exento = limpiarMontos(filtrarCampo2(row[23]));
+                            unaNomina.PP_Gravado = limpiarMontos(filtrarCampo2(row[24]));
+                            unaNomina.PP_Exento = limpiarMontos(filtrarCampo2(row[25]));//Premio puntualidad
+                            unaNomina.PSV_Gravado = limpiarMontos(filtrarCampo2(row[26]));//Prima de seguro de vida.
+                            unaNomina.PSV_Exento = limpiarMontos(filtrarCampo2(row[27]));//Prima de seguro de vida.
+                            unaNomina.SGMM_Gravado = limpiarMontos(filtrarCampo2(row[28]));//Seguro de gastos medicos mayores.
+                            unaNomina.SGMM_Exento = limpiarMontos(filtrarCampo2(row[29]));//Seguro de gastos medicos mayores.
+                            unaNomina.CSPPP_Gravado = limpiarMontos(filtrarCampo2(row[30]));//Cuotas sindicales pagadas por el patron
+                            unaNomina.CSPPP_Exento = limpiarMontos(filtrarCampo2(row[31]));//Cuotas sindicales pagadas por el patron
+                            unaNomina.SPI_Gravado = limpiarMontos(filtrarCampo2(row[32]));//Subsidios por incapacidad.
+                            unaNomina.SPI_Exento = limpiarMontos(filtrarCampo2(row[33]));//Subsidios por incapacidad.
+                            unaNomina.Becas_Gravado = limpiarMontos(filtrarCampo2(row[34]));//Becas
+                            unaNomina.Becas_Exento = limpiarMontos(filtrarCampo2(row[35]));//Becas
+                            unaNomina.HE_Gravado = limpiarMontos(filtrarCampo2(row[36]));//Horas Extra
+                            unaNomina.HE_Exento = limpiarMontos(filtrarCampo2(row[37]));//Horas Extra.
+                            unaNomina.PrimaD_Gravado = limpiarMontos(filtrarCampo2(row[38]));//Prima Dominical
+                            unaNomina.PrimaD_Exento = limpiarMontos(filtrarCampo2(row[39]));//Prima Dominical
+                            unaNomina.PrimaV_Gravado = limpiarMontos(filtrarCampo2(row[40]));//Prima vacacional.
+                            unaNomina.PrimaV_Exento = limpiarMontos(filtrarCampo2(row[41]));//Prima vacacional.
+                            unaNomina.PrimaA_Gravado = limpiarMontos(filtrarCampo2(row[42]));//Prima por antiguedad
+                            unaNomina.PrimaA_Exento = limpiarMontos(filtrarCampo2(row[43]));//Prima por antiguedad
+                            unaNomina.PPS_Gravado = limpiarMontos(filtrarCampo2(row[44]));//Pagos por separacion
+                            unaNomina.PPS_Exento = limpiarMontos(filtrarCampo2(row[45]));//Pagos por separacion
+                            unaNomina.SDR_Gravado = limpiarMontos(filtrarCampo2(row[46]));//Seguro de retiro
+                            unaNomina.SDR_Exento = limpiarMontos(filtrarCampo2(row[47]));//Seguro de retiro
+                            unaNomina.Indeminizaciones_Gravado = limpiarMontos(filtrarCampo2(row[48]));//Indeminizaciones
+                            unaNomina.Indeminizaciones_Exento = limpiarMontos(filtrarCampo2(row[49]));//Indeminizaciones
+                            unaNomina.RPF_Gravado = limpiarMontos(filtrarCampo2(row[50]));//Reembolso por funeral
+                            unaNomina.RPF_Exento = limpiarMontos(filtrarCampo2(row[51]));//Reembolso por funeral
+                            unaNomina.CDSSPPP_Gravado = limpiarMontos(filtrarCampo2(row[52]));//Cuotas de seguridad social pagadas por el patron.
+                            unaNomina.CDSSPPP_Exento = limpiarMontos(filtrarCampo2(row[53]));//Cuotas de seguridad social pagadas por el patron.
+                            unaNomina.Comisiones_Gravado = limpiarMontos(filtrarCampo2(row[54]));//Comisiones
+                            unaNomina.Comisiones_Exento = limpiarMontos(filtrarCampo2(row[55]));//Comisiones
+                            unaNomina.ValesD_Gravado = limpiarMontos(filtrarCampo2(row[56]));//Vales de despensa
+                            unaNomina.ValesD_Exento = limpiarMontos(filtrarCampo2(row[57]));//Vales de despensa
+                            unaNomina.ValesR_Gravado = limpiarMontos(filtrarCampo2(row[58]));//Vales de restaurant
+                            unaNomina.ValesR_Exento = limpiarMontos(filtrarCampo2(row[59]));//Vales de restaurant
+                            unaNomina.ValesG_Gravado = limpiarMontos(filtrarCampo2(row[60]));//Vales de gasolina
+                            unaNomina.ValesG_Exento = limpiarMontos(filtrarCampo2(row[61]));//Vales de gasolina
+                            unaNomina.ValesRopa_Gravado = limpiarMontos(filtrarCampo2(row[62]));//Vales de ropa.
+                            unaNomina.ValesRopa_Exento = limpiarMontos(filtrarCampo2(row[63]));//Vales de ropa.
+                            unaNomina.AyudaRenta_Gravado = limpiarMontos(filtrarCampo2(row[64]));//Ayuda para renta
+                            unaNomina.AyudaRenta_Exento = limpiarMontos(filtrarCampo2(row[65]));//Ayuda para renta
+                            unaNomina.AyudaEscolar_Gravado = limpiarMontos(filtrarCampo2(row[66]));//Ayuda para articulos escolares
+                            unaNomina.AyudaEscolar_Exento = limpiarMontos(filtrarCampo2(row[67]));//Ayuda para articulos escolares
+                            unaNomina.AyudaAnteojos_Gravado = limpiarMontos(filtrarCampo2(row[68]));//Ayuda para anteojos
+                            unaNomina.AyudaAnteojos_Exento = limpiarMontos(filtrarCampo2(row[69]));//Ayuda para anteojos
+                            unaNomina.AyudaTransporte_Gravado = limpiarMontos(filtrarCampo2(row[70]));//Ayuda para transporte
+                            unaNomina.AyudaTransporte_Exento = limpiarMontos(filtrarCampo2(row[71]));//Ayuda para transporte
+                            unaNomina.AyudaGF_Gravado = limpiarMontos(filtrarCampo2(row[72]));//Ayuda para gastos de funeral.
+                            unaNomina.AyudaGF_Exento = limpiarMontos(filtrarCampo2(row[73]));//Ayuda para gastos de funeral.
+                            unaNomina.OIPS_Gravado = limpiarMontos(filtrarCampo2(row[74]));//Otros ingresos por salarios.
+                            unaNomina.OIPS_Exento = limpiarMontos(filtrarCampo2(row[75]));//Otros ingresos por salarios.
+                            unaNomina.JPHDR_Gravado = limpiarMontos(filtrarCampo2(row[76]));//Jubilaciones, pensiones o haberes de retiro
+                            unaNomina.JPHDR_Exento = limpiarMontos(filtrarCampo2(row[77]));//Jubilaciones, pensiones o haberes de retiro
+                            unaNomina.JPHDRParciales_Gravado = limpiarMontos(filtrarCampo2(row[78]));//Jubilaciones, pensiones o haberes de retiro parciales
+                            unaNomina.JPHDRParciales_Exento = limpiarMontos(filtrarCampo2(row[79]));//Jubilaciones, pensiones o haberes de retiro parciales
+                            unaNomina.IEAOTV_Gravado = limpiarMontos(filtrarCampo2(row[80]));//Ingresos en acciones o titulo valor que representan bienes
+                            unaNomina.IEAOTV_Exento = limpiarMontos(filtrarCampo2(row[81]));//Ingresos en acciones o titulo valor que representan bienes
+                            unaNomina.IAAS_Gravado = limpiarMontos(filtrarCampo2(row[82]));//Ingresos asimilados a salarios
+                            unaNomina.IAAS_Exento = limpiarMontos(filtrarCampo2(row[83]));//Ingresos asimilados a salarios
+                            unaNomina.Alimentacion_Gravado = limpiarMontos(filtrarCampo2(row[84]));//Alimentacion
+                            unaNomina.Alimentacion_Exento = limpiarMontos(filtrarCampo2(row[85]));//Alimentacion
+                            unaNomina.Habitacion_Gravado = limpiarMontos(filtrarCampo2(row[86]));//Habitación
+                            unaNomina.Habitacion_Exento = limpiarMontos(filtrarCampo2(row[87]));//Habitación
+                            unaNomina.PAsistecia_Gravado = limpiarMontos(filtrarCampo2(row[88]));//Premios por asistencia
+                            unaNomina.PAsistecia_Exento = limpiarMontos(filtrarCampo2(row[89]));//Premios por asistencia
+                            unaNomina.TotalPercepcionesGravado = limpiarMontos(filtrarCampo2(row[90]));//Total de percepciones
+                            unaNomina.TotalPercepcionesExento = limpiarMontos(filtrarCampo2(row[91]));//Total de percepciones
+                                                                                                      /*
+                                                                                                       * FIN DE LA LECTURA DE LOS CAMPOS PARA LAS PERCEPCIONES.
+                                                                                                       */
+                            unaNomina.ImporteSeguridadSocial = limpiarMontos(filtrarCampo2(row[92]));
+                            /**Apartir de este campo, ya cuando se tenga en producción, solo se tendra el importe,
+                             * se omitira el gravado y exento, por lo tanto se tendra que modificar la estructura
+                             * de la hoja de Google Sheets. Revisar el documento de observacines Nomina que esta en
+                             * drive.**/
+                            unaNomina.ImporteISR = limpiarMontos(filtrarCampo2(row[94]));
+                            unaNomina.ImporteARCEAV = limpiarMontos(filtrarCampo2(row[96]));
+                            unaNomina.ImporteOtros = limpiarMontos(filtrarCampo2(row[98]));//Verificar desde aqui
+                                                                                           //Revisar columnas CV a CY
+                            unaNomina.ImporteDPI = limpiarMontos(filtrarCampo2(row[102]));//Importe Renta
+                            unaNomina.ImportePA = limpiarMontos(filtrarCampo2(row[105]));//Importe pensión alimenticia.
+                            unaNomina.ImporteRenta = limpiarMontos(filtrarCampo2(row[107]));//Importe Renta
+                            unaNomina.ImportePPFNDLVPLT = limpiarMontos(filtrarCampo2(row[109]));//Importe Préstamos provenientes del Fondo nacional de la vivienda para los trabajadores.
+                            unaNomina.ImportePPCDV = limpiarMontos(filtrarCampo2(row[111]));//PAgo por crédito de vivienda.
+                            unaNomina.ImporteINFONACOT = limpiarMontos(filtrarCampo2(row[113]));//Infonacot
+                            unaNomina.ImporteADS = limpiarMontos(filtrarCampo2(row[115]));//Anticipo de salarios
+                            unaNomina.ImportePHCEAT = limpiarMontos(filtrarCampo2(row[117]));//Pagos hechos con exceso al trabajador
+                            unaNomina.ImporteErrores = limpiarMontos(filtrarCampo2(row[116]));
+                            unaNomina.ImportePerdidas = limpiarMontos(filtrarCampo2(row[118]));
+                            unaNomina.ImporteAverias = limpiarMontos(filtrarCampo2(row[122]));//IMPORTE AVERÍAS
+                            unaNomina.ImporteAdquisicionArticulos = limpiarMontos(filtrarCampo2(row[124]));
+                            unaNomina.ImporteCuotasConstitucion = limpiarMontos(filtrarCampo2(row[126]));
+                            unaNomina.ImporteCuotasSindicales = limpiarMontos(filtrarCampo2(row[128]));//IMPORTE CUOTAS SINDICALES
+                            unaNomina.ImporteAusencia = limpiarMontos(filtrarCampo2(row[130]));
+                            unaNomina.ImporteObreroP = limpiarMontos(filtrarCampo2(row[132]));
+                            unaNomina.ImporteImpuestosL = limpiarMontos(filtrarCampo2(row[134]));
+                            unaNomina.ImporteAportacionesV = limpiarMontos(filtrarCampo2(row[136]));
+                            unaNomina.TotalDeducciones = limpiarMontos(filtrarCampo2(row[138]));//TOTAL DEDUCCIONES
 
-
-                        /***Otros pagos**/
-                        unaNomina.Reintegro_ISR = limpiarMontos(filtrarCampo2(row[158]));
-                        unaNomina.SubsidioEmpleoEfecEntregado= limpiarMontos(filtrarCampo2(row[159]));
-                        unaNomina.ViaticosEntregadosTrabajador= limpiarMontos(filtrarCampo2(row[160]));
-                        unaNomina.AplicacionSaldoAFavorCompensacionAnual= limpiarMontos(filtrarCampo2(row[161]));
-                        unaNomina.PagosDistintosALosListados= limpiarMontos(filtrarCampo2(row[162]));
-                        /*
-       */
-
-                        /**
-                         * Inicio de los campos para las deducciones
-                         * **/
+                            /**Incapacidades**/
+                            unaNomina.RiesgoTrabajoDias = limpiarMontos(filtrarCampo(row[140]));
+                            unaNomina.RiesgoTrabajoDescuento = limpiarMontos(filtrarCampo2(row[141]));
+                            unaNomina.RiesgoEnfermedadDias = limpiarMontos(filtrarCampo(row[142]));
+                            unaNomina.RiesgoEnfermedadDescuento = limpiarMontos(filtrarCampo2(row[143]));
+                            unaNomina.MaternidadDias = limpiarMontos(filtrarCampo(row[144]));
+                            unaNomina.MaternidadDescuento = limpiarMontos(filtrarCampo2(row[145]));
+                            unaNomina.TotalIncapacidadesDias = limpiarMontos(filtrarCampo(row[146]));
+                            unaNomina.TotalIncapacidadesDescuento = limpiarMontos(filtrarCampo2(row[147]));
+                            unaNomina.HorasExD_Dias = limpiarMontos(filtrarCampo2(row[148]));
+                            unaNomina.HorasExD_Horas = limpiarMontos(filtrarCampo2(row[149]));
+                            unaNomina.HorasExD_Importe = limpiarMontos(filtrarCampo2(row[150]));
+                            unaNomina.HorasExT_Dias = limpiarMontos(filtrarCampo2(row[151]));
+                            unaNomina.HorasExT_Horas = limpiarMontos(filtrarCampo2(row[152]));
+                            unaNomina.HorasExT_Importe = limpiarMontos(filtrarCampo2(row[153]));
+                            unaNomina.HorasExS_Dias = limpiarMontos(filtrarCampo2(row[154]));
+                            unaNomina.HorasExS_Horas = limpiarMontos(filtrarCampo2(row[155]));
+                            unaNomina.HorasExS_Importe = limpiarMontos(filtrarCampo2(row[156]));
+                            unaNomina.TotalHE = limpiarMontos(filtrarCampo2(row[157]));
 
 
-                        unaNomina.FechaInicialPago = Convert.ToString(row[4]);//Obtiene la fecha inicial de pago.
-                        unaNomina.FechaFinalPago = Convert.ToString(row[5]);//Obtiene la fecha final de pago.
-                        unaNomina.getAntiguedad(unaNomina.FechaInicioRelLaboral, unaNomina.FechaPago);
-                        nominaL.Add(unaNomina);
+                            /***Otros pagos**/
+                            unaNomina.Reintegro_ISR = limpiarMontos(filtrarCampo2(row[158]));
+                            unaNomina.SubsidioEmpleoEfecEntregado = limpiarMontos(filtrarCampo2(row[159]));
+                            unaNomina.ViaticosEntregadosTrabajador = limpiarMontos(filtrarCampo2(row[160]));
+                            unaNomina.AplicacionSaldoAFavorCompensacionAnual = limpiarMontos(filtrarCampo2(row[161]));
+                            unaNomina.PagosDistintosALosListados = limpiarMontos(filtrarCampo2(row[162]));
+                            /*
+           */
+
+                            /**
+                             * Inicio de los campos para las deducciones
+                             * **/
+
+
+                            unaNomina.FechaInicialPago = Convert.ToString(row[4]);//Obtiene la fecha inicial de pago.
+                            unaNomina.FechaFinalPago = Convert.ToString(row[5]);//Obtiene la fecha final de pago.
+                            unaNomina.getAntiguedad(unaNomina.FechaInicioRelLaboral, unaNomina.FechaPago);
+                            cont++;
+                            nominaL.Add(unaNomina);
+                        }
+
+
                     }
-
-
                 }
             }
+            catch (Exception e) {
+                /**
+                 * Indica que el documento no es valido por lo tanto regresara un null
+                 * **/
+                nominaL=null;
+            }
+            
             return nominaL;
 
         }
