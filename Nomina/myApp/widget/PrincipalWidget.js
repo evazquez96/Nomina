@@ -46,6 +46,7 @@
     "dojo/dom-style",
     "myApp/widget/myGrid.js",
     "myApp/widget/EmpleadoValidoWidget.js",
+    "dijit/Fieldset",
     "dojo/domReady!"
 ],
     function (
@@ -190,10 +191,10 @@
                 //standby.show();
                 var context = this;
                 this.grid = new CustomGrid({
-                    principal: this
+                    principal: this,
                     /**Le pasamos como argumento todo el contexto actual i.e el objeto***/
+                    original:null
                 });
-
                 
                 this.grid.on('dgrid-datachange', function (event) {
                     var cell = event.cell;
@@ -210,7 +211,7 @@
                     //grid.refresh();
                 });
                 //this.grid.styleColumn("Nombre", "display: none;");
-
+                
                 this.grid.on('dgrid-editor-hide', function (event) {
                     var grid = context.grid;
                     var cell = context.grid.row(event);

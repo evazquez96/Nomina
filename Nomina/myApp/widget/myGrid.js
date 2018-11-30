@@ -36,17 +36,45 @@
     NominaGridHelper,
     EmpleadoValidoWidget
 ) {
-    return declare([OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
+    return declare([Stateful,OnDemandGrid, ColumnSet, DijitRegistry, Selection, Editor, Keyboard], {
 
         collection: null,//Al inicio la collection sera null.
+        original: null,
+        /**
+         * La colección original servira para realizar las busquedas 
+         * sobre ella sin modificarla.
+         * **/
+        validCollection: new Memory({
+            idProperty: 'identifier'
+        }),//Contendra los registros que sean invalidos
+        invalidCollection: new Memory({
+            idProperty: 'identifier'
+        }),//Contendra los registros que sean invalidos
+        postscript: function (kwargs) {
+            this.inherited(arguments);
+            // do your postscript stuff
+            // ...
+            this.watch("original", function (a, b, c) { debugger; alert("asdf") })
+            
+        },
+        constructor: function (arguments) {
+            lang.mixin(this, arguments);
+                /**
+                La línea anterior permite manipular los objetos que se
+                pasan como argumentos en el constructo.
+                */
+        },
+        _originalSetter: function (value) { this.original = value },
+        _originalGetter: function () { return this.original },
         _collectionSetter: function (value) { this.collection = value },
         _collectionGetter: function () { return this.collection },
-        invalidCollection: null,//Contendra los registros que sean invalidos
+        
         _invalidCollectionSetter: function (value) { this.invalidCollection = value },
         _invalidCollectionGetter: function () { return this.invalidCollection },
-        auxCollection: null,//Colección que utilizare posteriormente si es necesario.
-        _auxCollectionSetter: function (value) { this.auxCollection = value },
-        _auxCollectionGetter: function () { return this.auxCollection },
+        
+        _validCollectionSetter: function (value) { this.validCollection = value },
+        _validCollectionGetter: function () { return this.validCollection },
+       
 
         validarContenidoDeCeldas: function () {
             /***Se ejecutara este método cuando se de click al boton de emitir***/
@@ -56,6 +84,8 @@
              * validaciones de cada celda.
              * 
              **/
+            
+            
             var collection = this.get("collection");
             /**El primer foreach lo que hace es ponerle la bandera isValid=true**/
             var store = this.get("store");
@@ -76,23 +106,30 @@
              * valios y a los invalidos.
              * **/
             var context = this;
+            debugger
             validos.forEach(lang.hitch(this,function (object) {
-                var valido = new EmpleadoValidoWidget({
-                    grid:context,
-                    id: "id" + object.NumEmpleado,
-                    NumEmpleado: object.NumEmpleado,
-                    isValid:object.isValid.bandera
-                });
-                this.principal.contentPaneValidos.addChild(valido)
+                
+                this.get("validCollection").put(object);
                 
             }));
+            this.get("validCollection").forEach(lang.hitch(this, function (object) {
+                /*var valido = new EmpleadoValidoWidget({
+                    grid: context,
+                    id: "id" + object.NumEmpleado,
+                    NumEmpleado: object.NumEmpleado,
+                    isValid: object.isValid.bandera
+                });*/
+                //this.principal.contentPaneValidos.addChild(valido);
+
+            }));
             invalidos.forEach(lang.hitch(this, function (object) {
-                var noValido = new EmpleadoValidoWidget({
+                this.get("invalidCollection").put(object);
+                /*var noValido = new EmpleadoValidoWidget({
                     NumEmpleado: object.NumEmpleado,
                     error: object.isValid.codError,
                     grid: this
-                });
-                this.principal.contentPaneInvalidos.addChild(noValido)
+                });*/
+                //this.principal.contentPaneInvalidos.addChild(noValido)
                 
                 
             }));

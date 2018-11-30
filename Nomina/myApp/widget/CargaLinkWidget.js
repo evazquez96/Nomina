@@ -89,6 +89,8 @@
                     /**Se agrega el item que servira como bandera de errores.**/
                 })
                 this.grid.set('collection', nominaStore);
+                this.grid.set("original", nominaStore);
+                
                 this.grid.renderArray(value);
                 this.grid.refresh();
 
