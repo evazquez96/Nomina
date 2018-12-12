@@ -89,8 +89,6 @@
                     /**Se agrega el item que servira como bandera de errores.**/
                 })
                 this.grid.set('collection', nominaStore);
-                this.grid.set("original", nominaStore);
-                
                 this.grid.renderArray(value);
                 this.grid.refresh();
 
@@ -114,7 +112,7 @@
                 var deferred=request.get(url, {
                     handleAs: "json"
                 });
-                this.standby.set("color", "RED");
+                this.standby.set("color", "#5A748F");
                 
                 this.standby.show();
                 when(deferred,
