@@ -112,7 +112,7 @@
                 var deferred=request.get(url, {
                     handleAs: "json"
                 });
-                this.standby.set("color", "#5A748F");
+                this.standby.set("color", "RED");
                 
                 this.standby.show();
                 when(deferred,
