@@ -106,30 +106,30 @@
              * valios y a los invalidos.
              * **/
             var context = this;
-            debugger
+            
             validos.forEach(lang.hitch(this,function (object) {
                 
                 this.get("validCollection").put(object);
                 
             }));
             this.get("validCollection").forEach(lang.hitch(this, function (object) {
-                /*var valido = new EmpleadoValidoWidget({
+                var valido = new EmpleadoValidoWidget({
                     grid: context,
                     id: "id" + object.NumEmpleado,
                     NumEmpleado: object.NumEmpleado,
                     isValid: object.isValid.bandera
-                });*/
-                //this.principal.contentPaneValidos.addChild(valido);
+                });
+                this.principal.contentPaneValidos.addChild(valido);
 
             }));
             invalidos.forEach(lang.hitch(this, function (object) {
                 this.get("invalidCollection").put(object);
-                /*var noValido = new EmpleadoValidoWidget({
+                var noValido = new EmpleadoValidoWidget({
                     NumEmpleado: object.NumEmpleado,
                     error: object.isValid.codError,
                     grid: this
-                });*/
-                //this.principal.contentPaneInvalidos.addChild(noValido)
+                });
+                this.principal.contentPaneInvalidos.addChild(noValido)
                 
                 
             }));
